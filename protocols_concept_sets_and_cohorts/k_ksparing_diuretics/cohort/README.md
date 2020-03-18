@@ -1,0 +1,1 @@
+This cohort was generated using release 2.00 of OHDSI's Atlas tool and release 2.00 of OHDSI's WebAPI. The expected results when running this cohort against the "laertes_cdm" schema are shown in the PNG files in this folder.

@@ -1,0 +1,3379 @@
+{
+  "ConceptSets": [
+    {
+      "id": 0,
+      "name": "nsaids_ingredients",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 19019620,
+              "CONCEPT_NAME": "Benzydamine",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1425",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1118084,
+              "CONCEPT_NAME": "celecoxib",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "140587",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1124300,
+              "CONCEPT_NAME": "Diclofenac",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "3355",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1195492,
+              "CONCEPT_NAME": "Etodolac",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "24605",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19095703,
+              "CONCEPT_NAME": "fenbufen",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "24830",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1153928,
+              "CONCEPT_NAME": "Fenoprofen",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "4331",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1156378,
+              "CONCEPT_NAME": "Flurbiprofen",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "4502",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1177480,
+              "CONCEPT_NAME": "Ibuprofen",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "5640",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1178663,
+              "CONCEPT_NAME": "Indomethacin",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "5781",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1185922,
+              "CONCEPT_NAME": "Ketoprofen",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "6142",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1136980,
+              "CONCEPT_NAME": "Ketorolac",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "35827",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1180182,
+              "CONCEPT_NAME": "Meclofenamate",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "588003",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1150345,
+              "CONCEPT_NAME": "meloxicam",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "41493",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1113648,
+              "CONCEPT_NAME": "nabumetone",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "31448",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1115008,
+              "CONCEPT_NAME": "Naproxen",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "7258",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1118045,
+              "CONCEPT_NAME": "oxaprozin",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "32613",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1146810,
+              "CONCEPT_NAME": "Piroxicam",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "8356",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1236607,
+              "CONCEPT_NAME": "Sulindac",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "10237",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1036636,
+              "CONCEPT_NAME": "Suprofen",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "10255",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19041220,
+              "CONCEPT_NAME": "tenoxicam",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "37790",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1102917,
+              "CONCEPT_NAME": "Tolmetin",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "10636",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1103374,
+              "CONCEPT_NAME": "valdecoxib",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "278567",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 1,
+      "name": "nsaids",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 43012430,
+              "CONCEPT_NAME": "12 HR Naproxen sodium 220 MG / Pseudoephedrine Hydrochloride 120 MG Extended Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1367426",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 46287460,
+              "CONCEPT_NAME": "1 ML Ketorolac Tromethamine 15 MG/ML Cartridge",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1665675",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40164847,
+              "CONCEPT_NAME": "1 ML Ketorolac Tromethamine 15 MG/ML Injection",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "860092",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40163867,
+              "CONCEPT_NAME": "1 ML Ketorolac Tromethamine 15 MG/ML Prefilled Syringe",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "860113",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 46287462,
+              "CONCEPT_NAME": "1 ML Ketorolac Tromethamine 30 MG/ML Cartridge",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1665679",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 46287424,
+              "CONCEPT_NAME": "1 ML Ketorolac Tromethamine 30 MG/ML Injection",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1665461",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40163868,
+              "CONCEPT_NAME": "1 ML Ketorolac Tromethamine 30 MG/ML Prefilled Syringe",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "860114",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40162401,
+              "CONCEPT_NAME": "24 HR Diclofenac Sodium 100 MG Extended Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "855657",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19077212,
+              "CONCEPT_NAME": "24 HR Etodolac 400 MG Extended Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "310245",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19099551,
+              "CONCEPT_NAME": "24 HR Etodolac 500 MG Extended Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "359500",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19077214,
+              "CONCEPT_NAME": "24 HR Etodolac 600 MG Extended Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "310247",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19080098,
+              "CONCEPT_NAME": "24 HR Ketoprofen 100 MG Extended Release Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "314059",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19078754,
+              "CONCEPT_NAME": "24 HR Ketoprofen 150 MG Extended Release Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "311230",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1186053,
+              "CONCEPT_NAME": "24 HR Ketoprofen 200 MG Extended Release Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "359697",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19107938,
+              "CONCEPT_NAME": "24 HR Naproxen 1000 MG Extended Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "433845",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40240375,
+              "CONCEPT_NAME": "24 HR Naproxen 375 MG Extended Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1116320",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40240377,
+              "CONCEPT_NAME": "24 HR Naproxen 500 MG Extended Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1116339",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40240379,
+              "CONCEPT_NAME": "24 HR Naproxen 750 MG Extended Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1116349",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 46287464,
+              "CONCEPT_NAME": "2 ML Ketorolac Tromethamine 30 MG/ML Cartridge",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1665682",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 46287422,
+              "CONCEPT_NAME": "2 ML Ketorolac Tromethamine 30 MG/ML Injection",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1665459",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40163891,
+              "CONCEPT_NAME": "2 ML Ketorolac Tromethamine 30 MG/ML Prefilled Syringe",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "860115",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40177118,
+              "CONCEPT_NAME": "8 ACTUAT Ketorolac Tromethamine 15.8 MG/ACTUAT Nasal Inhaler",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "992420",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Quant Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 42707734,
+              "CONCEPT_NAME": "Benzydamine Hydrochloride 3 MG Oral Lozenge",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1236089",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19029024,
+              "CONCEPT_NAME": "celecoxib 100 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "205322",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19029025,
+              "CONCEPT_NAME": "celecoxib 200 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "205323",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1118091,
+              "CONCEPT_NAME": "celecoxib 400 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "349514",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1118115,
+              "CONCEPT_NAME": "celecoxib 50 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "686379",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 42800591,
+              "CONCEPT_NAME": "Chlorpheniramine Maleate 2 MG / Ibuprofen 200 MG / Pseudoephedrine Hydrochloride 30 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1297390",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 42898682,
+              "CONCEPT_NAME": "Chlorpheniramine Maleate 4 MG / Ibuprofen 200 MG / Phenylephrine Hydrochloride 10 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1310503",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 44507529,
+              "CONCEPT_NAME": "Diclofenac 18 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1442116",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 44507533,
+              "CONCEPT_NAME": "Diclofenac 35 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1442128",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40163826,
+              "CONCEPT_NAME": "Diclofenac Potassium 1.67 MG/ML Oral Solution",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "859063",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40163829,
+              "CONCEPT_NAME": "Diclofenac Potassium 25 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "858342",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40162305,
+              "CONCEPT_NAME": "Diclofenac Potassium 25 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "857702",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40162307,
+              "CONCEPT_NAME": "Diclofenac Potassium 50 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "855942",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40162311,
+              "CONCEPT_NAME": "Diclofenac Sodium 0.01 MG/MG Topical Gel",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "855633",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40162315,
+              "CONCEPT_NAME": "Diclofenac Sodium 0.03 MG/MG Topical Gel",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "855642",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 42707518,
+              "CONCEPT_NAME": "Diclofenac Sodium 100 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1234493",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40162328,
+              "CONCEPT_NAME": "Diclofenac Sodium 100 MG Rectal Suppository",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "857696",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40162331,
+              "CONCEPT_NAME": "Diclofenac Sodium 12.5 MG Rectal Suppository",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "857698",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40162335,
+              "CONCEPT_NAME": "Diclofenac Sodium 25 MG Delayed Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "855664",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40162337,
+              "CONCEPT_NAME": "Diclofenac Sodium 25 MG Rectal Suppository",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "857703",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 45892882,
+              "CONCEPT_NAME": "Diclofenac Sodium 37.5 MG/ML Injectable Solution",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1599787",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40162346,
+              "CONCEPT_NAME": "Diclofenac Sodium 50 MG Delayed Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "855906",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40162344,
+              "CONCEPT_NAME": "Diclofenac Sodium 50 MG / Misoprostol 0.2 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "857706",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40162351,
+              "CONCEPT_NAME": "Diclofenac Sodium 50 MG Rectal Suppository",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "857709",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40162359,
+              "CONCEPT_NAME": "Diclofenac Sodium 75 MG Delayed Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "855926",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 42902224,
+              "CONCEPT_NAME": "Diclofenac Sodium 75 MG / Misoprostol 0.2 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1359105",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40169179,
+              "CONCEPT_NAME": "Diphenhydramine Citrate 38 MG / Ibuprofen 200 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "895664",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40173380,
+              "CONCEPT_NAME": "Diphenhydramine Hydrochloride 25 MG / Ibuprofen 200 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "901814",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 45776988,
+              "CONCEPT_NAME": "Diphenhydramine Hydrochloride 25 MG / Naproxen sodium 220 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1550957",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40222575,
+              "CONCEPT_NAME": "Esomeprazole 20 MG / Naproxen 375 MG Delayed Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "994005",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40222578,
+              "CONCEPT_NAME": "Esomeprazole 20 MG / Naproxen 500 MG Delayed Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "994008",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1195496,
+              "CONCEPT_NAME": "Etodolac 200 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "197684",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1195497,
+              "CONCEPT_NAME": "Etodolac 300 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "197685",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1195498,
+              "CONCEPT_NAME": "Etodolac 400 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "197686",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19021712,
+              "CONCEPT_NAME": "Etodolac 500 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "199390",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40239181,
+              "CONCEPT_NAME": "Famotidine 26.6 MG / Ibuprofen 800 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1100066",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19022250,
+              "CONCEPT_NAME": "fenbufen 450 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "199740",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1153929,
+              "CONCEPT_NAME": "Fenoprofen 200 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "197694",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40165703,
+              "CONCEPT_NAME": "Fenoprofen 400 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "858116",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19077246,
+              "CONCEPT_NAME": "Fenoprofen 600 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "310291",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1156380,
+              "CONCEPT_NAME": "Flurbiprofen 100 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "197724",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1156412,
+              "CONCEPT_NAME": "Flurbiprofen 200 MG Extended Release Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "199749",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1156381,
+              "CONCEPT_NAME": "Flurbiprofen 50 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "197725",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40164692,
+              "CONCEPT_NAME": "Hydrocodone Bitartrate 10 MG / Ibuprofen 200 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "859315",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40164704,
+              "CONCEPT_NAME": "Hydrocodone Bitartrate 2.5 MG / Ibuprofen 200 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "858770",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40164707,
+              "CONCEPT_NAME": "Hydrocodone Bitartrate 5 MG / Ibuprofen 200 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "858778",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40164715,
+              "CONCEPT_NAME": "Hydrocodone Bitartrate 7.5 MG / Ibuprofen 200 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "858798",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19078439,
+              "CONCEPT_NAME": "Ibuprofen 100 MG Chewable Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "310963",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40161247,
+              "CONCEPT_NAME": "Ibuprofen 100 MG/ML Injectable Solution",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "854183",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19019979,
+              "CONCEPT_NAME": "Ibuprofen 100 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "198405",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19078440,
+              "CONCEPT_NAME": "Ibuprofen 200 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "310964",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19078461,
+              "CONCEPT_NAME": "Ibuprofen 200 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "310965",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 43013686,
+              "CONCEPT_NAME": "Ibuprofen 200 MG / Phenylephrine Hydrochloride 10 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1369775",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 42800824,
+              "CONCEPT_NAME": "Ibuprofen 200 MG / Pseudoephedrine Hydrochloride 30 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1299018",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 42800827,
+              "CONCEPT_NAME": "Ibuprofen 200 MG / Pseudoephedrine Hydrochloride 30 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1299021",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19019050,
+              "CONCEPT_NAME": "Ibuprofen 20 MG/ML Oral Suspension",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "197803",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 42899146,
+              "CONCEPT_NAME": "Ibuprofen 20 MG/ML / Pseudoephedrine Hydrochloride 3 MG/ML Oral Suspension",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1310487",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19019072,
+              "CONCEPT_NAME": "Ibuprofen 400 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "197805",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40232568,
+              "CONCEPT_NAME": "Ibuprofen 400 MG / Oxycodone Hydrochloride 5 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1049589",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19027494,
+              "CONCEPT_NAME": "Ibuprofen 40 MG/ML Oral Suspension",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "204442",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19019073,
+              "CONCEPT_NAME": "Ibuprofen 600 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "197806",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19019074,
+              "CONCEPT_NAME": "Ibuprofen 800 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "197807",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1178668,
+              "CONCEPT_NAME": "Indomethacin 100 MG Rectal Suppository",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "199549",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19096060,
+              "CONCEPT_NAME": "Indomethacin 1 MG/ML Injectable Solution",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "346508",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 44814309,
+              "CONCEPT_NAME": "Indomethacin 20 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1490727",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1178665,
+              "CONCEPT_NAME": "Indomethacin 25 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "197817",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 44814313,
+              "CONCEPT_NAME": "Indomethacin 40 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1491529",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1178666,
+              "CONCEPT_NAME": "Indomethacin 50 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "197818",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1178667,
+              "CONCEPT_NAME": "Indomethacin 50 MG Rectal Suppository",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "197819",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19078521,
+              "CONCEPT_NAME": "Indomethacin 5 MG/ML Oral Suspension",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "310991",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19078522,
+              "CONCEPT_NAME": "Indomethacin 75 MG Extended Release Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "310992",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1185930,
+              "CONCEPT_NAME": "Ketoprofen 100 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "199321",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1185992,
+              "CONCEPT_NAME": "Ketoprofen 100 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "249482",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1185931,
+              "CONCEPT_NAME": "Ketoprofen 100 MG Rectal Suppository",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "199553",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19107371,
+              "CONCEPT_NAME": "Ketoprofen 150 MG Extended Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "431823",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19106645,
+              "CONCEPT_NAME": "Ketoprofen 25 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "429192",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1185927,
+              "CONCEPT_NAME": "Ketoprofen 50 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "197855",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19060888,
+              "CONCEPT_NAME": "Ketoprofen 50 MG Rectal Suppository",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "247630",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1185928,
+              "CONCEPT_NAME": "Ketoprofen 75 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "197856",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19133853,
+              "CONCEPT_NAME": "Ketorolac Tromethamine 10 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "834022",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40164851,
+              "CONCEPT_NAME": "Ketorolac Tromethamine 30 MG/ML Injectable Solution",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "860096",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1180186,
+              "CONCEPT_NAME": "Meclofenamate 100 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "618552",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1180188,
+              "CONCEPT_NAME": "Meclofenamate 50 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "618557",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19122173,
+              "CONCEPT_NAME": "meloxicam 1.5 MG/ML Oral Suspension",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "597406",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1150347,
+              "CONCEPT_NAME": "meloxicam 15 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "152695",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1150351,
+              "CONCEPT_NAME": "meloxicam 7.5 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "311486",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1113672,
+              "CONCEPT_NAME": "nabumetone 500 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "311892",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1113673,
+              "CONCEPT_NAME": "nabumetone 750 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "311893",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19059785,
+              "CONCEPT_NAME": "Naproxen 125 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "245420",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19019272,
+              "CONCEPT_NAME": "Naproxen 250 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "198013",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1115066,
+              "CONCEPT_NAME": "Naproxen 25 MG/ML Oral Suspension",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "311913",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19122492,
+              "CONCEPT_NAME": "Naproxen 375 MG Delayed Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "603103",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19019271,
+              "CONCEPT_NAME": "Naproxen 375 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "198012",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1115067,
+              "CONCEPT_NAME": "Naproxen 500 MG Delayed Release Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "311915",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19019273,
+              "CONCEPT_NAME": "Naproxen 500 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "198014",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19021884,
+              "CONCEPT_NAME": "Naproxen 500 MG Rectal Suppository",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "199490",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40240187,
+              "CONCEPT_NAME": "Naproxen sodium 220 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1112231",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1115171,
+              "CONCEPT_NAME": "Naproxen sodium 220 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "849574",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1115126,
+              "CONCEPT_NAME": "Naproxen sodium 275 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "849398",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19135569,
+              "CONCEPT_NAME": "Naproxen sodium 500 MG / Sumatriptan 85 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "849450",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1115129,
+              "CONCEPT_NAME": "Naproxen sodium 550 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "849431",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 46234130,
+              "CONCEPT_NAME": "Naproxen sodium 60 MG / Sumatriptan 10 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1653765",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1118047,
+              "CONCEPT_NAME": "oxaprozin 600 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "312132",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19019665,
+              "CONCEPT_NAME": "Piroxicam 10 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "198107",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1146847,
+              "CONCEPT_NAME": "Piroxicam 10 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "199559",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19060704,
+              "CONCEPT_NAME": "Piroxicam 10 MG Rectal Suppository",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "247066",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19019666,
+              "CONCEPT_NAME": "Piroxicam 20 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "198108",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19022024,
+              "CONCEPT_NAME": "Piroxicam 20 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "199560",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19008156,
+              "CONCEPT_NAME": "Piroxicam 20 MG Rectal Suppository",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "105942",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1236611,
+              "CONCEPT_NAME": "Sulindac 100 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "199279",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1236609,
+              "CONCEPT_NAME": "Sulindac 150 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "198238",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1236610,
+              "CONCEPT_NAME": "Sulindac 200 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "198239",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19021918,
+              "CONCEPT_NAME": "tenoxicam 10 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "199516",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19008188,
+              "CONCEPT_NAME": "tenoxicam 20 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "105954",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19062230,
+              "CONCEPT_NAME": "tenoxicam 20 MG Rectal Suppository",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "250197",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1102919,
+              "CONCEPT_NAME": "Tolmetin 200 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "198295",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1102920,
+              "CONCEPT_NAME": "Tolmetin 400 MG Oral Capsule",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "198296",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1102921,
+              "CONCEPT_NAME": "Tolmetin 600 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "198297",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1103375,
+              "CONCEPT_NAME": "valdecoxib 10 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "349319",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1103376,
+              "CONCEPT_NAME": "valdecoxib 20 MG Oral Tablet",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "349321",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "name": "warfarins_ingredients",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 1310149,
+              "CONCEPT_NAME": "Warfarin",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "11289",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "name": "msp_and_ppis_ingredients",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 19039926,
+              "CONCEPT_NAME": "dexlansoprazole",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "816346",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 904453,
+              "CONCEPT_NAME": "Esomeprazole",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "283742",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 929887,
+              "CONCEPT_NAME": "lansoprazole",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "17128",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1150871,
+              "CONCEPT_NAME": "Misoprostol",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "42331",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 923645,
+              "CONCEPT_NAME": "Omeprazole",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "7646",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 948078,
+              "CONCEPT_NAME": "pantoprazole",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "40790",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 911735,
+              "CONCEPT_NAME": "rabeprazole",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "114979",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "name": "hugib",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 4027729,
+              "CONCEPT_NAME": "Acute duodenal ulcer with hemorrhage",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "12847006",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4336230,
+              "CONCEPT_NAME": "Acute duodenal ulcer with hemorrhage AND perforation",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "86895006",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4231580,
+              "CONCEPT_NAME": "Acute gastric ulcer with hemorrhage",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "89748001",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4169592,
+              "CONCEPT_NAME": "Acute gastric ulcer with hemorrhage AND perforation",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "48974009",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4274491,
+              "CONCEPT_NAME": "Acute gastrojejunal ulcer with hemorrhage",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "63954007",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4217947,
+              "CONCEPT_NAME": "Acute gastrojejunal ulcer with hemorrhage AND perforation",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "81387001",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 193249,
+              "CONCEPT_NAME": "Acute hemorrhagic gastritis",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "2367005",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4046500,
+              "CONCEPT_NAME": "Acute peptic ulcer with hemorrhage",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "12274003",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 27026,
+              "CONCEPT_NAME": "Acute peptic ulcer with hemorrhage AND with perforation but without obstruction",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "47064007",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 196444,
+              "CONCEPT_NAME": "Angiodysplasia of intestine",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "235853006",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 192667,
+              "CONCEPT_NAME": "Atrophic gastritis",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "84568007",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 438796,
+              "CONCEPT_NAME": "Chronic duodenal ulcer with hemorrhage AND with perforation but without obstruction",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "81142005",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 436148,
+              "CONCEPT_NAME": "Chronic duodenal ulcer with hemorrhage but without obstruction",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "62341002",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 196442,
+              "CONCEPT_NAME": "Chronic gastric ulcer with hemorrhage AND with perforation but without obstruction",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "74341002",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 197018,
+              "CONCEPT_NAME": "Chronic gastric ulcer with hemorrhage but without obstruction",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "76078009",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 433515,
+              "CONCEPT_NAME": "Chronic gastrojejunal ulcer with hemorrhage",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "62838000",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 437326,
+              "CONCEPT_NAME": "Chronic gastrojejunal ulcer with hemorrhage AND with perforation but without obstruction",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "46523000",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 22665,
+              "CONCEPT_NAME": "Chronic peptic ulcer with hemorrhage AND with perforation but without obstruction",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "55746001",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 30770,
+              "CONCEPT_NAME": "Chronic peptic ulcer with hemorrhage but without obstruction",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "81518000",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 198798,
+              "CONCEPT_NAME": "Dieulafoy's vascular malformation",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "109558001",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 193250,
+              "CONCEPT_NAME": "Gastric hemorrhage",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "61401005",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 195306,
+              "CONCEPT_NAME": "Gastroduodenitis",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "196731005",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 192671,
+              "CONCEPT_NAME": "Gastrointestinal hemorrhage",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "74474003",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 437027,
+              "CONCEPT_NAME": "Hemorrhagic duodenitis",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "95531001",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "name": "aldosterone_antagonists_ingredients",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 1309799,
+              "CONCEPT_NAME": "eplerenone",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "298869",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 970250,
+              "CONCEPT_NAME": "Spironolactone",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "9997",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "name": "ssrs_and_snris_ingredients",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 797617,
+              "CONCEPT_NAME": "Citalopram",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "2556",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 717607,
+              "CONCEPT_NAME": "Desvenlafaxine",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "734064",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 715259,
+              "CONCEPT_NAME": "duloxetine",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "72625",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 715939,
+              "CONCEPT_NAME": "Escitalopram",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "321988",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 755695,
+              "CONCEPT_NAME": "Fluoxetine",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "4493",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 751412,
+              "CONCEPT_NAME": "Fluvoxamine",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "42355",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 43560354,
+              "CONCEPT_NAME": "levomilnacipran",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1433212",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 19080226,
+              "CONCEPT_NAME": "milnacipran",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "588250",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 722031,
+              "CONCEPT_NAME": "Paroxetine",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "32937",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 739138,
+              "CONCEPT_NAME": "Sertraline",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "36437",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 703547,
+              "CONCEPT_NAME": "Trazodone",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "10737",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 743670,
+              "CONCEPT_NAME": "venlafaxine",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "39786",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40234834,
+              "CONCEPT_NAME": "vilazodone",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1086769",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "name": "corticosteroids_ingredients",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 920458,
+              "CONCEPT_NAME": "Betamethasone",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "1514",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1507705,
+              "CONCEPT_NAME": "Cortisone",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "2878",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1518254,
+              "CONCEPT_NAME": "Dexamethasone",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "3264",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1555120,
+              "CONCEPT_NAME": "Fludrocortisone",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "4452",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 975125,
+              "CONCEPT_NAME": "Hydrocortisone",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "5492",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1506270,
+              "CONCEPT_NAME": "Methylprednisolone",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "6902",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1550557,
+              "CONCEPT_NAME": "prednisolone",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "8638",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1551099,
+              "CONCEPT_NAME": "Prednisone",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "8640",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 903963,
+              "CONCEPT_NAME": "Triamcinolone",
+              "STANDARD_CONCEPT": "S",
+              "INVALID_REASON": "V",
+              "CONCEPT_CODE": "10759",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT_CAPTION": "Standard"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "PrimaryCriteria": {
+    "CriteriaList": [
+      {
+        "DrugEra": {
+          "CorrelatedCriteria": {
+            "Type": "ALL",
+            "CriteriaList": [
+              {
+                "Criteria": {
+                  "DrugEra": {
+                    "CodesetId": 0
+                  }
+                },
+                "StartWindow": {
+                  "Start": {
+                    "Days": "30",
+                    "Coeff": -1
+                  },
+                  "End": {
+                    "Days": "30",
+                    "Coeff": 1
+                  }
+                },
+                "Occurrence": {
+                  "Type": 2,
+                  "Count": 1
+                }
+              }
+            ],
+            "DemographicCriteriaList": [],
+            "Groups": []
+          },
+          "CodesetId": 3
+        }
+      }
+    ],
+    "ObservationWindow": {
+      "PriorDays": 0,
+      "PostDays": 0
+    },
+    "PrimaryCriteriaLimit": {
+      "Type": "All"
+    }
+  },
+  "QualifiedLimit": {
+    "Type": "First"
+  },
+  "ExpressionLimit": {
+    "Type": "First"
+  },
+  "InclusionRules": [
+    {
+      "name": "No Topical NSAIDs",
+      "description": "This rule uses concept sets of specific NSAID drug products to make sure that the patient is on drug products that are relevant to the rule, ie not a topical NSAID. If this check is failed, no alert should be fired under any circumstance.",
+      "expression": {
+        "Type": "ALL",
+        "CriteriaList": [
+          {
+            "Criteria": {
+              "DrugExposure": {
+                "CodesetId": 1
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Days": "30",
+                "Coeff": -1
+              },
+              "End": {
+                "Days": "30",
+                "Coeff": 1
+              }
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          }
+        ],
+        "DemographicCriteriaList": [],
+        "Groups": []
+      }
+    },
+    {
+      "name": "No PPIs and Misoprostols",
+      "description": "This rule ensures that a patient is not on a proton pump inhibitor or misoprostol. If they are found to be on these medications, an alert is fired.",
+      "expression": {
+        "Type": "AT_MOST",
+        "Count": 0,
+        "CriteriaList": [
+          {
+            "Criteria": {
+              "DrugEra": {
+                "CodesetId": 4
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Days": "30",
+                "Coeff": -1
+              },
+              "End": {
+                "Days": "30",
+                "Coeff": 1
+              }
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          }
+        ],
+        "DemographicCriteriaList": [],
+        "Groups": []
+      }
+    },
+    {
+      "name": "Personal Risk Factors",
+      "description": "This rule checks if the patient has any personal risk factors for this interaction - age >65 or history of upper GI bleeds. Either way, this branch does not lead to an alert until after the drug risk factor check.",
+      "expression": {
+        "Type": "ANY",
+        "CriteriaList": [
+          {
+            "Criteria": {
+              "ConditionEra": {
+                "CodesetId": 6
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Coeff": -1
+              },
+              "End": {
+                "Days": "0",
+                "Coeff": 1
+              }
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          }
+        ],
+        "DemographicCriteriaList": [
+          {
+            "Age": {
+              "Value": 65,
+              "Op": "gt"
+            }
+          }
+        ],
+        "Groups": []
+      }
+    },
+    {
+      "name": "No Drug Risk Factors",
+      "description": "This rule ensures that the patient is not taking any risk enhancing medications, which include aldosterone antagonists, SSRIs, SNRIs, and systemic corticosteroids. Regardless of outcome, an alert is fired, but severity and explanation vary depending on whether or not the patient has personal and drug risk factors.",
+      "expression": {
+        "Type": "AT_MOST",
+        "Count": 0,
+        "CriteriaList": [
+          {
+            "Criteria": {
+              "DrugEra": {
+                "CodesetId": 7
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Days": "30",
+                "Coeff": -1
+              },
+              "End": {
+                "Days": "30",
+                "Coeff": 1
+              }
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          },
+          {
+            "Criteria": {
+              "DrugEra": {
+                "CodesetId": 9
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Days": "30",
+                "Coeff": -1
+              },
+              "End": {
+                "Days": "30",
+                "Coeff": 1
+              }
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          },
+          {
+            "Criteria": {
+              "DrugEra": {
+                "CodesetId": 12
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Days": "30",
+                "Coeff": -1
+              },
+              "End": {
+                "Days": "30",
+                "Coeff": 1
+              }
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          }
+        ],
+        "DemographicCriteriaList": [],
+        "Groups": []
+      }
+    }
+  ],
+  "CensoringCriteria": []
+}

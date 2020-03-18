@@ -1,0 +1,548 @@
+// Clonidine - Beta-Blockers DDI Alerting Rule
+// Written By: Sam Rosko
+// Last Update: 2017-04-10
+// Status: Completed
+// Expected Output: 17 alerts for 17 patients
+// KNOWN ISSUE: Esmolol rule is a placeholder, cannot be implemented in OHDSI model due to nature of data and rule requirements (need IV dispensing data)
+
+package com.sample
+
+//list any import classes here.
+import function com.sample.DRLLogger.*;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Calendar;
+import java.lang.String;
+
+import com.sample.model.ConceptSetItem;
+import com.sample.model.RHSState;
+
+import edu.pitt.dbmi.ohdsiv5.db.ConditionEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.DrugStrength;
+import edu.pitt.dbmi.ohdsiv5.db.ExtendedDrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.Measurement;
+import edu.pitt.dbmi.ohdsiv5.db.Person;
+
+
+/////////// 
+// declare any global variables here
+/////////// 
+global org.hibernate.Session hibernateSession;
+global java.lang.String currentDateStr;
+global java.util.Calendar currentDate;
+global java.util.Calendar within48hours;
+global java.util.Calendar within28days;
+
+
+/////////// 
+// declare any types here
+/////////// 
+
+
+/////////// 
+// Rules
+/////////// 
+
+// The first rule is a basic check to identify all patients on any dosage or form of clonidine and a beta-blocker at the same time
+rule "CLONIDINE - BETA-BLOCKERS -- NO FILTER"
+    when
+      // First, we look for patients exposed to clonidine on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Clonidines Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to a beta-blocker on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "Beta-Blockers Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both clonidine and the beta-blocker
+      $clinDrugConcept3 : ConceptSetItem(csName == "Clonidines") 
+      $dexp1 : ExtendedDrugExposure(personId == $de1.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() 
+	&& drugConceptId == $clinDrugConcept3.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      $clinDrugConcept4 : ConceptSetItem(csName == "Beta-Blockers")
+      $dexp2 : ExtendedDrugExposure(personId == $de1.getPersonId() && drugExposureStartDate == $de2.getDrugEraStartDate() 
+	&& drugConceptId == $clinDrugConcept4.getConceptId() && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then	
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsCur = new RHSState("basic concomitant exposure of clonidine and a beta-blocker", "yes", $person);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; Clonidine: %s; Beta-Blocker: %s.", 
+          $de1.getPersonId(), 
+          $clinDrugConcept3.getConceptId(), 
+          $clinDrugConcept4.getConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tbasic concomitant exposure", currentDateStr, $person.getPersonId());
+     System.out.println(s);
+end
+
+// The second rule is a general rule for all non-cardioselective beta-blockers
+// If any of these are given with clonidine, then an alert should be fired
+rule "CLONIDINE - BETA-BLOCKERS -- Non-Selective Beta-Blockers"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)
+        // Next, we check for patient exposure to a non-selective beta blocker on the ingredient level
+	// This set includes Timolol, even though it has its own rule as its different dose forms fall into different areas
+        $clinDrugConcept1 : ConceptSetItem(csName == "Non-Selective Beta-Blockers Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        // And following that, we check the patient exposure on the clinical drug level
+	// This includes Timolol oral, eliminating the need for a separate rule
+        $clinDrugConcept2 : ConceptSetItem(csName == "Non-Selective Beta-Blockers") 
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())                
+    then
+	// This creates a new "state" for any patients who are found to be on non-selective beta-blockers
+        RHSState rhsNN = new RHSState("clonidine and non-selective beta-blockers", "yes", $rhs.getPerson());
+        insertLogical(rhsNN);
+	// This outputs the recommendations and rationale for the patient because this is a leaf node            
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: High risk of acute hypertensive reaction.\n\tMitigating factor: Presence of a non-selective beta-blocker (%s).\n\tRecommendation: Avoid if possible, treat with cardioselective beta-blocker instead.\n\tExplanation: When a systemic dose of clonidine is given to a person on one of these nonselective beta-blockers, an acute hypertensive reaction is almost certain. Systolic BPs of 250 mm/Hg are not uncommon. \n\tMost people can probably withstand a short episode of such a hypertensive reaction without permanent sequelae, but strokes have occurred in susceptible patients.", 
+          $de1.getPersonId(), 
+          $dexp1.getDrugConceptId());
+        System.out.println(s);
+        s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tclonidine and non-selective beta-blockers", currentDateStr, $person.getPersonId());
+       System.out.println(s);
+end
+
+// The third rule is the first of a set of three about Timolol
+// This rule checks to see if the patients on Timolol are CYP2D6 poor metabolizers
+rule "CLONIDINE - BETA-BLOCKERS -- Timolol (CYP2D6 PM)"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)
+	// Next, we bring in the patient's Timolol exposure on the ingredient level and the clinical drug level (Eye Drops only b/c they're the only form that have this effect)
+        $clinDrugConcept1 : ConceptSetItem(csName == "Timolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        $clinDrugConcept2 : ConceptSetItem(csName == "Timolols Eye Drops")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())   
+	// This checks to see if the patient has the condition of interest, CYP2D6 poor metabolizer
+	$condConcept1 : ConceptSetItem(csName == "CYP2D6 PM")	
+        $ce1 : ConditionEra(PersonId == $person.getPersonId() && conditionConceptId == $condConcept1.getConceptId())            
+    then
+	// This creates a new "state" for any patients who are found to be on timolol and a cyp2d6 poor metabolizers
+        RHSState rhsNN = new RHSState("clonidine, timolol, and cyp2d6 PM", "yes", $rhs.getPerson());
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: High risk of acute hypertensive reaction.\n\tMitigating factor: Timolol eye drops given to a poor CYP2D6 metabolizer.\n\tRecommendation: Avoid if possible, treat with cardioselective beta-blocker instead.\n\tExplanation: Timolol is a nonselective beta-blocker, and timolol eye drops have been shown to produce systemic beta-blockade. Timolol is metabolized by CYP2D6, and patients who are deficient in CYP2D6 (PMs) have been \n\tshown to develop higher timolol plasma concentrations following timolol ophthalmic aqueous drops. This could lead to an acute hypertensive reaction.", 
+          $de1.getPersonId(), 
+          $dexp1.getDrugConceptId());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tclonidine, timolol, and cyp2d6 PM", currentDateStr, $person.getPersonId());
+       System.out.println(s);
+end
+
+// The fourth rule is the second of a set of three about Timolol
+// This rule checks to see if patients who are on Timolol have been given CYP2D6 inhibiting medications
+rule "CLONIDINE - BETA-BLOCKERS -- Timolol (CYP2D6 Inhibitors)"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)
+	// This makes sure that the patients being run through this rule are not CYP2D6 poor metabolizers
+	not ($rhs2 : RHSState(stateName == "clonidine, timolol, and cyp2d6 PM" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+	// Next, we bring in the patient's Timolol exposure on the ingredient level and the clinical drug level (Eye Drops only b/c they're the only form that have this effect)
+        $clinDrugConcept1 : ConceptSetItem(csName == "Timolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        $clinDrugConcept2 : ConceptSetItem(csName == "Timolols Eye Drops")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())      
+	// Next, we bring in the patient's CYP2D6 inhibitor exposure on the ingredient level and the clinical drug level
+        $clinDrugConcept3 : ConceptSetItem(csName == "CYP2D6 Inhibitors Ingredients")
+        $de2 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept3.getConceptId())        
+        $clinDrugConcept4 : ConceptSetItem(csName == "CYP2D6 Inhibitors")
+        $dexp2 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de2.getDrugEraStartDate() && drugConceptId == $clinDrugConcept4.getConceptId() && ingredientConceptId == $clinDrugConcept3.getConceptId())   
+    then
+	// This creates a new "state" for any patients who are found to be on timolol and a cyp2d6 inhibitor
+        RHSState rhsNN = new RHSState("clonidine, timolol, and cyp2d6 inhibitor", "yes", $rhs.getPerson());
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Risk of acute hypertensive reaction.\n\tMitigating factor: Timolol eye drops given in presence of potent CYP2D6 inhibitor.\n\tRecommendation: Use only if benefit outweighs risk.\n\tExplanation: Timolol is a nonselective beta-blocker, and timolol eye drops have been shown to produce systemic beta-blockade. Timolol is metabolized by CYP2D6, and patients who are taking moderate to potent \n\tCYP2D6 inhibitors may develop higher timolol plasma concentrations following timolol ophthalmic aqueous drops, which could lead to an acute hypertensive reaction.", 
+          $de1.getPersonId());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tclonidine, timolol, and cyp2d6 inhibitor", currentDateStr, $person.getPersonId());
+       System.out.println(s);
+end
+
+// The fifth rule is the third of a set of three about Timolol
+// This rule fires for patients who are on Timolol but have not been given CYP2D6 inhibitors
+rule "CLONIDINE - BETA-BLOCKERS -- Timolol (No CYP2D6 Inhibitors)"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)	
+	// This makes sure that the patients being run through this rule are not CYP2D6 poor metabolizers
+	not ($rhs2 : RHSState(stateName == "clonidine, timolol, and cyp2d6 PM" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+	// This makes sure that the patients being run through this rule are not on CYP2D6 inhibitors
+	not ($rhs3 : RHSState(stateName == "clonidine, timolol, and cyp2d6 inhibitor" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+        // Next, we bring in the patient's Timolol exposure on the ingredient level and the clinical drug level (Eye Drops only b/c they're the only form that have this effect)
+        $clinDrugConcept1 : ConceptSetItem(csName == "Timolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        $clinDrugConcept2 : ConceptSetItem(csName == "Timolols Eye Drops")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId()) 
+    then
+	// This creates a new "state" for any patients who are found to be on timolol but not a cyp2d6 inhibitor
+        RHSState rhsNN = new RHSState("clonidine, timolol, and no cyp2d6 inhibitor", "yes", $rhs.getPerson());
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Risk of acute hypertensive reaction.\n\tMitigating factor: Timolol eye drops given with clonidine.\n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation: Many cases of systemic beta-blockade have been reported with aqueous timolol eye drops, so a hypertensive reaction is possible.", 
+          $de1.getPersonId(), 
+          $dexp1.getDailyDosage());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tclonidine, timolol, and no cyp2d6 inhibitor", currentDateStr, $person.getPersonId());
+        System.out.println(s);
+end
+
+// The sixth rule is the first of a set of three about Metoprolol
+// This rule checks to see if the patients on Metoprolol are CYP2D6 poor metabolizers
+rule "CLONIDINE - BETA-BLOCKERS -- Metoprolol (CYP2D6 PM)"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)
+	// Next, we bring in the patient's Metoprolol exposure on the ingredient level and the clinical drug level
+        $clinDrugConcept1 : ConceptSetItem(csName == "Metoprolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        $clinDrugConcept2 : ConceptSetItem(csName == "Metoprolols")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())   
+	// This checks to see if the patient has the condition of interest, CYP2D6 poor metabolizer
+	$condConcept1 : ConceptSetItem(csName == "CYP2D6 PM")	
+        $ce1 : ConditionEra(PersonId == $person.getPersonId() && conditionConceptId == $condConcept1.getConceptId())            
+    then
+	// This creates a new "state" for any patients who are found to be on metoprolol and a cyp2d6 poor metabolizers
+        RHSState rhsNN = new RHSState("clonidine, metoprolol, and cyp2d6 PM", "yes", $rhs.getPerson());
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Risk of acute hypertensive reaction.\n\tMitigating factor: Metoprolol given to CYP2D6 poor metabolizer.\n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation: Metoprolol is metabolized by CYP2D6, and patients who are deficient in CYP2D6 (PMs) may develop higher metoprolol plasma concentrations and nonselective beta-blockade, \n\twhich could result in an acute hypertensive reaction.", 
+          $de1.getPersonId(), 
+          $dexp1.getDrugConceptId());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tclonidine, metoprolol, and cyp2d6 PM", currentDateStr, $person.getPersonId());
+        System.out.println(s);
+end
+
+// The seventh rule is the second of a set of three about Metoprolol
+// This rule checks to see if patients who are on Metoprolol have been given CYP2D6 inhibiting medications
+rule "CLONIDINE - BETA-BLOCKERS -- Metoprolol (CYP2D6 Inhibitors)"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)	
+	// This makes sure that the patients being run through this rule are not CYP2D6 poor metabolizers
+	not ($rhs2 : RHSState(stateName == "clonidine, metoprolol, and cyp2d6 PM" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+	// Next, we bring in the patient's Metoprolol exposure on the ingredient level and the clinical drug level
+        $clinDrugConcept1 : ConceptSetItem(csName == "Metoprolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        $clinDrugConcept2 : ConceptSetItem(csName == "Metoprolols")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())      
+	// Next, we bring in the patient's CYP2D6 inhibitor exposure on the ingredient level and the clinical drug level
+        $clinDrugConcept3 : ConceptSetItem(csName == "CYP2D6 Inhibitors Ingredients")
+        $de2 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept3.getConceptId())
+        $clinDrugConcept4 : ConceptSetItem(csName == "CYP2D6 Inhibitors")
+        $dexp2 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de2.getDrugEraStartDate() && drugConceptId == $clinDrugConcept4.getConceptId() && ingredientConceptId == $clinDrugConcept3.getConceptId())   
+    then
+    	// This creates a new "state" for any patients who are found to be on metoprolol and a CYP2D6 inhibitor
+        RHSState rhsNN = new RHSState("clonidine, metoprolol, and cyp2d6 inhibitor", "yes", $rhs.getPerson());
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Risk of acute hypertensive reaction.\n\tMitigating factor: Metoprolol given in presence of potent CYP2D6 inhibitor.\n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation: Metoprolol is metabolized by CYP2D6, and patients who are receiving moderate to potent CYP2D6 inhibitors may develop higher \n\tmetoprolol plasma concentrations and nonselective beta-blockade, which could lead to an acute hypertensive reaction.", 
+          $de1.getPersonId(), 
+          $dexp1.getDailyDosage());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tclonidine, metoprolol, and cyp2d6 inhibitor", currentDateStr, $person.getPersonId());
+        System.out.println(s);
+end
+
+// The eighth rule is the third of a set of three about Metoprolol
+// This rule fires for patients who are on Metoprolol, have not been given CYP2D6 inhibitors, and have a dosage > 100 mg/day
+rule "CLONIDINE - BETA-BLOCKERS -- Metoprolol (Dosage)"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)	
+        // This makes sure that the patients being run through this rule are not CYP2D6 poor metabolizers
+	not ($rhs2 : RHSState(stateName == "clonidine, metoprolol, and cyp2d6 PM" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+	// This makes sure that the patients being run through this rule are not on CYP2D6 inhibitors
+	not ($rhs3 : RHSState(stateName == "clonidine, metoprolol, and cyp2d6 inhibitor" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+	// Next, we bring in the patient's Metoprolol exposure on the ingredient level
+        $clinDrugConcept1 : ConceptSetItem(csName == "Metoprolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        // Metoprolol drug exposure and dosage check, alert if above 100 mg/day
+        $clinDrugConcept2 : ConceptSetItem(csName == "Metoprolols")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() 
+	  && ingredientConceptId == $clinDrugConcept1.getConceptId() && dailyDosage > 100 )                
+    then	
+    	// This creates a new "state" for any patients who are found to be on metoprolol, not on a CYP2D6 inhibitor, and with a high metoprolol dosage
+        RHSState rhsNN = new RHSState("clonidine and high metoprolol dosage", "yes", $rhs.getPerson());
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Risk of acute hypertensive reaction.\n\tMitigating factor: High dosage of metoprolol (Daily Dosage: %s mg/day, compared to the threshold value of 100.0 mg/day).\n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation: At doses over 100 mg/day, metoprolol can result in nonselective beta-blockade, which can cause an acute hypertensive reaction.", 
+          $de1.getPersonId(), 
+          $dexp1.getDailyDosage());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tclonidine and high metoprolol dosage", currentDateStr, $person.getPersonId());
+        System.out.println(s);
+end 
+
+// The ninth rule is the first of a set of three about Nebivolol
+// This rule checks to see if the patients on Nebivolol are CYP2D6 poor metabolizers
+rule "CLONIDINE - BETA-BLOCKERS -- Nebivolol (CYP2D6 PM)"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)
+	// Next, we bring in the patient's Nebivolol exposure on the ingredient level and the clinical drug level
+        $clinDrugConcept1 : ConceptSetItem(csName == "Nebivolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        $clinDrugConcept2 : ConceptSetItem(csName == "Nebivolols")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())   
+	// This checks to see if the patient has the condition of interest, CYP2D6 poor metabolizer
+	$condConcept1 : ConceptSetItem(csName == "CYP2D6 PM")	
+        $ce1 : ConditionEra(PersonId == $person.getPersonId() && conditionConceptId == $condConcept1.getConceptId())            
+    then
+	// This creates a new "state" for any patients who are found to be on nebivolol and a cyp2d6 poor metabolizers
+        RHSState rhsNN = new RHSState("clonidine, nebivolol, and cyp2d6 PM", "yes", $rhs.getPerson());
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Risk of acute hypertensive reaction.\n\tMitigating factor: Nebivolol given to CYP2D6 poor metabolizer.\n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation: Nebivolol is metabolized by CYP2D6, and patients who are deficient in CYP2D6 (PMs) may develop higher nebivolol plasma \n\tconcentrations and nonselective beta-blockade, which could lead to an acute hypertensive reaction.", 
+          $de1.getPersonId(), 
+          $dexp1.getDrugConceptId());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tclonidine, nebivolol, and cyp2d6 PM", currentDateStr, $person.getPersonId());
+        System.out.println(s);
+end
+
+// The tenth rule is the second of a set of three about Nebivolol
+// This rule checks to see if patients who are on Nebivolol have been given CYP2D6 inhibiting medications
+rule "CLONIDINE - BETA-BLOCKERS -- Nebivolol (CYP2D6 Inhibitors)"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)	
+        // This makes sure that the patients being run through this rule are not CYP2D6 poor metabolizers
+	not ($rhs2 : RHSState(stateName == "clonidine, nebivolol, and cyp2d6 PM" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+	// Next, we bring in the patient's Nebivolol exposure on the ingredient level and the clinical drug level
+        $clinDrugConcept1 : ConceptSetItem(csName == "Nebivolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        $clinDrugConcept2 : ConceptSetItem(csName == "Nebivolols")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())      
+	// CYP2D6 inhibitor drug era
+        $clinDrugConcept3 : ConceptSetItem(csName == "CYP2D6 Inhibitors Ingredients")
+        $de2 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept3.getConceptId())        
+        $clinDrugConcept4 : ConceptSetItem(csName == "CYP2D6 Inhibitors")
+        $dexp2 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de2.getDrugEraStartDate() && drugConceptId == $clinDrugConcept4.getConceptId() && ingredientConceptId == $clinDrugConcept3.getConceptId())   
+    then	
+	// This creates a new "state" for any patients who are found to be on nebivolol and a CYP2D6 inhibitor
+        RHSState rhsNN = new RHSState("clonidine, nebivolol, and cyp2d6 inhibitor", "yes", $rhs.getPerson());
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Risk of acute hypertensive reaction.\n\tMitigating factor: Nebivolol given in presence of a potent CYP2D6 inhibitor.\n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation: Nebivolol is metabolized by CYP2D6, and patients who are receiving moderate to potent CYP2D6 inhibitors may develop higher \n\tnebivolol plasma concentrations and nonselective beta-blockade, which could lead to an acute hypertensive reaction.", 
+          $de1.getPersonId(), 
+          $dexp1.getDailyDosage());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tclonidine, nebivolol, and cyp2d6 inhibitor", currentDateStr, $person.getPersonId());
+        System.out.println(s);
+end
+
+// The eleventh rule is the third of a set of three about Nebivolol
+// This rule fires for patients who are on Nebivolol, have not been given CYP2D6 inhibitors, and have a dosage > 10 mg/day
+rule "CLONIDINE - BETA-BLOCKERS -- Nebivolol (Dosage)"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)	
+        // This makes sure that the patients being run through this rule are not CYP2D6 poor metabolizers
+	not ($rhs2 : RHSState(stateName == "clonidine, nebivolol, and cyp2d6 PM" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+	// This makes sure that the patients being run through this rule are not on CYP2D6 inhibitors
+	not ($rhs3 : RHSState(stateName == "clonidine, nebivolol, and cyp2d6 inhibitor" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+	// Next, we bring in the patient's Nebivolol exposure on the ingredient level
+        $clinDrugConcept1 : ConceptSetItem(csName == "Nebivolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        // Nebivolol drug exposure on the clinical drug level and dosage check, alert if above 10 mg/day
+        $clinDrugConcept2 : ConceptSetItem(csName == "Nebivolols")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() 
+	  && ingredientConceptId == $clinDrugConcept1.getConceptId() && dailyDosage > 10 )                
+    then
+	// This creates a new "state" for any patients who are found to be on nebivolol, not on a CYP2D6 inhibitor, and with a high nebivolol dosage
+        RHSState rhsNN = new RHSState("clonidine and high nebivolol dosage", "yes", $rhs.getPerson());
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Risk of acute hypertensive reaction.\n\tMitigating factor: High dosage of nebivolol (Daily Dosage: %s mg/day, compared to the threshold value of 10.0 mg/day).\n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation: At doses over 10 mg/day, nebivolol can result in nonselective beta-blockade, which can cause an acute hypertensive reaction.", 
+          $de1.getPersonId(), 
+          $dexp1.getDailyDosage());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tclonidine and high nebivolol dosage", currentDateStr, $person.getPersonId());
+        System.out.println(s);
+end
+
+// The twelfth rule is the first of a set of two about Atenolol
+// This rule fires for patients who are on Atenolol but have a creatinine clearance level below 40 mL/min
+rule "CLONIDINE - BETA-BLOCKERS -- Atenolol (Clearance)"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)
+	// Next, we bring in the patient's Atenolol exposure on the ingredient level
+        $clinDrugConcept1 : ConceptSetItem(csName == "Atenolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        // Then the patient's Atenolol exposure on the clinical drug level
+        $clinDrugConcept2 : ConceptSetItem(csName == "Atenolols")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())
+	// Creatinine clearance level check, alert if below 40
+	$measurement : Measurement(personId == $person.getPersonId() && measurementConceptId == 3016723 && valueAsNumber < 40 && unitConceptId == 8795)
+    then	
+	// This creates a new "state" for any patients who are found to be on Atenolol with low creatinine clearance
+        RHSState rhsNN = new RHSState("clonidine, atenolol, and low clearance", "yes", $rhs.getPerson());
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Risk of acute hypertensive reaction.\n\tMitigating factor: Atenolol and a low creatinine clearance level (%s mL/min, compared to the threshold value of 40 mL/min).\n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation: Atenolol undergoes renal elimination and may produce nonselective beta-blockade with significant renal impairment, which can cause an acute hypertensive reaction.", 
+          $de1.getPersonId(), 
+          $measurement.getValueAsNumber());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tclonidine, atenolol, and low clearance", currentDateStr, $person.getPersonId());
+        System.out.println(s);
+end
+
+// The thirteenth rule is the second of a set of two about Atenolol
+// This rule fires for patients who are on Atenolol and have adequate creatinine clearance, but are on high doses of Atenolol
+rule "CLONIDINE - BETA-BLOCKERS -- Atenolol (Dosage)"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)	
+	// Next, make sure the patient isn't renally impaired by checking the creatinine clearance rule
+	not ($rhs2 : RHSState(stateName == "clonidine, atenolol, and low clearance" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+	// Next, we bring in the patient's Atenolol exposure on the ingredient level
+        $clinDrugConcept1 : ConceptSetItem(csName == "Atenolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        // Then the patient's Atenolol exposure on the clinical drug level along with a dosage check for over 100
+        $clinDrugConcept2 : ConceptSetItem(csName == "Atenolols")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() 
+	  && ingredientConceptId == $clinDrugConcept1.getConceptId() && dailyDosage > 100 )                
+    then	
+	// This creates a new "state" for any patients who are found to be on Atenolol with high dosage
+        RHSState rhsNN = new RHSState("clonidine and high atenolol dosage", "yes", $rhs.getPerson());
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Risk of acute hypertensive reaction.\n\tMitigating factor: High dosage of atenolol (Daily Dosage: %s mg/day, compared to the threshold value of 100.0 mg/day).\n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation: At doses over 100 mg/day, atenolol can result in nonselective beta-blockade, which can cause an acute hypertensive reaction.", 
+          $de1.getPersonId(), 
+          $dexp1.getDailyDosage());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tclonidine and high atenolol dosage", currentDateStr, $person.getPersonId());
+        System.out.println(s);
+end
+
+// The fourteenth rule is the second of a set of two about Bisoprolol
+// This rule fires for patients who are on Bisoprolol but have a creatinine clearance level below 40 mL/min
+rule "CLONIDINE - BETA-BLOCKERS -- Bisoprolol (Clearance)"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)
+        // Next, we bring in the patient's Bisoprolol exposure on the ingredient level
+        $clinDrugConcept1 : ConceptSetItem(csName == "Bisoprolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        // Then the patient's Bisoprolol exposure on the clinical drug level
+        $clinDrugConcept2 : ConceptSetItem(csName == "Bisoprolols")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())
+	// Creatinine clearance level check, alert if below 40
+	$measurement : Measurement(personId == $person.getPersonId() && measurementConceptId == 3016723 && valueAsNumber < 40 && unitConceptId == 8795)
+    then	
+	// This creates a new "state" for any patients who are found to be on Bisoprolol with low creatinine clearance
+        RHSState rhsNN = new RHSState("clonidine, bisoprolol, and low clearance", "yes", $rhs.getPerson());
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Risk of acute hypertensive reaction.\n\tMitigating factor: Bisoprolol and a low creatinine clearance level (%s mL/min, compared to the threshold value of 40 mL/min).\n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation: Bisoprolol undergoes renal elimination and may produce nonselective beta-blockade with significant renal impairment, which can cause an acute hypertensive reaction.", 
+          $de1.getPersonId(), 
+          $measurement.getValueAsNumber());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tclonidine, bisoprolol, and low clearance", currentDateStr, $person.getPersonId());
+        System.out.println(s);
+end
+
+// The fifteenth rule is the second of a set of two about Bisoprolol
+// This rule fires for patients who are on Bisoprolol and have adequate creatinine clearance, but are on high doses of Bisoprolol
+rule "CLONIDINE - BETA-BLOCKERS -- Bisoprolol (Dosage)"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)	
+	// Next, make sure the patient isn't renally impaired by checking the creatinine clearance rule
+	not ($rhs2 : RHSState(stateName == "clonidine, bisoprolol, and low clearance" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+        // Next, we bring in the patient's Bisoprolol exposure on the ingredient level
+        $clinDrugConcept1 : ConceptSetItem(csName == "Bisoprolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        // Then the patient's Bisoprolol exposure on the clinical drug level along with a dosage check for over 20
+        $clinDrugConcept2 : ConceptSetItem(csName == "Bisoprolols")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() 
+	  && ingredientConceptId == $clinDrugConcept1.getConceptId() && dailyDosage > 20 )                
+    then
+	// This creates a new "state" for any patients who are found to be on Bisoprolol with high dosage
+        RHSState rhsNN = new RHSState("clonidine and high bisoprolol dosage", "yes", $rhs.getPerson());
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Risk of acute hypertensive reaction.\n\tMitigating factor: High dosage of bisoprolol (Daily Dosage: %s mg/day, compared to the threshold value of 20.0 mg/day).\n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation: At doses of 20 mg/day or higher, bisoprolol can result in nonselective beta-blockade, which can cause an acute hypertensive reaction.", 
+          $de1.getPersonId(), 
+          $dexp1.getDailyDosage());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tclonidine and high bisoprolol dosage", currentDateStr, $person.getPersonId());
+        System.out.println(s);
+end
+
+// The sixteenth rule is about Betaxolol
+// This rule checks to see if a patient has been given betaxolol where the betaxolol dose is > 20 mg/day
+rule "CLONIDINE - BETA-BLOCKERS -- Betaxolol"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)
+        // Next, we bring in the patient's Betaxolol exposure on the ingredient level
+        $clinDrugConcept1 : ConceptSetItem(csName == "Betaxolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        // Betaxolol clinical drug exposure and dosage check (no alert if below threshold of 20 mg/day)
+        $clinDrugConcept2 : ConceptSetItem(csName == "Betaxolols")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() 
+	  && ingredientConceptId == $clinDrugConcept1.getConceptId() && dailyDosage > 20 )                
+    then	
+	// This creates a new "state" for any patients who are found to be on Betaxolol with high dosage	
+        RHSState rhsNN = new RHSState("clonidine and high betaxolol dose", "yes", $rhs.getPerson());
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Risk of acute hypertensive reaction.\n\tMitigating factor: High dosage of betaxolol (Daily Dosage: %s mg/day, compared to the threshold value of 20.0 mg/day).\n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation: Large doses of betaxolol may result in nonselective beta-blockade, which can cause an acute hypertensive reaction.", 
+          $de1.getPersonId(), 
+          $dexp1.getDailyDosage());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tclonidine and high betaxolol dose", currentDateStr, $person.getPersonId());
+        System.out.println(s);
+end
+
+// The seventeenth and final rule is about Esmolol
+// This rule checks to see if a patient has been given Esmolol where the dose is > 300 mcg/kg/min
+rule "CLONIDINE - BETA-BLOCKERS -- Esmolol" // THIS RULE IS INCOMPLETE, NOT FUNCTIONING CORRECTLY
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)	
+        // Next, we bring in the patient's Esmolol exposure on the ingredient level
+        $clinDrugConcept1 : ConceptSetItem(csName == "Esmolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        // Esmolol clinical drug exposure and dosage check (no alert if below threshold of 300 mcg/kg/min)
+        $clinDrugConcept2 : ConceptSetItem(csName == "Esmolols")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() 
+	  && ingredientConceptId == $clinDrugConcept1.getConceptId() && dailyDosage > 300 )                
+    then
+	// This creates a new "state" for any patients who are found to be on Esmolol with high dosage
+        RHSState rhsNN = new RHSState("clonidine and high esmolol dosage", "yes", $rhs.getPerson());
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Risk of acute hypertensive reaction.\n\tMitigating factor: High dosage of esmolol (Daily Dosage: %s mcg/kg/min, compared to the threshold value of 300.0 mcg/kg/min).\n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation: At doses over 300 mcg/kg/min, esmolol can result in nonselective beta-blockade, which can cause an acute hypertensive reaction.", 
+          $de1.getPersonId(), 
+          $dexp1.getDailyDosage());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tclonidine and a beta-blocker interaction\tclonidine and high esmolol dosage", currentDateStr, $person.getPersonId());
+        System.out.println(s);
+end

@@ -1,0 +1,409 @@
+// warfarin - antidepressants DDI alerting rule
+
+package com.sample
+
+//list any import classes here.
+import function com.sample.DRLLogger.*;
+
+import java.util.*;
+import java.lang.String;
+import java.sql.Timestamp;
+
+import com.sample.model.ConceptSetItem;
+import com.sample.model.RHSState;
+
+import edu.pitt.dbmi.ohdsiv5.db.ConditionEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.DrugStrength;
+import edu.pitt.dbmi.ohdsiv5.db.ExtendedDrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.Measurement;
+import edu.pitt.dbmi.ohdsiv5.db.Person;
+
+
+/////////// 
+// declare any global variables here
+/////////// 
+global java.lang.String currentDateStr;
+global java.sql.Timestamp currentDate;
+global java.sql.Timestamp within48hours;
+global java.sql.Timestamp within28days;
+global java.sql.Timestamp plus1day;
+
+/////////// 
+// declare any types here
+/////////// 
+
+
+/////////// 
+// Rules
+/////////// 
+
+// basic check of any dosage or form of warfarin and any antidepressant at the same time
+rule "WARFARIN - ANTIDEPRESSANT -- NO FILTER"
+    when
+      // First, we look for patients exposed to warfarin on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Warfarins Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to a SSRI/SNRI on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "SSRIs and SNRIs Ingredients" || csName == "Tricyclics Ingredients" || csName == "Bupropions Ingredients" || csName == "Mirtazapines Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both warfarin and the SSRI/SNRI
+      $clinDrugConcept3 : ConceptSetItem(csName == "Warfarins")
+      $clinDrugConcept4 : ConceptSetItem(csName == "SSRIs and SNRIs" || csName == "Tricyclics" || csName == "Bupropions" || csName == "Mirtazapines") 
+      $dexp1 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate >= currentDate && drugExposureStartDate < plus1day
+        && drugConceptId == $clinDrugConcept3.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      $dexp2 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && (
+          (drugExposureStartDate >= $dexp1.getDrugExposureStartDate() && drugExposureStartDate <= $dexp1.getDrugExposureEndDate())
+          || (drugExposureEndDate >= $dexp1.getDrugExposureStartDate() && drugExposureEndDate <= $dexp1.getDrugExposureEndDate())
+          || ($dexp1.getDrugExposureStartDate() >= drugExposureStartDate && $dexp1.getDrugExposureStartDate() <= drugExposureEndDate)
+          || ($dexp1.getDrugExposureEndDate() >= drugExposureStartDate && $dexp1.getDrugExposureEndDate() <= drugExposureEndDate)
+        )
+        && drugConceptId != null && drugConceptId == $clinDrugConcept4.getConceptId() 
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsCur = new RHSState("basic concomitant exposure of warfarin and antidepressant", "yes", $person, $dexp1, $dexp2);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; Anticoagulant: %s; Antidepressant: %s;", 
+          $de1.getPersonId(), 
+          $clinDrugConcept3.getConceptId(), 
+          $clinDrugConcept4.getConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tWarfarin - Antidepressant interaction\tbasic concomitant exposure\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "basic concomitant",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          $dexp1.getLogInfo(),
+          $dexp2.getLogInfo()
+      );
+      System.out.println(s);
+end
+
+rule "WARFARIN - ANTIDEPRESSANT -- NO FILTER, ALT"
+    when
+      // First, we look for patients exposed to warfarin on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Warfarins Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to a SSRI/SNRI on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "SSRIs and SNRIs Ingredients" || csName == "Tricyclics Ingredients" || csName == "Bupropions Ingredients" || csName == "Mirtazapines Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both warfarin and the SSRI/SNRI
+      $clinDrugConcept3 : ConceptSetItem(csName == "Warfarins")
+      $clinDrugConcept4 : ConceptSetItem(csName == "SSRIs and SNRIs" || csName == "Tricyclics" || csName == "Bupropions" || csName == "Mirtazapines") 
+      $dexp2 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate >= currentDate && drugExposureStartDate < plus1day
+        && drugConceptId == $clinDrugConcept4.getConceptId() && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      $dexp1 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && (
+          (drugExposureStartDate >= $dexp2.getDrugExposureStartDate() && drugExposureStartDate <= $dexp2.getDrugExposureEndDate())
+          || (drugExposureEndDate >= $dexp2.getDrugExposureStartDate() && drugExposureEndDate <= $dexp2.getDrugExposureEndDate())
+          || ($dexp2.getDrugExposureStartDate() >= drugExposureStartDate && $dexp2.getDrugExposureStartDate() <= drugExposureEndDate)
+          || ($dexp2.getDrugExposureEndDate() >= drugExposureStartDate && $dexp2.getDrugExposureEndDate() <= drugExposureEndDate)
+        )
+        && drugConceptId != null && drugConceptId == $clinDrugConcept3.getConceptId() 
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsCur = new RHSState("basic concomitant exposure of warfarin and antidepressant", "yes", $person, $dexp1, $dexp2);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; Anticoagulant: %s; Antidepressant: %s;", 
+          $de1.getPersonId(), 
+          $clinDrugConcept3.getConceptId(), 
+          $clinDrugConcept4.getConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tWarfarin - Antidepressant interaction\tbasic concomitant exposure\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "basic concomitant",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          $dexp1.getLogInfo(),
+          $dexp2.getLogInfo()
+      );
+      System.out.println(s);
+end
+
+// leaf node for basic concomitant exposure of any dosage or form of Warfarin and a Tricyclic OR Bupropion at the same time
+rule "WARFARIN - TRICYCLIC OR BUPROPION -- NO FILTER"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of warfarin and antidepressant" && state == "yes", $person : person)
+
+      $clinDrugConcept1 : ConceptSetItem(csName == "Tricyclics Ingredients" || csName == "Bupropions Ingredients")
+      $de2 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())  
+      // Next, we identify the specific drug exposures for both warfarin and the tricyclic or bupropion
+      $clinDrugConcept2 : ConceptSetItem(csName == "Tricyclics" || csName == "Bupropions")
+      $dexp2 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp2().getDrugExposureId()
+        && personId == $person.getPersonId() 
+        && drugConceptId != null && drugConceptId == $clinDrugConcept2.getConceptId()
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+    then
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsNN = new RHSState("basic concomitant exposure of warfarin and tricyclic or bupropion", "yes", $person, $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+        "Warfarin - Antidepressant interaction for patient: %s.\n\tClinical implication: Increased bleeding risk unlikely.\n\tContextual factor: \n\tRecommendation: No special precautions\n\tExplanation: Anticoagulant: %s; Tricyclic or Bupropion: %s;", 
+        $person.getPersonId(), 
+        rhsNN.getDexp1().getDrugConceptId(), 
+        rhsNN.getDexp2().getDrugConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tWarfarin - Antidepressant interaction\tbasic concomitant exposure of warfarin and tricyclics or bupropion\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "green",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);
+end 
+
+// leaf node for basic concomitant exposure of any dosage or form of Warfarin and a Tricyclic OR Bupropion at the same time
+rule "WARFARIN - MIRTAZAPINE -- NO FILTER"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of warfarin and antidepressant" && state == "yes", $person : person)
+
+      $clinDrugConcept1 : ConceptSetItem(csName == "Mirtazapines Ingredients")
+      $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())  
+      // Next, we identify the specific drug exposures for both warfarin and the tricyclic or bupropion
+      $clinDrugConcept2 : ConceptSetItem(csName == "Mirtazapines")
+      $dexp1 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp2().getDrugExposureId()
+        && personId == $person.getPersonId() 
+        && drugConceptId != null && drugConceptId == $clinDrugConcept2.getConceptId()
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+    then
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsNN = new RHSState("basic concomitant exposure of warfarin and mirtazapine", "yes", $person, $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+        "Warfarin - Antidepressant interaction for patient: %s.\n\tClinical implication: Increased GI and non-GI bleeding risk is possible.\n\tContextual factor: Presence of age, condition, or drug-factor risks. \n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation: If possible avoid drugs that increase bleeding risk (e.g., NSAIDs, aldosterone antagonists, aspirin, corticoids). \n\tAnticoagulant: %s; Mirtazapine: %s;", 
+        $person.getPersonId(), 
+        rhsNN.getDexp1().getDrugConceptId(), 
+        rhsNN.getDexp2().getDrugConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tWarfarin - Antidepressant interaction\tbasic concomitant exposure of warfarin and mirtazapine\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "true", "yellow",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);
+end 
+
+// basic check of any dosage or form of warfarin and an SSRI/SNRI at the same time
+rule "WARFARIN - SSRI+SNRI -- NO FILTER"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of warfarin and antidepressant" && state == "yes", $person : person)
+
+      $clinDrugConcept1 : ConceptSetItem(csName == "SSRIs and SNRIs Ingredients")
+      $de2 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())  
+      // Next, we identify the specific drug exposures for both warfarin and the tricyclic or bupropion
+      $clinDrugConcept2 : ConceptSetItem(csName == "SSRIs and SNRIs")
+      $dexp2 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp2().getDrugExposureId()
+        && personId == $person.getPersonId() 
+        && drugConceptId != null && drugConceptId == $clinDrugConcept2.getConceptId()
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+    then
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsNN = new RHSState("basic concomitant exposure of warfarin and SSRI/SNRI", "yes", $person, $rhs.getDexp1(), $dexp2);
+      insertLogical(rhsNN);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; Anticoagulant: %s; SSRI/SNRI: %s;", 
+          $person.getPersonId(), 
+          rhsNN.getDexp1().getDrugConceptId(), 
+          rhsNN.getDexp2().getDrugConceptId());
+      System.out.println(s);
+      /*s = String.format("DATA\t%s\t%s\tWarfarin - Antidepressant interaction\tbasic concomitant exposure of warfarin and SSRI/SNRI\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getDrugExposureId(),
+          rhsNN.getDexp2().getDrugExposureId()
+      );
+      System.out.println(s);*/
+end
+
+// basic concomitant and PATIENT AGE risk factor of patient being >= 64 years old
+rule "WARFARIN - SSRI+SNRI -- patient age >=64 years old"
+    when
+      // currently use as a sandbox for patient age
+      $rhs : RHSState(stateName == "basic concomitant exposure of warfarin and SSRI/SNRI" && state == "yes", $person : person)
+      $person64YearsOld : Person(personId == $person.getPersonId() 
+        && ((double) ($person64YearsOld.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365) >= 64) // assuming 365 days in a year
+    then
+      // This tags a given patient as "yes for risks"... There are three potential types of risks but all of them result in this same RHS state
+      RHSState rhsNN = new RHSState("warfarin and SSRI/SNRI exposure - yes risk", "yes", $person, $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+        "\tMatched drug exposures for the patient with AGE as a risk factor: Patient ID: %s;\n\tPatient DoB: %s;\n\tPatient age in years >= threshold of 64: %s",
+          $rhs.getPerson().getPersonId(),
+          $person64YearsOld.getDateOfBirth(),
+          ((double) ($person64YearsOld.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365));
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tWarfarin - Antidepressant interaction\tyes risk for patient age (>= threshold of 64 years old)\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);
+end
+
+/*
+basic concomitant and OTHER DRUGS risk factor
+Systemic corticosteroids
+Aldosterone antagonists
+Anti-platelet medications
+*/
+rule "WARFARIN - SSRI+SNRI -- OTHER DRUGS"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of warfarin and SSRI/SNRI" && state == "yes", $person : person)
+      // This checks to see if the patient is on either group drug of interest at the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Corticosteroids Ingredients" || csName == "Aldosterone Antagonists Ingredients" || csName == "NSAIDs Ingredients" || csName == "Aspirins Ingredients" || csName == "Antiplatelet Medications Ingredients") 
+      $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())
+      // This identifies the specific clinical drug that the patient was exposed to as a risk factor
+      $clinDrugConcept2 : ConceptSetItem(csName == "Systemic Corticosteroids" || csName == "Aldosterone Antagonists" || csName == "NSAIDs" || csName == "Aspirins" || csName == "Antiplatelet Medications")
+      $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate < plus1day && drugExposureEndDate >= currentDate
+        && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())        
+    then
+      // This tags a given patient as "yes for risks"... There are three potential types of risks but all of them result in this same RHS state
+      RHSState rhsNN = new RHSState("warfarin and SSRI/SNRI exposure - yes risk", "yes", $person, $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+        "Matched drug exposures for the patient with ANOTHER DRUG as a risk factor: Patient ID: %s; Drug %s.", 
+        $person.getPersonId(),
+        $dexp1.getDrugConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tWarfarin - Antidepressant interaction\tyes risk for another drug (%s) as a risk factor\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          $dexp1.getDrugConceptName(),
+          "false", "",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);
+end
+
+/*
+basic concomitant and CONDITIONS risk factor
+history of CNS hemorraghic bleeding -- (TODO?) concept set
+history of UGIB or peptic ulcer 
+*/
+rule "WARFARIN - SSRI+SNRI -- CONDITIONS"
+    when
+      // This checks the state of the patients to identify only those who were identified to be on both medications of interest
+      $rhs : RHSState(stateName == "basic concomitant exposure of warfarin and SSRI/SNRI" && state == "yes", $person : person)
+      // This checks to see if the patient has any of the conditions of interest
+      $condConcept1 : ConceptSetItem(csName == "History of GI Bleeds")
+      $ce1 : ConditionEra(PersonId == $person.getPersonId() && conditionConceptId == $condConcept1.getConceptId())
+    then  
+      // This tags a given patient as "yes for risks"... There are three potential types of risks but all of them result in this same RHS state
+      RHSState rhsNN = new RHSState("warfarin and SSRI/SNRI exposure - yes risk", "yes", $person, $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      // Nothing hugely important to output here, just an update to show how many patients were at risk due to conditions
+      String s = String.format(
+        "Matched drug exposures for the patient with a CONDITION as a risk factor - Patient ID: %s; Condition: %s.", 
+        $person.getPersonId(),
+        $ce1.getConditionConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tWarfarin - Antidepressant interaction\tyes risk for a condition (concept ID %s) as a risk factor\t%s", 
+          currentDateStr, 
+          $person.getPersonId(),
+          $ce1.getConditionConceptId(), 
+          "false", "",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);
+end
+
+// one of two leaf nodes -- check if patients had any risk factors as identified above, if they do, an alert is fired
+rule "WARFARIN - SSRI+SNRI -- YES RISKS"
+    when
+      // This checks the state of the patients to identify only those who were identified to be on both medications of interest
+      $rhs1 : RHSState(stateName == "basic concomitant exposure of warfarin and SSRI/SNRI" && state == "yes", $person : person) 
+      // Next, we check if the patient was exposed to any other risk factors
+      $rhs2 : RHSState(stateName == "warfarin and SSRI/SNRI exposure - yes risk" && state == "yes" && person.getPersonId() == $person.getPersonId())
+    then  
+        // This state is largely unused atm, as it is a leaf node (end of a branch)
+      RHSState rhsNN = new RHSState("warfarin and SSRI/SNRI exposure - yes risks", "yes", $person, $rhs2.getDexp1(), $rhs2.getDexp2());
+      insertLogical(rhsNN);
+      // This outputs the recommendations and rationale for the patient because this is a leaf node    
+      String s = String.format(
+        "Warfarin - Antidepressant interaction for patient: %s.\n\tClinical implication: Increased GI and non-GI bleeding risk is likely.\n\tContextual factor: Presence of age, condition, or drug-factor risks. \n\tRecommendation: Use only if benefit outweighs risk.\n\tExplanation: If possible avoid drugs that increase bleeding risk (e.g., NSAIDs, aldosterone antagonists, aspirin, corticoids). \n\tTo reduce risk of GI bleeds consider adding a PPI and avoiding the SSRI/SNRI.", 
+        $person.getPersonId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tWarfarin - Antidepressant interaction\tyes risks\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "true", "red",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);        
+end
+
+// other leaf node -- basic concomitant exposure but no additional risks
+rule "WARFARIN - SSRI+SNRI -- NO RISKS"
+    when
+      // This checks the state of the patients to identify only those who were identified to be on both medications of interest
+      $rhs1 : RHSState(stateName == "basic concomitant exposure of warfarin and SSRI/SNRI" && state == "yes", $person : person)
+      // Next, we make sure that the patient was not exposed to any other risk factors
+      not ($rhs2: RHSState(stateName == "warfarin and SSRI/SNRI exposure - yes risk" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+    then  
+      // This state is largely unused atm, as it is a leaf node (end of a branch)
+      RHSState rhsNN = new RHSState("warfarin and SSRI/SNRI exposure - no risks", "yes", $person, $rhs1.getDexp1(), $rhs1.getDexp2());
+      insertLogical(rhsNN);
+      // This outputs the recommendations and rationale for the patient because this is a leaf node    
+      String s = String.format(
+        "Warfarin - Antidepressant interaction for patient: %s.\n\tClinical implication: Increased GI and non-GI bleeding risk is possible.\n\tContextual factor: No age, condition, or drug-factor risks.\n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation: To reduce the bleeding risk, consider avoiding the SSRI/SNRI.", 
+        $person.getPersonId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tWarfarin - Antidepressant interaction\tno risks\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "true", "yellow",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);          
+end

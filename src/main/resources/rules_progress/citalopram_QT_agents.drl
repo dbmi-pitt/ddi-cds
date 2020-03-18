@@ -1,0 +1,255 @@
+// Citalopram - QT Prolonging Agents DDI Alerting Rule
+
+package com.sample
+
+//list any import classes here.
+import function com.sample.DRLLogger.*;
+
+import java.util.*;
+import java.lang.String;
+import java.sql.Timestamp;
+
+import com.sample.model.ConceptSetItem;
+import com.sample.model.RHSState;
+
+import edu.pitt.dbmi.ohdsiv5.db.ConditionEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.DrugStrength;
+import edu.pitt.dbmi.ohdsiv5.db.ExtendedDrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.Measurement;
+import edu.pitt.dbmi.ohdsiv5.db.Person;
+
+
+/////////// 
+// declare any global variables here
+/////////// 
+global java.lang.String currentDateStr;
+global java.sql.Timestamp currentDate;
+global java.sql.Timestamp within48hours;
+global java.sql.Timestamp within28days;
+global java.sql.Timestamp plus1day;
+
+
+/////////// 
+// declare any types here
+/////////// 
+
+
+/////////// 
+// Rules
+/////////// 
+
+/*
+concept sets:
+11466 QT-Agents Ingredients
+11441 QT-Agents
+
+12114 Citaloprams Ingredients
+12115 Citaloprams
+*/
+
+// basic check to identify all patients on any dosage or form of citalopram. (QT-agent not necessary to cause an alert)
+rule "CITALOPRAM - QT-AGENT -- NO FILTER"
+    when
+      // First, we look for patients exposed to citalopram on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Citaloprams Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to a QT-agent on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "QT-Agents Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both citalopram and the QT-agent
+      $clinDrugConcept3 : ConceptSetItem(csName == "Citaloprams") 
+      $clinDrugConcept4 : ConceptSetItem(csName == "QT-Agents")
+      $dexp1 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate >= currentDate && drugExposureStartDate < plus1day
+        && drugConceptId == $clinDrugConcept3.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      $dexp2 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && (
+          (drugExposureStartDate >= $dexp1.getDrugExposureStartDate() && drugExposureStartDate <= $dexp1.getDrugExposureEndDate())
+          || (drugExposureEndDate >= $dexp1.getDrugExposureStartDate() && drugExposureEndDate <= $dexp1.getDrugExposureEndDate())
+          || ($dexp1.getDrugExposureStartDate() >= drugExposureStartDate && $dexp1.getDrugExposureStartDate() <= drugExposureEndDate)
+          || ($dexp1.getDrugExposureEndDate() >= drugExposureStartDate && $dexp1.getDrugExposureEndDate() <= drugExposureEndDate)
+        )
+        && drugConceptId != null && drugConceptId == $clinDrugConcept4.getConceptId() 
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then
+      RHSState rhsCur = new RHSState("basic concomitant exposure of citalopram and a QT-agent", "yes", $person, $dexp1, $dexp2);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; Citalopram: %s; QT-Agent: %s.", 
+          $de1.getPersonId(), 
+          $clinDrugConcept3.getConceptId(), 
+          $clinDrugConcept4.getConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tCitalopram - QT-Agent interaction\tbasic concomitant exposure\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false","basic concomitant",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          $dexp1.getLogInfo(),
+          $dexp2.getLogInfo()
+      );
+      System.out.println(s);
+end
+
+rule "CITALOPRAM - QT-AGENT -- NO FILTER, ALT"
+    when
+      // First, we look for patients exposed to citalopram on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Citaloprams Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to a QT-agent on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "QT-Agents Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both citalopram and the QT-agent
+      $clinDrugConcept3 : ConceptSetItem(csName == "Citaloprams")
+      $clinDrugConcept4 : ConceptSetItem(csName == "QT-Agents") 
+      $dexp2 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate >= currentDate && drugExposureStartDate < plus1day
+        && drugConceptId == $clinDrugConcept4.getConceptId() && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      $dexp1 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && (
+          (drugExposureStartDate >= $dexp2.getDrugExposureStartDate() && drugExposureStartDate <= $dexp2.getDrugExposureEndDate())
+          || (drugExposureEndDate >= $dexp2.getDrugExposureStartDate() && drugExposureEndDate <= $dexp2.getDrugExposureEndDate())
+          || ($dexp2.getDrugExposureStartDate() >= drugExposureStartDate && $dexp2.getDrugExposureStartDate() <= drugExposureEndDate)
+          || ($dexp2.getDrugExposureEndDate() >= drugExposureStartDate && $dexp2.getDrugExposureEndDate() <= drugExposureEndDate)
+        )
+        && drugConceptId != null && drugConceptId == $clinDrugConcept3.getConceptId() 
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then
+      RHSState rhsCur = new RHSState("basic concomitant exposure of citalopram and a QT-agent", "yes", $person, $dexp1, $dexp2);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; Citalopram: %s; QT-Agent: %s.", 
+          $de1.getPersonId(), 
+          $clinDrugConcept3.getConceptId(), 
+          $clinDrugConcept4.getConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tCitalopram - QT-Agent interaction\tbasic concomitant exposure\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false","basic concomitant",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          $dexp1.getLogInfo(),
+          $dexp2.getLogInfo()
+      );
+      System.out.println(s);
+end
+
+// basic check citalopram dosage
+rule "CITALOPRAM -- Citalopram High Dosage"
+    when
+      $clinDrugConcept1 : ConceptSetItem(csName == "Citaloprams Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+
+      $clinDrugConcept2 : ConceptSetItem(csName == "Citaloprams") 
+      $dexp1 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+          && drugExposureStartDate != null && drugExposureStartDate >= currentDate && drugExposureStartDate < plus1day
+          && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId()
+          && dailyDosage >= 60 )
+          //&& doseUnitSourceValue == 'mg') // not sure we can rely on doseUnitSourceValue if we need to filter by unit.
+      $person : Person(personId == $de1.getPersonId())
+    then
+        RHSState rhsNN = new RHSState("citalopram, high dosage yes", "yes", $person, $dexp1, null);
+        insertLogical(rhsNN);
+        /*String s = String.format(
+            "Found high citalopram daily dosage for the patient: Patient ID: %s; Citalopram: %s, Citalopram Dosage: %s", 
+            $de1.getPersonId(),
+            $dexp1.getDrugConceptId(), 
+            $dexp1.getDailyDosage());
+        System.out.println(s);
+        s = String.format("DATA\t%s\t%s\tCitalopram - QT-Agent interaction\tcitalopram, high dosage yes\t%s\t%s\t%s\t%s\t%s", 
+            currentDateStr, 
+            $person.getPersonId(),
+            "false","",
+            $person.getGenderCUI(),
+            ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+            $dexp1.getLogInfo());
+        System.out.println(s);*/
+end
+
+// leaf node for green alert, where citalopram dosage is not 60 or more, while in the presence of another QT-prolonging agent.
+rule "CITALOPRAM - QT-AGENT -- Not Citalopram High Dosage"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of citalopram and a QT-agent" && state == "yes", $person : person)
+
+      $clinDrugConcept1 : ConceptSetItem(csName == "Citaloprams Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+
+      $clinDrugConcept2 : ConceptSetItem(csName == "Citaloprams") 
+      $dexp1 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp1().getDrugExposureId()
+        && personId == $person.getPersonId() 
+        && drugConceptId != null && drugConceptId == $clinDrugConcept2.getConceptId() 
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId()
+        && dailyDosage < 60)
+    then
+      RHSState rhsNN = new RHSState("citalopram, high dosage no, qt-agent yes", "yes", $person, $dexp1, $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+          "Citalopram for patient: %s.\n\tClinical implication: None \n\tMitigating factor: None\n\tRecommendation: No special precautions\n\tExplanation: Citalopram: %s, Citalopram Dosage: %s",
+          $de1.getPersonId(),
+          $dexp1.getDrugConceptId(), 
+          $dexp1.getDailyDosage());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tCitalopram - QT-Agent interaction\tcitalopram, high dosage no, qt-agent yes\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr, 
+          $person.getPersonId(),
+          "false", "green",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo());
+      System.out.println(s);
+end
+
+// Leaf node for citalopram high dosage WITHOUT another concomitant QT agent
+rule "CITALOPRAM -- Citalopram High Dosage, No QT-Agent"
+    when
+      $rhs : RHSState(stateName == "citalopram, high dosage yes" && state == "yes", $person : person)
+      not ($rhs2 : RHSState(stateName == "basic concomitant exposure of citalopram and a QT-agent" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+    then
+      RHSState rhsNN = new RHSState("citalopram, high dosage yes, qt-agent no", "yes", $rhs.getPerson(), $rhs.getDexp1(), null);
+      insertLogical(rhsNN);
+      String s = String.format(
+          "Citalopram High Dosage for patient: %s.\n\tClinical implication: Increased risk of prolonged QTc possible\n\tRecommendation: Minimize risk and monitor ECG\n\tMitigating factor: No other QT-Agent present\n\tExplanation: High citalopram dosage (>= threshold of 60 mg/day) but not in the presence of another QT-prolonging agent", 
+          $person.getPersonId());
+      s = String.format("DATA\t%s\t%s\tcitalopram, high dosage yes, qt-agent no\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr, 
+          $person.getPersonId(),
+          "true","yellow",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo());
+      System.out.println(s);
+end
+
+// Leaf node for concomitant citalopram high dosage with another QT agent
+rule "CITALOPRAM - QT-AGENT -- Citalopram High Dosage"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of citalopram and a QT-agent" && state == "yes", $person : person)
+      $rhs2 : RHSState(stateName == "citalopram, high dosage yes" && state == "yes" && person.getPersonId() == $person.getPersonId() && dexp1 == $rhs.getDexp1())
+    then
+      RHSState rhsNN = new RHSState("citalopram, high dosage yes, qt-agent yes", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+          "Citalopram - QT-Agent interaction for patient: %s.\n\tClinical implication: Increased risk of prolonged QTc likely\n\tRecommendation: Use only if benefit outweighs risk and monitor patient ECG\n\tMitigating factor: (TODO)\n\tExplanation: High citalopram dosage (>= threshold of 60 mg/day) in the presence of another QT-prolonging agent", 
+          $person.getPersonId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tCitalopram - QT-Agent interaction\tcitalopram, high dosage yes, qt-agent yes\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr, 
+          $person.getPersonId(),
+          "true","red",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo());
+      System.out.println(s);
+end

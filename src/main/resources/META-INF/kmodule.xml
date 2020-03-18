@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
+    <kbase name="rules_complete" packages="rules_complete">
+        <ksession name="ksession-rules"/>
+    </kbase>
+    <kbase name="rules_progress" packages="rules_progress" equalsBehavior="equality">
+        <ksession name="ksession-progress"/>
+    </kbase>
+
+    <kbase name="rules_acei_arb_ksparing_diuretics" packages="rules_acei_arb_ksparing_diuretics"
+           equalsBehavior="equality">
+        <ksession name="ksession-acei-arb-ksparing-diuretics"/>
+    </kbase>
+    <kbase name="rules_ceftriaxone_calcium" packages="rules_ceftriaxone_calcium"
+           equalsBehavior="equality">
+        <ksession name="ksession-rules-ceftriaxone-calcium"/>
+    </kbase>
+    <kbase name="rules_citalopram_QT_agents" packages="rules_citalopram_QT_agents"
+           equalsBehavior="equality">
+        <ksession name="ksession-rules-citalopram-QT-agents"/>
+    </kbase>
+    <kbase name="rules_clonidine_betablockers" packages="rules_clonidine_betablockers"
+           equalsBehavior="equality">
+        <ksession name="ksession-rules-clonidine-betablockers"/>
+    </kbase>
+    <kbase name="rules_epi_betablockers" packages="rules_epi_betablockers"
+           equalsBehavior="equality">
+        <ksession name="ksession-rules-epi-betablockers"/>
+    </kbase>
+    <kbase name="rules_fluconazole_opioids" packages="rules_fluconazole_opioids"
+           equalsBehavior="equality">
+        <ksession name="ksession-rules-fluconazole-opioids"/>
+    </kbase>
+    <kbase name="rules_immunosuppressants_fluconazole" packages="rules_immunosuppressants_fluconazole"
+           equalsBehavior="equality">
+        <ksession name="ksession-rules-immunosuppressants-fluconazole"/>
+    </kbase>
+    <kbase name="rules_k_ksparing_diuretics" packages="rules_k_ksparing_diuretics"
+           equalsBehavior="equality">
+        <ksession name="ksession-rules-k-ksparing-diuretics"/>
+    </kbase>
+    <kbase name="rules_metoclopramide_antipsychotics" packages="rules_metoclopramide_antipsychotics"
+           equalsBehavior="equality">
+        <ksession name="ksession-rules-metoclopramide-antipsychotics"/>
+    </kbase>
+    <kbase name="rules_warfarin_antidepressants" packages="rules_warfarin_antidepressants"
+           equalsBehavior="equality">
+        <ksession name="ksession-rules-warfarin-antidepressants"/>
+    </kbase>
+    <kbase name="rules_warfarin_nsaids" packages="rules_warfarin_nsaids"
+           equalsBehavior="equality">
+        <ksession name="ksession-rules-warfarin-nsaids"/>
+    </kbase>
+    <kbase name="rules_warfarin_salicylates" packages="rules_warfarin_salicylates"
+           equalsBehavior="equality">
+        <ksession name="ksession-rules-warfarin-salicylates"/>
+    </kbase>
+</kmodule>

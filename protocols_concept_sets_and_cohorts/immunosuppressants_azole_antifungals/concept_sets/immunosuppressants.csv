@@ -1,0 +1,41 @@
+Drug_Name,OMOP CUI,RxNorm CUI
+Cyclosporine 0.002 MG/MG Ophthalmic Ointment,40236654,1093174
+Cyclosporine 0.5 MG/ML Ophthalmic Suspension,19010551,351291
+Cyclosporine 100 MG Oral Capsule,19082899,328160
+Cyclosporine 100 MG/ML Oral Solution,19076045,309632
+Cyclosporine 1000 MG/ML Oral Solution,19096440,348431
+Cyclosporine 25 MG Oral Capsule,19010484,197553
+Cyclosporine 50 MG Oral Capsule,19028684,205168
+Cyclosporine 50 MG/ML Injectable Solution,19028689,205175
+Cyclosporine 50 MG/ML Oral Solution,19125259,670177
+"cyclosporine, modified 10 MG Oral Capsule",19010586,835919
+"cyclosporine, modified 100 MG Oral Capsule",19010522,241834
+"cyclosporine, modified 100 MG/ML Oral Solution",19010556,835886
+"cyclosporine, modified 25 MG Oral Capsule",19010559,835894
+"cyclosporine, modified 50 MG Oral Capsule",19010590,835925
+everolimus 0.08 MG/ML Oral Suspension,42900297,1308428
+everolimus 0.12 MG/ML Oral Suspension,42900301,1308430
+everolimus 0.2 MG/ML Oral Suspension,42900305,1308432
+everolimus 0.25 MG Oral Tablet,40175813,977427
+everolimus 0.5 MG Oral Tablet,40175817,977434
+everolimus 0.75 MG Oral Tablet,40175821,977438
+everolimus 10 MG Oral Tablet,19135077,845507
+everolimus 2.5 MG Oral Tablet,40223693,998189
+everolimus 5 MG Oral Tablet,19135083,845515
+everolimus 7.5 MG Oral Tablet,40242016,1119400
+Sirolimus 0.5 MG Oral Tablet,40173865,905158
+Sirolimus 1 MG Oral Tablet,19096679,349208
+Sirolimus 1 MG/ML Oral Solution,19080244,314230
+Sirolimus 2 MG Oral Tablet,19099674,360110
+Tacrolimus 0.5 MG Extended Release Oral Capsule,43532968,1431978
+Tacrolimus 0.5 MG Oral Capsule,19079712,313190
+Tacrolimus 0.75 MG Extended Release Oral Tablet,46287734,1664459
+Tacrolimus 1 MG Extended Release Oral Capsule,43532972,1431983
+Tacrolimus 1 MG Extended Release Oral Tablet,46287739,1664464
+Tacrolimus 1 MG Oral Capsule,950641,198377
+Tacrolimus 1 MG Oral Tablet,19106286,427808
+Tacrolimus 4 MG Extended Release Oral Tablet,46287720,1664441
+Tacrolimus 5 MG Extended Release Oral Capsule,43532976,1431988
+Tacrolimus 5 MG Oral Capsule,950662,198378
+Tacrolimus 5 MG Oral Tablet,19106285,427807
+Tacrolimus 5 MG/ML Injectable Solution,950663,198379

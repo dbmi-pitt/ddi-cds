@@ -1,0 +1,477 @@
+// Clonidine - Beta-Blockers DDI Alerting Rule
+// Written By: Sam Rosko
+// Last Update: 2017-04-10
+// Status: Completed
+// Expected Output: 17 alerts for 17 patients
+// KNOWN ISSUE: Esmolol rule is a placeholder, cannot be implemented in OHDSI model due to nature of data and rule requirements (need IV dispensing data)
+
+package com.sample
+
+//list any import classes here.
+import function com.sample.DRLLogger.*;
+
+import java.util.*;
+import java.lang.String;
+import java.sql.Timestamp;
+
+import com.sample.model.ConceptSetItem;
+import com.sample.model.RHSState;
+
+import edu.pitt.dbmi.ohdsiv5.db.ConditionEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.DrugStrength;
+import edu.pitt.dbmi.ohdsiv5.db.ExtendedDrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.Measurement;
+import edu.pitt.dbmi.ohdsiv5.db.Person;
+
+
+/////////// 
+// declare any global variables here
+/////////// 
+global java.lang.String currentDateStr;
+global java.sql.Timestamp currentDate;
+global java.sql.Timestamp within48hours;
+global java.sql.Timestamp within28days;
+global java.sql.Timestamp plus1day;
+
+
+/////////// 
+// declare any types here
+/////////// 
+
+
+/////////// 
+// Rules
+/////////// 
+
+// The first rule is a basic check to identify all patients on any dosage or form of clonidine and a beta-blocker at the same time
+rule "CLONIDINE - BETA-BLOCKERS -- NO FILTER"
+    when
+      // First, we look for patients exposed to clonidine on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Clonidines Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to a beta-blocker on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "Beta-Blockers Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both clonidine and the beta-blocker
+      $clinDrugConcept3 : ConceptSetItem(csName == "Clonidines") 
+      $clinDrugConcept4 : ConceptSetItem(csName == "Beta-Blockers")
+      $dexp1 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate >= currentDate && drugExposureStartDate < plus1day
+        && drugConceptId == $clinDrugConcept3.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      $dexp2 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && (
+          (drugExposureStartDate >= $dexp1.getDrugExposureStartDate() && drugExposureStartDate <= $dexp1.getDrugExposureEndDate())
+          || (drugExposureEndDate >= $dexp1.getDrugExposureStartDate() && drugExposureEndDate <= $dexp1.getDrugExposureEndDate())
+          || ($dexp1.getDrugExposureStartDate() >= drugExposureStartDate && $dexp1.getDrugExposureStartDate() <= drugExposureEndDate)
+          || ($dexp1.getDrugExposureEndDate() >= drugExposureStartDate && $dexp1.getDrugExposureEndDate() <= drugExposureEndDate)
+        )
+        && drugConceptId != null && drugConceptId == $clinDrugConcept4.getConceptId() 
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then  
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsCur = new RHSState("basic concomitant exposure of clonidine and a beta-blocker", "yes", $person, $dexp1, $dexp2);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; Clonidine: %s; Beta-Blocker: %s;", 
+          $de1.getPersonId(), 
+          $clinDrugConcept3.getConceptId(), 
+          $clinDrugConcept4.getConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tClonidine - Beta-blocker interaction\tbasic concomitant exposure\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false","basic concomitant",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          $dexp1.getLogInfo(),
+          $dexp2.getLogInfo()
+      );
+      System.out.println(s);
+end
+
+rule "CLONIDINE - BETA-BLOCKERS -- NO FILTER, ALT"
+    when
+      // First, we look for patients exposed to clonidine on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Clonidines Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to a beta-blocker on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "Beta-Blockers Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both clonidine and the beta-blocker
+      $clinDrugConcept3 : ConceptSetItem(csName == "Clonidines") 
+      $clinDrugConcept4 : ConceptSetItem(csName == "Beta-Blockers")
+      // alternate the timing for drug2 and drug1 from previous rule so that drug2 starts on currentDate
+      // NOTE: check simulated patient 1550 to test this.
+      $dexp2 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate >= currentDate && drugExposureStartDate < plus1day
+        && drugConceptId == $clinDrugConcept4.getConceptId() && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      // TODO - correct $dexp1 timeline to match person 91871173 scenario:
+      // clon from 1/22 to 1/27, bb from 1/23 to 1/23. This is not captured below.
+      $dexp1 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && (
+          (drugExposureStartDate >= $dexp2.getDrugExposureStartDate() && drugExposureStartDate <= $dexp2.getDrugExposureEndDate())
+          || (drugExposureEndDate >= $dexp2.getDrugExposureStartDate() && drugExposureEndDate <= $dexp2.getDrugExposureEndDate())
+          || ($dexp2.getDrugExposureStartDate() >= drugExposureStartDate && $dexp2.getDrugExposureStartDate() <= drugExposureEndDate)
+          || ($dexp2.getDrugExposureEndDate() >= drugExposureStartDate && $dexp2.getDrugExposureEndDate() <= drugExposureEndDate)
+        )
+        && drugConceptId != null && drugConceptId == $clinDrugConcept3.getConceptId() 
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then  
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsCur = new RHSState("basic concomitant exposure of clonidine and a beta-blocker", "yes", $person, $dexp1, $dexp2);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; Clonidine: %s; Beta-Blocker: %s;", 
+          $de1.getPersonId(), 
+          $clinDrugConcept3.getConceptId(), 
+          $clinDrugConcept4.getConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tClonidine - Beta-blocker interaction\tbasic concomitant exposure\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false","basic concomitant",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          $dexp1.getLogInfo(),
+          $dexp2.getLogInfo()
+      );
+      System.out.println(s);
+end
+
+/*Carteolol
+Levobunolol
+Nadolol
+Penbutolol
+Pindolol
+Propranolol
+Sotalol*/
+// The second rule is the first of 2 rules for all non-cardioselective beta-blockers
+// Non-selective beta-blockers can yield 2 different alerts depending on cclonidine formulation
+rule "CLONIDINE - BETA-BLOCKERS -- Clonidine Patch, Non-Selective Beta-Blockers"
+    when
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)
+        // Next, we check for patient exposure to a non-selective beta blocker on the ingredient level
+        $clinDrugConcept1 : ConceptSetItem(csName == "Carteolols Ingredients" || csName == "Levobunolols Ingredients" || csName == "Nadolols Ingredients" || csName == "Penbutolols Ingredients" || csName == "Pindolols Ingredients" || csName == "Propranolols Ingredients" || csName == "Sotalols Ingredients")
+        $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId())        
+        // And following that, we check the patient exposure on the clinical drug level
+        $clinDrugConcept2 : ConceptSetItem(csName == "Carteolols" || csName == "Levobunolols" || csName == "Nadolols" || csName == "Penbutolols" || csName == "Pindolols" || csName == "Propranolols" || csName == "Sotalols")
+        $dexp2 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp2().getDrugExposureId()
+          && personId == $person.getPersonId() 
+          && drugConceptId != null && drugConceptId == $clinDrugConcept2.getConceptId() 
+          && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+
+        $clinDrugConcept3 : ConceptSetItem(csName == "Clonidines Ingredients")
+        $de2 : DrugEra(personId == $de1.getPersonId() && drugConceptId == $clinDrugConcept3.getConceptId())        
+        $clinDrugConcept4 : ConceptSetItem(csName == "Clonidines Topical")
+        $dexp1 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp1().getDrugExposureId()
+          && personId == $person.getPersonId() 
+          && drugConceptId != null && drugConceptId == $clinDrugConcept4.getConceptId() 
+          && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept3.getConceptId())
+
+    then
+        RHSState rhsNN = new RHSState("clonidine, patch yes, non-selective beta-blocker", "yes", $person, $dexp1, $dexp2);
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Rebound hypertension possible on discontinuation of clonidine\n\tRecommendation: Assess risk and take action if necessary\n\tMitigating factor: (TODO)\n\tExplanation: Non-selective beta-blocker = %s, Clonidine Topical = %s",
+          $de1.getPersonId(), 
+          $dexp1.getDrugConceptId(),
+          $dexp2.getDrugConceptId());
+        System.out.println(s);
+        s = String.format("DATA\t%s\t%s\tClonidine - Beta-blocker interaction\tclonidine, patch yes, non-selective beta-blocker\t%s\t%s\t%s\t%s\t%s\t%s",
+            currentDateStr,
+            $person.getPersonId(),
+            "true","red",
+            $person.getGenderCUI(),
+            ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+            $dexp1.getLogInfo(),
+            $dexp2.getLogInfo());
+        System.out.println(s);
+end
+
+// Second of 2 rules for all non-cardioselective beta-blockers
+// Non-selective beta-blockers can yield 2 different alerts depending on cclonidine formulation
+rule "CLONIDINE - BETA-BLOCKERS -- Clonidine (Oral or Epidural), Non-Selective Beta-Blockers" 
+    when
+        $rhs : RHSState(stateName == "clonidine and non-selective beta-blockers" && state == "yes", $person : person)
+        $clinDrugConcept1 : ConceptSetItem(csName == "Carteolols Ingredients" || csName == "Levobunolols Ingredients" || csName == "Nadolols Ingredients" || csName == "Penbutolols Ingredients" || csName == "Pindolols Ingredients" || csName == "Propranolols Ingredients" || csName == "Sotalols Ingredients")
+        $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId())        
+        // And following that, we check the patient exposure on the clinical drug level
+        $clinDrugConcept2 : ConceptSetItem(csName == "Carteolols" || csName == "Levobunolols" || csName == "Nadolols" || csName == "Penbutolols" || csName == "Pindolols" || csName == "Propranolols" || csName == "Sotalols")
+        $dexp2 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp2().getDrugExposureId()
+          && personId == $person.getPersonId() 
+          && drugConceptId != null && drugConceptId == $clinDrugConcept2.getConceptId() 
+          && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+
+        $clinDrugConcept3 : ConceptSetItem(csName == "Clonidines Ingredients")
+        $de2 : DrugEra(personId == $de1.getPersonId() && drugConceptId == $clinDrugConcept3.getConceptId())        
+        $clinDrugConcept4 : ConceptSetItem(csName == "Clonidines Oral" || csName == "Clonidines Injectable") // NOTE: can Injectable be used for "epidural"?
+        $dexp1 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp1().getDrugExposureId()
+          && personId == $person.getPersonId() 
+          && drugConceptId != null && drugConceptId == $clinDrugConcept4.getConceptId() 
+          && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept3.getConceptId())
+
+    then
+        RHSState rhsNN = new RHSState("clonidine, oral or epidural yes, non-selective beta-blocker", "yes", $person, $dexp1, $dexp2);
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Rebound hypertension likely on discontinuation of clonidine\n\tRecommendation: Use only if benefit outweighs risk\n\tMitigating factor: (TODO)\n\tExplanation: Non-selective beta-blocker = %s, Clonidine Oral or Epidural = %s",
+          $de1.getPersonId(), 
+          $dexp1.getDrugConceptId(),
+          $dexp2.getDrugConceptId());
+        System.out.println(s);
+        s = String.format("DATA\t%s\t%s\tClonidine - Beta-blocker interaction\tclonidine, oral or epidural yes, non-selective beta-blocker\t%\t%s\t%s\t%s\t%s\t%s",
+            currentDateStr,
+            $person.getPersonId(),
+            "true","red",
+            $person.getGenderCUI(),
+            ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+            $dexp1.getLogInfo(),
+            $dexp2.getLogInfo());
+        System.out.println(s);
+end
+
+// The third rule is the first of a set of three about Timolol
+// This rule checks to see if the patients are on Timolol Eye Drops and the clondine formulation is a patch (topical/transdermal)
+rule "CLONIDINE - BETA-BLOCKERS -- Clonidine (Patch), Timolol (Eye Drops)"
+    when
+        // This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)
+        // Next, we bring in the patient's Timolol exposure on the ingredient level and the clinical drug level (Eye Drops only b/c they're the only form that have this effect)
+        $clinDrugConcept1 : ConceptSetItem(csName == "Timolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        $clinDrugConcept2 : ConceptSetItem(csName == "Timolols Eye Drops")
+        $dexp2 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp2().getDrugExposureId()
+          && personId == $person.getPersonId() 
+          && drugConceptId != null && drugConceptId == $clinDrugConcept2.getConceptId() 
+          && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+
+        $clinDrugConcept3 : ConceptSetItem(csName == "Clonidines Ingredients")
+        $de2 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept3.getConceptId())        
+        $clinDrugConcept4 : ConceptSetItem(csName == "Clonidines Topical")
+        $dexp1 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp1().getDrugExposureId()
+          && personId == $person.getPersonId() 
+          && drugConceptId != null && drugConceptId == $clinDrugConcept4.getConceptId() 
+          && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept3.getConceptId())
+    then
+        RHSState rhsNN = new RHSState("clonidine, patch yes, timolol, eye drops yes", "yes", $rhs.getPerson(), $dexp1, $dexp2);
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Rebound hypertension possible on discontinuation of clonidine\n\tRecommendation: Assess risk and take action if necessary\n\tMitigating factor: Timolol eye drops given.\n\tExplanation: Timolol Eye Drop = %s, Clonidine Topical = %s", 
+          $de1.getPersonId(), 
+          $dexp1.getDrugConceptId(),
+          $dexp2.getDrugConceptId());
+        System.out.println(s);
+        s = String.format("DATA\t%s\t%s\tClonidine - Beta-blocker interaction\tclonidine, patch yes, timolol, eye drops yes\t%s\t%s\t%s\t%s\t%s\t%s",
+            currentDateStr,
+            $person.getPersonId(),
+            "true","yellow",
+            $person.getGenderCUI(),
+            ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+            $dexp1.getLogInfo(),
+            $dexp2.getLogInfo());
+        System.out.println(s);
+end
+
+// The third rule is the second of a set of three about Timolol
+// This rule checks to see if the patients are on Timolol Eye Drops and the clondine formulation is oral or epidural
+rule "CLONIDINE - BETA-BLOCKERS -- Clonidine (Oral or Epidural), Timolol (Eye Drops)"
+    when
+  // This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)
+  // Next, we bring in the patient's Timolol exposure on the ingredient level and the clinical drug level (Eye Drops only b/c they're the only form that have this effect)
+        $clinDrugConcept1 : ConceptSetItem(csName == "Timolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        $clinDrugConcept2 : ConceptSetItem(csName == "Timolols Eye Drops")
+        $dexp2 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp2().getDrugExposureId()
+          && personId == $person.getPersonId() 
+          && drugConceptId != null && drugConceptId == $clinDrugConcept2.getConceptId() 
+          && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+
+        $clinDrugConcept3 : ConceptSetItem(csName == "Clonidines Ingredients")
+        $de2 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept3.getConceptId())        
+        $clinDrugConcept4 : ConceptSetItem(csName == "Clonidines Oral" || csName == "Clonidines Injectable") // NOTE: can Injectable be used for "epidural"?
+        $dexp1 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp1().getDrugExposureId()
+          && personId == $person.getPersonId() 
+          && drugConceptId != null && drugConceptId == $clinDrugConcept4.getConceptId() 
+          && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept3.getConceptId())
+    then
+        RHSState rhsNN = new RHSState("clonidine, oral or epidural yes, timolol, eye drops yes", "yes", $rhs.getPerson(), $dexp1, $dexp2);
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Rebound hypertension likely on discontinuation of clonidine\n\tRecommendation: Use only if benefit outweighs risk\n\tMitigating factor: Timolol eye drops given.\n\tExplanation: Timolol Eye Drop = %s, Clonidine Oral or Epidural = %s",
+          $de1.getPersonId(), 
+          $dexp1.getDrugConceptId(),
+          $dexp2.getDrugConceptId());
+        System.out.println(s);
+        s = String.format("DATA\t%s\t%s\tClonidine - Beta-blocker interaction\tclonidine, oral or epidural yes, timolol, eye drops yes\t%s\t%s\t%s\t%s\t%s\t%s",
+            currentDateStr,
+            $person.getPersonId(),
+            "true","red",
+            $person.getGenderCUI(),
+            ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+            $dexp1.getLogInfo(),
+            $dexp2.getLogInfo());
+        System.out.println(s);
+end
+
+// The third rule is the third of a set of three about Timolol
+// This rule checks to see if the patients are on Timolol Eye Gels
+rule "CLONIDINE - BETA-BLOCKERS -- Timolol (Eye Gels)"
+    when
+  // This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)
+        not ($rhs2 : RHSState(stateName == "clonidine, patch yes, timolol, eye drops yes" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+  // Next, we bring in the patient's Timolol exposure on the ingredient level and the clinical drug level (Eye Drops only b/c they're the only form that have this effect)
+        $clinDrugConcept1 : ConceptSetItem(csName == "Timolols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+        $clinDrugConcept2 : ConceptSetItem(csName == "Timolols Eye Gels")
+        $dexp2 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp2().getDrugExposureId()
+          && personId == $person.getPersonId() 
+          && drugConceptId != null && drugConceptId == $clinDrugConcept2.getConceptId() 
+          && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+
+        $clinDrugConcept3 : ConceptSetItem(csName == "Clonidines Ingredients")
+        $de2 : DrugEra(personId == $de1.getPersonId() && drugConceptId == $clinDrugConcept3.getConceptId())        
+        $clinDrugConcept4 : ConceptSetItem(csName == "Clonidines Topical")
+        $dexp1 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp1().getDrugExposureId()
+          && personId == $person.getPersonId() 
+          && drugConceptId != null && drugConceptId == $clinDrugConcept4.getConceptId() 
+          && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept3.getConceptId())
+
+
+    then
+        RHSState rhsNN = new RHSState("clonidine, timolol, eye gels yes", "yes", $rhs.getPerson(), $dexp1, $dexp2);
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Rebound hypertension unlikely on discontinuation of clonidine\n\tRecommendation: No special precautions\n\tMitigating factor: Timolol eye drops given.\n\tExplanation: Timolol Eye Gel = %s; Clonidine = %s", 
+          $de1.getPersonId(), 
+          $dexp1.getDrugConceptId(),
+          $dexp2.getDrugConceptId());
+        System.out.println(s);
+        s = String.format("DATA\t%s\t%s\tClonidine - Beta-blocker interaction\tclonidine, timolol, eye gels yes\t%s\t%s\t%s\t%s\t%s\t%s",
+            currentDateStr,
+            $person.getPersonId(),
+            "false", "green",
+            $person.getGenderCUI(),
+            ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+            $dexp1.getLogInfo(),
+            $dexp2.getLogInfo());
+        System.out.println(s);
+end
+
+/*
+Acebutolol
+Atenolol
+Bisoprolol
+Esmolol
+Metoprolol
+Nebivolol
+Betaxolol
+Carvedilol
+Labetalol
+result in no special precautions
+*/
+rule "CLONIDINE - BETA-BLOCKERS -- Clonidine, Selective Beta-Blockers"
+    when
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)
+        // Next, we check for patient exposure to a non-selective beta blocker on the ingredient level
+  // This set includes Timolol, even though it has its own rule as its different dose forms fall into different areas
+        // $clinDrugConcept1 : ConceptSetItem(csName == "Non-Selective Beta-Blockers Ingredients")
+        $clinDrugConcept1 : ConceptSetItem(csName == "Acebutolols Ingredients" || csName == "Atenolols Ingredients" || csName == "Bisoprolols Ingredients" || csName == "Esmolols Ingredients" || csName == "Metoprolols Ingredients" || csName == "Nebivolols Ingredients" || csName == "Betaxolols Ingredients")
+        $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId())        
+        // And following that, we check the patient exposure on the clinical drug level
+  // This includes Timolol oral, eliminating the need for a separate rule
+        $clinDrugConcept2 : ConceptSetItem(csName == "Acebutolols" || csName == "Atenolols" || csName == "Bisoprolols" || csName == "Esmolols" || csName == "Metoprolols" || csName == "Nebivolols" || csName == "Betaxolols")
+        $dexp2 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp2().getDrugExposureId()
+          && personId == $person.getPersonId() 
+          && drugConceptId != null && drugConceptId == $clinDrugConcept2.getConceptId() 
+          && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+
+        $clinDrugConcept3 : ConceptSetItem(csName == "Clonidines Ingredients")
+        $de2 : DrugEra(personId == $de1.getPersonId() && drugConceptId == $clinDrugConcept3.getConceptId())        
+        $clinDrugConcept4 : ConceptSetItem(csName == "Clonidines")
+        $dexp1 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp1().getDrugExposureId()
+          && personId == $person.getPersonId() 
+          && drugConceptId != null && drugConceptId == $clinDrugConcept4.getConceptId() 
+          && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept3.getConceptId())
+
+    then
+        RHSState rhsNN = new RHSState("clonidine, selective beta-blocker", "yes", $person, $dexp1, $dexp2);
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Rebound hypertension unlikely on discontinuation of clonidine\n\tRecommendation: No special precautions\n\tMitigating factor: Selective beta-blocker.\n\tExplanation: Selective Beta-Blocker = %s; Clonidine = %s", 
+          $de1.getPersonId(), 
+          $dexp1.getDrugConceptId(),
+          $dexp2.getDrugConceptId());
+        System.out.println(s);
+        s = String.format("DATA\t%s\t%s\tClonidine - Beta-blocker interaction\tclonidine, selective beta-blocker\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "green",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          $dexp1.getLogInfo(),
+          $dexp2.getLogInfo());
+        System.out.println(s);
+end
+
+rule "CLONIDINE - BETA-BLOCKERS -- Clonidine, Alpha-Blocking Beta-Blockers"
+    when
+        $rhs : RHSState(stateName == "basic concomitant exposure of clonidine and a beta-blocker" && state == "yes", $person : person)
+        // Next, we check for patient exposure to a non-selective beta blocker on the ingredient level
+  // This set includes Timolol, even though it has its own rule as its different dose forms fall into different areas
+        // $clinDrugConcept1 : ConceptSetItem(csName == "Non-Selective Beta-Blockers Ingredients")
+        $clinDrugConcept1 : ConceptSetItem(csName == "Carvedilols Ingredients" || csName == "Labetalols Ingredients")
+        $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId())        
+        // And following that, we check the patient exposure on the clinical drug level
+  // This includes Timolol oral, eliminating the need for a separate rule
+        $clinDrugConcept2 : ConceptSetItem(csName == "Carvedilols" || csName == "Labetalols")
+        $dexp2 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp2().getDrugExposureId()
+          && personId == $person.getPersonId() 
+          && drugConceptId != null && drugConceptId == $clinDrugConcept2.getConceptId() 
+          && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+
+        $clinDrugConcept3 : ConceptSetItem(csName == "Clonidines Ingredients")
+        $de2 : DrugEra(personId == $de1.getPersonId() && drugConceptId == $clinDrugConcept3.getConceptId())        
+        $clinDrugConcept4 : ConceptSetItem(csName == "Clonidines")
+        $dexp1 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp1().getDrugExposureId()
+          && personId == $person.getPersonId() 
+          && drugConceptId != null && drugConceptId == $clinDrugConcept4.getConceptId() 
+          && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept3.getConceptId())
+
+    then
+        RHSState rhsNN = new RHSState("clonidine, alpha-blocking beta-blocker", "yes", $person, $dexp1, $dexp2);
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node       
+        String s = String.format(
+          "Clonidine - Beta-blocker interaction for patient: %s.\n\tClinical implication: Rebound hypertension unlikely on discontinuation of clonidine\n\tRecommendation: No special precautions\n\tMitigating factor: Selective beta-blocker.\n\tExplanation: Alpha-Blocking Beta-Blocker = %s; Clonidine = %s", 
+          $de1.getPersonId(), 
+          $dexp1.getDrugConceptId(),
+          $dexp2.getDrugConceptId());
+        System.out.println(s);
+        s = String.format("DATA\t%s\t%s\tClonidine - Beta-blocker interaction\tclonidine, alpha-blocking beta-blocker\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "green",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          $dexp1.getLogInfo(),
+          $dexp2.getLogInfo());
+        System.out.println(s);
+end

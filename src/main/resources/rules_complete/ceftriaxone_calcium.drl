@@ -1,0 +1,106 @@
+// Ceftriaxone - Calcium DDI Alerting Rule
+// Written By: Sam Rosko
+// Last Update: 2017-01-17
+// Status: Completed
+// Expected Output: 2 patients, 1 alert
+// Known Issues: Rule is not able to be fully implemented using OHDSI, no way to check if IVs in same line
+
+package com.sample
+
+//list any import classes here.
+import function com.sample.DRLLogger.*;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.lang.String;
+
+import com.sample.model.ConceptSetItem;
+import com.sample.model.RHSState;
+
+import edu.pitt.dbmi.ohdsiv5.db.ConditionEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.DrugStrength;
+import edu.pitt.dbmi.ohdsiv5.db.ExtendedDrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.Measurement;
+import edu.pitt.dbmi.ohdsiv5.db.Person;
+import edu.pitt.dbmi.ohdsiv5.db.VisitOccurrence;
+
+
+/////////// 
+// declare any global variables here
+/////////// 
+global org.hibernate.Session hibernateSession;
+global java.lang.String currentDateStr;
+global java.util.Calendar currentDate;
+global java.util.Calendar within48hours;
+global java.util.Calendar within28days;
+
+/////////// 
+// declare any types here
+/////////// 
+
+
+/////////// 
+// Rules
+/////////// 
+
+// The first rule is a basic check to identify all patients on any dosage or form of ceftriaxone and calcium at the same time
+rule "CEFTRIAXONE - CALCIUM -- NO FILTER"
+    when
+      // First, we look for patients exposed to ceftriaxone on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Ceftriaxones Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId())       
+      // Second, we similarly look for exposure to calcium on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "Calciums Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both ceftriaxone and calcium
+      // Both Ceftriaxone and Calcium concept sets only include intravenous products
+      $clinDrugConcept3 : ConceptSetItem(csName == "Ceftriaxones")
+      $dexp1 : ExtendedDrugExposure(personId == $de1.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() 
+      && drugConceptId == $clinDrugConcept3.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      $clinDrugConcept4 : ConceptSetItem(csName == "Calciums")
+      $dexp2 : ExtendedDrugExposure(personId == $de1.getPersonId() && drugExposureStartDate == $de2.getDrugEraStartDate() 
+      && drugConceptId == $clinDrugConcept4.getConceptId() && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsCur = new RHSState("basic concomitant exposure of ceftriaxone and calcium", "yes", $person);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; Ceftriaxone: %s; Calcium: %s.", 
+          $de1.getPersonId(), 
+          $clinDrugConcept3.getConceptId(),
+          $clinDrugConcept4.getConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tCeftriaxone Calcium interaction\tbasic concomitant exposure", currentDateStr, $person.getPersonId());
+      System.out.println(s);
+end
+
+// The second rule takes patients exposed to both medications and checks if they are under 28 years of age... if so, an alert is fired
+rule "CEFTRIAXONE - CALCIUM -- AGE"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs1 : RHSState(stateName == "basic concomitant exposure of ceftriaxone and calcium" && state == "yes", $person : person)
+	// This takes the person from the previous state and calculates their age as a long of milliseconds
+	// This time is compared to the time in milliseconds from 28 days prior to today, which is passed in as a global variables
+	// This checks if the patient in question is less than 28 days old, in which case an alert would be fired
+        Person(personId == $person.getPersonId() && (new GregorianCalendar($person.getYearOfBirth(),$person.getMonthOfBirth()-1,$person.getDayOfBirth()).getTimeInMillis() > within28days.getTimeInMillis()))
+    then
+        RHSState rhsNN = new RHSState("ceftriaxone and calcium in neonate", "yes", $person);
+        insertLogical(rhsNN);
+	// This outputs the recommendations and rationale for the patient because this is a leaf node  
+        String s = String.format(
+          "Ceftriaxone - Calcium interaction for patient: %s.\n\tClinical implication: Risk of potentially fatal precipitate formation.\n\tMitigating factor: Ceftriaxone and calcium given to patient under 28 days old (Patient Age: %s days).\n\tRecommendation: Avoid unless benefits outweigh risks.\n\tExplanation: The ceftriaxone-calcium compound may form a precipitate in the blood, which may damage the kidneys, lungs, or gallbladder. \n\tThe risk of damage to the kidneys and lungs is greatest in children less than 28 days old.", 
+          $person.getPersonId(), 
+          ((currentDate.getTimeInMillis()-(new GregorianCalendar($person.getYearOfBirth(),($person.getMonthOfBirth()-1),$person.getDayOfBirth()).getTimeInMillis()))/86400000));
+        System.out.println(s);
+        s = String.format("DATA\t%s\t%s\tCeftriaxone Calcium interaction\tceftriaxone and calcium in neonate", currentDateStr, $person.getPersonId());
+      System.out.println(s);
+end

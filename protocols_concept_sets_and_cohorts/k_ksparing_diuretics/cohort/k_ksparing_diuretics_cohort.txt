@@ -1,0 +1,4458 @@
+{
+  "ConceptSets": [
+    {
+      "id": 0,
+      "name": "k_sparing_diuretics_ingredients",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "644",
+              "CONCEPT_ID": 991382,
+              "CONCEPT_NAME": "Amiloride",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "9997",
+              "CONCEPT_ID": 970250,
+              "CONCEPT_NAME": "Spironolactone",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "10763",
+              "CONCEPT_ID": 904542,
+              "CONCEPT_NAME": "Triamterene",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 1,
+      "name": "potassiums_ingredients",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "8591",
+              "CONCEPT_ID": 19049105,
+              "CONCEPT_NAME": "Potassium Chloride",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "89903",
+              "CONCEPT_ID": 19059547,
+              "CONCEPT_NAME": "Potassium gluconate",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "name": "potassiums",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "412516",
+              "CONCEPT_ID": 19104110,
+              "CONCEPT_NAME": "Potassium Chloride 1.34 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "412515",
+              "CONCEPT_ID": 19104109,
+              "CONCEPT_NAME": "Potassium Chloride 2.68 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "412514",
+              "CONCEPT_ID": 19104108,
+              "CONCEPT_NAME": "Potassium Chloride 3.34 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "904297",
+              "CONCEPT_ID": 40174081,
+              "CONCEPT_NAME": "calcium phosphate 17 MG / magnesium carbonate 9 MG / Potassium Chloride 0.537 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "412438",
+              "CONCEPT_ID": 19104089,
+              "CONCEPT_NAME": "Potassium Chloride 2.5 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "250477",
+              "CONCEPT_ID": 19062857,
+              "CONCEPT_NAME": "Furosemide 40 MG / Potassium Chloride 600 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312524",
+              "CONCEPT_ID": 19079328,
+              "CONCEPT_NAME": "Potassium Chloride 0.04 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312503",
+              "CONCEPT_ID": 19079299,
+              "CONCEPT_NAME": "Potassium Chloride 0.67 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312504",
+              "CONCEPT_ID": 19079300,
+              "CONCEPT_NAME": "Potassium Chloride 10 MEQ Extended Release Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312508",
+              "CONCEPT_ID": 19079323,
+              "CONCEPT_NAME": "Potassium Chloride 0.01 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312507",
+              "CONCEPT_ID": 19079322,
+              "CONCEPT_NAME": "Potassium Chloride 0.1 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312505",
+              "CONCEPT_ID": 19079321,
+              "CONCEPT_NAME": "Potassium Chloride 10 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312516",
+              "CONCEPT_ID": 19079326,
+              "CONCEPT_NAME": "Potassium Chloride 0.02 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312510",
+              "CONCEPT_ID": 19079325,
+              "CONCEPT_NAME": "Potassium Chloride 1 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312509",
+              "CONCEPT_ID": 19079324,
+              "CONCEPT_NAME": "Potassium Chloride 13 MEQ Delayed Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "250528",
+              "CONCEPT_ID": 19063004,
+              "CONCEPT_NAME": "Bendroflumethiazide 2.5 MG / Potassium Chloride 630 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "485606",
+              "CONCEPT_ID": 19112829,
+              "CONCEPT_NAME": "Potassium Chloride 20 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "348484",
+              "CONCEPT_ID": 19096454,
+              "CONCEPT_NAME": "Calcium Chloride 0.2 MG/ML / Glucose 0.8 MG/ML / Magnesium Sulfate 0.3 MG/ML / Potassium Chloride 0.3 MG/ML / Sodium Bicarbonate 1.9 MG/ML / Sodium Chloride 7.3 MG/ML / sodium phosphate 0.2 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "346738",
+              "CONCEPT_ID": 19096115,
+              "CONCEPT_NAME": "Lysine 910 MG / potassium bicarbonate 500 MG / Potassium Chloride 1500 MG Disintegrating Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "346737",
+              "CONCEPT_ID": 19096114,
+              "CONCEPT_NAME": "Lysine 0.91 MG / potassium bicarbonate 500 MG / Potassium Chloride 1500 MG Disintegrating Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "346736",
+              "CONCEPT_ID": 19096113,
+              "CONCEPT_NAME": "Lysine 3650 MG / potassium bicarbonate 2000 MG / Potassium Chloride 2240 MG Disintegrating Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "346846",
+              "CONCEPT_ID": 19096128,
+              "CONCEPT_NAME": "Glucose 35 MG/ML / Potassium Chloride 2 MG/ML / Sodium Chloride 1.5 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "346904",
+              "CONCEPT_ID": 19096144,
+              "CONCEPT_NAME": "Potassium Chloride 97.2 MG Oral Powder",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "414040",
+              "CONCEPT_ID": 19104396,
+              "CONCEPT_NAME": "Potassium Chloride 50 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "414211",
+              "CONCEPT_ID": 19104414,
+              "CONCEPT_NAME": "Ascorbic Acid 100 MG/ML / Potassium Chloride 223 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "347751",
+              "CONCEPT_ID": 19096280,
+              "CONCEPT_NAME": "Potassium Chloride 1880 MG Oral Powder",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "198126",
+              "CONCEPT_ID": 967826,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.01 MEQ/ML / Sodium Chloride 0.0342 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "966914",
+              "CONCEPT_ID": 40175294,
+              "CONCEPT_NAME": "POLYETHYLENE GLYCOL 3350 60 MG/ML / Potassium Chloride 0.01 MEQ/ML / Sodium Bicarbonate 0.02 MEQ/ML / Sodium Chloride 0.025 MEQ/ML / sodium sulfate 0.04 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "966920",
+              "CONCEPT_ID": 40175289,
+              "CONCEPT_NAME": "POLYETHYLENE GLYCOL 3350 59 MG/ML / Potassium Chloride 0.01 MEQ/ML / Sodium Bicarbonate 0.02 MEQ/ML / Sodium Chloride 0.025 MEQ/ML / sodium sulfate 0.04 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "237367",
+              "CONCEPT_ID": 967904,
+              "CONCEPT_NAME": "Potassium Chloride 0.04 MEQ/ML / Sodium Chloride 0.154 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312824",
+              "CONCEPT_ID": 967978,
+              "CONCEPT_NAME": "Potassium Chloride 0.3 MG/ML / Sodium Chloride 8.6 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312825",
+              "CONCEPT_ID": 967979,
+              "CONCEPT_NAME": "Potassium Chloride 0.3 MG/ML / Sodium Chloride 8.6 MG/ML Irrigation Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "967028",
+              "CONCEPT_ID": 40175438,
+              "CONCEPT_NAME": "Potassium Chloride 0.051 MEQ/ML Ophthalmic Irrigation Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "904255",
+              "CONCEPT_ID": 40175446,
+              "CONCEPT_NAME": "Potassium Chloride 0.4 MEQ / Sodium Chloride 7.69 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "904183",
+              "CONCEPT_ID": 40175450,
+              "CONCEPT_NAME": "Potassium Chloride 1.33 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "904258",
+              "CONCEPT_ID": 40175373,
+              "CONCEPT_NAME": "Potassium Chloride 7.99 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "904268",
+              "CONCEPT_ID": 40175369,
+              "CONCEPT_NAME": "Potassium Chloride 10 MEQ Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "904238",
+              "CONCEPT_ID": 40175371,
+              "CONCEPT_NAME": "Potassium Chloride 2.42 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "615115",
+              "CONCEPT_ID": 968278,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.03 MEQ/ML / Sodium Chloride 0.0513 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "615113",
+              "CONCEPT_ID": 968276,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.02 MEQ/ML / Sodium Chloride 0.0513 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "615114",
+              "CONCEPT_ID": 968277,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.04 MEQ/ML / Sodium Chloride 0.0513 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "615111",
+              "CONCEPT_ID": 968274,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.04 MEQ/ML / Sodium Chloride 0.154 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "637551",
+              "CONCEPT_ID": 968304,
+              "CONCEPT_NAME": "Potassium Chloride 0.02 MEQ/ML / Sodium Chloride 0.154 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "686185",
+              "CONCEPT_ID": 968334,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.03 MEQ/ML / Sodium Chloride 0.0385 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "686186",
+              "CONCEPT_ID": 968335,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.03 MEQ/ML / Sodium Chloride 0.0564 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "686536",
+              "CONCEPT_ID": 968340,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.01 MEQ/ML / Sodium Chloride 0.0564 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "686534",
+              "CONCEPT_ID": 968338,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.01 MEQ/ML / Sodium Chloride 0.0385 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "686535",
+              "CONCEPT_ID": 968339,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.01 MEQ/ML / Sodium Chloride 0.0513 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "252013",
+              "CONCEPT_ID": 19064764,
+              "CONCEPT_NAME": "Potassium Chloride 1 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "687199",
+              "CONCEPT_ID": 968371,
+              "CONCEPT_NAME": "Glucose 33 MG/ML / Potassium Chloride 0.02 MEQ/ML / Sodium Chloride 0.0513 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "237389",
+              "CONCEPT_ID": 19056917,
+              "CONCEPT_NAME": "Potassium Chloride 2.5 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "827443",
+              "CONCEPT_ID": 968927,
+              "CONCEPT_NAME": "Potassium Chloride 0.004 MEQ/ML / Sodium Chloride 0.02 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "827351",
+              "CONCEPT_ID": 968925,
+              "CONCEPT_NAME": "Magnesium Chloride 0.00148 MEQ/ML / Potassium Chloride 0.005 MEQ/ML / Sodium Acetate 0.027 MEQ/ML / Sodium Chloride 0.09 MEQ/ML / Sodium gluconate 0.023 MEQ/ML Irrigation Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "847543",
+              "CONCEPT_ID": 968931,
+              "CONCEPT_NAME": "Calcium Chloride 0.0007 MEQ/ML / Glucose 25 MG/ML / Potassium Chloride 0.002 MEQ/ML / Sodium Chloride 0.05 MEQ/ML / Sodium Lactate 0.0143 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1119408",
+              "CONCEPT_ID": 40241820,
+              "CONCEPT_NAME": "Potassium Chloride 0.4 MEQ/ML / Sodium Chloride 0.154 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "798251",
+              "CONCEPT_ID": 19130401,
+              "CONCEPT_NAME": "Calcium Chloride 0.003 MEQ/ML / Potassium Chloride 0.004 MEQ/ML / Sodium Chloride 0.103 MEQ/ML / Sodium Lactate 0.028 MEQ/ML Irrigation Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "798392",
+              "CONCEPT_ID": 19130417,
+              "CONCEPT_NAME": "Calcium Chloride 0.003 MEQ/ML / Glucose 50 MG/ML / Potassium Chloride 0.002 MEQ/ML / Sodium Chloride 0.074 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "847628",
+              "CONCEPT_ID": 968986,
+              "CONCEPT_NAME": "Calcium Chloride 0.001 MEQ/ML / Potassium Chloride 0.004 MEQ/ML / Sodium Chloride 0.103 MEQ/ML / Sodium Lactate 0.028 MEQ/ML Irrigation Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "847629",
+              "CONCEPT_ID": 968987,
+              "CONCEPT_NAME": "Calcium Chloride 0.002 MEQ/ML / Glucose 50 MG/ML / Potassium Chloride 0.004 MEQ/ML / Sodium Chloride 0.147 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "847626",
+              "CONCEPT_ID": 968984,
+              "CONCEPT_NAME": "Calcium Chloride 0.0014 MEQ/ML / Glucose 50 MG/ML / Potassium Chloride 0.024 MEQ/ML / Sodium Chloride 0.103 MEQ/ML / Sodium Lactate 0.028 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "847627",
+              "CONCEPT_ID": 968985,
+              "CONCEPT_NAME": "Calcium Chloride 0.001 MEQ/ML / Glucose 50 MG/ML / Potassium Chloride 0.004 MEQ/ML / Sodium Chloride 0.103 MEQ/ML / Sodium Lactate 0.028 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "847617",
+              "CONCEPT_ID": 968982,
+              "CONCEPT_NAME": "Calcium Chloride 0.002 MEQ/ML / Potassium Chloride 0.004 MEQ/ML / Sodium Chloride 0.147 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "847621",
+              "CONCEPT_ID": 968983,
+              "CONCEPT_NAME": "Calcium Chloride 0.002 MEQ/ML / Potassium Chloride 0.004 MEQ/ML / Sodium Chloride 0.147 MEQ/ML Irrigation Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "105706",
+              "CONCEPT_ID": 19007642,
+              "CONCEPT_NAME": "Potassium Chloride 7.5 MG/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "801387",
+              "CONCEPT_ID": 19131193,
+              "CONCEPT_NAME": "Calcium Chloride 0.005 MEQ/ML / Magnesium Chloride 0.0015 MEQ/ML / Potassium Chloride 0.01 MEQ/ML / Sodium Acetate 0.0471 MEQ/ML / Sodium Chloride 0.0848 MEQ/ML / Sodium Lactate 0.008 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "247734",
+              "CONCEPT_ID": 19049218,
+              "CONCEPT_NAME": "Potassium Chloride 12 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "246314",
+              "CONCEPT_ID": 19049217,
+              "CONCEPT_NAME": "Potassium Chloride 4 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "801442",
+              "CONCEPT_ID": 19131238,
+              "CONCEPT_NAME": "Magnesium Sulfate 0.2 MG/ML / Monobasic potassium phosphate 0.063 MG/ML / Potassium Chloride 0.005 MEQ/ML / Sodium Chloride 0.14 MEQ/ML / SODIUM PHOSPHATE DIHYDRATE 0.088 MG/ML Irrigation Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "801451",
+              "CONCEPT_ID": 19131245,
+              "CONCEPT_NAME": "Calcium Chloride 0.23 MEQ/ML / Magnesium Chloride 0.53 MEQ/ML / Potassium Chloride 0.1 MEQ/ML / Sodium Acetate 1.48 MEQ/ML / Sodium Chloride 0.27 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312514",
+              "CONCEPT_ID": 19049334,
+              "CONCEPT_NAME": "Potassium Chloride 0.2 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312515",
+              "CONCEPT_ID": 19049335,
+              "CONCEPT_NAME": "Potassium Chloride 1.33 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312512",
+              "CONCEPT_ID": 19049332,
+              "CONCEPT_NAME": "Potassium Chloride 2.4 MEQ Delayed Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312521",
+              "CONCEPT_ID": 19049338,
+              "CONCEPT_NAME": "Potassium Chloride 0.3 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312522",
+              "CONCEPT_ID": 19049339,
+              "CONCEPT_NAME": "Potassium Chloride 2 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312517",
+              "CONCEPT_ID": 19049336,
+              "CONCEPT_NAME": "Potassium Chloride 25 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312523",
+              "CONCEPT_ID": 19049340,
+              "CONCEPT_NAME": "Potassium Chloride 0.4 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "801413",
+              "CONCEPT_ID": 19131215,
+              "CONCEPT_NAME": "Alanine 2.1 MG/ML / Arginine 2.9 MG/ML / calcium acetate 0.003 MEQ/ML / Cysteine 0.2 MG/ML / Glycerin 30 MG/ML / Glycine 4.2 MG/ML / Histidine 0.85 MG/ML / Isoleucine 2.1 MG/ML / Leucine 2.7 MG/ML / Lysine 3.1 MG/ML / magnesium acetate 0.008 MEQ/ML / Meth",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "314182",
+              "CONCEPT_ID": 19049378,
+              "CONCEPT_NAME": "Potassium Chloride 2.67 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "314163",
+              "CONCEPT_ID": 19049376,
+              "CONCEPT_NAME": "Potassium Chloride 8 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "315181",
+              "CONCEPT_ID": 19049380,
+              "CONCEPT_NAME": "Potassium Chloride 0.03 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "308615",
+              "CONCEPT_ID": 19073983,
+              "CONCEPT_NAME": "Bendroflumethiazide 2.5 MG / Potassium Chloride 6.7 MEQ Delayed Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312525",
+              "CONCEPT_ID": 19049371,
+              "CONCEPT_NAME": "Potassium Chloride 4 MEQ Delayed Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312528",
+              "CONCEPT_ID": 19049374,
+              "CONCEPT_NAME": "Potassium Chloride 8 MEQ Delayed Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312529",
+              "CONCEPT_ID": 19049375,
+              "CONCEPT_NAME": "Potassium Chloride 8 MEQ Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312526",
+              "CONCEPT_ID": 19049372,
+              "CONCEPT_NAME": "Potassium Chloride 6.7 MEQ Delayed Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312527",
+              "CONCEPT_ID": 19049373,
+              "CONCEPT_NAME": "Potassium Chloride 6.7 MEQ Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "308618",
+              "CONCEPT_ID": 19073986,
+              "CONCEPT_NAME": "Bendroflumethiazide 5 MG / Potassium Chloride 6.7 MEQ Delayed Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "308616",
+              "CONCEPT_ID": 19073984,
+              "CONCEPT_NAME": "Potassium Chloride 5.4 MEQ / Rauwolfia serpentina (USP) 50 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "315183",
+              "CONCEPT_ID": 19049422,
+              "CONCEPT_NAME": "Potassium Chloride 8 MEQ Extended Release Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "315182",
+              "CONCEPT_ID": 19049421,
+              "CONCEPT_NAME": "Potassium Chloride 3.2 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "800644",
+              "CONCEPT_ID": 19130918,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Magnesium Chloride 0.00361 MEQ/ML / Monobasic potassium phosphate 0.15 MG/ML / Potassium Chloride 0.0189 MEQ/ML / Sodium Lactate 0.0232 MEQ/ML / Sodium Phosphate, Monobasic 0.25 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "800662",
+              "CONCEPT_ID": 19130925,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.0149 MEQ/ML / POTASSIUM LACTATE 0.02 MEQ/ML / Sodium Chloride 0.025 MEQ/ML / Sodium Phosphate, Monobasic 2.07 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "800683",
+              "CONCEPT_ID": 19130933,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Magnesium Chloride 0.00361 MEQ/ML / Potassium Chloride 0.013 MEQ/ML / Sodium Acetate 0.0268 MEQ/ML / Sodium Chloride 0.0239 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "800633",
+              "CONCEPT_ID": 19130910,
+              "CONCEPT_NAME": "Dibasic potassium phosphate 1 MG/ML / Glucose 50 MG/ML / Magnesium Chloride 0.00639 MEQ/ML / Potassium Chloride 0.0134 MEQ/ML / Sodium Chloride 0.0308 MEQ/ML / Sodium Lactate 0.025 MEQ/ML / Sodium Phosphate, Monobasic 0.16 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "800880",
+              "CONCEPT_ID": 19130980,
+              "CONCEPT_NAME": "Alanine 2.1 MG/ML / Arginine 2.9 MG/ML / Cysteine 0.14 MG/ML / Glycine 4.2 MG/ML / Histidine 0.85 MG/ML / Isoleucine 2.1 MG/ML / Leucine 2.7 MG/ML / Lysine 2.2 MG/ML / magnesium acetate 0.008 MEQ/ML / Methionine 1.6 MG/ML / Phenylalanine 1.7 MG/ML / Phosp",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "800915",
+              "CONCEPT_ID": 19131007,
+              "CONCEPT_NAME": "Ascorbic Acid 4.7 MG/ML / POLYETHYLENE GLYCOL 3350 100 MG/ML / Potassium Chloride 0.0136 MEQ/ML / Sodium Ascorbate 5.9 MG/ML / Sodium Chloride 0.046 MEQ/ML / sodium sulfate 7.5 MG/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "800808",
+              "CONCEPT_ID": 19130946,
+              "CONCEPT_NAME": "Dibasic potassium phosphate 0.26 MG/ML / Glucose 50 MG/ML / Magnesium Chloride 0.00373 MEQ/ML / Potassium Chloride 0.00174 MEQ/ML / Sodium Acetate 0.039 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "800985",
+              "CONCEPT_ID": 19131058,
+              "CONCEPT_NAME": "Magnesium Chloride 0.00148 MEQ/ML / Potassium Chloride 0.0497 MEQ/ML / Sodium Acetate 0.0163 MEQ/ML / Sodium Chloride 0.0899 MEQ/ML / Sodium gluconate 5.02 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "800925",
+              "CONCEPT_ID": 19131015,
+              "CONCEPT_NAME": "Magnesium Chloride 0.00148 MEQ/ML / Monobasic potassium phosphate 0.0082 MG/ML / Potassium Chloride 0.00497 MEQ/ML / Sodium Acetate 0.0272 MEQ/ML / Sodium Chloride 0.0906 MEQ/ML / Sodium gluconate 5 MG/ML / Sodium Phosphate, Dibasic 0.12 MG/ML Injectable",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "198116",
+              "CONCEPT_ID": 19049106,
+              "CONCEPT_NAME": "Potassium Chloride 20 MEQ Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "199112",
+              "CONCEPT_ID": 19049107,
+              "CONCEPT_NAME": "Potassium Chloride 20 MEQ Oral Granules",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "801109",
+              "CONCEPT_ID": 19131116,
+              "CONCEPT_NAME": "Magnesium Chloride 0.00148 MEQ/ML / Potassium Chloride 0.00497 MEQ/ML / Sodium Acetate 0.027 MEQ/ML / Sodium Chloride 0.0899 MEQ/ML / Sodium gluconate 5.02 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "428726",
+              "CONCEPT_ID": 19106507,
+              "CONCEPT_NAME": "ferrous phosphate 20 MG / Potassium Chloride 35 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "801024",
+              "CONCEPT_ID": 19131084,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Magnesium Chloride 0.00148 MEQ/ML / Potassium Chloride 0.00497 MEQ/ML / Sodium Acetate 0.027 MEQ/ML / Sodium Chloride 0.0899 MEQ/ML / Sodium gluconate 5.02 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "801054",
+              "CONCEPT_ID": 19131097,
+              "CONCEPT_NAME": "POLYETHYLENE GLYCOL 3350 105 MG/ML / Potassium Chloride 0.00497 MEQ/ML / Sodium Bicarbonate 0.017 MEQ/ML / Sodium Chloride 0.0479 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "756337",
+              "CONCEPT_ID": 19049741,
+              "CONCEPT_NAME": "Potassium Chloride 4 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "431605",
+              "CONCEPT_ID": 19107299,
+              "CONCEPT_NAME": "Furosemide 40 MG / Potassium Chloride 600 MG Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "431610",
+              "CONCEPT_ID": 19107302,
+              "CONCEPT_NAME": "Bumetanide 0.5 MG / Potassium Chloride 573 MG Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "801923",
+              "CONCEPT_ID": 19131431,
+              "CONCEPT_NAME": "Magnesium Chloride 0.006 MEQ/ML / Potassium Chloride 0.005 MEQ/ML / Sodium Acetate 0.02 MEQ/ML / Sodium Chloride 0.09 MEQ/ML / Sodium gluconate 0.02 MEQ/ML Irrigation Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "429734",
+              "CONCEPT_ID": 19106819,
+              "CONCEPT_NAME": "Potassium Chloride 13.4 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "801868",
+              "CONCEPT_ID": 19131408,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Magnesium Chloride 0.00148 MEQ/ML / Monobasic potassium phosphate 0.0082 MG/ML / Potassium Chloride 0.00497 MEQ/ML / Sodium Acetate 0.0272 MEQ/ML / Sodium Chloride 0.0906 MEQ/ML / Sodium gluconate 5 MG/ML / Sodium Phosphate, Dibasic 0.1",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "801881",
+              "CONCEPT_ID": 19131415,
+              "CONCEPT_NAME": "Calcium Chloride 0.005 MEQ/ML / Glucose 50 MG/ML / Magnesium Chloride 0.0015 MEQ/ML / Potassium Chloride 0.01 MEQ/ML / Sodium Acetate 0.0471 MEQ/ML / Sodium Chloride 0.0848 MEQ/ML / Sodium Lactate 0.008 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "801907",
+              "CONCEPT_ID": 19131423,
+              "CONCEPT_NAME": "Calcium Chloride 0.005 MEQ/ML / Glucose 50 MG/ML / Magnesium Chloride 0.00148 MEQ/ML / Potassium Chloride 0.016 MEQ/ML / Sodium Acetate 0.0118 MEQ/ML / Sodium Chloride 0.016 MEQ/ML / Sodium Lactate 0.0123 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "759729",
+              "CONCEPT_ID": 986419,
+              "CONCEPT_NAME": "POLYETHYLENE GLYCOL 3350 105 MG/ML / Potassium Chloride 0.00497 MEQ/ML / Sodium Bicarbonate 1.43 MG/ML / Sodium Chloride 0.0479 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "562076",
+              "CONCEPT_ID": 19115105,
+              "CONCEPT_NAME": "Potassium Chloride 4.24 MG/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "892237",
+              "CONCEPT_ID": 40169445,
+              "CONCEPT_NAME": "Ascorbic Acid 100 MG/ML / Potassium Chloride 3 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "615098",
+              "CONCEPT_ID": 19123351,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.02 MEQ/ML / Sodium Chloride 0.0769 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "615102",
+              "CONCEPT_ID": 19123355,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.02 MEQ/ML / Sodium Chloride 0.0342 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "615100",
+              "CONCEPT_ID": 19123353,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.04 MEQ/ML / Sodium Chloride 0.0769 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "615099",
+              "CONCEPT_ID": 19123352,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.03 MEQ/ML / Sodium Chloride 0.0769 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "615107",
+              "CONCEPT_ID": 19123359,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.02 MEQ/ML / Sodium Chloride 0.154 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "615105",
+              "CONCEPT_ID": 19123357,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.04 MEQ/ML / Sodium Chloride 0.0342 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "615104",
+              "CONCEPT_ID": 19123356,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.03 MEQ/ML / Sodium Chloride 0.0342 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "672248",
+              "CONCEPT_ID": 19049711,
+              "CONCEPT_NAME": "Potassium Chloride 20 MEQ Chewable Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "657599",
+              "CONCEPT_ID": 19049687,
+              "CONCEPT_NAME": "Potassium Chloride 0.67 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "628953",
+              "CONCEPT_ID": 19049684,
+              "CONCEPT_NAME": "Potassium Chloride 10 MEQ Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "807379",
+              "CONCEPT_ID": 19132336,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Monobasic potassium phosphate 0.00735 MEQ/ML / Potassium Chloride 0.0275 MEQ/ML / Sodium Chloride 0.021 MEQ/ML / Sodium Lactate 0.002 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "807391",
+              "CONCEPT_ID": 19132345,
+              "CONCEPT_NAME": "Glucose 100 MG/ML / Magnesium Chloride 0.003 MEQ/ML / Monobasic potassium phosphate 0.00147 MEQ/ML / Potassium Chloride 0.0189 MEQ/ML / Sodium Chloride 0.002 MEQ/ML / Sodium Lactate 0.0232 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "807396",
+              "CONCEPT_ID": 19132348,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Magnesium Chloride 0.003 MEQ/ML / Monobasic potassium phosphate 0.00147 MEQ/ML / Potassium Chloride 0.0189 MEQ/ML / Sodium Chloride 0.002 MEQ/ML / Sodium Lactate 0.0232 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "630799",
+              "CONCEPT_ID": 19124111,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.02 MEQ/ML / Sodium Chloride 0.056 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "630796",
+              "CONCEPT_ID": 19124109,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.01 MEQ/ML / Sodium Chloride 0.0769 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "431741",
+              "CONCEPT_ID": 19107339,
+              "CONCEPT_NAME": "Bendroflumethiazide 2.5 MG / Potassium Chloride 573 MG Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "431740",
+              "CONCEPT_ID": 19107338,
+              "CONCEPT_NAME": "Bendroflumethiazide 2.5 MG / Potassium Chloride 630 MG Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "806384",
+              "CONCEPT_ID": 19132034,
+              "CONCEPT_NAME": "Calcium Chloride 0.002 MEQ/ML / Glucose 0.92 MG/ML / Glutathione 0.184 MG/ML / Magnesium Chloride 0.002 MEQ/ML / Potassium Chloride 0.005 MEQ/ML / Sodium Bicarbonate 0.025 MEQ/ML / Sodium Chloride 0.133 MEQ/ML / Sodium Phosphate, Dibasic 0.42 MG/ML Ophtha",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "806392",
+              "CONCEPT_ID": 19132040,
+              "CONCEPT_NAME": "Calcium Chloride 0.004 MEQ/ML / Magnesium Chloride 0.003 MEQ/ML / Potassium Chloride 0.01 MEQ/ML / Sodium Acetate 0.0475 MEQ/ML / Sodium Chloride 0.109 MEQ/ML / sodium citrate 0.012 MEQ/ML Ophthalmic Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "806413",
+              "CONCEPT_ID": 19132044,
+              "CONCEPT_NAME": "Glucose 35 MG/ML / Potassium Chloride 0.027 MEQ/ML / Sodium Chloride 0.026 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "434315",
+              "CONCEPT_ID": 19108097,
+              "CONCEPT_NAME": "Potassium Chloride 13.4 MEQ Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1302195",
+              "CONCEPT_ID": 42873523,
+              "CONCEPT_NAME": "Potassium Chloride 1.33 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "891487",
+              "CONCEPT_ID": 40170127,
+              "CONCEPT_NAME": "Potassium Chloride 0.0833 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "891453",
+              "CONCEPT_ID": 40170135,
+              "CONCEPT_NAME": "Potassium Chloride 0.167 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "892218",
+              "CONCEPT_ID": 40170131,
+              "CONCEPT_NAME": "Potassium Chloride 0.125 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "107108",
+              "CONCEPT_ID": 19009605,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.02 MMOL/ML / Sodium Chloride 0.0769 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "831398",
+              "CONCEPT_ID": 962938,
+              "CONCEPT_NAME": "Alanine 3.48 MG/ML / Arginine 3.56 MG/ML / Aspartate 2.45 MG/ML / Calcium Chloride 0.0025 MEQ/ML / Dibasic potassium phosphate 0.015 MEQ/ML / Glucose 250 MG/ML / Glutamate 2.58 MG/ML / Glycine 1.75 MG/ML / Histidine 1.05 MG/ML / Isoleucine 2.31 MG/ML / Le",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "831414",
+              "CONCEPT_ID": 962939,
+              "CONCEPT_NAME": "Alanine 4.22 MG/ML / Arginine 4.32 MG/ML / Aspartate 2.98 MG/ML / Calcium Chloride 0.0025 MEQ/ML / Dibasic potassium phosphate 0.015 MEQ/ML / Glucose 250 MG/ML / Glutamate 3.14 MG/ML / Glycine 2.12 MG/ML / Histidine 1.28 MG/ML / Isoleucine 2.8 MG/ML / Leu",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1090845",
+              "CONCEPT_ID": 40236019,
+              "CONCEPT_NAME": "calcium phosphate 0.132 MEQ / magnesium carbonate 0.107 MEQ / Potassium Chloride 0.537 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1192782",
+              "CONCEPT_ID": 40244209,
+              "CONCEPT_NAME": "Potassium Chloride 0.08 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312491",
+              "CONCEPT_ID": 19092405,
+              "CONCEPT_NAME": "Lysine 913 MG / potassium bicarbonate 5 MEQ / Potassium Chloride 15 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312519",
+              "CONCEPT_ID": 19059589,
+              "CONCEPT_NAME": "Potassium Chloride 0.22 MEQ/ML / Potassium gluconate 1.11 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "244036",
+              "CONCEPT_ID": 19059215,
+              "CONCEPT_NAME": "Potassium Chloride 150 MG/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "244030",
+              "CONCEPT_ID": 19059212,
+              "CONCEPT_NAME": "Potassium Chloride 13.4 MEQ Delayed Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "244033",
+              "CONCEPT_ID": 19059213,
+              "CONCEPT_NAME": "Potassium Chloride 50 MG/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "244040",
+              "CONCEPT_ID": 19059218,
+              "CONCEPT_NAME": "Potassium Chloride 3 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "244038",
+              "CONCEPT_ID": 19059216,
+              "CONCEPT_NAME": "Potassium Chloride 1.3 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "244039",
+              "CONCEPT_ID": 19059217,
+              "CONCEPT_NAME": "Potassium Chloride 2.4 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "656694",
+              "CONCEPT_ID": 19124859,
+              "CONCEPT_NAME": "Potassium Chloride 300 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "664701",
+              "CONCEPT_ID": 19124983,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.04 MEQ/ML / Sodium Chloride 0.0564 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "664704",
+              "CONCEPT_ID": 19124986,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.04 MEQ/ML / Sodium Chloride 0.0385 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "664703",
+              "CONCEPT_ID": 19124985,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.02 MEQ/ML / Sodium Chloride 0.0385 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "833092",
+              "CONCEPT_ID": 19133781,
+              "CONCEPT_NAME": "Alanine 3.48 MG/ML / Arginine 3.56 MG/ML / Aspartate 2.45 MG/ML / Glucose 50 MG/ML / Glutamate 2.58 MG/ML / Glycine 1.75 MG/ML / Histidine 1.05 MG/ML / Isoleucine 2.31 MG/ML / Leucine 3.5 MG/ML / Lysine 3.68 MG/ML / Magnesium Chloride 0.00148 MEQ/ML / Met",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "833100",
+              "CONCEPT_ID": 19133784,
+              "CONCEPT_NAME": "Alanine 4.22 MG/ML / Arginine 4.32 MG/ML / Aspartate 2.98 MG/ML / Glucose 100 MG/ML / Glutamate 3.14 MG/ML / Glycine 2.12 MG/ML / Histidine 1.28 MG/ML / Isoleucine 2.8 MG/ML / Leucine 4.25 MG/ML / Lysine 4.46 MG/ML / Magnesium Chloride 0.00148 MEQ/ML / Me",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "830731",
+              "CONCEPT_ID": 19133522,
+              "CONCEPT_NAME": "Alanine 11 MG/ML / Arginine 8.5 MG/ML / Glycine 11 MG/ML / Histidine 2.6 MG/ML / Isoleucine 6.2 MG/ML / Leucine 8.1 MG/ML / Lysine 6.24 MG/ML / Magnesium Chloride 0.00502 MEQ/ML / Methionine 3.4 MG/ML / Phenylalanine 3.8 MG/ML / Potassium Chloride 0.0654",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "831074",
+              "CONCEPT_ID": 19133618,
+              "CONCEPT_NAME": "Alanine 9 MG/ML / Arginine 6.9 MG/ML / Glycine 9 MG/ML / Histidine 2.1 MG/ML / Isoleucine 5.1 MG/ML / Leucine 6.6 MG/ML / Lysine 5.1 MG/ML / Magnesium Chloride 0.005 MEQ/ML / Methionine 2.8 MG/ML / Phenylalanine 3.1 MG/ML / Potassium Chloride 0.065 MEQ/ML",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "309784",
+              "CONCEPT_ID": 19076327,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.027 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "309783",
+              "CONCEPT_ID": 19076326,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.02 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "309782",
+              "CONCEPT_ID": 19076325,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.01 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "309786",
+              "CONCEPT_ID": 19076329,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.04 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "309785",
+              "CONCEPT_ID": 19076328,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.03 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "309762",
+              "CONCEPT_ID": 19076288,
+              "CONCEPT_NAME": "Glucose 100 MG/ML / Potassium Chloride 0.02 MEQ/ML / Sodium Chloride 0.0342 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "831290",
+              "CONCEPT_ID": 19133644,
+              "CONCEPT_NAME": "Alanine 8.44 MG/ML / Arginine 8.65 MG/ML / Aspartate 5.95 MG/ML / Glutamate 6.27 MG/ML / Glycine 4.25 MG/ML / Histidine 2.55 MG/ML / Isoleucine 5.61 MG/ML / Leucine 8.5 MG/ML / Lysine 8.93 MG/ML / Magnesium Chloride 0.005 MEQ/ML / Methionine 1.46 MG/ML /",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "242961",
+              "CONCEPT_ID": 1316359,
+              "CONCEPT_NAME": "Bendroflumethiazide 2.5 MG / Potassium Chloride 500 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "245285",
+              "CONCEPT_ID": 1316360,
+              "CONCEPT_NAME": "Bendroflumethiazide 5 MG / Potassium Chloride 500 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1304104",
+              "CONCEPT_ID": 42874090,
+              "CONCEPT_NAME": "Potassium Chloride 0.16 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "701395",
+              "CONCEPT_ID": 19125832,
+              "CONCEPT_NAME": "Potassium Chloride 6.7 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "204519",
+              "CONCEPT_ID": 19027630,
+              "CONCEPT_NAME": "Potassium Chloride 1.5 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "204520",
+              "CONCEPT_ID": 19027661,
+              "CONCEPT_NAME": "Potassium Chloride 2 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "310355",
+              "CONCEPT_ID": 19077403,
+              "CONCEPT_NAME": "Flumethiazide 400 MG / Potassium Chloride 5.4 MEQ / Rauwolfia serpentina (USP) 50 MG Delayed Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "899228",
+              "CONCEPT_ID": 40172081,
+              "CONCEPT_NAME": "calcium lactate 0.0065 MEQ/ML / Glucose 95.6 MG/ML / magnesium citrate 0.002 MEQ/ML / Potassium Chloride 0.0204 MEQ/ML / Sodium Chloride 0.198 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "204882",
+              "CONCEPT_ID": 19028315,
+              "CONCEPT_NAME": "Potassium Chloride 0.208 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1095433",
+              "CONCEPT_ID": 40237714,
+              "CONCEPT_NAME": "Calcium Chloride 0.00136 MEQ/ML / Glucose 0.8 MG/ML / Magnesium Sulfate 0.00122 MEQ/ML / Potassium Chloride 0.00403 MEQ/ML / Sodium Bicarbonate 0.0226 MEQ/ML / Sodium Chloride 0.125 MEQ/ML / sodium phosphate 0.000746 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "860601",
+              "CONCEPT_ID": 40164189,
+              "CONCEPT_NAME": "Calcium Chloride 0.0014 MEQ/ML / Potassium Chloride 0.024 MEQ/ML / Sodium Chloride 0.103 MEQ/ML / Sodium Lactate 0.028 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "204788",
+              "CONCEPT_ID": 19028188,
+              "CONCEPT_NAME": "Magnesium Sulfate 0.2 MG/ML / Monobasic potassium phosphate 63-30 MG/ML / Potassium Chloride 0.4 MG/ML / Sodium Chloride 8 MG/ML / Sodium Phosphate, Dibasic 88-30 MG/ML Irrigation Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "403888",
+              "CONCEPT_ID": 19102507,
+              "CONCEPT_NAME": "Potassium Chloride 15 MEQ Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "403890",
+              "CONCEPT_ID": 19102509,
+              "CONCEPT_NAME": "Potassium Chloride 0.02 MEQ/ML / Sodium Chloride 0.0769 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "251372",
+              "CONCEPT_ID": 956950,
+              "CONCEPT_NAME": "Furosemide 20 MG / Potassium Chloride 750 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "251373",
+              "CONCEPT_ID": 956951,
+              "CONCEPT_NAME": "Furosemide 40 MG / Potassium Chloride 750 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "847630",
+              "CONCEPT_ID": 19135374,
+              "CONCEPT_NAME": "Calcium Chloride 0.0014 MEQ/ML / Potassium Chloride 0.004 MEQ/ML / Sodium Chloride 0.103 MEQ/ML / Sodium Lactate 0.028 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "847620",
+              "CONCEPT_ID": 19135372,
+              "CONCEPT_NAME": "Calcium Chloride 0.001 MEQ/ML / Glucose 25 MG/ML / Potassium Chloride 0.002 MEQ/ML / Sodium Chloride 0.074 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "847704",
+              "CONCEPT_ID": 19135384,
+              "CONCEPT_NAME": "Potassium Chloride 0.027 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "205317",
+              "CONCEPT_ID": 19028940,
+              "CONCEPT_NAME": "Calcium Chloride 0.3 MG/ML / Potassium Chloride 0.3 MG/ML / Sodium Chloride 8.6 MG/ML Irrigation Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "431611",
+              "CONCEPT_ID": 957208,
+              "CONCEPT_NAME": "Furosemide 20 MG / Potassium Chloride 750 MG Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "89904",
+              "CONCEPT_ID": 19135831,
+              "CONCEPT_NAME": "calcium chloride, dihydration 0.2 MG/ML / Potassium Chloride 0.3 MG/ML / Sodium Chloride 6 MG/ML / Sodium Lactate 3.1 MG/ML Irrigation Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "406575",
+              "CONCEPT_ID": 19103153,
+              "CONCEPT_NAME": "Potassium Chloride 1125 MG Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "283156",
+              "CONCEPT_ID": 19070421,
+              "CONCEPT_NAME": "Calcium Carbonate 18 MG / Potassium Chloride 15 MG / Sodium Chloride 220 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1537046",
+              "CONCEPT_ID": 44818364,
+              "CONCEPT_NAME": "Potassium Chloride 20 MEQ Effervescent Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "858265",
+              "CONCEPT_ID": 40165211,
+              "CONCEPT_NAME": "Potassium Chloride 0.03 MEQ/ML / Sodium Chloride 0.154 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "730600",
+              "CONCEPT_ID": 19127401,
+              "CONCEPT_NAME": "Calcium Chloride 0.004 MEQ/ML / Potassium Chloride 0.004 MEQ/ML / Sodium Chloride 0.147 MEQ/ML Irrigation Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "249704",
+              "CONCEPT_ID": 19061829,
+              "CONCEPT_NAME": "Bumetanide 0.5 MG / Potassium Chloride 573 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1536451",
+              "CONCEPT_ID": 44818280,
+              "CONCEPT_NAME": "Potassium Chloride 50 MEQ Effervescent Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1536449",
+              "CONCEPT_ID": 44818279,
+              "CONCEPT_NAME": "Potassium Chloride 500 MG Effervescent Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1536434",
+              "CONCEPT_ID": 44818276,
+              "CONCEPT_NAME": "Potassium Chloride 25 MEQ Effervescent Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "250040",
+              "CONCEPT_ID": 19061980,
+              "CONCEPT_NAME": "Hydrochlorothiazide 50 MG / Potassium Chloride 300 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "211565",
+              "CONCEPT_ID": 19046200,
+              "CONCEPT_NAME": "Glucose 50 MG/ML / Potassium Chloride 0.7 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "410958",
+              "CONCEPT_ID": 19103561,
+              "CONCEPT_NAME": "Potassium Chloride 8 MEQ Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1547445",
+              "CONCEPT_ID": 45775941,
+              "CONCEPT_NAME": "calcium acetate 22 MG/ML / magnesium acetate 43 MG/ML / Potassium Acetate 34.5 MG/ML / Potassium Chloride 125 MG/ML / Sodium Acetate 135 MG/ML / Sodium gluconate 55 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "311088",
+              "CONCEPT_ID": 19078670,
+              "CONCEPT_NAME": "Potassium Chloride 0.04 MEQ/ML / Sodium Chloride 0.0769 MEQ/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "283206",
+              "CONCEPT_ID": 19070488,
+              "CONCEPT_NAME": "Potassium Chloride 50 MG / Sodium Chloride 180 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "283276",
+              "CONCEPT_ID": 19070580,
+              "CONCEPT_NAME": "calcium phosphate 3.8 MG / magnesium carbonate 4.2 MG / Potassium Chloride 21 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "343050",
+              "CONCEPT_ID": 19095156,
+              "CONCEPT_NAME": "Potassium Chloride 20 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "430430",
+              "CONCEPT_ID": 19107095,
+              "CONCEPT_NAME": "Iodine 0.15 MG / Potassium gluconate 75 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "430425",
+              "CONCEPT_ID": 19107093,
+              "CONCEPT_NAME": "Potassium gluconate 99 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "237393",
+              "CONCEPT_ID": 19059583,
+              "CONCEPT_NAME": "Potassium gluconate 2 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "434506",
+              "CONCEPT_ID": 19108179,
+              "CONCEPT_NAME": "Potassium gluconate 0.24 MG Sublingual Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "259645",
+              "CONCEPT_ID": 19066704,
+              "CONCEPT_NAME": "Potassium gluconate 2.3 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "434507",
+              "CONCEPT_ID": 19108180,
+              "CONCEPT_NAME": "Potassium gluconate 0.0498 MG Sublingual Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "318211",
+              "CONCEPT_ID": 19059618,
+              "CONCEPT_NAME": "Potassium gluconate 6.66 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "427696",
+              "CONCEPT_ID": 1387667,
+              "CONCEPT_NAME": "Folic Acid 0.4 MG / Potassium gluconate 650 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "247667",
+              "CONCEPT_ID": 19059586,
+              "CONCEPT_NAME": "Potassium gluconate 2.5 MEQ Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312535",
+              "CONCEPT_ID": 19059611,
+              "CONCEPT_NAME": "Potassium gluconate 1.33 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312536",
+              "CONCEPT_ID": 19059612,
+              "CONCEPT_NAME": "Potassium gluconate 5 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "315184",
+              "CONCEPT_ID": 19059613,
+              "CONCEPT_NAME": "Potassium gluconate 2.2 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "312532",
+              "CONCEPT_ID": 976576,
+              "CONCEPT_NAME": "potassium citrate 0.333 MEQ/ML / Potassium gluconate 1 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "892235",
+              "CONCEPT_ID": 40170164,
+              "CONCEPT_NAME": "Potassium gluconate 0.167 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "422616",
+              "CONCEPT_ID": 19105791,
+              "CONCEPT_NAME": "Potassium gluconate 312 MG/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "240060",
+              "CONCEPT_ID": 19057662,
+              "CONCEPT_NAME": "Potassium gluconate 2.5 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "434316",
+              "CONCEPT_ID": 19059650,
+              "CONCEPT_NAME": "Potassium gluconate 100 MG Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "756338",
+              "CONCEPT_ID": 19059673,
+              "CONCEPT_NAME": "Potassium gluconate 4 MEQ/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "429733",
+              "CONCEPT_ID": 19106818,
+              "CONCEPT_NAME": "Potassium gluconate 92 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "429732",
+              "CONCEPT_ID": 19106817,
+              "CONCEPT_NAME": "Potassium gluconate 50 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1249528",
+              "CONCEPT_ID": 42708902,
+              "CONCEPT_NAME": "Potassium gluconate 2.13 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "315185",
+              "CONCEPT_ID": 19080821,
+              "CONCEPT_NAME": "Potassium gluconate 2.6 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1248204",
+              "CONCEPT_ID": 42708781,
+              "CONCEPT_NAME": "Potassium gluconate 2.07 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1248191",
+              "CONCEPT_ID": 42708774,
+              "CONCEPT_NAME": "Potassium gluconate 4.27 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1248226",
+              "CONCEPT_ID": 42708795,
+              "CONCEPT_NAME": "Potassium gluconate 2.43 MEQ Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1248221",
+              "CONCEPT_ID": 42708792,
+              "CONCEPT_NAME": "Potassium gluconate 2.13 MEQ / Vitamin B6 25 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1422900",
+              "CONCEPT_ID": 43526944,
+              "CONCEPT_NAME": "Potassium gluconate 0.00308 MEQ/MG Oral Powder",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1248210",
+              "CONCEPT_ID": 42708785,
+              "CONCEPT_NAME": "Potassium gluconate 2.35 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1248231",
+              "CONCEPT_ID": 42708800,
+              "CONCEPT_NAME": "Potassium gluconate 2.5 MEQ Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1248239",
+              "CONCEPT_ID": 42708806,
+              "CONCEPT_NAME": "Potassium gluconate 2.65 MEQ Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "756151",
+              "CONCEPT_ID": 19129044,
+              "CONCEPT_NAME": "Potassium gluconate 150 MG/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "name": "aceis_and_arbs_ingredients",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "1091643",
+              "CONCEPT_ID": 40235485,
+              "CONCEPT_NAME": "azilsartan",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "18867",
+              "CONCEPT_ID": 1335471,
+              "CONCEPT_NAME": "benazepril",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "214354",
+              "CONCEPT_ID": 1351557,
+              "CONCEPT_NAME": "candesartan",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "1998",
+              "CONCEPT_ID": 1340128,
+              "CONCEPT_NAME": "Captopril",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "3827",
+              "CONCEPT_ID": 1341927,
+              "CONCEPT_NAME": "Enalapril",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "83515",
+              "CONCEPT_ID": 1346686,
+              "CONCEPT_NAME": "eprosartan",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "50166",
+              "CONCEPT_ID": 1363749,
+              "CONCEPT_NAME": "Fosinopril",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "83818",
+              "CONCEPT_ID": 1347384,
+              "CONCEPT_NAME": "irbesartan",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "29046",
+              "CONCEPT_ID": 1308216,
+              "CONCEPT_NAME": "Lisinopril",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "30131",
+              "CONCEPT_ID": 1310756,
+              "CONCEPT_NAME": "moexipril",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "321064",
+              "CONCEPT_ID": 40226742,
+              "CONCEPT_NAME": "olmesartan",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "54552",
+              "CONCEPT_ID": 1373225,
+              "CONCEPT_NAME": "Perindopril",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "35208",
+              "CONCEPT_ID": 1331235,
+              "CONCEPT_NAME": "quinapril",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "35296",
+              "CONCEPT_ID": 1334456,
+              "CONCEPT_NAME": "Ramipril",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "73494",
+              "CONCEPT_ID": 1317640,
+              "CONCEPT_NAME": "telmisartan",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "38454",
+              "CONCEPT_ID": 1342439,
+              "CONCEPT_NAME": "trandolapril",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "69749",
+              "CONCEPT_ID": 1308842,
+              "CONCEPT_NAME": "valsartan",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "name": "triamterenes",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "104245",
+              "CONCEPT_ID": 19003579,
+              "CONCEPT_NAME": "benzthiazide 25 MG / Triamterene 50 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "104246",
+              "CONCEPT_ID": 19003580,
+              "CONCEPT_NAME": "Chlorthalidone 25 MG / Triamterene 50 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "104248",
+              "CONCEPT_ID": 19003601,
+              "CONCEPT_NAME": "Chlorthalidone 50 MG / Triamterene 50 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1233787",
+              "CONCEPT_ID": 42707385,
+              "CONCEPT_NAME": "Clonidine Hydrochloride 0.15 MG / Hydrochlorothiazide 5 MG / Triamterene 10 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "428292",
+              "CONCEPT_ID": 19106363,
+              "CONCEPT_NAME": "cyclothiazide 3 MG / Triamterene 150 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "429934",
+              "CONCEPT_ID": 19106899,
+              "CONCEPT_NAME": "dehydrosanol 10 MG / Triamterene 20 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "409813",
+              "CONCEPT_ID": 19103283,
+              "CONCEPT_NAME": "dehydrosanol 25 MG / Triamterene 50 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "429933",
+              "CONCEPT_ID": 19106898,
+              "CONCEPT_NAME": "dehydrosanol 25 MG / Triamterene 50 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "429932",
+              "CONCEPT_ID": 19106897,
+              "CONCEPT_NAME": "dehydrosanol 5 MG / Triamterene 10 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "412043",
+              "CONCEPT_ID": 19103932,
+              "CONCEPT_NAME": "Furosemide 25 MG / Triamterene 15 MG Extended Release Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "250708",
+              "CONCEPT_ID": 19063479,
+              "CONCEPT_NAME": "Furosemide 40 MG / Triamterene 50 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "430625",
+              "CONCEPT_ID": 19107172,
+              "CONCEPT_NAME": "Furosemide 50 MG / Triamterene 20 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "412042",
+              "CONCEPT_ID": 19103931,
+              "CONCEPT_NAME": "Furosemide 50 MG / Triamterene 30 MG Extended Release Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "428603",
+              "CONCEPT_ID": 19106456,
+              "CONCEPT_NAME": "Hydrochlorothiazide 12.5 MG / Triamterene 25 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "198316",
+              "CONCEPT_ID": 904549,
+              "CONCEPT_NAME": "Hydrochlorothiazide 25 MG / Triamterene 37.5 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "310812",
+              "CONCEPT_ID": 19078140,
+              "CONCEPT_NAME": "Hydrochlorothiazide 25 MG / Triamterene 37.5 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "198314",
+              "CONCEPT_ID": 904547,
+              "CONCEPT_NAME": "Hydrochlorothiazide 25 MG / Triamterene 50 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "314029",
+              "CONCEPT_ID": 19080037,
+              "CONCEPT_NAME": "Hydrochlorothiazide 25 MG / Triamterene 50 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "432769",
+              "CONCEPT_ID": 19107614,
+              "CONCEPT_NAME": "Hydrochlorothiazide 25 MG / Triamterene 50 MG / Verapamil 160 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "198315",
+              "CONCEPT_ID": 904548,
+              "CONCEPT_NAME": "Hydrochlorothiazide 50 MG / Triamterene 50 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "310817",
+              "CONCEPT_ID": 19078165,
+              "CONCEPT_NAME": "Hydrochlorothiazide 50 MG / Triamterene 75 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "310818",
+              "CONCEPT_ID": 19078166,
+              "CONCEPT_NAME": "Hydrochlorothiazide 50 MG / Triamterene 75 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "428210",
+              "CONCEPT_ID": 19106340,
+              "CONCEPT_NAME": "Methyclothiazide 5 MG / Triamterene 150 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "427727",
+              "CONCEPT_ID": 19106274,
+              "CONCEPT_NAME": "Metolazone 2.5 MG / Triamterene 50 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "198312",
+              "CONCEPT_ID": 904545,
+              "CONCEPT_NAME": "Triamterene 100 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "245284",
+              "CONCEPT_ID": 904584,
+              "CONCEPT_NAME": "Triamterene 100 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "432676",
+              "CONCEPT_ID": 19107547,
+              "CONCEPT_NAME": "Triamterene 15 MG / Xipamide 5 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "432677",
+              "CONCEPT_ID": 19107548,
+              "CONCEPT_NAME": "Triamterene 30 MG / Xipamide 10 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "198313",
+              "CONCEPT_ID": 904546,
+              "CONCEPT_NAME": "Triamterene 50 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "245283",
+              "CONCEPT_ID": 904583,
+              "CONCEPT_NAME": "Triamterene 50 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "name": "potassium_measurements",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Lab Test",
+              "CONCEPT_CODE": "2823-3",
+              "CONCEPT_ID": 3023103,
+              "CONCEPT_NAME": "Potassium serum/plasma",
+              "DOMAIN_ID": "Measurement",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "LOINC"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "name": "creatinine_clearance_measurements",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Lab Test",
+              "CONCEPT_CODE": "2160-0",
+              "CONCEPT_ID": 3016723,
+              "CONCEPT_NAME": "Creatinine serum/plasma",
+              "DOMAIN_ID": "Measurement",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "LOINC"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "PrimaryCriteria": {
+    "CriteriaList": [
+      {
+        "DrugEra": {
+          "CorrelatedCriteria": {
+            "Type": "ALL",
+            "CriteriaList": [
+              {
+                "Criteria": {
+                  "DrugEra": {
+                    "CodesetId": 0
+                  }
+                },
+                "StartWindow": {
+                  "Start": {
+                    "Days": "30",
+                    "Coeff": -1
+                  },
+                  "End": {
+                    "Days": "30",
+                    "Coeff": 1
+                  }
+                },
+                "Occurrence": {
+                  "Type": 2,
+                  "Count": 1
+                }
+              }
+            ],
+            "DemographicCriteriaList": [],
+            "Groups": []
+          },
+          "CodesetId": 1
+        }
+      }
+    ],
+    "ObservationWindow": {
+      "PriorDays": 0,
+      "PostDays": 0
+    },
+    "PrimaryCriteriaLimit": {
+      "Type": "All"
+    }
+  },
+  "QualifiedLimit": {
+    "Type": "First"
+  },
+  "ExpressionLimit": {
+    "Type": "First"
+  },
+  "InclusionRules": [
+    {
+      "name": "Serum Potassium Check - Measured within 7 days?",
+      "description": "This rule checks if the patient has had their serum potassium measured within 7 days (ideally would be 2 days). If a patient fails to meet this rule, an alert is fired.",
+      "expression": {
+        "Type": "ALL",
+        "CriteriaList": [
+          {
+            "Criteria": {
+              "Measurement": {
+                "CodesetId": 8
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Days": "7",
+                "Coeff": -1
+              },
+              "End": {
+                "Days": "0",
+                "Coeff": 1
+              }
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          }
+        ],
+        "DemographicCriteriaList": [],
+        "Groups": []
+      }
+    },
+    {
+      "name": "Serum Potassium Check - Above threshold value?",
+      "description": "This rule checks if the patient had serum potassium above the threshold value of 4.5 mEq/L within the past 7 days. If yes, an alert is fired.",
+      "expression": {
+        "Type": "ALL",
+        "CriteriaList": [
+          {
+            "Criteria": {
+              "Measurement": {
+                "CodesetId": 8,
+                "ValueAsNumber": {
+                  "Value": 4.5,
+                  "Op": "gt"
+                },
+                "Unit": [
+                  {
+                    "CONCEPT_CODE": "10*-3.eq/L",
+                    "CONCEPT_ID": 9557,
+                    "CONCEPT_NAME": "milliequivalent per liter",
+                    "DOMAIN_ID": "Unit",
+                    "VOCABULARY_ID": "UCUM"
+                  }
+                ]
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Days": "7",
+                "Coeff": -1
+              },
+              "End": {
+                "Days": "0",
+                "Coeff": 1
+              }
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          }
+        ],
+        "DemographicCriteriaList": [],
+        "Groups": []
+      }
+    },
+    {
+      "name": "Drug Risk Factors",
+      "description": "This rule checks if the patient was on any risk-enhancing medications, which in this case includes: ace inhibitors and angiotensin II receptor blockers. If yes, an alert is fired.",
+      "expression": {
+        "Type": "ALL",
+        "CriteriaList": [
+          {
+            "Criteria": {
+              "DrugEra": {
+                "CodesetId": 4
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Days": "30",
+                "Coeff": -1
+              },
+              "End": {
+                "Days": "30",
+                "Coeff": 1
+              }
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          }
+        ],
+        "DemographicCriteriaList": [],
+        "Groups": []
+      }
+    },
+    {
+      "name": "Creatinine Clearance Check",
+      "description": "This rule checks if the patient had low creatinine clearance. If yes, an alert is fired.",
+      "expression": {
+        "Type": "ALL",
+        "CriteriaList": [
+          {
+            "Criteria": {
+              "Measurement": {
+                "CodesetId": 9,
+                "ValueAsNumber": {
+                  "Value": 30,
+                  "Op": "lt"
+                },
+                "Unit": [
+                  {
+                    "CONCEPT_CODE": "mL/min",
+                    "CONCEPT_ID": 8795,
+                    "CONCEPT_NAME": "milliliter per minute",
+                    "DOMAIN_ID": "Unit",
+                    "VOCABULARY_ID": "UCUM"
+                  }
+                ]
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Coeff": -1
+              },
+              "End": {
+                "Days": "0",
+                "Coeff": 1
+              }
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          }
+        ],
+        "DemographicCriteriaList": [],
+        "Groups": []
+      }
+    },
+    {
+      "name": "K+ Dosage Check",
+      "description": "This rule checks if the patient's dosage of K (potassium) was too high. If yes, an alert is fired.",
+      "expression": {
+        "Type": "ALL",
+        "CriteriaList": [
+          {
+            "Criteria": {
+              "DrugExposure": {
+                "CodesetId": 2,
+                "EffectiveDrugDose": {
+                  "Value": 77,
+                  "Op": "gt"
+                },
+                "DoseUnit": [
+                  {
+                    "CONCEPT_CODE": "258863007",
+                    "CONCEPT_ID": 4117638,
+                    "CONCEPT_NAME": "mEq/day",
+                    "DOMAIN_ID": "Unit",
+                    "VOCABULARY_ID": "SNOMED"
+                  }
+                ]
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Days": "30",
+                "Coeff": -1
+              },
+              "End": {
+                "Days": "30",
+                "Coeff": 1
+              }
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          }
+        ],
+        "DemographicCriteriaList": [],
+        "Groups": []
+      }
+    },
+    {
+      "name": "Triamterene Dosage Check",
+      "description": "This rule checks if the patient's dosage of triamterene was too high. If yes, an alert is fired.",
+      "expression": {
+        "Type": "ALL",
+        "CriteriaList": [
+          {
+            "Criteria": {
+              "DrugExposure": {
+                "CodesetId": 7,
+                "EffectiveDrugDose": {
+                  "Value": 37.5,
+                  "Op": "gt"
+                },
+                "DoseUnit": [
+                  {
+                    "CONCEPT_CODE": "258835005",
+                    "CONCEPT_ID": 4120731,
+                    "CONCEPT_NAME": "mg/day",
+                    "DOMAIN_ID": "Unit",
+                    "VOCABULARY_ID": "SNOMED"
+                  }
+                ]
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Days": "30",
+                "Coeff": -1
+              },
+              "End": {
+                "Days": "30",
+                "Coeff": 1
+              }
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          }
+        ],
+        "DemographicCriteriaList": [],
+        "Groups": []
+      }
+    }
+  ],
+  "CensoringCriteria": []
+}

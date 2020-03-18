@@ -1,0 +1,260 @@
+// Warfarin - NSAIDs DDI Alerting Rule
+// Written By: Sam Rosko
+// Last Update: 2017-01-16
+// Status: Completed
+// Expected Output: 5, 1 PPI alert, 1 age, 1 condition, 4 alerts
+
+package com.sample
+
+//list any import classes here.
+import function com.sample.DRLLogger.*;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Calendar;
+import java.lang.String;
+
+import com.sample.model.ConceptSetItem;
+import com.sample.model.RHSState;
+
+import edu.pitt.dbmi.ohdsiv5.db.ConditionEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.DrugStrength;
+import edu.pitt.dbmi.ohdsiv5.db.ExtendedDrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.Measurement;
+import edu.pitt.dbmi.ohdsiv5.db.Person;
+
+
+/////////// 
+// declare any global variables here
+/////////// 
+global java.lang.String currentDateStr;
+global org.hibernate.Session hibernateSession;
+global java.util.Calendar currentDate;
+global java.util.Calendar within48hours;
+global java.util.Calendar within28days;
+
+
+/////////// 
+// declare any types here
+/////////// 
+
+
+/////////// 
+// Rules
+/////////// 
+
+// The first rule is a basic check to identify all patients on any dosage or form of warfarin and an NSAID at the same time
+rule "WARFARIN - NSAID -- NO FILTER" // Concept sets exclude topical/opthalmic NSAIDs
+    when
+      // First, we look for patients exposed to warfarin on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Warfarins Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to an NSAID on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "NSAIDs Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both warfarin and the NSAID
+      $clinDrugConcept3 : ConceptSetItem(csName == "Warfarins")
+      $dexp1 : ExtendedDrugExposure(personId == $de1.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept3.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      $clinDrugConcept4 : ConceptSetItem(csName == "NSAIDs")
+      $dexp2 : ExtendedDrugExposure(personId == $de1.getPersonId() && drugExposureStartDate == $de2.getDrugEraStartDate() && drugConceptId == $clinDrugConcept4.getConceptId() && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then	
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsCur = new RHSState("basic concomitant exposure of warfarin and NSAID", "yes", $person);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; Anticoagulant: %s; NSAID: %s.", 
+          $de1.getPersonId(), 
+          $clinDrugConcept3.getConceptId(), 
+          $clinDrugConcept4.getConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tWarfarin - NSAID interaction\tbasic concomitant exposure", currentDateStr, $person.getPersonId());
+      System.out.println(s);
+end
+
+// The second rule identifies patients that met the first rule and checks if any are on any dosage/form of a PPI or misoprostol
+// If any are found, an alert is fired for that patient... this is the first of five leaf nodes
+rule "WARFARIN - NSAID -- PPI or misoprostol"
+    when
+        // This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of warfarin and NSAID" && state == "yes", $person : person)        
+        // Next we look for patients exposed to a PPI/misoprostol on the ingredient level
+        $clinDrugConcept1 : ConceptSetItem(csName == "PPIs and Misoprostols Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())
+	// Next, we identify the specific drug exposures for the PPI/misoprostol
+        $clinDrugConcept2 : ConceptSetItem(csName == "PPIs and Misoprostols")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())                
+    then	
+	// Creates a new RHS state that is used by other rules to double check that a patient did not reach at this leaf node
+        RHSState rhsNN = new RHSState("proton pump inhibitor or misoprostol", "yes", $person);
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node  
+        String s = String.format(
+          "Warfarin - NSAID interaction for patient: %s.\n\tClinical implication: Possible increased risk of UGIB or other bleeding\n\tMitigating factor: Presence of PPI or misoprostol (%s).\n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation:  Proton pump inhibitors and misoprostol may reduce the risk of UGIB in patients receiving NSAIDs and warfarin.", 
+          $de1.getPersonId(), 
+          $dexp1.getDrugConceptId());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tWarfarin - NSAID interaction\tproton pump inhibitor or misoprostol", currentDateStr, $person.getPersonId());
+	System.out.println(s);
+end
+
+// The third rule is an intermediate node that checks patients for a specific risk factor...
+// In this case, the risk factor is age, and it is checked to insure the patient is under 65
+rule "WARFARIN - NSAID -- no PPI or misoprostol - YES AGE"
+    when
+        // This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs : RHSState(stateName == "basic concomitant exposure of warfarin and NSAID" && state == "yes", $person : person)  
+	// This checks to make sure that the patient did not meet the PPI/misoprostol rule, if they did, they already had an alert fired and should not be involved here
+        not ($rhs2 : RHSState(stateName == "proton pump inhibitor or misoprostol" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+        // This takes the same person object used in the previous two lines and checks that the age of that patient is less than 65 
+        Person(personId == $person.getPersonId() && yearOfBirth <= 1951)
+    then	
+	// This is an intermediate state that can be produced by either this rule or the next rule... it is not specific to type of risk
+        RHSState rhsNN = new RHSState("no PPI or misoprostol - yes age or conditions", "yes", $person);
+        insertLogical(rhsNN);
+        // Nothing hugely important to output here, just an update to show how many patients were at risk due to age
+        String s = String.format(
+            "Matched drug exposures for the patient with AGE as a risk factor - Patient ID: %s; Age: %s, which exceeds the threshold value of 65.", 
+            $person.getPersonId(),
+	    (currentDate.get(Calendar.YEAR) - $person.getYearOfBirth()));
+        System.out.println(s);
+end
+
+// The fourth rule is another intermediate node that looks for a different risk
+// This time, the risk is a group of conditions... any that indicate a history of GI bleeds or ulcers
+rule "WARFARIN - NSAID -- no PPI or misoprostol - YES CONDITIONS"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs1 : RHSState(stateName == "basic concomitant exposure of warfarin and NSAID" && state == "yes", $person : person)
+	// This checks to make sure that the patient did not meet the PPI/misoprostol rule, if they did, they already had an alert fired and should not be involved here
+        not ($rhs2 : RHSState(stateName == "proton pump inhibitor or misoprostol" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+	// Check if the patient that met the two previous statements has a history of bleeds
+	$condConcept1 : ConceptSetItem(csName == "History of GI Bleeds")	
+        $ce1 : ConditionEra(PersonId == $person.getPersonId() && conditionConceptId == $condConcept1.getConceptId())
+    then	
+	// This is an intermediate state that can be produced by either this rule or the next rule... it is not specific to type of risk
+        RHSState rhsNN = new RHSState("no PPI or misoprostol - yes age or conditions", "yes", $person);
+        insertLogical(rhsNN);
+        // Nothing hugely important to output here, just an update to show how many patients were at risk due to conditions
+        String s = String.format(
+            "Matched drug exposures for the patient with a CONDITION as a risk factor - Patient ID: %s; Condition: %s.", 
+            $person.getPersonId(),
+	    $ce1.getConditionConceptId());
+        System.out.println(s);
+end
+
+// The fifth rule is the second of five leaf nodes
+// This rule fires when a patient is found that is not on PPIs or misoprostol, doesn't have risk factors of age or condition, but does have a risk factor of other drugs
+rule "WARFARIN - NSAID -- no PPI or misoprostol - NO age or conditions - YES other risk drugs"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs1 : RHSState(stateName == "basic concomitant exposure of warfarin and NSAID" && state == "yes", $person : person)
+	// This checks to make sure that the patient did not meet the PPI/misoprostol rule, if they did, they already had an alert fired and should not be involved here
+        not (RHSState(stateName == "proton pump inhibitor or misoprostol" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+	// This checks to make sure the patient did not have age or condition risk factors
+        not (RHSState(stateName == "no PPI or misoprostol - yes age or conditions" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+        // This checks if the patient was exposed to a risk-enhancing drug (corticosteroids/aldosterone antagonists) on the ingredient level
+        $clinDrugConcept1 : ConceptSetItem(csName == "Corticosteroids Ingredients" || csName == "Aldosterone Antagonists Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())
+        // This checks if the patient was exposed to a risk-enhancing drug on the clinical drug level
+        $clinDrugConcept2 : ConceptSetItem(csName == "Systemic Corticosteroids" || csName == "Aldosterone Antagonists")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())           
+    then
+	// This is a RHS state for the leaf node used mainly to fire the "no risks" alert (see the eighth rule)
+        RHSState rhsNN = new RHSState("no PPI or misoprostol - NO age or conditions - YES other risk drugs", "yes", $person);
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node
+        String s = String.format(
+            "Warfarin - NSAID interaction for patient: %s.\n\tClinical implication: Increased risk of UGIB or other bleeding\n\tContextual factor: No age or condition risks but risk increasing drug factor (%s).\n\tRecommendation: Use only if benefit outweighs risk.\n\tExplanation: Both corticosteroids and aldosterone antagonists have been shown to substantially increase the risk of UGIB in patients on NSAIDs, with relative risks of 12.8 and 11 respectively compared to a risk of 4.3 with NSAIDs \talone (Masclee et al. Gastroenterology 2014;147:784-92.)", 
+            $person.getPersonId(), 
+            $dexp1.getDrugConceptId());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tWarfarin - NSAID interaction\tno PPI or misoprostol - NO age or conditions - YES other risk drugs", currentDateStr, $person.getPersonId());
+	System.out.println(s);
+end
+
+// The sixth rule is the third of five leaf nodes
+// This rule fires when a patient is found that is not on PPIs/misoprostol, does have a risk factor of age or conditions, and does have a risk factor of other drugs
+rule "WARFARIN - NSAID -- no PPI or misoprostol - YES age or conditions - YES other risk drugs"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs1 : RHSState(stateName == "basic concomitant exposure of warfarin and NSAID" && state == "yes", $person : person)
+	// This checks to make sure that the patient did not meet the PPI/misoprostol rule, if they did, they already had an alert fired and should not be involved here
+        not (RHSState(stateName == "proton pump inhibitor or misoprostol" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+        // This checks to make sure the patient had age or condition risk factors
+        RHSState(stateName == "no PPI or misoprostol - yes age or conditions" && state == "yes" && person.getPersonId() == $person.getPersonId())
+        // This checks if the patient was exposed to a risk-enhancing drug (corticosteroids/aldosterone antagonists) on the ingredient level
+        $clinDrugConcept1 : ConceptSetItem(csName == "Corticosteroids Ingredients" || csName == "Aldosterone Antagonists Ingredients")
+        $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())
+        // This checks if the patient was exposed to a risk-enhancing drug on the clinical drug level
+        $clinDrugConcept2 : ConceptSetItem(csName == "Systemic Corticosteroids" || csName == "Aldosterone Antagonists")
+        $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() && drugExposureStartDate == $de1.getDrugEraStartDate() && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())        
+    then	
+	// This is a RHS state for the leaf node used mainly to fire the "no risks" alert (see the eighth rule)
+        RHSState rhsNN = new RHSState("no PPI or misoprostol - YES age or conditions - YES other risk drugs", "yes", $person);
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node
+        String s = String.format(
+            "Warfarin - NSAID interaction for patient: %s.\n\tClinical implication: Substantially increased risk of UGIB or other bleeding\n\tContextual factor: Age or condition risks AND risk increasing drug factor (%s).\n\tRecommendation: Use only if benefit outweighs risk.\n\tExplanation: Patients with a history of UGIB or peptic ulcer may have an increased risk of UGIB from this interaction. The extent to which older age is an independent risk factor for UGIB due to these interactions is not firmly \n\testablished, but UGIB in general is known to increase with age. Both corticosteroids and aldosterone antagonists have been shown to substantially increase the risk of UGIB in patients on NSAIDs, with relative risks of 12.8 and \n\t11 respectively compared to a risk of 4.3 with NSAIDs alone (Masclee et al. Gastroenterology 2014;147:784-92.)", 
+            $person.getPersonId(), 
+            $dexp1.getDrugConceptId());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tWarfarin - NSAID interaction\tno PPI or misoprostol - YES age or conditions - YES other risk drugs", currentDateStr, $person.getPersonId());
+	System.out.println(s);
+end
+
+// The seventh rule is the fourth of five leaf nodes
+// This rule fires when a patient is found that is not on PPIs/misoprostol, does have a risk factor of age or condition, but does not have a risk factor of other drugs
+rule "WARFARIN - NSAID -- no PPI or misoprostol - YES age or conditions - NO other risk drugs"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs1 : RHSState(stateName == "basic concomitant exposure of warfarin and NSAID" && state == "yes", $person : person)
+	// This checks to make sure that the patient did not meet the PPI/misoprostol rule, if they did, they already had an alert fired and should not be involved here
+        not (RHSState(stateName == "proton pump inhibitor or misoprostol" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+        // This checks to make sure the patient had age or condition risk factors
+        RHSState(stateName == "no PPI or misoprostol - yes age or conditions" && state == "yes" && person.getPersonId() == $person.getPersonId())
+        // This checks to make sure that the patient did not have other drugs as a risk factor
+        not (RHSState(stateName == "no PPI or misoprostol - YES age or conditions - YES other risk drugs" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+    then	
+	// This is a RHS state for the leaf node used mainly to fire the "no risks" alert (see the eighth rule)
+        RHSState rhsNN = new RHSState("no PPI or misoprostol - YES age or conditions - NO other risk drugs", "yes", $person);
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node
+        String s = String.format(
+            "Warfarin - NSAID interaction for patient: %s.\n\tClinical implication: Increased risk of UGIB or other bleeding\n\tContextual factor: Age or condition risks but NO risk increasing drug factor.\n\tRecommendation: Use only if benefit outweighs risk.\n\tExplanation: Patients with a history of UGIB or peptic ulcer may have an increased risk of UGIB from this interaction. The \n\textent to which older age is an independent risk factor for UGIB due to these interactions is not firmly established, but \n\tUGIB in general is known to increase with age.", 
+            $person.getPersonId());
+        System.out.println(s);
+	// Write a data string out that can be grepped and concatenated into a database table
+	s = String.format("DATA\t%s\t%s\tWarfarin - NSAID interaction\tno PPI or misoprostol - YES age or conditions - NO other risk drugs", currentDateStr, $person.getPersonId());
+	System.out.println(s);
+end
+
+// The eighth rule is the final of five leaf nodes
+// This fires when a patient is identified that is not on a PPI/misoprostol and does not have any of the other risk factors
+rule "WARFARIN - NSAID -- no PPI or misoprostol - NO age or conditions - NO other risk drugs"
+    when
+	// This checks the state of the patients to identify only those who were identified to be on both medications of interest
+        $rhs1 : RHSState(stateName == "basic concomitant exposure of warfarin and NSAID" && state == "yes", $person : person)
+	// This checks to make sure that the patient did not meet the PPI/misoprostol rule, if they did, they already had an alert fired and should not be involved here
+        not (RHSState(stateName == "proton pump inhibitor or misoprostol" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+	// This checks to make sure the patient did not have age or condition risk factors      
+        not (RHSState(stateName == "no PPI or misoprostol - yes age or conditions" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+        // This checks to make sure that the patient did not have other drugs as a risk factor	
+	not (RHSState(stateName == "no PPI or misoprostol - NO age or conditions - YES other risk drugs" && state == "yes" && person.getPersonId() == $person.getPersonId()))     
+    then	
+        RHSState rhsNN = new RHSState("no PPI or misoprostol - NO age or conditions - NO other risk drugs", "yes", $person);
+        insertLogical(rhsNN);
+        // This outputs the recommendations and rationale for the patient because this is a leaf node
+        String s = String.format(
+            "Warfarin - NSAID interaction for patient: %s.\n\tClinical implication: Increased risk of UGIB or other bleeding.\n\tContextual factor: No age, condition, or drug factor risks.\n\tRecommendation: Use only if benefit outweighs risk.", 
+            $person.getPersonId());
+        System.out.println(s);
+	s = String.format("DATA\t%s\t%s\tWarfarin - NSAID interaction\tno PPI or misoprostol - NO age or conditions - NO other risk drugs", currentDateStr, $person.getPersonId());
+	System.out.println(s);
+end

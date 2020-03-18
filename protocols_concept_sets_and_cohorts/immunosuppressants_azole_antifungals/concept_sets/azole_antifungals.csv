@@ -1,0 +1,67 @@
+Drug_Name,OMOP CUI,RxNorm CUI
+Acetic Acid 20 MG/ML / chlorhexidine gluconate 20 MG/ML / Ketoconazole 10 MG/ML Medicated Shampoo,44506652,1439948
+chlorhexidine gluconate 10 MG/ML / Ketoconazole 2.5 MG/ML Medicated Shampoo,44818384,1537189
+chlorhexidine gluconate 10 MG/ML / Ketoconazole 2.5 MG/ML Topical Spray,44818402,1537336
+chlorhexidine gluconate 2 MG/ML / Ketoconazole 2 MG/ML / SALICYLOYL PHYTOSPHINGOSINE 0.2 MG/ML Topical Solution,44816231,1495165
+chlorhexidine gluconate 20 MG/ML / Hydrocortisone 10 MG/ML / Ketoconazole 10 MG/ML Medicated Shampoo,46221360,1648132
+chlorhexidine gluconate 20 MG/ML / Ketoconazole 10 MG/ML / SALICYLOYL PHYTOSPHINGOSINE 0.2 MG/ML Topical Spray,44816239,1495199
+chlorhexidine gluconate 20 MG/ML / Ketoconazole 10 MG/ML / SALICYLOYL PHYTOSPHINGOSINE 0.5 MG/ML Medicated Shampoo,44784991,1484770
+chlorhexidine gluconate 20 MG/ML / Ketoconazole 10 MG/ML Medicated Shampoo,43527187,1424016
+chlorhexidine gluconate 20 MG/ML / Ketoconazole 10 MG/ML Topical Spray,43525663,1371365
+chlorhexidine gluconate 23 MG/ML / Ketoconazole 10 MG/ML Medicated Shampoo,44507804,1482657
+chlorhexidine gluconate 23 MG/ML / Ketoconazole 10 MG/ML Topical Lotion,44507806,1482646
+chlorhexidine gluconate 3 MG/ML / Ketoconazole 3 MG/ML Topical Solution,44784994,1485182
+chloroxylenol 20 MG/ML / Ketoconazole 10 MG/ML Medicated Shampoo,40237001,1091892
+chloroxylenol 3 MG/ML / Ketoconazole 3 MG/ML Medicated Pad,40237004,1092217
+chloroxylenol 3 MG/ML / Ketoconazole 3 MG/ML Topical Solution,40237006,1092209
+chloroxylenol 3 MG/ML / Ketoconazole 3 MG/ML Topical Spray,40237008,1092587
+Fluconazole 10 MG/ML Oral Suspension,19077380,310352
+Fluconazole 100 MG Oral Capsule,19022584,199950
+Fluconazole 100 MG Oral Tablet,1754995,197698
+Fluconazole 150 MG Oral Capsule,1754999,199745
+Fluconazole 150 MG Oral Tablet,1754996,197699
+Fluconazole 2 MG/ML Injectable Solution,1755040,252432
+Fluconazole 200 MG Oral Capsule,1755000,199746
+Fluconazole 200 MG Oral Tablet,19019003,197700
+Fluconazole 200 MG/ML Injectable Solution,19124598,646041
+Fluconazole 4 MG/ML Injectable Solution,40165987,861607
+Fluconazole 40 MG/ML Oral Suspension,19077401,310353
+Fluconazole 5 MG/ML Oral Solution,19128807,755760
+Fluconazole 5 MG/ML Oral Suspension,19105804,422644
+Fluconazole 50 MG Oral Capsule,1755001,199747
+Fluconazole 50 MG Oral Tablet,19019004,197701
+Gentamicin Sulfate (USP) 1 MG/ML / Hydrocortisone 10 MG/ML / Ketoconazole 20 MG/ML Topical Cream,919608,417216
+Hydrocortisone 0.01 MG/MG / Ketoconazole 0.02 MG/MG Topical Gel,19131670,804512
+Itraconazole 10 MG/ML Injectable Solution,19078729,311205
+Itraconazole 10 MG/ML Oral Solution,19096455,348506
+Itraconazole 10 MG/ML Oral Suspension,19078730,311206
+Itraconazole 100 MG Oral Capsule,19078728,311204
+Itraconazole 100 MG Oral Tablet,19106152,427282
+Itraconazole 150 MG Oral Tablet,19106153,427283
+Itraconazole 200 MG Oral Tablet,40184845,992413
+Itraconazole 33.3 MG / secnidazole 167 MG Oral Capsule,19103446,410538
+Ketoconazole 0.005 MG/MG Topical Gel,19104587,415676
+Ketoconazole 0.01 MG/MG Topical Powder,19064105,250989
+Ketoconazole 0.02 MG/MG Topical Gel,985782,647253
+Ketoconazole 0.02 MG/MG Topical Powder,985763,251567
+Ketoconazole 1 MG/ML / phytosphingosine 0.1 MG/ML Topical Solution,44816290,1534846
+Ketoconazole 1 MG/ML Topical Solution,42800866,1297960
+Ketoconazole 10 MG/ML Medicated Shampoo,19058104,240812
+Ketoconazole 20 MG/ML Medicated Shampoo,19008700,106336
+Ketoconazole 20 MG/ML Oral Suspension,19061110,248070
+Ketoconazole 20 MG/ML Topical Cream,19026476,203088
+Ketoconazole 20 MG/ML Topical Foam,19127278,728550
+Ketoconazole 20 MG/ML Topical Lotion,19062689,250402
+Ketoconazole 200 MG / secnidazole 250 MG Oral Tablet,19062539,250337
+Ketoconazole 200 MG Oral Tablet,985711,197853
+Ketoconazole 21 MG/ML Medicated Shampoo,19114622,545021
+Ketoconazole 400 MG Oral Tablet,985762,251566
+Ketoconazole 5 MG/ML Medicated Shampoo,19106046,425918
+posaconazole 100 MG Delayed Release Oral Tablet,44785056,1482908
+posaconazole 18 MG/ML Injectable Solution,44814595,1492043
+posaconazole 200 MG Delayed Release Oral Tablet,44785880,1487912
+posaconazole 40 MG/ML Oral Suspension,19125036,665019
+voriconazole 10 MG/ML Injectable Solution,19098164,351209
+voriconazole 200 MG Oral Tablet,1714278,349434
+voriconazole 40 MG/ML Oral Suspension,1714307,465355
+voriconazole 50 MG Oral Tablet,1714279,349435

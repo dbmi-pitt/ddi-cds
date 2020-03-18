@@ -1,0 +1,25 @@
+Condition_Name,OMOP CUI,SNOMED CUI
+Acute duodenal ulcer with hemorrhage,4027729,12847006
+Acute duodenal ulcer with hemorrhage AND perforation,4336230,86895006
+Acute gastric ulcer with hemorrhage,4231580,89748001
+Acute gastric ulcer with hemorrhage AND perforation,4169592,48974009
+Acute gastrojejunal ulcer with hemorrhage,4274491,63954007
+Acute gastrojejunal ulcer with hemorrhage AND perforation,4217947,81387001
+Acute hemorrhagic gastritis,193249,2367005
+Acute peptic ulcer with hemorrhage,4046500,12274003
+Acute peptic ulcer with hemorrhage AND with perforation but without obstruction,27026,47064007
+Angiodysplasia of intestine,196444,235853006
+Atrophic gastritis,192667,84568007
+Chronic duodenal ulcer with hemorrhage AND with perforation but without obstruction,438796,81142005
+Chronic duodenal ulcer with hemorrhage but without obstruction,436148,62341002
+Chronic gastric ulcer with hemorrhage AND with perforation but without obstruction,196442,74341002
+Chronic gastric ulcer with hemorrhage but without obstruction,197018,76078009
+Chronic gastrojejunal ulcer with hemorrhage,433515,62838000
+Chronic gastrojejunal ulcer with hemorrhage AND with perforation but without obstruction,437326,46523000
+Chronic peptic ulcer with hemorrhage AND with perforation but without obstruction,22665,55746001
+Chronic peptic ulcer with hemorrhage but without obstruction,30770,81518000
+Dieulafoy's vascular malformation,198798,109558001
+Gastric hemorrhage,193250,61401005
+Gastroduodenitis,195306,196731005
+Gastrointestinal hemorrhage,192671,74474003
+Hemorrhagic duodenitis,437027,95531001

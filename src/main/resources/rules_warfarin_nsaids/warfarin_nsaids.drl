@@ -1,0 +1,202 @@
+// warfarin - nsaids DDI alerting rule
+
+package com.sample
+
+//list any import classes here.
+import function com.sample.DRLLogger.*;
+
+import java.util.*;
+import java.lang.String;
+import java.sql.Timestamp;
+
+import com.sample.model.ConceptSetItem;
+import com.sample.model.RHSState;
+
+import edu.pitt.dbmi.ohdsiv5.db.ConditionEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.DrugStrength;
+import edu.pitt.dbmi.ohdsiv5.db.ExtendedDrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.Measurement;
+import edu.pitt.dbmi.ohdsiv5.db.Person;
+
+
+/////////// 
+// declare any global variables here
+/////////// 
+global java.lang.String currentDateStr;
+global java.sql.Timestamp currentDate;
+global java.sql.Timestamp within48hours;
+global java.sql.Timestamp within28days;
+global java.sql.Timestamp plus1day;
+
+/////////// 
+// declare any types here
+/////////// 
+
+
+/////////// 
+// Rules
+/////////// 
+
+// basic check of any dosage or form of Warfarin / NSAIDs at the same time
+rule "WARFARIN - NSAID -- NO FILTER"
+    when
+      // First, we look for patients exposed to warfarin on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Warfarins Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to an NSAID on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "NSAIDs Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both warfarin and the NSAID
+      $clinDrugConcept3 : ConceptSetItem(csName == "Warfarins") 
+      $clinDrugConcept4 : ConceptSetItem(csName == "NSAIDs")
+      $dexp1 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate >= currentDate && drugExposureStartDate < plus1day
+        && drugConceptId == $clinDrugConcept3.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      $dexp2 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && (
+          (drugExposureStartDate >= $dexp1.getDrugExposureStartDate() && drugExposureStartDate <= $dexp1.getDrugExposureEndDate())
+          || (drugExposureEndDate >= $dexp1.getDrugExposureStartDate() && drugExposureEndDate <= $dexp1.getDrugExposureEndDate())
+          || ($dexp1.getDrugExposureStartDate() >= drugExposureStartDate && $dexp1.getDrugExposureStartDate() <= drugExposureEndDate)
+          || ($dexp1.getDrugExposureEndDate() >= drugExposureStartDate && $dexp1.getDrugExposureEndDate() <= drugExposureEndDate)
+        )
+        && drugConceptId != null && drugConceptId == $clinDrugConcept4.getConceptId() 
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsCur = new RHSState("basic concomitant exposure of warfarin and NSAID", "yes", $person, $dexp1, $dexp2);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; Anticoagulant: %s; NSAID: %s;", 
+          $de1.getPersonId(), 
+          $clinDrugConcept3.getConceptId(), 
+          $clinDrugConcept4.getConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tWarfarin - NSAID interaction\tbasic concomitant exposure\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "basic concomitant",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          $dexp1.getLogInfo(),
+          $dexp2.getLogInfo()
+      );
+      System.out.println(s);
+end
+
+rule "WARFARIN - NSAID -- NO FILTER, ALT"
+    when
+      // First, we look for patients exposed to warfarin on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Warfarins Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to an NSAID on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "NSAIDs Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both warfarin and the NSAID
+      $clinDrugConcept3 : ConceptSetItem(csName == "Warfarins") 
+      $clinDrugConcept4 : ConceptSetItem(csName == "NSAIDs")
+      $dexp2 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate >= currentDate && drugExposureStartDate < plus1day
+        && drugConceptId == $clinDrugConcept4.getConceptId() && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      $dexp1 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && (
+          (drugExposureStartDate >= $dexp2.getDrugExposureStartDate() && drugExposureStartDate <= $dexp2.getDrugExposureEndDate())
+          || (drugExposureEndDate >= $dexp2.getDrugExposureStartDate() && drugExposureEndDate <= $dexp2.getDrugExposureEndDate())
+          || ($dexp2.getDrugExposureStartDate() >= drugExposureStartDate && $dexp2.getDrugExposureStartDate() <= drugExposureEndDate)
+          || ($dexp2.getDrugExposureEndDate() >= drugExposureStartDate && $dexp2.getDrugExposureEndDate() <= drugExposureEndDate)
+        )
+        && drugConceptId != null && drugConceptId == $clinDrugConcept3.getConceptId() 
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsCur = new RHSState("basic concomitant exposure of warfarin and NSAID", "yes", $person, $dexp1, $dexp2);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; Anticoagulant: %s; NSAID: %s;", 
+          $de1.getPersonId(), 
+          $clinDrugConcept3.getConceptId(), 
+          $clinDrugConcept4.getConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tWarfarin - NSAID interaction\tbasic concomitant exposure\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "basic concomitant",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          $dexp1.getLogInfo(),
+          $dexp2.getLogInfo()
+      );
+      System.out.println(s);
+end
+
+// leaf node for patient concomitantly exposed to warfarin and NSAID, and also on a PPI or Misoprostol
+rule "WARFARIN - NSAID -- PPI or misoprostol"
+    when
+      // This checks the state of the patients to identify only those who were identified to be on both medications of interest
+      $rhs : RHSState(stateName == "basic concomitant exposure of warfarin and NSAID" && state == "yes", $person : person)        
+      // Next we look for patients exposed to a PPI/misoprostol on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "PPIs and Misoprostols Ingredients")
+      $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())
+      // Next, we identify the specific drug exposures for the PPI/misoprostol
+      $clinDrugConcept2 : ConceptSetItem(csName == "PPIs and Misoprostols")
+      $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId() 
+        && drugExposureStartDate != null && drugExposureStartDate < plus1day && drugExposureEndDate >= currentDate 
+        && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())                
+    then    
+      // Creates a new RHS state that is used by other rules to double check that a patient did not reach at this leaf node
+      RHSState rhsNN = new RHSState("proton pump inhibitor or misoprostol yes", "yes", $person, $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      // This outputs the recommendations and rationale for the patient because this is a leaf node  
+      String s = String.format(
+        "Warfarin - NSAID interaction for patient: %s.\n\tClinical implication: Possible increased risk of bleeding\n\tMitigating factor: Presence of PPI or misoprostol (%s).\n\tRecommendation: Assess risk and take action if necessary.\n\tExplanation:  Proton pump inhibitors and misoprostol may reduce the risk of UGIB in patients receiving NSAIDs and warfarin.", 
+        $de1.getPersonId(), 
+        $dexp1.getDrugConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tWarfarin - NSAID interaction\tyes proton pump inhibitor or misoprostol\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "true", "yellow",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);
+end
+
+// NOTE: if patient not on PPI or Misoprostol, rule says to check if patient is "able" to start on appropriate PPI. Not able to determine this, so assuming any patient can start on PPI.
+rule "WARFARIN - NSAID -- No PPI or misoprostol"
+    when
+      // This checks the state of the patients to identify only those who were identified to be on both medications of interest
+      $rhs1 : RHSState(stateName == "basic concomitant exposure of warfarin and NSAID" && state == "yes", $person : person)        
+      not ($rhs2: RHSState(stateName == "proton pump inhibitor or misoprostol yes" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+
+  then    
+      // Creates a new RHS state that is used by other rules to double check that a patient did not reach at this leaf node
+      RHSState rhsNN = new RHSState("proton pump inhibitor or misoprostol no", "yes", $person, $rhs1.getDexp1(), $rhs1.getDexp2());
+      insertLogical(rhsNN);
+      // This outputs the recommendations and rationale for the patient because this is a leaf node  
+      String s = String.format(
+        "Warfarin - NSAID interaction for patient: %s.\n\tClinical implication: Possible increased risk of bleeding\n\tRecommendation: Assess risk and take action if necessary. Start patient on proton pump inhibitor\n\tExplanation:  Proton pump inhibitors and misoprostol may reduce the risk of UGIB in patients receiving NSAIDs and warfarin.", 
+        $person.getPersonId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tWarfarin - NSAID interaction\tproton pump inhibitor or misoprostol no\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "true", "yellow",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);
+end

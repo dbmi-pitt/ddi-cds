@@ -1,0 +1,177 @@
+Drug_Name,OMOP CUI,RxNorm CUI
+Acetaminophen 100 MG/ML / Oxycodone 1 MG/ML Oral Solution,19059093,243730
+Acetaminophen 300 MG / Oxycodone Hydrochloride 10 MG Oral Tablet,40227590,1014599
+Acetaminophen 300 MG / Oxycodone Hydrochloride 2.5 MG Oral Tablet,40227595,1037259
+Acetaminophen 300 MG / Oxycodone Hydrochloride 5 MG Oral Tablet,40227598,1014615
+Acetaminophen 300 MG / Oxycodone Hydrochloride 7.5 MG Oral Tablet,40227601,1014632
+Acetaminophen 325 MG / Oxycodone Hydrochloride 10 MG Oral Tablet,40231916,1049214
+Acetaminophen 325 MG / Oxycodone Hydrochloride 2.5 MG Oral Tablet,40231921,1049635
+Acetaminophen 325 MG / Oxycodone Hydrochloride 5 MG Oral Capsule,40231924,1049703
+Acetaminophen 325 MG / Oxycodone Hydrochloride 5 MG Oral Tablet,40231925,1049221
+Acetaminophen 325 MG / Oxycodone Hydrochloride 7.5 MG Extended Release Oral Tablet,44814281,1491835
+Acetaminophen 325 MG / Oxycodone Hydrochloride 7.5 MG Oral Tablet,40231932,1049225
+Acetaminophen 400 MG / Oxycodone Hydrochloride 10 MG Oral Tablet,40231876,1049251
+Acetaminophen 400 MG / Oxycodone Hydrochloride 2.5 MG Oral Tablet,40231879,1049257
+Acetaminophen 400 MG / Oxycodone Hydrochloride 5 MG Oral Tablet,40231882,1049260
+Acetaminophen 400 MG / Oxycodone Hydrochloride 7.5 MG Oral Tablet,40231885,1049267
+Acetaminophen 500 MG / Oxycodone 50 MG Oral Capsule,19123905,629032
+Acetaminophen 500 MG / Oxycodone Hydrochloride 10 MG Oral Tablet,40231898,1049651
+Acetaminophen 500 MG / Oxycodone Hydrochloride 5 MG Oral Capsule,40231903,1049658
+Acetaminophen 500 MG / Oxycodone Hydrochloride 5 MG Oral Tablet,40231906,1049709
+Acetaminophen 500 MG / Oxycodone Hydrochloride 7.5 MG Oral Tablet,40231911,1049233
+Acetaminophen 65 MG/ML / Oxycodone Hydrochloride 1 MG/ML Oral Solution,40231943,1049580
+Acetaminophen 650 MG / Oxycodone Hydrochloride 10 MG Oral Tablet,40231855,1049270
+Aspirin 325 MG / Oxycodone 2.5 MG Oral Tablet,1113562,432481
+Aspirin 325 MG / Oxycodone Hydrochloride 2.25 MG / oxycodone terephthalate 0.19 MG Oral Tablet,1113581,724614
+Aspirin 325 MG / Oxycodone Hydrochloride 2.44 MG Oral Tablet,40231964,1049716
+Aspirin 325 MG / Oxycodone Hydrochloride 4.5 MG / oxycodone terephthalate 0.38 MG Oral Tablet,19124325,637540
+Aspirin 325 MG / Oxycodone Hydrochloride 4.84 MG Oral Tablet,1113731,848768
+Aspirin 325 MG / Oxycodone Hydrochloride 5 MG Oral Tablet,40231965,1049691
+Bupivacaine Hydrochloride 0.312 MG/ML / Fentanyl 0.0025 MG/ML Injectable Solution,42707336,1233587
+Bupivacaine Hydrochloride 0.312 MG/ML / Fentanyl 0.005 MG/ML Injectable Solution,42707337,1233588
+Bupivacaine Hydrochloride 0.375 MG/ML / Fentanyl 0.005 MG/ML Injectable Solution,40225911,1012637
+Bupivacaine Hydrochloride 0.4 MG/ML / Fentanyl 0.005 MG/ML Injectable Solution,42873524,1302197
+Bupivacaine Hydrochloride 0.5 MG/ML / Fentanyl 0.003 MG/ML Injectable Solution,40225913,1012649
+Bupivacaine Hydrochloride 0.5 MG/ML / Fentanyl 0.005 MG/ML Injectable Solution,42707338,1233589
+Bupivacaine Hydrochloride 0.625 MG/ML / Fentanyl 0.002 MG/ML Injectable Solution,40225917,1012661
+Bupivacaine Hydrochloride 0.625 MG/ML / Fentanyl 0.0025 MG/ML Injectable Solution,40225918,1012663
+Bupivacaine Hydrochloride 0.625 MG/ML / Fentanyl 0.003 MG/ML Injectable Solution,42707339,1233590
+Bupivacaine Hydrochloride 0.625 MG/ML / Fentanyl 0.004 MG/ML Injectable Solution,40225919,1012664
+Bupivacaine Hydrochloride 0.625 MG/ML / Fentanyl 0.005 MG/ML Injectable Solution,40225920,1012665
+Bupivacaine Hydrochloride 0.625 MG/ML / Fentanyl 0.01 MG/ML Injectable Solution,40239709,1112459
+Bupivacaine Hydrochloride 0.75 MG/ML / Fentanyl 0.005 MG/ML Injectable Solution,42707341,1233598
+Bupivacaine Hydrochloride 1 MG/ML / Epinephrine 0.002 MG/ML / Fentanyl 0.003 MG/ML Injectable Solution,42707335,1233583
+Bupivacaine Hydrochloride 1 MG/ML / Fentanyl 0.002 MG/ML Injectable Solution,40225925,1012668
+Bupivacaine Hydrochloride 1 MG/ML / Fentanyl 0.0025 MG/ML Injectable Solution,42707342,1233599
+Bupivacaine Hydrochloride 1 MG/ML / Fentanyl 0.003 MG/ML Injectable Solution,40225926,1012669
+Bupivacaine Hydrochloride 1 MG/ML / Fentanyl 0.004 MG/ML Injectable Solution,40225927,1012671
+Bupivacaine Hydrochloride 1 MG/ML / Fentanyl 0.005 MG/ML Injectable Solution,40225928,1012672
+Bupivacaine Hydrochloride 1 MG/ML / Fentanyl 0.01 MG/ML Injectable Solution,40225929,1012677
+Bupivacaine Hydrochloride 1.2 MG/ML / Fentanyl 0.002 MG/ML Injectable Solution,42707343,1233601
+Bupivacaine Hydrochloride 1.25 MG/ML / Fentanyl 0.001 MG/ML Injectable Solution,43560030,1433745
+Bupivacaine Hydrochloride 1.25 MG/ML / Fentanyl 0.0015 MG/ML Injectable Solution,42800440,1298095
+Bupivacaine Hydrochloride 1.25 MG/ML / Fentanyl 0.002 MG/ML Injectable Solution,40225935,1012688
+Bupivacaine Hydrochloride 1.25 MG/ML / Fentanyl 0.0025 MG/ML Injectable Solution,40225936,1012689
+Bupivacaine Hydrochloride 1.25 MG/ML / Fentanyl 0.003 MG/ML Injectable Solution,40225937,1012695
+Bupivacaine Hydrochloride 1.25 MG/ML / Fentanyl 0.004 MG/ML Injectable Solution,40225938,1012696
+Bupivacaine Hydrochloride 1.25 MG/ML / Fentanyl 0.005 MG/ML Injectable Solution,40225939,1012697
+Bupivacaine Hydrochloride 1.5 MG/ML / Fentanyl 0.005 MG/ML Injectable Solution,42707345,1233605
+Bupivacaine Hydrochloride 2.5 MG/ML / Fentanyl 0.002 MG/ML Injectable Solution,42707346,1233606
+Bupivacaine Hydrochloride 2.5 MG/ML / Fentanyl 0.02 MG/ML Injectable Solution,40225948,1012698
+Droperidol 2.5 MG/ML / Fentanyl 0.05 MG/ML Injectable Solution,739327,243774
+Fentanyl 0.001 MG/ML / Ropivacaine hydrochloride 1 MG/ML Injectable Solution,42707356,1233670
+Fentanyl 0.001 MG/ML / Ropivacaine hydrochloride 2 MG/ML Injectable Solution,42707357,1233671
+Fentanyl 0.0015 MG/ML / Ropivacaine hydrochloride 2 MG/ML Injectable Solution,44785200,1486084
+Fentanyl 0.002 MG/ML / ropivacaine 0.001 MG/ML Injectable Solution,19121331,578168
+Fentanyl 0.002 MG/ML / ropivacaine 0.002 MG/ML Injectable Solution,19121333,578170
+Fentanyl 0.002 MG/ML / ropivacaine 0.8 MG/ML / Sodium Chloride 0.154 MEQ/ML Injectable Solution,19135177,846366
+Fentanyl 0.002 MG/ML / ropivacaine 0.8 MG/ML Injectable Solution,19135255,847127
+Fentanyl 0.002 MG/ML / Ropivacaine hydrochloride 0.8 MG/ML Prefilled Syringe,43011802,1361012
+Fentanyl 0.002 MG/ML / Ropivacaine hydrochloride 1 MG/ML Injectable Solution,40174709,905193
+Fentanyl 0.002 MG/ML / Ropivacaine hydrochloride 1.25 MG/ML Injectable Solution,40174710,905195
+Fentanyl 0.002 MG/ML / Ropivacaine hydrochloride 1.5 MG/ML Injectable Solution,40174711,905197
+Fentanyl 0.002 MG/ML / Ropivacaine hydrochloride 2 MG/ML Injectable Solution,40174712,905208
+Fentanyl 0.002 MG/ML Injectable Solution,1154106,283455
+Fentanyl 0.0025 MG/ML / Ropivacaine hydrochloride 1 MG/ML Injectable Solution,40174713,905209
+Fentanyl 0.0025 MG/ML / Ropivacaine hydrochloride 1.25 MG/ML Injectable Solution,40242099,1125503
+Fentanyl 0.0025 MG/ML / Ropivacaine hydrochloride 2 MG/ML Injectable Solution,42873487,1301420
+Fentanyl 0.003 MG/ML / ropivacaine 0.001 MG/ML Injectable Solution,19121334,578171
+Fentanyl 0.003 MG/ML / Ropivacaine hydrochloride 1 MG/ML Injectable Solution,40174714,905228
+Fentanyl 0.003 MG/ML / Ropivacaine hydrochloride 2 MG/ML Injectable Solution,40174715,905229
+Fentanyl 0.003 MG/ML / Ropivacaine hydrochloride 2.5 MG/ML Injectable Solution,42707361,1233685
+Fentanyl 0.003 MG/ML Injectable Solution,19127353,729846
+Fentanyl 0.004 MG/ML / Ropivacaine hydrochloride 1 MG/ML Injectable Solution,42707362,1233686
+Fentanyl 0.004 MG/ML / Ropivacaine hydrochloride 1 MG/ML Prefilled Syringe,42903298,1360411
+Fentanyl 0.004 MG/ML / Ropivacaine hydrochloride 2 MG/ML Injectable Solution,42707363,1233687
+Fentanyl 0.004 MG/ML / Sodium Chloride 0.154 MEQ/ML Injectable Solution,19135175,846363
+Fentanyl 0.004 MG/ML Injectable Solution,1154342,847126
+Fentanyl 0.005 MG/ML / ropivacaine 0.001 MG/ML Injectable Solution,19121335,578172
+Fentanyl 0.005 MG/ML / Ropivacaine hydrochloride 0.625 MG/ML Injectable Solution,40174716,905231
+Fentanyl 0.005 MG/ML / Ropivacaine hydrochloride 1 MG/ML Injectable Solution,40174717,905232
+Fentanyl 0.005 MG/ML / Ropivacaine hydrochloride 1.25 MG/ML Injectable Solution,40242715,1150364
+Fentanyl 0.005 MG/ML / Ropivacaine hydrochloride 2 MG/ML Injectable Solution,40174718,905233
+Fentanyl 0.005 MG/ML Injectable Solution,1154107,283456
+Fentanyl 0.006 MG/ML / Ropivacaine hydrochloride 1 MG/ML Injectable Solution,40174719,905234
+Fentanyl 0.01 MG/ML Injectable Solution,1154108,283458
+Fentanyl 0.01 MG/ML Prefilled Syringe,42903040,1360153
+Fentanyl 0.012 MG/HR Transdermal Patch,42902404,1359517
+Fentanyl 0.015 MG/ML Injectable Solution,42708910,1249594
+Fentanyl 0.02 MG/ML Injectable Solution,1154109,283459
+Fentanyl 0.025 MG/HR Transdermal Patch,42902803,1359916
+Fentanyl 0.025 MG/ML Injectable Solution,1154274,577455
+Fentanyl 0.03 MG/ML Injectable Solution,19129744,790818
+Fentanyl 0.0375 MG/HR Transdermal Patch,46221484,1603496
+Fentanyl 0.04 MG Transdermal Patch,46287631,1666831
+Fentanyl 0.04 MG/ML Injectable Solution,19127291,729041
+Fentanyl 0.05 MG/HR Transdermal Patch,42903228,1360341
+Fentanyl 0.05 MG/ML Injectable Solution,19034073,206977
+Fentanyl 0.05 MG/ML Prefilled Syringe,42902769,1359882
+Fentanyl 0.0625 MG/HR Transdermal Patch,46221487,1603499
+Fentanyl 0.075 MG/HR Transdermal Patch,42903081,1360194
+Fentanyl 0.0875 MG/HR Transdermal Patch,46221490,1603502
+Fentanyl 0.1 MG Buccal Tablet,1154278,668363
+Fentanyl 0.1 MG Oral Lozenge,19077247,310292
+Fentanyl 0.1 MG Sublingual Tablet,40234427,1053647
+Fentanyl 0.1 MG/ACTUAT Mucosal Spray,42707850,1237050
+Fentanyl 0.1 MG/ACTUAT Nasal Spray,40240780,1115573
+Fentanyl 0.1 MG/HR Transdermal Patch,42902560,1359673
+Fentanyl 0.2 MG Buccal Film,40165711,858092
+Fentanyl 0.2 MG Buccal Tablet,1154279,668364
+Fentanyl 0.2 MG Oral Lozenge,19077250,310295
+Fentanyl 0.2 MG Sublingual Tablet,40234430,1053652
+Fentanyl 0.2 MG/ACTUAT Mucosal Spray,42707852,1237057
+Fentanyl 0.3 MG Buccal Tablet,19126620,706898
+Fentanyl 0.3 MG Oral Lozenge,19077271,310296
+Fentanyl 0.3 MG Sublingual Tablet,40234433,1053655
+Fentanyl 0.4 MG Buccal Film,40165715,858095
+Fentanyl 0.4 MG Buccal Tablet,1154280,668365
+Fentanyl 0.4 MG Oral Lozenge,19077272,310297
+Fentanyl 0.4 MG Sublingual Tablet,40234436,1053658
+Fentanyl 0.4 MG/ACTUAT Mucosal Spray,42707854,1237060
+Fentanyl 0.4 MG/ACTUAT Nasal Spray,40240784,1115577
+Fentanyl 0.6 MG Buccal Film,40165718,858098
+Fentanyl 0.6 MG Buccal Tablet,1154281,668366
+Fentanyl 0.6 MG Oral Lozenge,1154146,313992
+Fentanyl 0.6 MG Sublingual Tablet,40234439,1053661
+Fentanyl 0.6 MG/ACTUAT Mucosal Spray,42707856,1237064
+Fentanyl 0.8 MG Buccal Film,40165721,858101
+Fentanyl 0.8 MG Buccal Tablet,1154312,668367
+Fentanyl 0.8 MG Oral Lozenge,1154147,313993
+Fentanyl 0.8 MG Sublingual Tablet,40234442,1053664
+Fentanyl 0.8 MG/ACTUAT Mucosal Spray,42707858,1237068
+Fentanyl 1.2 MG Buccal Film,40165724,858087
+Fentanyl 1.2 MG Oral Lozenge,19077248,310293
+Fentanyl 1.5 MG/ML Injectable Solution,19019976,198402
+Fentanyl 1.6 MG Oral Lozenge,19077249,310294
+Fentanyl 2.5 MG/ML Injectable Solution,19019977,198403
+Fentanyl 50 MG/ML Topical Solution,44785662,1487611
+Ibuprofen 400 MG / Oxycodone Hydrochloride 5 MG Oral Tablet,40232568,1049589
+Ibuprofen 450 MG / Oxycodone 5 MG Oral Tablet,19122001,583405
+Naloxone Hydrochloride 10 MG / Oxycodone Hydrochloride 20 MG Extended Release Oral Tablet,45774943,1545904
+Naloxone Hydrochloride 20 MG / Oxycodone Hydrochloride 40 MG Extended Release Oral Tablet,45774946,1545908
+Naloxone Hydrochloride 5 MG / Oxycodone Hydrochloride 10 MG Extended Release Oral Tablet,45774949,1545911
+Oxycodone 10 MG Rectal Suppository,1125034,247626
+Oxycodone 20 MG Rectal Suppository,1125035,247627
+Oxycodone 30 MG Rectal Suppository,19061281,248307
+Oxycodone Hydrochloride 1 MG/ML Oral Solution,40232700,1049604
+Oxycodone Hydrochloride 10 MG Extended Release Oral Tablet,40232704,1049505
+Oxycodone Hydrochloride 10 MG Oral Capsule,40232706,1049717
+Oxycodone Hydrochloride 10 MG Oral Tablet,40232707,1049683
+Oxycodone Hydrochloride 10 MG/ML Injectable Solution,40232712,1049719
+Oxycodone Hydrochloride 10 MG/ML Oral Solution,40232713,1049720
+Oxycodone Hydrochloride 15 MG Extended Release Oral Tablet,40232715,1049546
+Oxycodone Hydrochloride 15 MG Oral Tablet,40232717,1049611
+Oxycodone Hydrochloride 160 MG Extended Release Oral Tablet,40232722,1049560
+Oxycodone Hydrochloride 20 MG Extended Release Oral Tablet,40232727,1049566
+Oxycodone Hydrochloride 20 MG Oral Capsule,40232729,1049721
+Oxycodone Hydrochloride 20 MG Oral Tablet,40232730,1049686
+Oxycodone Hydrochloride 20 MG/ML Oral Solution,40232735,1049615
+Oxycodone Hydrochloride 30 MG Extended Release Oral Tablet,40232743,1049577
+Oxycodone Hydrochloride 30 MG Oral Tablet,40232745,1049618
+Oxycodone Hydrochloride 40 MG Extended Release Oral Tablet,40232750,1049587
+Oxycodone Hydrochloride 5 MG Extended Release Oral Tablet,40232753,1049727
+Oxycodone Hydrochloride 5 MG Oral Capsule,40232754,1049696
+Oxycodone Hydrochloride 5 MG Oral Tablet,40232756,1049621
+Oxycodone Hydrochloride 60 MG Extended Release Oral Tablet,40232765,1049596
+Oxycodone Hydrochloride 7.5 MG Oral Tablet,40240172,1113314
+Oxycodone Hydrochloride 80 MG Extended Release Oral Tablet,40232769,1049602

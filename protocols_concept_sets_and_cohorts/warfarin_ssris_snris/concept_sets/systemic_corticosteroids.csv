@@ -1,0 +1,92 @@
+Drug_Name,OMOP CUI,RxNorm CUI
+100 ACTUAT Triamcinolone Acetonide 0.055 MG/ACTUAT Nasal Inhaler,40233207,1085795
+120 ACTUAT Triamcinolone Acetonide 0.05 MG/ACTUAT Nasal Inhaler,904507,833245
+120 ACTUAT Triamcinolone Acetonide 0.055 MG/ACTUAT Nasal Inhaler,40233210,1085798
+60 ACTUAT Triamcinolone Acetonide 0.055 MG/ACTUAT Nasal Inhaler,44816145,1493473
+Betamethasone 0.12 MG/ML Oral Solution,19125245,670084
+Betamethasone 0.6 MG Oral Tablet,19074157,308709
+Betamethasone 3 MG/ML / Betamethasone acetate 3 MG/ML Injectable Suspension,19121383,578803
+Cortisone 10 MG Oral Tablet,1507706,197543
+Cortisone 5 MG Oral Tablet,1507707,197545
+cortisone acetate 25 MG Oral Tablet,1507735,828248
+Dexamethasone 0.1 MG/ML Oral Solution,19076136,309686
+Dexamethasone 0.5 MG Oral Tablet,1518258,197577
+Dexamethasone 0.7 MG Drug Implant,40160930,854177
+Dexamethasone 0.75 MG Oral Tablet,19095136,343033
+Dexamethasone 1 MG Oral Tablet,1518259,197579
+Dexamethasone 1 MG/ML Oral Solution,19076135,309684
+Dexamethasone 1.5 MG Oral Tablet,19018906,197580
+Dexamethasone 10 MG/ML Injectable Solution,19076145,309696
+Dexamethasone 2 MG Oral Tablet,1518261,197581
+Dexamethasone 4 MG Oral Tablet,1518292,197582
+Dexamethasone 6 MG Oral Tablet,1518293,197583
+Dexamethasone phosphate 4 MG/ML Injectable Solution,40241504,1116927
+Fludrocortisone 0.1 MG Oral Tablet,1555142,313979
+Hydrocortisone 0.01 MG/MG Rectal Ointment,19067226,260192
+Hydrocortisone 1.67 MG/ML Enema,19078313,310878
+Hydrocortisone 10 MG Oral Tablet,975168,197782
+Hydrocortisone 10 MG/ML Rectal Cream,19078283,310868
+Hydrocortisone 10 MG/ML Vaginal Cream,44816152,1494032
+Hydrocortisone 2 MG/ML Oral Suspension,19078350,310899
+Hydrocortisone 20 MG Oral Tablet,975169,197783
+Hydrocortisone 25 MG/ML / Pramoxine hydrochloride 10 MG/ML Rectal Cream,42708535,1246528
+Hydrocortisone 25 MG/ML Rectal Cream,19078314,310879
+Hydrocortisone 4 MG Oral Tablet,19021571,199320
+Hydrocortisone 5 MG Oral Tablet,975193,197787
+Hydrocortisone 50 MG/ML Injectable Solution,975505,238755
+hydrocortisone acetate 0.0055 MG/MG / Lidocaine Hydrochloride 0.028 MG/MG Rectal Gel,40226631,1012221
+hydrocortisone acetate 0.025 MG/MG / Lidocaine Hydrochloride 0.03 MG/MG Rectal Gel,40226639,1012223
+hydrocortisone acetate 10 MG/ML / Lidocaine Hydrochloride 30 MG/ML Rectal Cream,40226646,1012229
+hydrocortisone acetate 10 MG/ML / Pramoxine hydrochloride 10 MG/ML Rectal Cream,42707635,1235049
+hydrocortisone acetate 10 MG/ML / Pramoxine hydrochloride 10 MG/ML Rectal Foam,927970,828362
+hydrocortisone acetate 100 MG/ML Rectal Foam,45774729,1545172
+hydrocortisone acetate 18.5 MG/ML / Pramoxine hydrochloride 11.5 MG/ML Rectal Cream,40240654,1114854
+hydrocortisone acetate 20 MG/ML / Lidocaine Hydrochloride 20 MG/ML Rectal Cream,40226544,1012233
+hydrocortisone acetate 23.5 MG/ML / Pramoxine hydrochloride 10 MG/ML Rectal Cream,40237062,1094443
+hydrocortisone acetate 25 MG Rectal Suppository,42800173,1291082
+hydrocortisone acetate 25 MG/ML / Pramoxine hydrochloride 10 MG/ML Rectal Cream,42800184,1294025
+hydrocortisone acetate 30 MG Rectal Suppository,42800186,1291085
+hydrocortisone acetate 5 MG/ML / Lidocaine Hydrochloride 30 MG/ML Rectal Cream,40226551,1012235
+Methylprednisolone 100 MG Oral Tablet,1506316,199771
+Methylprednisolone 16 MG Oral Tablet,1506479,328161
+Methylprednisolone 2 MG Oral Tablet,1506312,197969
+Methylprednisolone 24 MG Oral Tablet,19019158,197970
+Methylprednisolone 32 MG Oral Tablet,1506314,197971
+Methylprednisolone 4 MG Oral Tablet,1506426,259966
+Methylprednisolone 40 MG/ML Injectable Solution,1506430,311659
+Methylprednisolone 62.5 MG/ML Injectable Solution,19080181,314099
+Methylprednisolone 65.4 MG/ML Injectable Solution,42901997,1357886
+Methylprednisolone 8 MG Oral Tablet,1506315,197973
+methylprednisolone acetate 20 MG/ML Injectable Suspension,42902107,1358510
+methylprednisolone acetate 40 MG/ML Injectable Suspension,42902110,1358610
+methylprednisolone acetate 80 MG/ML Injectable Suspension,42902114,1358617
+prednisolone 1 MG Oral Tablet,1550561,199343
+prednisolone 1 MG/ML Oral Solution,1550775,312614
+prednisolone 10 MG Disintegrating Oral Tablet,1551010,643123
+prednisolone 15 MG Disintegrating Oral Tablet,1551042,643125
+prednisolone 2 MG/ML Oral Solution,1551093,794979
+prednisolone 20 MG Oral Tablet,19106652,429199
+prednisolone 25 MG Oral Tablet,1550572,199967
+prednisolone 3 MG/ML Oral Solution,19070310,283077
+prednisolone 3 MG/ML Oral Suspension,19129883,793099
+prednisolone 30 MG Disintegrating Oral Tablet,1551044,643127
+prednisolone 4 MG/ML Oral Solution,19126169,702306
+prednisolone 5 MG Oral Tablet,1550560,198142
+prednisolone 5 MG/ML Oral Solution,19061583,249066
+Prednisone 1 MG Delayed Release Oral Tablet,42873627,1303125
+Prednisone 1 MG Oral Tablet,1551100,198144
+Prednisone 1 MG/ML Oral Solution,1551193,315187
+Prednisone 10 MG Oral Tablet,1551101,198145
+Prednisone 2 MG Delayed Release Oral Tablet,42873629,1303132
+Prednisone 2.5 MG Oral Tablet,1551122,198146
+Prednisone 20 MG Oral Tablet,1551170,312615
+Prednisone 5 MG Delayed Release Oral Tablet,42873631,1303135
+Prednisone 5 MG Oral Tablet,1551192,312617
+Prednisone 5 MG/ML Oral Solution,19028933,205301
+Prednisone 50 MG Oral Tablet,1551123,198148
+Triamcinolone 1 MG Oral Tablet,19019891,198301
+Triamcinolone Acetonide 0.001 MG/MG Oral Paste,40233960,1085728
+Triamcinolone Acetonide 10 MG/ML Injectable Suspension,40234030,1085750
+Triamcinolone Acetonide 40 MG/ML Injectable Suspension,40234038,1085754
+triamcinolone hexacetonide 20 MG/ML Injectable Suspension,40234819,1085996
+triamcinolone hexacetonide 5 MG/ML Injectable Suspension,40234823,1085992

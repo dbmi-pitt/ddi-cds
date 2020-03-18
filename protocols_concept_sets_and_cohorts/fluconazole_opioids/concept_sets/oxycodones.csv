@@ -1,0 +1,59 @@
+Drug_Name,OMOP CUI,RxNorm CUI
+Acetaminophen 100 MG/ML / Oxycodone 1 MG/ML Oral Solution,19059093,243730
+Acetaminophen 300 MG / Oxycodone Hydrochloride 10 MG Oral Tablet,40227590,1014599
+Acetaminophen 300 MG / Oxycodone Hydrochloride 2.5 MG Oral Tablet,40227595,1037259
+Acetaminophen 300 MG / Oxycodone Hydrochloride 5 MG Oral Tablet,40227598,1014615
+Acetaminophen 300 MG / Oxycodone Hydrochloride 7.5 MG Oral Tablet,40227601,1014632
+Acetaminophen 325 MG / Oxycodone Hydrochloride 10 MG Oral Tablet,40231916,1049214
+Acetaminophen 325 MG / Oxycodone Hydrochloride 2.5 MG Oral Tablet,40231921,1049635
+Acetaminophen 325 MG / Oxycodone Hydrochloride 5 MG Oral Capsule,40231924,1049703
+Acetaminophen 325 MG / Oxycodone Hydrochloride 5 MG Oral Tablet,40231925,1049221
+Acetaminophen 325 MG / Oxycodone Hydrochloride 7.5 MG Extended Release Oral Tablet,44814281,1491835
+Acetaminophen 325 MG / Oxycodone Hydrochloride 7.5 MG Oral Tablet,40231932,1049225
+Acetaminophen 400 MG / Oxycodone Hydrochloride 10 MG Oral Tablet,40231876,1049251
+Acetaminophen 400 MG / Oxycodone Hydrochloride 2.5 MG Oral Tablet,40231879,1049257
+Acetaminophen 400 MG / Oxycodone Hydrochloride 5 MG Oral Tablet,40231882,1049260
+Acetaminophen 400 MG / Oxycodone Hydrochloride 7.5 MG Oral Tablet,40231885,1049267
+Acetaminophen 500 MG / Oxycodone 50 MG Oral Capsule,19123905,629032
+Acetaminophen 500 MG / Oxycodone Hydrochloride 10 MG Oral Tablet,40231898,1049651
+Acetaminophen 500 MG / Oxycodone Hydrochloride 5 MG Oral Capsule,40231903,1049658
+Acetaminophen 500 MG / Oxycodone Hydrochloride 5 MG Oral Tablet,40231906,1049709
+Acetaminophen 500 MG / Oxycodone Hydrochloride 7.5 MG Oral Tablet,40231911,1049233
+Acetaminophen 65 MG/ML / Oxycodone Hydrochloride 1 MG/ML Oral Solution,40231943,1049580
+Acetaminophen 650 MG / Oxycodone Hydrochloride 10 MG Oral Tablet,40231855,1049270
+Aspirin 325 MG / Oxycodone 2.5 MG Oral Tablet,1113562,432481
+Aspirin 325 MG / Oxycodone Hydrochloride 2.25 MG / oxycodone terephthalate 0.19 MG Oral Tablet,1113581,724614
+Aspirin 325 MG / Oxycodone Hydrochloride 2.44 MG Oral Tablet,40231964,1049716
+Aspirin 325 MG / Oxycodone Hydrochloride 4.5 MG / oxycodone terephthalate 0.38 MG Oral Tablet,19124325,637540
+Aspirin 325 MG / Oxycodone Hydrochloride 4.84 MG Oral Tablet,1113731,848768
+Aspirin 325 MG / Oxycodone Hydrochloride 5 MG Oral Tablet,40231965,1049691
+Ibuprofen 400 MG / Oxycodone Hydrochloride 5 MG Oral Tablet,40232568,1049589
+Ibuprofen 450 MG / Oxycodone 5 MG Oral Tablet,19122001,583405
+Naloxone Hydrochloride 10 MG / Oxycodone Hydrochloride 20 MG Extended Release Oral Tablet,45774943,1545904
+Naloxone Hydrochloride 20 MG / Oxycodone Hydrochloride 40 MG Extended Release Oral Tablet,45774946,1545908
+Naloxone Hydrochloride 5 MG / Oxycodone Hydrochloride 10 MG Extended Release Oral Tablet,45774949,1545911
+Oxycodone 10 MG Rectal Suppository,1125034,247626
+Oxycodone 20 MG Rectal Suppository,1125035,247627
+Oxycodone 30 MG Rectal Suppository,19061281,248307
+Oxycodone Hydrochloride 1 MG/ML Oral Solution,40232700,1049604
+Oxycodone Hydrochloride 10 MG Extended Release Oral Tablet,40232704,1049505
+Oxycodone Hydrochloride 10 MG Oral Capsule,40232706,1049717
+Oxycodone Hydrochloride 10 MG Oral Tablet,40232707,1049683
+Oxycodone Hydrochloride 10 MG/ML Injectable Solution,40232712,1049719
+Oxycodone Hydrochloride 10 MG/ML Oral Solution,40232713,1049720
+Oxycodone Hydrochloride 15 MG Extended Release Oral Tablet,40232715,1049546
+Oxycodone Hydrochloride 15 MG Oral Tablet,40232717,1049611
+Oxycodone Hydrochloride 160 MG Extended Release Oral Tablet,40232722,1049560
+Oxycodone Hydrochloride 20 MG Extended Release Oral Tablet,40232727,1049566
+Oxycodone Hydrochloride 20 MG Oral Capsule,40232729,1049721
+Oxycodone Hydrochloride 20 MG Oral Tablet,40232730,1049686
+Oxycodone Hydrochloride 20 MG/ML Oral Solution,40232735,1049615
+Oxycodone Hydrochloride 30 MG Extended Release Oral Tablet,40232743,1049577
+Oxycodone Hydrochloride 30 MG Oral Tablet,40232745,1049618
+Oxycodone Hydrochloride 40 MG Extended Release Oral Tablet,40232750,1049587
+Oxycodone Hydrochloride 5 MG Extended Release Oral Tablet,40232753,1049727
+Oxycodone Hydrochloride 5 MG Oral Capsule,40232754,1049696
+Oxycodone Hydrochloride 5 MG Oral Tablet,40232756,1049621
+Oxycodone Hydrochloride 60 MG Extended Release Oral Tablet,40232765,1049596
+Oxycodone Hydrochloride 7.5 MG Oral Tablet,40240172,1113314
+Oxycodone Hydrochloride 80 MG Extended Release Oral Tablet,40232769,1049602

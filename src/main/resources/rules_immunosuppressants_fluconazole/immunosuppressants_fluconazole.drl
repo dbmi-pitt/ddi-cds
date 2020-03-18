@@ -1,0 +1,326 @@
+// immunosuppressants - fluconazole DDI Alerting Rule
+
+package com.sample
+
+//list any import classes here.
+import function com.sample.DRLLogger.*;
+
+import java.util.*;
+import java.lang.String;
+import java.sql.Timestamp;
+
+import com.sample.model.ConceptSetItem;
+import com.sample.model.RHSState;
+
+import edu.pitt.dbmi.ohdsiv5.db.ConditionEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.DrugStrength;
+import edu.pitt.dbmi.ohdsiv5.db.ExtendedDrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.Measurement;
+import edu.pitt.dbmi.ohdsiv5.db.Person;
+
+
+/////////// 
+// declare any global variables here
+/////////// 
+global java.lang.String currentDateStr;
+global java.sql.Timestamp currentDate;
+global java.sql.Timestamp within48hours;
+global java.sql.Timestamp within28days;
+global java.sql.Timestamp plus1day;
+
+/////////// 
+// declare any types here
+/////////// 
+
+
+/////////// 
+// Rules
+/////////// 
+
+// basic check of any dosage or form of immunosuppressants / fluconazole at the same time
+rule "IMMUNOSUPPRESSANT - FLUCONAZOLE -- NO FILTER"
+    when
+      // First, we look for patients exposed to immunosuppressant on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Immunosuppressants Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to a fluconazole on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "Fluconazoles Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both immunosuppressant and the fluconazole
+      $clinDrugConcept3 : ConceptSetItem(csName == "Immunosuppressants") 
+      $clinDrugConcept4 : ConceptSetItem(csName == "Fluconazoles")
+      $dexp1 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate >= currentDate && drugExposureStartDate < plus1day
+        && drugConceptId == $clinDrugConcept3.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      $dexp2 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && (
+          (drugExposureStartDate >= $dexp1.getDrugExposureStartDate() && drugExposureStartDate <= $dexp1.getDrugExposureEndDate())
+          || (drugExposureEndDate >= $dexp1.getDrugExposureStartDate() && drugExposureEndDate <= $dexp1.getDrugExposureEndDate())
+          || ($dexp1.getDrugExposureStartDate() >= drugExposureStartDate && $dexp1.getDrugExposureStartDate() <= drugExposureEndDate)
+          || ($dexp1.getDrugExposureEndDate() >= drugExposureStartDate && $dexp1.getDrugExposureEndDate() <= drugExposureEndDate)
+        )
+        && drugConceptId != null && drugConceptId == $clinDrugConcept4.getConceptId() 
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsCur = new RHSState("basic concomitant exposure of immunosuppressant and a fluconazole", "yes", $person, $dexp1, $dexp2);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; Immunosuppressant: %s; Fluconazole: %s;", 
+          $de1.getPersonId(), 
+          $clinDrugConcept3.getConceptId(), 
+          $clinDrugConcept4.getConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tImmunosuppressant - Fluconazole interaction\tbasic concomitant exposure\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "basic concomitant",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          $dexp1.getLogInfo(),
+          $dexp2.getLogInfo()
+      );
+      System.out.println(s);
+end
+
+rule "IMMUNOSUPPRESSANT - FLUCONAZOLE -- NO FILTER, ALT"
+    when
+      // First, we look for patients exposed to immunosuppressant on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Immunosuppressants Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to a fluconazole on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "Fluconazoles Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both immunosuppressant and the fluconazole
+      $clinDrugConcept3 : ConceptSetItem(csName == "Immunosuppressants") 
+      $clinDrugConcept4 : ConceptSetItem(csName == "Fluconazoles")
+      $dexp2 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate >= currentDate && drugExposureStartDate < plus1day
+        && drugConceptId == $clinDrugConcept4.getConceptId() && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      $dexp1 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && (
+          (drugExposureStartDate >= $dexp2.getDrugExposureStartDate() && drugExposureStartDate <= $dexp2.getDrugExposureEndDate())
+          || (drugExposureEndDate >= $dexp2.getDrugExposureStartDate() && drugExposureEndDate <= $dexp2.getDrugExposureEndDate())
+          || ($dexp2.getDrugExposureStartDate() >= drugExposureStartDate && $dexp2.getDrugExposureStartDate() <= drugExposureEndDate)
+          || ($dexp2.getDrugExposureEndDate() >= drugExposureStartDate && $dexp2.getDrugExposureEndDate() <= drugExposureEndDate)
+        )
+        && drugConceptId != null && drugConceptId == $clinDrugConcept3.getConceptId() 
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsCur = new RHSState("basic concomitant exposure of immunosuppressant and a fluconazole", "yes", $person, $dexp1, $dexp2);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; Immunosuppressant: %s; Fluconazole: %s;", 
+          $de1.getPersonId(), 
+          $clinDrugConcept3.getConceptId(), 
+          $clinDrugConcept4.getConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tImmunosuppressant - Fluconazole interaction\tbasic concomitant exposure\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "basic concomitant",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          $dexp1.getLogInfo(),
+          $dexp2.getLogInfo()
+      );
+      System.out.println(s);
+end
+
+rule "IMMUNOSUPPRESSANT - FLUCONAZOLE -- patient age >=18 years old"
+    when
+      // currently use as a sandbox for patient age
+      $rhs : RHSState(stateName == "basic concomitant exposure of immunosuppressant and a fluconazole" && state == "yes", $person : person)
+      $person18YearsOld : Person(personId == $person.getPersonId() 
+        && ((double) ($person18YearsOld.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365) >= 18) // assuming 365 days in a year
+    then
+      RHSState rhsNN = new RHSState("basic concomitant exposure of immunosuppressant and a fluconazole, patient age >=18 years old", "yes", $person, $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+        "\tPatient ID: %s;\n\tPatient DoB: %s;\n\tPatient age in years: %s",
+          $rhs.getPerson().getPersonId(),
+          $person18YearsOld.getDateOfBirth(),
+          ((double) ($person18YearsOld.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365));
+      System.out.println(s);
+      /*s = String.format("DATA\t%s\t%s\tImmunosuppressant - Fluconazole interaction\tbasic concomitant exposure, patient age AT LEAST 18 years old\t%s",
+          currentDateStr,
+          $rhs.getPerson().getPersonId(),
+          "false"
+      );
+      System.out.println(s);*/
+end
+
+// leaf node for patient < 18 years old with concomitant immunosuppressant/fluconazole
+rule "IMMUNOSUPPRESSANT - FLUCONAZOLE -- patient age <18 years old"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of immunosuppressant and a fluconazole" && state == "yes", $person : person)
+      not ($rhs2 : RHSState(stateName == "basic concomitant exposure of immunosuppressant and a fluconazole, patient age >=18 years old" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+    then
+      RHSState rhsNN = new RHSState("basic concomitant exposure of immunosuppressant and a fluconazole, patient age <18 years old", "yes", $person, $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+        "Immunosuppressant - Fluconazole interaction for patient: %s.\n\tClinical implication: Monitor immunosuppressant levels.\n\tMitigating factor: (TODO).\n\tRecommendation: Use only if benefit outweighs risk. Increased risk of immunosuppressant toxicity likely.\n\tExplanation: Patient age LESS THAN 18 years old Patient born %s; age in years is %s.",
+        $rhs.getPerson().getPersonId(),
+        $rhs.getPerson().getDateOfBirth(),
+        ((double) ($rhs.getPerson().getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365));
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tImmunosuppressant - Fluconazole interaction\tbasic concomitant exposure, patient age LESS THAN 18 years old\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "true","red",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);
+end
+
+// leaf node for all patients on concomitant immunosuppressants/fluconazole and filters it down to only those on oral fluconazole
+// In addition, it checks whether or not these patients are taking at least 100 mg/day of oral fluconazole
+rule "IMMUNOSUPPRESSANT - FLUCONAZOLE -- high dosage Fluconazole PO, patient age >18 years old"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of immunosuppressant and a fluconazole, patient age >=18 years old" && state == "yes", $person : person)
+
+      $clinDrugConcept1 : ConceptSetItem(csName == "Fluconazoles Ingredients")
+      $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+      // From there, we can pull in the specific intravenous fluconazole drug exposure, and check it against our 100 mg/day threshold
+      $clinDrugConcept2 : ConceptSetItem(csName == "Fluconazoles PO")
+      $dexp1 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp2().getDrugExposureId()
+        && personId == $person.getPersonId() 
+        && drugConceptId == $clinDrugConcept2.getConceptId() 
+        && ingredientConceptId == $clinDrugConcept1.getConceptId() && dailyDosage >= 100.0) 
+    then
+      RHSState rhsNN = new RHSState("immunosuppressant and high dose fluconazole, oral yes", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+        "Immunosuppressant - Fluconazole interaction for patient: %s.\n\tClinical implication: Monitor immunosuppressant levels.\n\tMitigating factor: Presence of an immunosuppressant and a high dose of oral fluconazole (Daily Dosage: %s mg/day, compared to the threshold value of 100 mg/day).\n\tRecommendation: Use only if benefit outweighs risk. Increased risk of immunosuppressant toxicity likely.\n\tExplanation: Azole antifungals inhibit cytochrome P450 (CYP450) enzymes that metabolize immunosuppressants, leading to a potential risk of toxicity.", 
+        $person.getPersonId(), 
+        $dexp1.getDailyDosage());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tImmunosuppressant - Fluconazole interaction\timmunosuppressant and high dose of oral fluconazole\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "true","red",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s); 
+end
+
+// leaf node for all patients on concomitant immunosuppressants/fluconazole and filters it down to only those on intravenous fluconazole
+// In addition, it checks whether or not these patients are taking at least 200 mg/day of intravenous fluconazole
+rule "IMMUNOSUPPRESSANT - FLUCONAZOLE -- high dosage Fluconazole IV, patient age >18 years old"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of immunosuppressant and a fluconazole, patient age >=18 years old" && state == "yes", $person : person)
+
+      $clinDrugConcept1 : ConceptSetItem(csName == "Fluconazoles Ingredients")
+      $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+      // From there, we can pull in the specific intravenous fluconazole drug exposure, and check it against our 200 mg/day threshold
+      $clinDrugConcept2 : ConceptSetItem(csName == "Fluconazoles IV")
+      $dexp1 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp2().getDrugExposureId()
+        && personId == $person.getPersonId() 
+        && drugConceptId == $clinDrugConcept2.getConceptId() 
+        && ingredientConceptId == $clinDrugConcept1.getConceptId() && dailyDosage >= 200.0) 
+    then
+      RHSState rhsNN = new RHSState("immunosuppressant and high dose fluconazole, intravenous yes", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+  // This outputs the recommendations and rationale for the patient because this is a leaf node  
+      String s = String.format(
+        "Immunosuppressant - Fluconazole interaction for patient: %s.\n\tClinical implication: Monitor immunosuppressant levels.\n\tMitigating factor: Presence of an immunosuppressant and a high dose of intravenous fluconazole (Daily Dosage: %s mg/day, compared to the threshold value of 200 mg/day).\n\tRecommendation: Use only if benefit outweighs risk. Increased risk of immunosuppressant toxicity likely.\n\tExplanation: Azole antifungals inhibit cytochrome P450 (CYP450) enzymes that metabolize immunosuppressants, leading to a potential risk of toxicity.", 
+        $de1.getPersonId(), 
+        $dexp1.getDailyDosage());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tImmunosuppressant - Fluconazole interaction\timmunosuppressant and high dose of intravenous fluconazole\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "true","red",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);   
+end
+
+// leaf node for all patients on concomitant immunosuppressants/fluconazole and filters it down to only those on oral fluconazole
+// In addition, it checks whether or not these patients are taking less than 100 mg/day of oral fluconazole
+rule "IMMUNOSUPPRESSANT - FLUCONAZOLE -- Fluconazole PO, patient age >18 years old"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of immunosuppressant and a fluconazole, patient age >=18 years old" && state == "yes", $person : person)
+
+      $clinDrugConcept1 : ConceptSetItem(csName == "Fluconazoles Ingredients")
+      $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+      // From there, we can pull in the specific intravenous fluconazole drug exposure, and check it against our 100 mg/day threshold
+      $clinDrugConcept2 : ConceptSetItem(csName == "Fluconazoles PO")
+      $dexp1 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp2().getDrugExposureId()
+        && personId == $person.getPersonId() 
+        && drugConceptId == $clinDrugConcept2.getConceptId() 
+        && ingredientConceptId == $clinDrugConcept1.getConceptId() && dailyDosage < 100.0) 
+    then
+      RHSState rhsNN = new RHSState("immunosuppressant and fluconazole, oral yes", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+        "Immunosuppressant - Fluconazole interaction for patient: %s.\n\tClinical implication: Monitor immunosuppressant levels.\n\tMitigating factor: Presence of an immunosuppressant and oral fluconazole (Daily Dosage: %s mg/day, compared to the threshold value of 100 mg/day).\n\tRecommendation: No special precautions. Increased risk of immunosuppressant toxicity unlikely.\n\tExplanation: Azole antifungals inhibit cytochrome P450 (CYP450) enzymes that metabolize immunosuppressants, leading to a potential risk of toxicity.", 
+        $de1.getPersonId(), 
+        $dexp1.getDailyDosage());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tImmunosuppressant - Fluconazole interaction\timmunosuppressant and oral fluconazole (dose <100 mg/day)\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "green",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s); 
+end
+
+// leaf node for all patients on concomitant immunosuppressants/fluconazole and filters it down to only those on intravenous fluconazole
+// In addition, it checks whether or not these patients are taking less than 200 mg/day of intravenous fluconazole
+rule "IMMUNOSUPPRESSANT - FLUCONAZOLE -- Fluconazole IV, patient age >18 years old"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of immunosuppressant and a fluconazole, patient age >=18 years old" && state == "yes", $person : person)
+
+      $clinDrugConcept1 : ConceptSetItem(csName == "Fluconazoles Ingredients")
+      $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())        
+      // From there, we can pull in the specific intravenous fluconazole drug exposure, and check it against our 200 mg/day threshold
+      $clinDrugConcept2 : ConceptSetItem(csName == "Fluconazoles IV")
+      $dexp1 : ExtendedDrugExposure(drugExposureId == $rhs.getDexp2().getDrugExposureId()
+        && personId == $person.getPersonId() 
+        && drugConceptId == $clinDrugConcept2.getConceptId() 
+        && ingredientConceptId == $clinDrugConcept1.getConceptId() && dailyDosage < 200.0) 
+    then
+      RHSState rhsNN = new RHSState("immunosuppressant and fluconazole, intravenous yes", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
+        insertLogical(rhsNN);
+  // This outputs the recommendations and rationale for the patient because this is a leaf node  
+      String s = String.format(
+        "Immunosuppressant - Fluconazole interaction for patient: %s.\n\tClinical implication: Monitor immunosuppressant levels.\n\tMitigating factor: Presence of an immunosuppressant and intravenous fluconazole (Daily Dosage: %s mg/day, compared to the threshold value of 200 mg/day).\n\tRecommendation: No special precautions. Increased risk of immunosuppressant toxicity unlikely.\n\tExplanation: Azole antifungals inhibit cytochrome P450 (CYP450) enzymes that metabolize immunosuppressants, leading to a potential risk of toxicity.", 
+        $de1.getPersonId(), 
+        $dexp1.getDailyDosage());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tImmunosuppressant - Fluconazole interaction\timmunosuppressant and intravenous fluconazole (dose <200 mg/day)\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "green",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);   
+end

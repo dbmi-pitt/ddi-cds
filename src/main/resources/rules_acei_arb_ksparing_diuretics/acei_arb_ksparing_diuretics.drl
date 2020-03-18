@@ -1,0 +1,262 @@
+// ACE I / ARB - K-Sparing Diuretics DDI Alerting Rule
+
+package com.sample
+
+//list any import classes here.
+import function com.sample.DRLLogger.*;
+
+import java.util.*;
+import java.lang.String;
+import java.sql.Timestamp;
+
+import com.sample.model.ConceptSetItem;
+import com.sample.model.RHSState;
+
+import edu.pitt.dbmi.ohdsiv5.db.ConditionEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.DrugStrength;
+import edu.pitt.dbmi.ohdsiv5.db.ExtendedDrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.Measurement;
+import edu.pitt.dbmi.ohdsiv5.db.Person;
+
+
+/////////// 
+// declare any global variables here
+/////////// 
+global java.lang.String currentDateStr;
+global java.sql.Timestamp currentDate;
+global java.sql.Timestamp within48hours;
+global java.sql.Timestamp within28days;
+global java.sql.Timestamp plus1day;
+
+/////////// 
+// declare any types here
+/////////// 
+
+
+/////////// 
+// Rules
+/////////// 
+
+// basic check of any dosage or form of either an ACE I or ARB and a potassium-sparing diuretic at the same time
+rule "ACE I ARB - K-SPARING DIURETIC -- NO FILTER"
+    when
+      // First, we look for patients exposed to ACE I's or ARB's on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "ACEis and ARBs Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to a diuretic on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "K-sparing Diuretics Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both the ACE I/ARB and the diuretic
+      $clinDrugConcept3 : ConceptSetItem(csName == "ACEis and ARBs") 
+      $clinDrugConcept4 : ConceptSetItem(csName == "K-sparing Diuretics")
+      $dexp1 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate >= currentDate && drugExposureStartDate < plus1day
+        && drugConceptId == $clinDrugConcept3.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      $dexp2 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && (
+          (drugExposureStartDate >= $dexp1.getDrugExposureStartDate() && drugExposureStartDate <= $dexp1.getDrugExposureEndDate())
+          || (drugExposureEndDate >= $dexp1.getDrugExposureStartDate() && drugExposureEndDate <= $dexp1.getDrugExposureEndDate())
+          || ($dexp1.getDrugExposureStartDate() >= drugExposureStartDate && $dexp1.getDrugExposureStartDate() <= drugExposureEndDate)
+          || ($dexp1.getDrugExposureEndDate() >= drugExposureStartDate && $dexp1.getDrugExposureEndDate() <= drugExposureEndDate)
+        )
+        && drugConceptId != null && drugConceptId == $clinDrugConcept4.getConceptId() 
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsCur = new RHSState("basic concomitant exposure of ACE I/ARB and a K-sparing diuretic", "yes", $person, $dexp1, $dexp2);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; ACE I/ARB: %s; K-sparing Diuretic: %s;", 
+          $de1.getPersonId(), 
+          $clinDrugConcept3.getConceptId(), 
+          $clinDrugConcept4.getConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tACE I/ARB - K-sparing diuretic interaction\tbasic concomitant exposure\t%s\t%s\t%s\t%s\t%s\t%s",
+            currentDateStr,
+            $person.getPersonId(),
+            "false","basic concomitant",
+            $person.getGenderCUI(),
+            ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+            $dexp1.getLogInfo(),
+            $dexp2.getLogInfo()
+      );
+      System.out.println(s);
+end
+
+rule "ACE I ARB - K-SPARING DIURETIC -- NO FILTER, ALT"
+    when
+      // First, we look for patients exposed to ACE I's or ARB's on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "ACEis and ARBs Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to a diuretic on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "K-sparing Diuretics Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both the ACE I/ARB and the diuretic
+      $clinDrugConcept3 : ConceptSetItem(csName == "ACEis and ARBs") 
+      $clinDrugConcept4 : ConceptSetItem(csName == "K-sparing Diuretics")
+      $dexp2 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate >= currentDate && drugExposureStartDate < plus1day
+        && drugConceptId == $clinDrugConcept4.getConceptId() && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      $dexp1 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && (
+          (drugExposureStartDate >= $dexp2.getDrugExposureStartDate() && drugExposureStartDate <= $dexp2.getDrugExposureEndDate())
+          || (drugExposureEndDate >= $dexp2.getDrugExposureStartDate() && drugExposureEndDate <= $dexp2.getDrugExposureEndDate())
+          || ($dexp2.getDrugExposureStartDate() >= drugExposureStartDate && $dexp2.getDrugExposureStartDate() <= drugExposureEndDate)
+          || ($dexp2.getDrugExposureEndDate() >= drugExposureStartDate && $dexp2.getDrugExposureEndDate() <= drugExposureEndDate)
+        )
+        && drugConceptId != null && drugConceptId == $clinDrugConcept3.getConceptId() 
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsCur = new RHSState("basic concomitant exposure of ACE I/ARB and a K-sparing diuretic", "yes", $person, $dexp1, $dexp2);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; ACE I/ARB: %s; K-sparing Diuretic: %s;", 
+          $de1.getPersonId(), 
+          $clinDrugConcept3.getConceptId(), 
+          $clinDrugConcept4.getConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tACE I/ARB - K-sparing diuretic interaction\tbasic concomitant exposure\t%s\t%s\t%s\t%s\t%s\t%s",
+            currentDateStr,
+            $person.getPersonId(),
+            "false","basic concomitant",
+            $person.getGenderCUI(),
+            ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+            $dexp1.getLogInfo(),
+            $dexp2.getLogInfo()
+      );
+      System.out.println(s);
+end
+
+
+// intermediate step to find potassium concentrations within 48 hours
+// diagram uses "5.0 mmol/L" for potassium concentration, but my impression is that this is the same as 5.0 mEq/L for potassium
+rule "ACE I ARB - K-SPARING DIURETIC -- Recency of Lab Tests"
+    when
+      // First check that patient was exposed to potassium and a diuretic
+      $rhs : RHSState(stateName == "basic concomitant exposure of ACE I/ARB and a K-sparing diuretic" && state == "yes", $person : person)
+      $meas1 : Measurement(personId == $person.getPersonId() && measurementConceptId == 3023103 
+        && valueAsNumber < 5.0 && (unitConceptId == 8753 || unitConceptId == 9557) // was originally just 9557 for mEq/L but this isn't used in the data. 8753 is mmol/L which should be equivalent.
+        && measurementDateTime >= within48hours && measurementDateTime < plus1day)
+    then  
+      // Create a state object for the current node in the decision tree to be used by other LHS
+      RHSState rhsNN = new RHSState("ace i/arb - diuretic, serum potassium <5.0 mEq/L within 48 hours yes", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+          "Serum Potassium <5.0 mEq/L within 48 hours for Patient ID: %s; Current date: %s;\n\tPotassium level: %s mEq/L;Lab date: %s;", 
+          $person.getPersonId(),
+          currentDateStr,
+          $meas1.getValueAsNumber(),
+          $meas1.getMeasurementDateTime()
+        );
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tACE I/ARB - K-sparing diuretic\tserum potassium < 5 mEq/L within 48 hours\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false","",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo(),
+          "MEAS - serum potassium = " + $meas1.getValueAsNumber() + "mEq/L",
+          "MEAS TAKEN - " + $meas1.getMeasurementDateTime()
+      );
+      System.out.println(s);          
+end
+
+// leaf node if there is no serum potassium <5.0 mEq within 48 hours of order
+rule "ACE I ARB - K-SPARING DIURETIC -- No recent serum potassium"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of ACE I/ARB and a K-sparing diuretic" && state == "yes", $person : person)
+      not ($rhs2 : RHSState(stateName == "serum potassium <5.0 mEq/L within 48 hours" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+    then
+      RHSState rhsNN = new RHSState("ace i/arb - diuretic, serum potassium <5.0 mEq/L within 48 hours no", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+          "ACE I/ARB - K-sparing diruetic interaction for patient %s.\n\tClinical Implication: Increased risk of hyperkalemia possible.\n\tMitigating factor: (TODO).\n\tRecommendation: Use only if benefit outweighs risk.\n\tExplanation: (TODO).",
+          $person.getPersonId()
+        );
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tACE I/ARB - K-sparing diuretic\tno serum potassium < 5 mEq/L within 48 hours\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "true","red",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);
+end
+
+// leaf node for if eGFR not greater than 60
+rule "ACE I ARB - K-SPARING DIURETIC -- recent serum potassium, eGFR <=60 ml/min"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of ACE I/ARB and a K-sparing diuretic" && state == "yes", $person : person)
+      $rhs2 : RHSState(stateName == "serum potassium <5.0 mEq/L within 48 hours" && state == "yes" && person.getPersonId() == $person.getPersonId())
+
+      $meas1 : Measurement(personId == $person.getPersonId() 
+        && (measurementConceptId == 3049187 || measurementConceptId == 3053283 || measurementConceptId == 3030354)
+        && valueAsNumber <= 60.0)
+    then
+      RHSState rhsNN = new RHSState("ace i/arb - diuretic, serum potassium <5.0 mEq/L within 48 hours yes, eGFR >60 ml/min no", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+          "ACE I/ARB - K-sparing diruetic interaction for patient %s.\n\tClinical Implication: Increased risk of hyperkalemia possible.\n\tMitigating factor: (TODO).\n\tRecommendation: Monitor potassium levels, assess risk and take action if necessary.\n\tExplanation: eGFR: %s ml/min/1.73sq.m;Lab date: %s;",
+          $person.getPersonId(),
+          $meas1.getValueAsNumber(),
+          $meas1.getMeasurementDateTime()
+        );
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tACE I/ARB - K-sparing diuretic, serum potassium < 5 mEq/L within 48 hours, eGFR <=60 ml/min\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "true","yellow",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);
+end
+
+rule "ACE I ARB - K-SPARING DIURETIC -- recent serum potassium, eGFR >60 ml/min"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of ACE I/ARB and a K-sparing diuretic" && state == "yes", $person : person)
+      $rhs2 : RHSState(stateName == "serum potassium <5.0 mEq/L within 48 hours" && state == "yes" && person.getPersonId() == $person.getPersonId())
+      not($rhs3 : RHSState(stateName == "ace i/arb - diuretic, serum potassium <5.0 mEq/L within 48 hours yes, eGFR >60 ml/min no" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+
+      $meas1 : Measurement(personId == $person.getPersonId() 
+        && (measurementConceptId == 3049187 || measurementConceptId == 3053283 || measurementConceptId == 3030354)
+        && valueAsNumber > 60.0)
+    then
+      RHSState rhsNN = new RHSState("ace i/arb - diuretic, serum potassium <5.0 mEq/L within 48 hours yes, eGFR >60 mL/min yes", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+          "ACE I/ARB - K-sparing diruetic interaction for patient %s.\n\tClinical Implication: Increased risk of hyperkalemia unlikely.\n\tMitigating factor: (TODO).\n\tRecommendation: No special precautions.\n\tExplanation: Explanation: eGFR: %s ml/min/1.73sq.m;Lab date: %s;",
+          $person.getPersonId(),
+          $meas1.getValueAsNumber(),
+          $meas1.getMeasurementDateTime()
+        );
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tACE I/ARB - K-sparing diuretic\tno serum potassium < 5 mEq/L within 48 hours, eGFR >60 ml/min\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "green",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);
+end

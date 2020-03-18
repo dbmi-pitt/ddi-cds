@@ -1,0 +1,164 @@
+// Metoclopramide - Antipsychotics DDI Alerting Rule
+
+package com.sample
+
+//list any import classes here.
+import function com.sample.DRLLogger.*;
+
+import java.util.*;
+import java.lang.String;
+import java.sql.Timestamp;
+
+import com.sample.model.ConceptSetItem;
+import com.sample.model.RHSState;
+
+import edu.pitt.dbmi.ohdsiv5.db.ConditionEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.DrugStrength;
+import edu.pitt.dbmi.ohdsiv5.db.ExtendedDrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.Measurement;
+import edu.pitt.dbmi.ohdsiv5.db.Person;
+
+
+/////////// 
+// declare any global variables here
+/////////// 
+global java.lang.String currentDateStr;
+global java.sql.Timestamp currentDate;
+global java.sql.Timestamp within48hours;
+global java.sql.Timestamp within28days;
+global java.sql.Timestamp plus1day;
+
+/////////// 
+// declare any types here
+/////////// 
+
+
+/////////// 
+// Rules
+/////////// 
+
+/*
+Aripiprazole
+Asenapine
+Brexpiprazole
+Cariprazine
+Chlorpromazine
+Fluphenazine
+Haloperidol
+Loxapine
+Loperidone
+Lurasidone
+Mesoridazine
+Olanzapine
+Paliperidone
+Perphenazine
+Pimavanserin
+Promethazine
+Quetiapine
+Risperidone
+Thioridazine
+Tiethylperazine
+Trifluoperazine
+Ziprasidone
+Rivastigmine
+Donepezil
+Galantamine
+*/
+// check of any dosage or form of metoclopramide and an antipsychotic at the same time
+rule "METOCLOPRAMIDE - ANTIPSYCHOTICS -- NO FILTER"
+    when
+      // First, we look for patients exposed to metoclopramide on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Metoclopramides Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to an antipsychotic on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "Antipsychotics Ingredients" || csName == "Cholinesterase Inhibitors Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both potassium and the diuretic
+      $clinDrugConcept3 : ConceptSetItem(csName == "Metoclopramides") 
+      $clinDrugConcept4 : ConceptSetItem(csName == "Antipsychotics" || csName == "Cholinesterase Inhibitors")
+      $dexp1 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate >= currentDate && drugExposureStartDate < plus1day
+        && drugConceptId == $clinDrugConcept3.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      $dexp2 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && (
+          (drugExposureStartDate >= $dexp1.getDrugExposureStartDate() && drugExposureStartDate <= $dexp1.getDrugExposureEndDate())
+          || (drugExposureEndDate >= $dexp1.getDrugExposureStartDate() && drugExposureEndDate <= $dexp1.getDrugExposureEndDate())
+          || ($dexp1.getDrugExposureStartDate() >= drugExposureStartDate && $dexp1.getDrugExposureStartDate() <= drugExposureEndDate)
+          || ($dexp1.getDrugExposureEndDate() >= drugExposureStartDate && $dexp1.getDrugExposureEndDate() <= drugExposureEndDate)
+        )
+        && drugConceptId != null && drugConceptId == $clinDrugConcept4.getConceptId() 
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsCur = new RHSState("concomitant exposure of metoclopramide and an antipsychotic or cholinesterase inhibitor", "yes", $person, $dexp1, $dexp2);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+        "Metoclopramide - Antipsychotics interaction for patient: %s.\n\tClinical implication: Increased risk of extrapyramidal symptoms likely.\n\tMitigating factor: Co-prescription of metoclopramide and an antipsychotic or a cholinesterase inhibitor (%s).\n\tRecommendation: Use only if benefit outweighs risk.\n\tExplanation: Metoclopramide, antipsychotics, and cholinesterase inhibitors are all known in increase risk of tardive dyskinesia.", 
+        $de1.getPersonId(), 
+        $dexp2.getDrugConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tMetoclopramide - Antipsychotic or Cholinesterase inhibitor interaction\tbasic concomitant exposure\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "true", "red",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          $dexp1.getLogInfo(),
+          $dexp2.getLogInfo()
+      );
+      System.out.println(s);
+end
+
+rule "METOCLOPRAMIDE - ANTIPSYCHOTICS -- NO FILTER, ALT"
+    when
+      // First, we look for patients exposed to metoclopramide on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Metoclopramides Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to an antipsychotic on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "Antipsychotics Ingredients" || csName == "Cholinesterase Inhibitors Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both potassium and the diuretic
+      $clinDrugConcept3 : ConceptSetItem(csName == "Metoclopramides") 
+      $clinDrugConcept4 : ConceptSetItem(csName == "Antipsychotics" || csName == "Cholinesterase Inhibitors")
+      $dexp2 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate >= currentDate && drugExposureStartDate < plus1day
+        && drugConceptId == $clinDrugConcept4.getConceptId() && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      $dexp1 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && (
+          (drugExposureStartDate >= $dexp2.getDrugExposureStartDate() && drugExposureStartDate <= $dexp2.getDrugExposureEndDate())
+          || (drugExposureEndDate >= $dexp2.getDrugExposureStartDate() && drugExposureEndDate <= $dexp2.getDrugExposureEndDate())
+          || ($dexp2.getDrugExposureStartDate() >= drugExposureStartDate && $dexp2.getDrugExposureStartDate() <= drugExposureEndDate)
+          || ($dexp2.getDrugExposureEndDate() >= drugExposureStartDate && $dexp2.getDrugExposureEndDate() <= drugExposureEndDate)
+        )
+        && drugConceptId != null && drugConceptId == $clinDrugConcept3.getConceptId() 
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsCur = new RHSState("concomitant exposure of metoclopramide and an antipsychotic or cholinesterase inhibitor", "yes", $person, $dexp1, $dexp2);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+        "Metoclopramide - Antipsychotics interaction for patient: %s.\n\tClinical implication: Increased risk of extrapyramidal symptoms likely.\n\tMitigating factor: Co-prescription of metoclopramide and an antipsychotic or a cholinesterase inhibitor (%s).\n\tRecommendation: Use only if benefit outweighs risk.\n\tExplanation: Metoclopramide, antipsychotics, and cholinesterase inhibitors are all known in increase risk of tardive dyskinesia.", 
+        $de1.getPersonId(), 
+        $dexp2.getDrugConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tMetoclopramide - Antipsychotic or Cholinesterase inhibitor interaction\tbasic concomitant exposure\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "true", "red",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          $dexp1.getLogInfo(),
+          $dexp2.getLogInfo()
+      );
+      System.out.println(s);
+end

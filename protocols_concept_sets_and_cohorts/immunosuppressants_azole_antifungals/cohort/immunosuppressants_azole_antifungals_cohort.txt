@@ -1,0 +1,1365 @@
+{
+  "ConceptSets": [
+    {
+      "id": 0,
+      "name": "azole_antifungals_ingredients",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "4450",
+              "CONCEPT_ID": 1754994,
+              "CONCEPT_NAME": "Fluconazole",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "28031",
+              "CONCEPT_ID": 1703653,
+              "CONCEPT_NAME": "Itraconazole",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "6135",
+              "CONCEPT_ID": 985708,
+              "CONCEPT_NAME": "Ketoconazole",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "282446",
+              "CONCEPT_ID": 1704139,
+              "CONCEPT_NAME": "posaconazole",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "121243",
+              "CONCEPT_ID": 1714277,
+              "CONCEPT_NAME": "voriconazole",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 1,
+      "name": "immunosuppressants_ingredients",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "3008",
+              "CONCEPT_ID": 19010482,
+              "CONCEPT_NAME": "Cyclosporine",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "141704",
+              "CONCEPT_ID": 19011440,
+              "CONCEPT_NAME": "everolimus",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "35302",
+              "CONCEPT_ID": 19034726,
+              "CONCEPT_NAME": "Sirolimus",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Ingredient",
+              "CONCEPT_CODE": "42316",
+              "CONCEPT_ID": 950637,
+              "CONCEPT_NAME": "Tacrolimus",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "name": "immunosuppressants",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1093174",
+              "CONCEPT_ID": 40236654,
+              "CONCEPT_NAME": "Cyclosporine 0.002 MG/MG Ophthalmic Ointment",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "351291",
+              "CONCEPT_ID": 19010551,
+              "CONCEPT_NAME": "Cyclosporine 0.5 MG/ML Ophthalmic Suspension",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "348431",
+              "CONCEPT_ID": 19096440,
+              "CONCEPT_NAME": "Cyclosporine 1000 MG/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "309632",
+              "CONCEPT_ID": 19076045,
+              "CONCEPT_NAME": "Cyclosporine 100 MG/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "328160",
+              "CONCEPT_ID": 19082899,
+              "CONCEPT_NAME": "Cyclosporine 100 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "197553",
+              "CONCEPT_ID": 19010484,
+              "CONCEPT_NAME": "Cyclosporine 25 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "205175",
+              "CONCEPT_ID": 19028689,
+              "CONCEPT_NAME": "Cyclosporine 50 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "670177",
+              "CONCEPT_ID": 19125259,
+              "CONCEPT_NAME": "Cyclosporine 50 MG/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "205168",
+              "CONCEPT_ID": 19028684,
+              "CONCEPT_NAME": "Cyclosporine 50 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "835886",
+              "CONCEPT_ID": 19010556,
+              "CONCEPT_NAME": "cyclosporine, modified 100 MG/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "241834",
+              "CONCEPT_ID": 19010522,
+              "CONCEPT_NAME": "cyclosporine, modified 100 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "835919",
+              "CONCEPT_ID": 19010586,
+              "CONCEPT_NAME": "cyclosporine, modified 10 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "835894",
+              "CONCEPT_ID": 19010559,
+              "CONCEPT_NAME": "cyclosporine, modified 25 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "835925",
+              "CONCEPT_ID": 19010590,
+              "CONCEPT_NAME": "cyclosporine, modified 50 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1308428",
+              "CONCEPT_ID": 42900297,
+              "CONCEPT_NAME": "everolimus 0.08 MG/ML Oral Suspension",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1308430",
+              "CONCEPT_ID": 42900301,
+              "CONCEPT_NAME": "everolimus 0.12 MG/ML Oral Suspension",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "977427",
+              "CONCEPT_ID": 40175813,
+              "CONCEPT_NAME": "everolimus 0.25 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1308432",
+              "CONCEPT_ID": 42900305,
+              "CONCEPT_NAME": "everolimus 0.2 MG/ML Oral Suspension",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "977434",
+              "CONCEPT_ID": 40175817,
+              "CONCEPT_NAME": "everolimus 0.5 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "977438",
+              "CONCEPT_ID": 40175821,
+              "CONCEPT_NAME": "everolimus 0.75 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "845507",
+              "CONCEPT_ID": 19135077,
+              "CONCEPT_NAME": "everolimus 10 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "998189",
+              "CONCEPT_ID": 40223693,
+              "CONCEPT_NAME": "everolimus 2.5 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "845515",
+              "CONCEPT_ID": 19135083,
+              "CONCEPT_NAME": "everolimus 5 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1119400",
+              "CONCEPT_ID": 40242016,
+              "CONCEPT_NAME": "everolimus 7.5 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "905158",
+              "CONCEPT_ID": 40173865,
+              "CONCEPT_NAME": "Sirolimus 0.5 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "314230",
+              "CONCEPT_ID": 19080244,
+              "CONCEPT_NAME": "Sirolimus 1 MG/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "349208",
+              "CONCEPT_ID": 19096679,
+              "CONCEPT_NAME": "Sirolimus 1 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "360110",
+              "CONCEPT_ID": 19099674,
+              "CONCEPT_NAME": "Sirolimus 2 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1431978",
+              "CONCEPT_ID": 43532968,
+              "CONCEPT_NAME": "Tacrolimus 0.5 MG Extended Release Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "313190",
+              "CONCEPT_ID": 19079712,
+              "CONCEPT_NAME": "Tacrolimus 0.5 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1664459",
+              "CONCEPT_ID": 46287734,
+              "CONCEPT_NAME": "Tacrolimus 0.75 MG Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1431983",
+              "CONCEPT_ID": 43532972,
+              "CONCEPT_NAME": "Tacrolimus 1 MG Extended Release Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1664464",
+              "CONCEPT_ID": 46287739,
+              "CONCEPT_NAME": "Tacrolimus 1 MG Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "198377",
+              "CONCEPT_ID": 950641,
+              "CONCEPT_NAME": "Tacrolimus 1 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "427808",
+              "CONCEPT_ID": 19106286,
+              "CONCEPT_NAME": "Tacrolimus 1 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1664441",
+              "CONCEPT_ID": 46287720,
+              "CONCEPT_NAME": "Tacrolimus 4 MG Extended Release Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "1431988",
+              "CONCEPT_ID": 43532976,
+              "CONCEPT_NAME": "Tacrolimus 5 MG Extended Release Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "198379",
+              "CONCEPT_ID": 950663,
+              "CONCEPT_NAME": "Tacrolimus 5 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "198378",
+              "CONCEPT_ID": 950662,
+              "CONCEPT_NAME": "Tacrolimus 5 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "427807",
+              "CONCEPT_ID": 19106285,
+              "CONCEPT_NAME": "Tacrolimus 5 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "name": "fluconazoles_IV",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "646041",
+              "CONCEPT_ID": 19124598,
+              "CONCEPT_NAME": "Fluconazole 200 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "252432",
+              "CONCEPT_ID": 1755040,
+              "CONCEPT_NAME": "Fluconazole 2 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "861607",
+              "CONCEPT_ID": 40165987,
+              "CONCEPT_NAME": "Fluconazole 4 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "name": "fluconazoles_PO",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "199950",
+              "CONCEPT_ID": 19022584,
+              "CONCEPT_NAME": "Fluconazole 100 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "197698",
+              "CONCEPT_ID": 1754995,
+              "CONCEPT_NAME": "Fluconazole 100 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "310352",
+              "CONCEPT_ID": 19077380,
+              "CONCEPT_NAME": "Fluconazole 10 MG/ML Oral Suspension",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "199745",
+              "CONCEPT_ID": 1754999,
+              "CONCEPT_NAME": "Fluconazole 150 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "197699",
+              "CONCEPT_ID": 1754996,
+              "CONCEPT_NAME": "Fluconazole 150 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "199746",
+              "CONCEPT_ID": 1755000,
+              "CONCEPT_NAME": "Fluconazole 200 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "197700",
+              "CONCEPT_ID": 19019003,
+              "CONCEPT_NAME": "Fluconazole 200 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "310353",
+              "CONCEPT_ID": 19077401,
+              "CONCEPT_NAME": "Fluconazole 40 MG/ML Oral Suspension",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "199747",
+              "CONCEPT_ID": 1755001,
+              "CONCEPT_NAME": "Fluconazole 50 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "197701",
+              "CONCEPT_ID": 19019004,
+              "CONCEPT_NAME": "Fluconazole 50 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "755760",
+              "CONCEPT_ID": 19128807,
+              "CONCEPT_NAME": "Fluconazole 5 MG/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "422644",
+              "CONCEPT_ID": 19105804,
+              "CONCEPT_NAME": "Fluconazole 5 MG/ML Oral Suspension",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "name": "fluconazoles",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "199950",
+              "CONCEPT_ID": 19022584,
+              "CONCEPT_NAME": "Fluconazole 100 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "197698",
+              "CONCEPT_ID": 1754995,
+              "CONCEPT_NAME": "Fluconazole 100 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "310352",
+              "CONCEPT_ID": 19077380,
+              "CONCEPT_NAME": "Fluconazole 10 MG/ML Oral Suspension",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "199745",
+              "CONCEPT_ID": 1754999,
+              "CONCEPT_NAME": "Fluconazole 150 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "197699",
+              "CONCEPT_ID": 1754996,
+              "CONCEPT_NAME": "Fluconazole 150 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "646041",
+              "CONCEPT_ID": 19124598,
+              "CONCEPT_NAME": "Fluconazole 200 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "199746",
+              "CONCEPT_ID": 1755000,
+              "CONCEPT_NAME": "Fluconazole 200 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "197700",
+              "CONCEPT_ID": 19019003,
+              "CONCEPT_NAME": "Fluconazole 200 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "252432",
+              "CONCEPT_ID": 1755040,
+              "CONCEPT_NAME": "Fluconazole 2 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "310353",
+              "CONCEPT_ID": 19077401,
+              "CONCEPT_NAME": "Fluconazole 40 MG/ML Oral Suspension",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "861607",
+              "CONCEPT_ID": 40165987,
+              "CONCEPT_NAME": "Fluconazole 4 MG/ML Injectable Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "199747",
+              "CONCEPT_ID": 1755001,
+              "CONCEPT_NAME": "Fluconazole 50 MG Oral Capsule",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "197701",
+              "CONCEPT_ID": 19019004,
+              "CONCEPT_NAME": "Fluconazole 50 MG Oral Tablet",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "755760",
+              "CONCEPT_ID": 19128807,
+              "CONCEPT_NAME": "Fluconazole 5 MG/ML Oral Solution",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Drug",
+              "CONCEPT_CODE": "422644",
+              "CONCEPT_ID": 19105804,
+              "CONCEPT_NAME": "Fluconazole 5 MG/ML Oral Suspension",
+              "DOMAIN_ID": "Drug",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "RxNorm"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "PrimaryCriteria": {
+    "CriteriaList": [
+      {
+        "DrugEra": {
+          "CorrelatedCriteria": {
+            "Type": "ALL",
+            "CriteriaList": [
+              {
+                "Criteria": {
+                  "DrugEra": {
+                    "CodesetId": 0
+                  }
+                },
+                "StartWindow": {
+                  "Start": {
+                    "Days": "30",
+                    "Coeff": -1
+                  },
+                  "End": {
+                    "Days": "30",
+                    "Coeff": 1
+                  }
+                },
+                "Occurrence": {
+                  "Type": 2,
+                  "Count": 1
+                }
+              }
+            ],
+            "DemographicCriteriaList": [],
+            "Groups": []
+          },
+          "CodesetId": 1
+        }
+      }
+    ],
+    "ObservationWindow": {
+      "PriorDays": "0",
+      "PostDays": 0
+    },
+    "PrimaryCriteriaLimit": {
+      "Type": "All"
+    }
+  },
+  "QualifiedLimit": {
+    "Type": "First"
+  },
+  "ExpressionLimit": {
+    "Type": "First"
+  },
+  "InclusionRules": [
+    {
+      "name": "Systemic Immunosuppressants",
+      "description": "This rule checks to see if the patient is on an immunosuppressant that is a systemic product (oral/intravenous). Patients who fail to meet this rule will not have an alert fired under any circumstance.",
+      "expression": {
+        "Type": "ALL",
+        "CriteriaList": [
+          {
+            "Criteria": {
+              "DrugExposure": {
+                "CodesetId": 2
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Days": "30",
+                "Coeff": -1
+              },
+              "End": {
+                "Days": "30",
+                "Coeff": 1
+              }
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          }
+        ],
+        "DemographicCriteriaList": [],
+        "Groups": []
+      }
+    },
+    {
+      "name": "Fluconazole Check",
+      "description": "This rule checks to see if the patient is on Fluconazole. If the patient is on Fluconazole, they must meet additional criteria for an alert to be fired. If the patient is found to not be on fluconazole, an alert is fired as they are on one of the other azole anti-fungals.",
+      "expression": {
+        "Type": "ALL",
+        "CriteriaList": [
+          {
+            "Criteria": {
+              "DrugExposure": {
+                "CodesetId": 5
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Days": "30",
+                "Coeff": -1
+              },
+              "End": {
+                "Days": "30",
+                "Coeff": 1
+              }
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          }
+        ],
+        "DemographicCriteriaList": [],
+        "Groups": []
+      }
+    },
+    {
+      "name": "Oral Fluconazole",
+      "description": "This rule checks to see if the patient is on oral fluconazole, and if so, if their dosage is above the threshold value (100 mg/day). If the dosage is above the threshold, an alert is fired. If it's below, no alert is fired.",
+      "expression": {
+        "Type": "ALL",
+        "CriteriaList": [
+          {
+            "Criteria": {
+              "DrugExposure": {
+                "CodesetId": 4,
+                "EffectiveDrugDose": {
+                  "Value": 100,
+                  "Op": "gt"
+                },
+                "DoseUnit": [
+                  {
+                    "CONCEPT_CODE": "258835005",
+                    "CONCEPT_ID": 4120731,
+                    "CONCEPT_NAME": "mg/day",
+                    "DOMAIN_ID": "Unit",
+                    "VOCABULARY_ID": "SNOMED"
+                  }
+                ]
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Days": "30",
+                "Coeff": -1
+              },
+              "End": {
+                "Days": "30",
+                "Coeff": 1
+              }
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          }
+        ],
+        "DemographicCriteriaList": [],
+        "Groups": []
+      }
+    },
+    {
+      "name": "Intravenous Fluconazole",
+      "description": "This rule checks to see if the patient is on intravenous fluconazole, and if so, if their dosage is above the threshold value (200 mg/day). If the dosage is above the threshold, an alert is fired. If it's below, no alert is fired.",
+      "expression": {
+        "Type": "ALL",
+        "CriteriaList": [
+          {
+            "Criteria": {
+              "DrugExposure": {
+                "CodesetId": 3,
+                "EffectiveDrugDose": {
+                  "Value": 200,
+                  "Op": "gt"
+                },
+                "DoseUnit": [
+                  {
+                    "CONCEPT_CODE": "258835005",
+                    "CONCEPT_ID": 4120731,
+                    "CONCEPT_NAME": "mg/day",
+                    "DOMAIN_ID": "Unit",
+                    "VOCABULARY_ID": "SNOMED"
+                  }
+                ]
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Days": "30",
+                "Coeff": -1
+              },
+              "End": {
+                "Days": "30",
+                "Coeff": 1
+              }
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          }
+        ],
+        "DemographicCriteriaList": [],
+        "Groups": []
+      }
+    }
+  ],
+  "CensoringCriteria": []
+}
