@@ -64,7 +64,7 @@ public class DroolsTest {
                         userConfiguration.put(configuration[0], configuration[1]);
                     }
                 } else {
-                    logger.error("Pass a configuration in the format ruleFolder=rules_progress");
+                    logger.error("Pass a configuration in the format ruleFolder=rules_complete");
                     System.exit(1);
                 }
             }
@@ -86,7 +86,7 @@ public class DroolsTest {
         if (userConfiguration.containsKey("ruleFolder")) {
             kbase = kContainer.newKieBase(userConfiguration.get("ruleFolder"), kconfig);
         } else {
-            kbase = kContainer.newKieBase("rules_progress", kconfig);
+            kbase = kContainer.newKieBase("rules_complete", kconfig);
         }
         KieSession kSession = kbase.newKieSession();
 //        KieRuntimeLogger kieLogger = ks.getLoggers().newFileLogger(kSession, "audit");

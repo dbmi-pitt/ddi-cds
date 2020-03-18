@@ -3,9 +3,6 @@
     <kbase name="rules_complete" packages="rules_complete">
         <ksession name="ksession-rules"/>
     </kbase>
-    <kbase name="rules_progress" packages="rules_progress" equalsBehavior="equality">
-        <ksession name="ksession-progress"/>
-    </kbase>
 
     <kbase name="rules_acei_arb_ksparing_diuretics" packages="rules_acei_arb_ksparing_diuretics"
            equalsBehavior="equality">
