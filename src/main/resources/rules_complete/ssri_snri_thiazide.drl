@@ -43,19 +43,7 @@ global java.sql.Timestamp plus1day;
 /*
 TODO's:
 CONCEPT SETS:
-  * List of thiazide diuretics?
-
-  * "Sodium concentration" lab tests?
-    * Sodium lab test LOINC codes taken from previous healthfacts analysis in the db: 2947-0, 2951-2 => lab measurement concept ID's 3000285, 3019550
-    However it looks like in the available data these aren't used:
-    SELECT * FROM banner_2019_inpatient.measurement m INNER JOIN banner_2019_inpatient.concept c ON c.concept_id = m.measurement_concept_id
-    WHERE c.concept_name ILIKE '%sodium%';
-    SELECT * FROM banner_etl.measurement m INNER JOIN banner_2019_inpatient.concept c ON c.concept_id = m.measurement_concept_id
-    WHERE c.concept_name ILIKE '%sodium%';
-
-  * "A396T variant of SLC02A1"? 
-
-  * Sodium restricted diet? 
+https://docs.google.com/document/d/1C9FXAisoI94Vpy35Wx7u8wV0hBimBXpYx4ji48KjTCU/edit
 */
 // basic check of any SSRI/SNRI with any Thiazide at the same time
 rule "SSRI+SNRI - THIAZIDE -- NO FILTER"
@@ -204,7 +192,7 @@ rule "SSRI+SNRI - THIAZIDE -- female patient"
       System.out.println(s);
 end
 
-// TODO: A396T variant of SLC02A1
+// NOTE: A396T variant of SLC02A1 not available in the data set
 /*rule "SSRI+SNRI - THIAZIDE -- A396T variant of SLC02A1"
     when
       $rhs : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person)
@@ -216,7 +204,7 @@ end
 end
 */
 
-// TODO: on sodium restricted diet
+// NOTE: sodium restricted diet not available in the data set
 /*rule "SSRI+SNRI - THIAZIDE -- sodium restricted diet"
     when
       $rhs : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person)
@@ -320,13 +308,23 @@ rule "SSRI+SNRI - THIAZIDE -- hyponatremia risk drugs"
       System.out.println(s);
 end
 
-// TODO: need full concept sets for conditions associated with risk of hyponatremia
-// need: acquired immunodeficiency syndrome, adrenal insufficiency, heart failure, hepatic cirrhosis, hyperglycemia, hypothyroidismm malignancy, pneumonia
-/*rule "SSRI+SNRI - THIAZIDE -- hyponatremia risk conditions"
+// TODO History of hyperglycemia, hypothyroidism - treat these as historical lab values from any time in the patient's history?
+// Hyperglycemia (Hyperglycemia of greater than 400 mg/dL glucose lab LOINC 1498-5, + more? ); **
+// Hypothyroidism (Hypothyroidism defined as TSH &gt; 10mU/L LOINC 24348-5 ) ,  **
+
+// screen conditions associated with risk of hyponatremia
+rule "SSRI+SNRI - THIAZIDE -- hyponatremia risk conditions"
     when
       $rhs : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person)
       // This checks to see if the patient has any of the conditions of interest
-      $condConcept1 : ConceptSetItem(csName == "[TODO]")
+      $condConcept1 : ConceptSetItem(
+        csName == "History of HIV/AIDS"
+        || csName == "History of Adrenal Insufficiency"
+        || csName == "History of Heart Failure"
+        || csName == "History of Hepatic Cirrhosis"
+        || csName == "History of Malignancy"
+        || csName == "History of Pneumonia"
+      )
       $ce1 : ConditionEra(PersonId == $person.getPersonId() && conditionConceptId == $condConcept1.getConceptId())     
     then
       // This tags a given patient as "yes for risks"... There are three potential types of risks but all of them result in this same RHS state
@@ -349,7 +347,6 @@ end
       );
       System.out.println(s);
 end
-*/
 
 // decision point for hyponatremia risk factors
 rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
