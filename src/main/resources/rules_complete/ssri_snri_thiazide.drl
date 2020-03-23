@@ -108,11 +108,18 @@ rule "SSRI+SNRI - THIAZIDE -- NO FILTER"
 end
 
 // intermediate step to find sodium concentrations < 130 mmol/L within 7 days
+// Sodium lab test LOINC codes: '2947-0', '41657-8', '2951-2', '2160-0', '24348-5', '1498-5'
 rule "SSRI+SNRI - THIAZIDE -- High Sodium Within 7 Days"
     when
       $rhs : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person)
       $meas1 : Measurement(personId == $person.getPersonId() 
-        && (measurementConceptId == 3000285 || measurementConceptId == 3019550) // TODO need to confirm which concept(s) to use for sodium
+        && (measurementConceptId == 3000285
+          || measurementConceptId == 3017592
+          || measurementConceptId == 3016723
+          || measurementConceptId == 3001019
+          || measurementConceptId == 3000285
+          || measurementConceptId == 3019550
+          || measurementConceptId == 3031579)
         && valueAsNumber < 130 && (unitConceptId == 8753 || unitConceptId == 9557) // was originally just 9557 for mEq/L but this isn't used in the data. 8753 is mmol/L which should be equivalent.
         && measurementDateTime >= within7days && measurementDateTime < plus1day)
     then  
@@ -314,7 +321,7 @@ rule "SSRI+SNRI - THIAZIDE -- hyponatremia risk drugs"
 end
 
 // TODO: need full concept sets for conditions associated with risk of hyponatremia
-// need: acquired immunodeficiency syndrome, adrenal insufficiency, heart failure, hepatic cirrhosis, hyperglycemia, hypothyroidism; malignancy, pneumonia
+// need: acquired immunodeficiency syndrome, adrenal insufficiency, heart failure, hepatic cirrhosis, hyperglycemia, hypothyroidismm malignancy, pneumonia
 /*rule "SSRI+SNRI - THIAZIDE -- hyponatremia risk conditions"
     when
       $rhs : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person)
