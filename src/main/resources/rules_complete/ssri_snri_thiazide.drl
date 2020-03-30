@@ -279,10 +279,10 @@ rule "SSRI+SNRI - THIAZIDE -- hyponatremia risk drugs"
     when
       $rhs : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person)
       // This checks to see if the patient is on either group drug of interest at the ingredient level
-      $clinDrugConcept1 : ConceptSetItem(csName == "Amiodarones Ingredients" || csName == "ACEis and ARBs Ingredients" || csName == "NSAIDs Ingredients") 
+      $clinDrugConcept1 : ConceptSetItem(csName == "Amiodarones Ingredients" || csName == "ACEis and ARBs Ingredients" || csName == "NSAIDs Ingredients" || csName == "Antineoplastics Ingredients" || csName == "Antiepileptics Ingredients" || csName == "Risperidones Ingredients" || csName == "Quetiapines Ingredients" || csName == "Haloperidols Ingredients") 
       $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())
       // This identifies the specific clinical drug that the patient was exposed to as a risk factor
-      $clinDrugConcept2 : ConceptSetItem(csName == "Amiodarones" || csName == "ACEis and ARBs" || csName == "NSAIDs") 
+      $clinDrugConcept2 : ConceptSetItem(csName == "Amiodarones" || csName == "ACEis and ARBs" || csName == "NSAIDs" || csName == "Antineoplastics" || csName == "Antiepileptics" || csName == "Risperidones" || csName == "Quetiapines" || csName == "Haloperidols") 
       $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId()
         && drugExposureStartDate != null && drugExposureStartDate < plus1day && drugExposureEndDate >= currentDate
         && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())        
