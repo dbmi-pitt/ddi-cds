@@ -17,12 +17,25 @@ VALUES (90002, 'History of HIV/AIDS'),
 (90006, 'History of Malignancy'),
 (90007, 'History of Pneumonia');
 
+-- TODO map to SNOMED
 -- HIV/AIDS
 INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
 SELECT 90002 AS concept_set_id, concept_id, 0 AS is_excluded, 0 AS include_descendants, 0 AS include_mapped
 FROM concept 
 WHERE vocabulary_id IN ('ICD9CM', 'ICD10CM')
 AND concept_code IN ('042', 'B20');
+
+-- Map to SNOMED
+INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
+SELECT 90002 AS concept_set_id, c2.concept_id, 0 AS is_excluded, 0 AS include_descendants, 0 AS include_mapped
+FROM concept c1
+INNER JOIN banner_2019_inpatient.concept_relationship cr ON cr.concept_id_1 = c1.concept_id
+INNER JOIN banner_2019_inpatient.concept c2 ON cr.concept_id_2 = c2.concept_id
+WHERE c1.vocabulary_id IN ('ICD9CM', 'ICD10CM')
+AND cr.relationship_id = 'Maps to'
+AND c2.domain_id = 'Condition'
+AND c1.concept_code IN ('042', 'B20')
+GROUP BY concept_set_id, c2.concept_id, is_excluded, include_descendants, include_mapped;
 
 -- Adrenal Insufficiency
 INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
@@ -32,6 +45,18 @@ WHERE vocabulary_id IN ('ICD9CM', 'ICD10CM')
 AND ((concept_code ILIKE '255.4%' AND vocabulary_id = 'ICD9CM')
 OR (concept_code IN ('E27.1', 'E27.2', 'E27.40', 'E27.49') AND vocabulary_id = 'ICD10CM'));
 
+INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
+SELECT 90003 AS concept_set_id, c2.concept_id, 0 AS is_excluded, 0 AS include_descendants, 0 AS include_mapped
+FROM concept c1
+INNER JOIN banner_2019_inpatient.concept_relationship cr ON cr.concept_id_1 = c1.concept_id
+INNER JOIN banner_2019_inpatient.concept c2 ON cr.concept_id_2 = c2.concept_id
+WHERE c1.vocabulary_id IN ('ICD9CM', 'ICD10CM')
+AND cr.relationship_id = 'Maps to'
+AND c2.domain_id = 'Condition'
+AND ((c1.concept_code ILIKE '255.4%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code IN ('E27.1', 'E27.2', 'E27.40', 'E27.49') AND c1.vocabulary_id = 'ICD10CM'))
+GROUP BY concept_set_id, c2.concept_id, is_excluded, include_descendants, include_mapped;
+
 -- Heart Failure
 INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
 SELECT 90004 AS concept_set_id, concept_id, 0 AS is_excluded, 0 AS include_descendants, 0 AS include_mapped 
@@ -39,6 +64,19 @@ FROM concept
 WHERE vocabulary_id IN ('ICD9CM', 'ICD10CM')
 AND ((concept_code ILIKE '428.%' AND vocabulary_id = 'ICD9CM')
 OR (concept_code ILIKE '150.%' AND vocabulary_id = 'ICD10CM'));
+
+INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
+SELECT 90004 AS concept_set_id, c2.concept_id, 0 AS is_excluded, 0 AS include_descendants, 0 AS include_mapped
+FROM concept c1
+INNER JOIN banner_2019_inpatient.concept_relationship cr ON cr.concept_id_1 = c1.concept_id
+INNER JOIN banner_2019_inpatient.concept c2 ON cr.concept_id_2 = c2.concept_id
+WHERE c1.vocabulary_id IN ('ICD9CM', 'ICD10CM')
+AND cr.relationship_id = 'Maps to'
+AND c2.domain_id = 'Condition'
+AND ((c1.concept_code ILIKE '428.%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE '150.%' AND c1.vocabulary_id = 'ICD10CM'))
+GROUP BY concept_set_id, c2.concept_id, is_excluded, include_descendants, include_mapped;
+
 
 --  Hepatic Cirrhosis
 INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
@@ -49,8 +87,35 @@ AND ((concept_code IN ('571.2', '571.5', '571.6') AND vocabulary_id = 'ICD9CM')
 OR (concept_code ILIKE 'K70.3%' AND vocabulary_id = 'ICD10CM')
 OR (concept_code ILIKE 'K74%' AND vocabulary_id = 'ICD10CM'));
 
+INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
+SELECT 90005 AS concept_set_id, c2.concept_id, 0 AS is_excluded, 0 AS include_descendants, 0 AS include_mapped
+FROM banner_2019_inpatient.concept c1
+INNER JOIN banner_2019_inpatient.concept_relationship cr ON cr.concept_id_1 = c1.concept_id
+INNER JOIN banner_2019_inpatient.concept c2 ON cr.concept_id_2 = c2.concept_id
+WHERE c1.vocabulary_id IN ('ICD9CM', 'ICD10CM')
+AND cr.relationship_id = 'Maps to'
+AND c2.domain_id = 'Condition'
+AND ((c1.concept_code IN ('571.2', '571.5', '571.6') AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE 'K70.3%' AND c1.vocabulary_id = 'ICD10CM')
+OR (c1.concept_code ILIKE 'K74%' AND c1.vocabulary_id = 'ICD10CM'))
+GROUP BY concept_set_id, c2.concept_id, is_excluded, include_descendants, include_mapped;
+
 -- TODO Malignancy
 -- (ICD-9 codes 140.xx to 239.xx) (C* ICD10)
+SELECT 90005 AS concept_set_id, concept_id, 0 AS is_excluded, 0 AS include_descendants, 0 AS include_mapped 
+FROM concept 
+WHERE vocabulary_id IN ('ICD9CM', 'ICD10CM')
+AND ((concept_code ILIKE '14%' AND vocabulary_id = 'ICD9CM')
+OR (concept_code ILIKE '15%' AND vocabulary_id = 'ICD9CM')
+OR (concept_code ILIKE '16%' AND vocabulary_id = 'ICD9CM')
+OR (concept_code ILIKE '17%' AND vocabulary_id = 'ICD9CM')
+OR (concept_code ILIKE '18%' AND vocabulary_id = 'ICD9CM')
+OR (concept_code ILIKE '19%' AND vocabulary_id = 'ICD9CM')
+OR (concept_code ILIKE '20%' AND vocabulary_id = 'ICD9CM')
+OR (concept_code ILIKE '21%' AND vocabulary_id = 'ICD9CM') -- codes in 21*, 22* seem to indicate benign not malignant
+OR (concept_code ILIKE '22%' AND vocabulary_id = 'ICD9CM')
+OR (concept_code ILIKE '23%' AND vocabulary_id = 'ICD9CM')
+OR (concept_code ILIKE 'C%' AND vocabulary_id = 'ICD10CM'))
 
 -- Pneumonia
 INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
@@ -68,11 +133,33 @@ OR (concept_code ILIKE 'J12%' AND vocabulary_id = 'ICD10CM')
 OR (concept_code ILIKE 'J13%' AND vocabulary_id = 'ICD10CM')
 OR (concept_code ILIKE 'J18.1%' AND vocabulary_id = 'ICD10CM'));
 
+INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
+SELECT 90007 AS concept_set_id, c2.concept_id, 0 AS is_excluded, 0 AS include_descendants, 0 AS include_mapped
+FROM banner_2019_inpatient.concept c1
+INNER JOIN banner_2019_inpatient.concept_relationship cr ON cr.concept_id_1 = c1.concept_id
+INNER JOIN banner_2019_inpatient.concept c2 ON cr.concept_id_2 = c2.concept_id
+WHERE c1.vocabulary_id IN ('ICD9CM', 'ICD10CM')
+AND cr.relationship_id = 'Maps to'
+AND c2.domain_id = 'Condition'
+AND ((c1.concept_code ILIKE '480%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE '481%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE '482%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE '483%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE '484%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE '485%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE '486%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE 'J12%' AND c1.vocabulary_id = 'ICD10CM')
+OR (c1.concept_code ILIKE 'J13%' AND c1.vocabulary_id = 'ICD10CM')
+OR (c1.concept_code ILIKE 'J18.1%' AND c1.vocabulary_id = 'ICD10CM'))
+GROUP BY concept_set_id, c2.concept_id, is_excluded, include_descendants, include_mapped;
+
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
 -- concept sets for MEDICATIONS
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
+-- NOTE: If concept relationship tables are not available you can use ssri-thiazide-drug-concepts.sql separately to load medications only
+
 
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
