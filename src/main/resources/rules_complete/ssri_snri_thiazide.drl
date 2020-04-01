@@ -272,9 +272,7 @@ rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
       System.out.println(s);        
 end
 
-// TODO: need full concept sets for drug-induced hyponatremia
-// already have: amiodarone, angiotensin-converting-enzyme inhibitors, nonsteroidal anti-inflammatory drugs
-// still need: carbamazepine, cisplatin, cyclophosphamide, gabapentin, haloperidol, lamotrigine, levetiracetam, oxcarbazepine, phenytoin, quetiapine, risperidone, valproic acid, vincristine
+// drug-induced hyponatremia risk factor
 rule "SSRI+SNRI - THIAZIDE -- hyponatremia risk drugs"
     when
       $rhs : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person)
