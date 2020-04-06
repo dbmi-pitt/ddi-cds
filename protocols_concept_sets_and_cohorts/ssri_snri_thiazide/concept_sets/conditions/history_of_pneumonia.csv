@@ -1,0 +1,86 @@
+"condition_name","omop_cui","vocabulary_cui","vocabulary_name"
+Pneumonia due to SARS-associated coronavirus,45567260,J12.81,ICD10CM
+Other viral pneumonia,45572161,J12.89,ICD10CM
+Adenoviral pneumonia,35207932,J12.0,ICD10CM
+Respiratory syncytial virus pneumonia,35207933,J12.1,ICD10CM
+Parainfluenza virus pneumonia,35207934,J12.2,ICD10CM
+Human metapneumovirus pneumonia,35207935,J12.3,ICD10CM
+Other viral pneumonia,35207936,J12.8,ICD10CM
+"Viral pneumonia, unspecified",35207937,J12.9,ICD10CM
+Pneumonia due to Streptococcus pneumoniae,35207938,J13,ICD10CM
+"Lobar pneumonia, unspecified organism",35207953,J18.1,ICD10CM
+"Viral pneumonia, not elsewhere classified",1569465,J12,ICD10CM
+Pneumonia due to anaerobes,44832418,"482.81",ICD9CM
+Other bacterial pneumonia,44820885,"482",ICD9CM
+"Pneumonia due to Streptococcus, unspecified",44820886,"482.30",ICD9CM
+Pneumonia due to Streptococcus,44821983,"482.3",ICD9CM
+"Bacterial pneumonia, unspecified",44821984,"482.9",ICD9CM
+"Bronchopneumonia, organism unspecified",44821985,"485",ICD9CM
+"Pneumonia due to Streptococcus, group B",44819743,"482.32",ICD9CM
+Pneumonia due to Legionnaires' disease,44819744,"482.84",ICD9CM
+Pneumonia due to other specified organism,44819745,"483.8",ICD9CM
+Pneumonia due to Klebsiella pneumoniae,44824281,"482.0",ICD9CM
+Pneumonia due to Pseudomonas,44824282,"482.1",ICD9CM
+Pneumonia in other infectious diseases classified elsewhere,44824283,"484.8",ICD9CM
+Methicillin susceptible pneumonia due to Staphylococcus aureus,44823143,"482.41",ICD9CM
+Pneumonia due to SARS-associated coronavirus,44826672,"480.3",ICD9CM
+Pneumonia in whooping cough,44826673,"484.3",ICD9CM
+Pneumonia in anthrax,44826674,"484.5",ICD9CM
+Pneumonia due to adenovirus,44825466,"480.0",ICD9CM
+Pneumococcal pneumonia [Streptococcus pneumoniae pneumonia],44825467,"481",ICD9CM
+Other Staphylococcus pneumonia,44825468,"482.49",ICD9CM
+Pneumonia due to escherichia coli [E. coli],44825469,"482.82",ICD9CM
+Pneumonia in other systemic mycoses,44825470,"484.7",ICD9CM
+Pneumonia due to Hemophilus influenzae [H. influenzae],44827819,"482.2",ICD9CM
+Pneumonia due to other virus not elsewhere classified,44829005,"480.8",ICD9CM
+"Pneumonia due to Staphylococcus, unspecified",44829006,"482.40",ICD9CM
+Pneumonia due to other specified organism,44829007,"483",ICD9CM
+Pneumonia in aspergillosis,44829008,"484.6",ICD9CM
+"Pneumonia, organism unspecified",44829009,"486",ICD9CM
+"Pneumonia due to Streptococcus, group A",44832417,"482.31",ICD9CM
+Pneumonia due to other Streptococcus,44833607,"482.39",ICD9CM
+Pneumonia due to mycoplasma pneumoniae,44833608,"483.0",ICD9CM
+Pneumonia due to chlamydia,44833609,"483.1",ICD9CM
+Pneumonia in infectious diseases classified elsewhere,44833610,"484",ICD9CM
+Viral pneumonia,44831275,"480",ICD9CM
+Pneumonia due to parainfluenza virus,44831276,"480.2",ICD9CM
+"Viral pneumonia, unspecified",44831277,"480.9",ICD9CM
+Pneumonia due to Staphylococcus,44834766,"482.4",ICD9CM
+Pneumonia due to other specified bacteria,44834767,"482.89",ICD9CM
+Pneumonia in cytomegalic inclusion disease,44834768,"484.1",ICD9CM
+Pneumonia due to respiratory syncytial virus,44835977,"480.1",ICD9CM
+Methicillin resistant pneumonia due to Staphylococcus aureus,44835978,"482.42",ICD9CM
+Pneumonia due to other gram-negative bacteria,44835979,"482.83",ICD9CM
+Pneumonia due to other specified bacteria,44837132,"482.8",ICD9CM
+Pneumonia due to Pseudomonas,252351,"41381004",SNOMED
+Anthrax pneumonia,252548,"195902009",SNOMED
+Group B streptococcal pneumonia,252655,"195886008",SNOMED
+Cytomegaloviral pneumonia,252949,"7678002",SNOMED
+Pneumonia in pertussis,253235,"59475000",SNOMED
+Pneumonia due to Klebsiella pneumoniae,253790,"64479007",SNOMED
+Pneumonia caused by Chlamydiaceae,254066,"233609002",SNOMED
+Adenoviral pneumonia,254677,"41207000",SNOMED
+Pneumonia,255848,"233604007",SNOMED
+Bronchopneumonia,256722,"396285007",SNOMED
+Bacterial pneumonia,257315,"53084003",SNOMED
+Pneumonia due to anaerobic bacteria,257908,"409664000",SNOMED
+Pneumonia due to Gram negative bacteria,258180,"430395005",SNOMED
+Pneumococcal pneumonia,258785,"233607000",SNOMED
+Pneumonia in systemic mycosis,259048,"84753008",SNOMED
+Staphylococcal pneumonia,259852,"22754005",SNOMED
+Pneumonia due to Escherichia coli,260430,"51530003",SNOMED
+Haemophilus influenzae pneumonia,260754,"70036007",SNOMED
+Pneumonia in aspergillosis,261053,"111900000",SNOMED
+Pneumonia due to Streptococcus,261324,"34020007",SNOMED
+Viral pneumonia,261326,"75570004",SNOMED
+Pneumonia due to respiratory syncytial virus,436145,"195881003",SNOMED
+Parainfluenza virus pneumonia,439857,"64917006",SNOMED
+Mycoplasma pneumonia,440431,"46970008",SNOMED
+Infective pneumonia,443410,"312342009",SNOMED
+Legionella pneumonia,4112820,"195889001",SNOMED
+Lobar pneumonia,4133224,"278516003",SNOMED
+Pneumonia due to Severe acute respiratory syndrome coronavirus,40479642,"441590008",SNOMED
+Pneumonia due to infection by Streptococcus pyogenes,40481335,"441942006",SNOMED
+Pneumonia due to Human metapneumovirus,40482061,"445096001",SNOMED
+Pneumonia due to methicillin resistant Staphylococcus aureus,46270027,"124691000119101",SNOMED
+Pneumonia due to methicillin susceptible Staphylococcus aureus,46274035,"128711000119106",SNOMED

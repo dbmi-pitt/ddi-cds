@@ -1,0 +1,4 @@
+"condition_name","omop_cui","vocabulary_cui","vocabulary_name"
+Human immunodeficiency virus [HIV] disease,44829737,"042",ICD9CM
+Human immunodeficiency virus [HIV] disease,35205776,B20,ICD10CM
+Human immunodeficiency virus infection,439727,"86406008",SNOMED

@@ -1,0 +1,34 @@
+"condition_name","omop_cui","vocabulary_cui","vocabulary_name"
+Left heart failure,44827794,"428.1",ICD9CM
+Acute systolic heart failure,44820869,"428.21",ICD9CM
+Chronic combined systolic and diastolic heart failure,44820870,"428.42",ICD9CM
+Acute diastolic heart failure,44824251,"428.31",ICD9CM
+Acute on chronic combined systolic and diastolic heart failure,44823119,"428.43",ICD9CM
+Acute combined systolic and diastolic heart failure,44827795,"428.41",ICD9CM
+"Heart failure, unspecified",44827796,"428.9",ICD9CM
+"Systolic heart failure, unspecified",44830086,"428.20",ICD9CM
+"Congestive heart failure, unspecified",44826642,"428.0",ICD9CM
+"Combined systolic and diastolic heart failure, unspecified",44832381,"428.40",ICD9CM
+Systolic heart failure,44834732,"428.2",ICD9CM
+Chronic systolic heart failure,44831248,"428.22",ICD9CM
+Diastolic heart failure,44831249,"428.3",ICD9CM
+"Diastolic heart failure, unspecified",44831250,"428.30",ICD9CM
+Acute on chronic systolic heart failure,44833573,"428.23",ICD9CM
+Combined systolic and diastolic heart failure,44833574,"428.4",ICD9CM
+Chronic diastolic heart failure,44835943,"428.32",ICD9CM
+Acute on chronic diastolic heart failure,44835944,"428.33",ICD9CM
+Heart failure,316139,"84114007",SNOMED
+Congestive heart failure,319835,"42343007",SNOMED
+Left heart failure,439846,"85232009",SNOMED
+Systolic heart failure,443580,"417996009",SNOMED
+Diastolic heart failure,443587,"418304008",SNOMED
+Chronic systolic heart failure,40479192,"441481004",SNOMED
+Chronic diastolic heart failure,40479576,"441530006",SNOMED
+Acute on chronic systolic heart failure,40480602,"443253003",SNOMED
+Acute systolic heart failure,40480603,"443254009",SNOMED
+Acute diastolic heart failure,40481042,"443343001",SNOMED
+Acute on chronic diastolic heart failure,40481043,"443344007",SNOMED
+Combined systolic and diastolic dysfunction,40482727,"442304009",SNOMED
+Acute combined systolic and diastolic heart failure,44782718,"153931000119109",SNOMED
+Chronic combined systolic and diastolic heart failure,44782719,"153941000119100",SNOMED
+Acute on chronic combined systolic and diastolic heart failure,44782733,"153951000119103",SNOMED

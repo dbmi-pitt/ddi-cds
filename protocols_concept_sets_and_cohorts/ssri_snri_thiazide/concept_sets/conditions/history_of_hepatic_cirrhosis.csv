@@ -1,0 +1,27 @@
+"condition_name","omop_cui","vocabulary_cui","vocabulary_name"
+Alcoholic cirrhosis of liver with ascites,45538545,K70.31,ICD10CM
+Other cirrhosis of liver,45581912,K74.69,ICD10CM
+Alcoholic cirrhosis of liver without ascites,45605952,K70.30,ICD10CM
+Unspecified cirrhosis of liver,45601187,K74.60,ICD10CM
+Hepatic fibrosis,35208346,K74.0,ICD10CM
+Hepatic sclerosis,35208347,K74.1,ICD10CM
+Hepatic fibrosis with hepatic sclerosis,35208348,K74.2,ICD10CM
+Primary biliary cirrhosis,35208349,K74.3,ICD10CM
+Secondary biliary cirrhosis,35208350,K74.4,ICD10CM
+"Biliary cirrhosis, unspecified",35208351,K74.5,ICD10CM
+Alcoholic cirrhosis of liver,1569671,K70.3,ICD10CM
+Fibrosis and cirrhosis of liver,1569681,K74,ICD10CM
+Other and unspecified cirrhosis of liver,1569682,K74.6,ICD10CM
+Alcoholic cirrhosis of liver,44819802,"571.2",ICD9CM
+Cirrhosis of liver without mention of alcohol,44832477,"571.5",ICD9CM
+Biliary cirrhosis,44832478,"571.6",ICD9CM
+Biliary cirrhosis,192675,"1761006",SNOMED
+Cirrhosis - non-alcoholic,194692,"266468003",SNOMED
+Alcoholic cirrhosis,196463,"420054005",SNOMED
+Secondary biliary cirrhosis,4046123,"12368000",SNOMED
+Cirrhosis of liver,4064161,"19943007",SNOMED
+Primary biliary cholangitis,4135822,"31712002",SNOMED
+Hepatic fibrosis,4267417,"62484002",SNOMED
+Hepatic sclerosis,4340394,"235899008",SNOMED
+Hepatic fibrosis with hepatic sclerosis,4340948,"235901004",SNOMED
+Ascites due to alcoholic cirrhosis,46269816,"1082601000119104",SNOMED

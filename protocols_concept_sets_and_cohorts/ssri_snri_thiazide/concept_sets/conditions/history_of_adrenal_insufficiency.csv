@@ -1,0 +1,12 @@
+"condition_name","omop_cui","vocabulary_cui","vocabulary_name"
+Other adrenocortical insufficiency,45542748,E27.49,ICD10CM
+Unspecified adrenocortical insufficiency,45605416,E27.40,ICD10CM
+Primary adrenocortical insufficiency,35206928,E27.1,ICD10CM
+Addisonian crisis,35206929,E27.2,ICD10CM
+Mineralocorticoid deficiency,44827620,"255.42",ICD9CM
+Corticoadrenal insufficiency,44824076,"255.4",ICD9CM
+Glucocorticoid deficiency,44831051,"255.41",ICD9CM
+Adrenal cortical hypofunction,435508,"386584007",SNOMED
+Primary adrenocortical insufficiency,4160059,"373662000",SNOMED
+Acute adrenal insufficiency,35624320,"766986002",SNOMED
+Mineralocorticoid deficiency,45773025,"7651000119100",SNOMED
