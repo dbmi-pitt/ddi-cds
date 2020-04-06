@@ -9,6 +9,8 @@ https://drive.google.com/file/d/1Qk8TCfAPLdBgpMt3OJNJ_dqXUUK4rmFQ/view?usp=shari
 --------------------------------
 -- concept sets for CONDITIONS
 --------------------------------
+-- NOTE: To load mappings to SNOMED if concept relationship tables are not available, you can use ssri-thiazide-condition-concepts.sql separately to load conditions only
+
 INSERT INTO ohdsi.concept_set 
 VALUES (90002, 'History of HIV/AIDS'),
 (90003, 'History of Adrenal Insufficiency'),
@@ -17,7 +19,6 @@ VALUES (90002, 'History of HIV/AIDS'),
 (90006, 'History of Malignancy'),
 (90007, 'History of Pneumonia');
 
--- TODO map to SNOMED
 -- HIV/AIDS
 INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
 SELECT 90002 AS concept_set_id, concept_id, 0 AS is_excluded, 0 AS include_descendants, 0 AS include_mapped
@@ -100,8 +101,8 @@ OR (c1.concept_code ILIKE 'K70.3%' AND c1.vocabulary_id = 'ICD10CM')
 OR (c1.concept_code ILIKE 'K74%' AND c1.vocabulary_id = 'ICD10CM'))
 GROUP BY concept_set_id, c2.concept_id, is_excluded, include_descendants, include_mapped;
 
--- TODO Malignancy
 -- (ICD-9 codes 140.xx to 239.xx) (C* ICD10)
+INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
 SELECT 90005 AS concept_set_id, concept_id, 0 AS is_excluded, 0 AS include_descendants, 0 AS include_mapped 
 FROM concept 
 WHERE vocabulary_id IN ('ICD9CM', 'ICD10CM')
@@ -112,10 +113,31 @@ OR (concept_code ILIKE '17%' AND vocabulary_id = 'ICD9CM')
 OR (concept_code ILIKE '18%' AND vocabulary_id = 'ICD9CM')
 OR (concept_code ILIKE '19%' AND vocabulary_id = 'ICD9CM')
 OR (concept_code ILIKE '20%' AND vocabulary_id = 'ICD9CM')
-OR (concept_code ILIKE '21%' AND vocabulary_id = 'ICD9CM') -- codes in 21*, 22* seem to indicate benign not malignant
+OR (concept_code ILIKE '21%' AND vocabulary_id = 'ICD9CM') 
 OR (concept_code ILIKE '22%' AND vocabulary_id = 'ICD9CM')
 OR (concept_code ILIKE '23%' AND vocabulary_id = 'ICD9CM')
-OR (concept_code ILIKE 'C%' AND vocabulary_id = 'ICD10CM'))
+OR (concept_code ILIKE 'C%' AND vocabulary_id = 'ICD10CM'));
+
+INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
+SELECT 90005 AS concept_set_id, c2.concept_id, 0 AS is_excluded, 0 AS include_descendants, 0 AS include_mapped
+FROM banner_2019_inpatient.concept c1
+INNER JOIN banner_2019_inpatient.concept_relationship cr ON cr.concept_id_1 = c1.concept_id
+INNER JOIN banner_2019_inpatient.concept c2 ON cr.concept_id_2 = c2.concept_id
+WHERE c1.vocabulary_id IN ('ICD9CM', 'ICD10CM')
+AND cr.relationship_id = 'Maps to'
+AND c2.domain_id = 'Condition'
+AND ((c1.concept_code ILIKE '14%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE '15%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE '16%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE '17%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE '18%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE '19%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE '20%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE '21%' AND c1.vocabulary_id = 'ICD9CM') 
+OR (c1.concept_code ILIKE '22%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE '23%' AND c1.vocabulary_id = 'ICD9CM')
+OR (c1.concept_code ILIKE 'C%' AND c1.vocabulary_id = 'ICD10CM'))
+GROUP BY concept_set_id, c2.concept_id, is_excluded, include_descendants, include_mapped;
 
 -- Pneumonia
 INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
