@@ -103,7 +103,7 @@ GROUP BY concept_set_id, c2.concept_id, is_excluded, include_descendants, includ
 
 -- (ICD-9 codes 140.xx to 239.xx) (C* ICD10)
 INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
-SELECT 90005 AS concept_set_id, concept_id, 0 AS is_excluded, 0 AS include_descendants, 0 AS include_mapped 
+SELECT 90006 AS concept_set_id, concept_id, 0 AS is_excluded, 0 AS include_descendants, 0 AS include_mapped 
 FROM concept 
 WHERE vocabulary_id IN ('ICD9CM', 'ICD10CM')
 AND ((concept_code ILIKE '14%' AND vocabulary_id = 'ICD9CM')
@@ -119,7 +119,7 @@ OR (concept_code ILIKE '23%' AND vocabulary_id = 'ICD9CM')
 OR (concept_code ILIKE 'C%' AND vocabulary_id = 'ICD10CM'));
 
 INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
-SELECT 90005 AS concept_set_id, c2.concept_id, 0 AS is_excluded, 0 AS include_descendants, 0 AS include_mapped
+SELECT 90006 AS concept_set_id, c2.concept_id, 0 AS is_excluded, 0 AS include_descendants, 0 AS include_mapped
 FROM banner_2019_inpatient.concept c1
 INNER JOIN banner_2019_inpatient.concept_relationship cr ON cr.concept_id_1 = c1.concept_id
 INNER JOIN banner_2019_inpatient.concept c2 ON cr.concept_id_2 = c2.concept_id
