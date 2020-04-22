@@ -4,12 +4,13 @@ Drug Interaction Alerts (IDIA) project (https://goo.gl/t4eqGw).
 
 ## Setup
 
-You must change the following in the `config.properties` file.
+You must create a `config.properties` file in this top directory with the following format:
 
 ```
 username=<USERNAME>
 password=<PASSWORD>
 connectionURL=jdbc:postgresql://<IP>:<PORT>/<DATABASE>
+ruleFolder=<see argument options section>
 schema=<schema to query e.g., 'public'>
 ```
 
