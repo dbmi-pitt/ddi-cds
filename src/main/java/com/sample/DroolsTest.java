@@ -2,7 +2,7 @@ package com.sample;
 
 import com.sample.model.ConceptSetItem;
 import edu.pitt.dbmi.ohdsiv5.db.*;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.*;
 import org.kie.api.KieBase;
 import org.kie.api.KieBaseConfiguration;
 import org.kie.api.KieServices;
@@ -21,7 +21,7 @@ import java.util.*;
 
 public class DroolsTest {
     private static List<String> configOptions = new ArrayList<>(Arrays.asList("user", "password", "connectionURL", "schema", "ruleFolder", "sslmode"));
-    final static Logger logger = Logger.getLogger(DroolsTest.class);
+    final static Logger logger = LogManager.getLogger(DroolsTest.class);
 
     @SuppressWarnings({"unchecked"})
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
