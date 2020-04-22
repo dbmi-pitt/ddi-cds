@@ -224,7 +224,7 @@ rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
       $rhs2 : RHSState(stateName == "ssri/snri - thiazide, yes risk" && state == "yes" && person.getPersonId() == $person.getPersonId())
     then  
         // This state is largely unused atm, as it is a leaf node (end of a branch)
-      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes risk", "yes", $person, $rhs2.getDexp1(), $rhs2.getDexp2());
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes risk", "yes", $person, $rhs1.getDexp1(), $rhs1.getDexp2());
       insertLogical(rhsNN);
       // This outputs the recommendations and rationale for the patient because this is a leaf node    
       String s = String.format(
@@ -244,7 +244,7 @@ rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
 end
 
 // no general patient risk factors -- go to next leaf node
-rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
+rule "SSRI+SNRI - THIAZIDE -- NO RISKS"
     when
       // This checks the state of the patients to identify only those who were identified to be on both medications of interest
       $rhs1 : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person) 
@@ -252,7 +252,7 @@ rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
       not ($rhs2 : RHSState(stateName == "ssri/snri - thiazide, yes risk" && state == "yes" && person.getPersonId() == $person.getPersonId()))
     then  
         // This state is largely unused atm, as it is a leaf node (end of a branch)
-      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes risk", "yes", $person, $rhs2.getDexp1(), $rhs2.getDexp2());
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes risk", "yes", $person, $rhs1.getDexp1(), $rhs1.getDexp2());
       insertLogical(rhsNN);
       // This outputs the recommendations and rationale for the patient because this is a leaf node    
       String s = String.format(
@@ -330,7 +330,7 @@ rule "SSRI+SNRI - THIAZIDE -- hyponatremia risk conditions"
       String s = String.format(
         "Matched drug exposures for the patient with CONDITION as a risk factor for hyponatremia: Patient ID: %s; Condition: %s.", 
         $person.getPersonId(),
-        $ce1.getDrugConceptId());
+        $ce1.getConditionConceptId());
       System.out.println(s);
       s = String.format("DATA\t%s\t%s\tSSRI/SNRI - Thiazide interaction\tyes risk for a condition (%s) as a hyponatremia risk factor\t%s", 
           currentDateStr, 
@@ -346,7 +346,7 @@ rule "SSRI+SNRI - THIAZIDE -- hyponatremia risk conditions"
 end
 
 // decision point for hyponatremia risk factors
-rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
+rule "SSRI+SNRI - THIAZIDE -- YES HYPONATREMIA RISKS"
     when
       // This checks the state of the patients to identify only those who were identified to be on both medications of interest
       $rhs1 : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person) 
@@ -354,7 +354,7 @@ rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
       $rhs2 : RHSState(stateName == "ssri/snri - thiazide, yes hyponatremia risk" && state == "yes" && person.getPersonId() == $person.getPersonId())
     then  
         // This state is largely unused atm, as it is a leaf node (end of a branch)
-      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes hyponatremia risk", "yes", $person, $rhs2.getDexp1(), $rhs2.getDexp2());
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes hyponatremia risk", "yes", $person, $rhs1.getDexp1(), $rhs1.getDexp2());
       insertLogical(rhsNN);
       // This outputs the recommendations and rationale for the patient because this is a leaf node    
       String s = String.format(
@@ -374,7 +374,7 @@ rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
 end
 
 // no hyponatremia risk factors
-rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
+rule "SSRI+SNRI - THIAZIDE -- NO HYPONATREMIA RISKS"
     when
       // This checks the state of the patients to identify only those who were identified to be on both medications of interest
       $rhs1 : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person) 
@@ -382,7 +382,7 @@ rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
       not ($rhs2 : RHSState(stateName == "ssri/snri - thiazide, yes hyponatremia risk" && state == "yes" && person.getPersonId() == $person.getPersonId()))
     then  
         // This state is largely unused atm, as it is a leaf node (end of a branch)
-      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes hyponatremia risk", "yes", $person, $rhs2.getDexp1(), $rhs2.getDexp2());
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes hyponatremia risk", "yes", $person, $rhs1.getDexp1(), $rhs1.getDexp2());
       insertLogical(rhsNN);
       // This outputs the recommendations and rationale for the patient because this is a leaf node    
       String s = String.format(
