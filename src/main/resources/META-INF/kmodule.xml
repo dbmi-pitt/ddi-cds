@@ -52,4 +52,8 @@
            equalsBehavior="equality">
         <ksession name="ksession-rules-warfarin-salicylates"/>
     </kbase>
+    <kbase name="rules_ssri_snri_thiazide" packages="rules_ssri_snri_thiazide"
+           equalsBehavior="equality">
+        <ksession name="ksession-rules-ssri-snri-thiazide"/>
+    </kbase>
 </kmodule>

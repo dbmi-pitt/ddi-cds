@@ -1,0 +1,403 @@
+// SSRI/SNRI - Thiazide DDI Alerting Rule
+
+package com.sample
+
+//list any import classes here.
+import function com.sample.DRLLogger.*;
+
+import java.util.*;
+import java.lang.String;
+import java.sql.Timestamp;
+
+import com.sample.model.ConceptSetItem;
+import com.sample.model.RHSState;
+
+import edu.pitt.dbmi.ohdsiv5.db.ConditionEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugEra;
+import edu.pitt.dbmi.ohdsiv5.db.DrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.DrugStrength;
+import edu.pitt.dbmi.ohdsiv5.db.ExtendedDrugExposure;
+import edu.pitt.dbmi.ohdsiv5.db.Measurement;
+import edu.pitt.dbmi.ohdsiv5.db.Person;
+
+
+/////////// 
+// declare any global variables here
+/////////// 
+global java.lang.String currentDateStr;
+global java.sql.Timestamp currentDate;
+global java.sql.Timestamp within48hours;
+global java.sql.Timestamp within7days;
+global java.sql.Timestamp within28days;
+global java.sql.Timestamp plus1day;
+
+/////////// 
+// declare any types here
+/////////// 
+
+
+/////////// 
+// Rules
+/////////// 
+
+/*
+TODO's:
+CONCEPT SETS:
+https://docs.google.com/document/d/1C9FXAisoI94Vpy35Wx7u8wV0hBimBXpYx4ji48KjTCU/edit
+*/
+// basic check of any SSRI/SNRI with any Thiazide at the same time
+rule "SSRI+SNRI - THIAZIDE -- NO FILTER"
+    when
+      // First, we look for patients exposed to ACE I's or ARB's on the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "SSRIs and SNRIs Ingredients")
+      $de1 : DrugEra(drugConceptId == $clinDrugConcept1.getConceptId()) 
+      // Second, we similarly look for exposure to a diuretic on the ingredient level
+      $clinDrugConcept2 : ConceptSetItem(csName == "Thiazide/Thiazide-like Diuretics Ingredients")
+      $de2 : DrugEra(PersonId == $de1.getPersonId() && drugConceptId == $clinDrugConcept2.getConceptId())
+      // Next, we identify the specific drug exposures for both the ACE I/ARB and the diuretic
+      $clinDrugConcept3 : ConceptSetItem(csName == "SSRIs and SNRIs") 
+      $clinDrugConcept4 : ConceptSetItem(csName == "Thiazide/Thiazide-like Diuretics")
+      $dexp1 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate >= currentDate && drugExposureStartDate < plus1day
+        && drugConceptId == $clinDrugConcept3.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())
+      $dexp2 : ExtendedDrugExposure(personId != null && personId == $de1.getPersonId()
+        && (
+          (drugExposureStartDate >= $dexp1.getDrugExposureStartDate() && drugExposureStartDate <= $dexp1.getDrugExposureEndDate())
+          || (drugExposureEndDate >= $dexp1.getDrugExposureStartDate() && drugExposureEndDate <= $dexp1.getDrugExposureEndDate())
+          || ($dexp1.getDrugExposureStartDate() >= drugExposureStartDate && $dexp1.getDrugExposureStartDate() <= drugExposureEndDate)
+          || ($dexp1.getDrugExposureEndDate() >= drugExposureStartDate && $dexp1.getDrugExposureEndDate() <= drugExposureEndDate)
+        )
+        && drugConceptId != null && drugConceptId == $clinDrugConcept4.getConceptId() 
+        && ingredientConceptId != null && ingredientConceptId == $clinDrugConcept2.getConceptId())
+      // This creates the patient as an object that can be used in the RHS state in the right hand side of the rule
+      $person : Person(personId == $de1.getPersonId())
+    then
+      // This creates a new "state" for any patients who are found to be on both drugs...
+      // This state can be used as an input on further rules to quickly filter to only those patients who have made it through previous rules
+      RHSState rhsCur = new RHSState("basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic", "yes", $person, $dexp1, $dexp2);
+      insertLogical(rhsCur);
+      // The output string reports simply that a potential interaction was identified through concurrent drug exposures and lists the drug IDs
+      String s = String.format(
+          "Matched drug exposures for the patient at the clinical drug level: Patient ID: %s; SSRI/SNRI: %s; Thiazide/like Diuretics: %s;", 
+          $de1.getPersonId(), 
+          $clinDrugConcept3.getConceptId(), 
+          $clinDrugConcept4.getConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tSSRI/SNRI - Thiazide interaction\tbasic concomitant exposure\t%s\t%s\t%s\t%s\t%s\t%s",
+            currentDateStr,
+            $person.getPersonId(),
+            "false","basic concomitant",
+            $person.getGenderCUI(),
+            ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+            $dexp1.getLogInfo(),
+            $dexp2.getLogInfo()
+      );
+      System.out.println(s);
+end
+
+// intermediate step to find sodium concentrations < 130 mmol/L within 7 days
+// Sodium lab test LOINC codes: '2947-0', '41657-8', '2951-2', '2160-0', '24348-5', '1498-5'
+rule "SSRI+SNRI - THIAZIDE -- High Sodium Within 7 Days"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person)
+      $meas1 : Measurement(personId == $person.getPersonId() 
+        && (measurementConceptId == 3000285
+          || measurementConceptId == 3017592
+          || measurementConceptId == 3016723
+          || measurementConceptId == 3001019
+          || measurementConceptId == 3000285
+          || measurementConceptId == 3019550
+          || measurementConceptId == 3031579)
+        && valueAsNumber < 130 && (unitConceptId == 8753 || unitConceptId == 9557) // was originally just 9557 for mEq/L but this isn't used in the data. 8753 is mmol/L which should be equivalent.
+        && measurementDateTime >= within7days && measurementDateTime < plus1day)
+    then  
+      // Create a state object for the current node in the decision tree to be used by other LHS
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, sodium <130 mmol/L within 7 days yes", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+          "SSRI/SNRI - Thiazide interaction for patient %s.\n\tClinical Implication: Substantial risk of hyponatremia.\n\tMitigating factor: (TODO).\n\tRecommendation: Monitor sodium levels, and use only if benefit outweighs risk.\n\tExplanation: Sodium level: %s mmol/L;Lab date: %s;",
+          $person.getPersonId(),
+          $meas1.getValueAsNumber(),
+          $meas1.getMeasurementDateTime()
+        );
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tSSRI/SNRI - Thiazide interaction\tsodium < 130 mmol/L within 7 days\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "true","red",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo(),
+          "MEAS - sodium = " + $meas1.getValueAsNumber() + "mmol/L",
+          "MEAS TAKEN - " + $meas1.getMeasurementDateTime()
+      );
+      System.out.println(s);          
+end
+
+// the next handful of rules determine the next set of risk factors: "Are any of the following present? Age >= 65, female, A396T variant of SLC02A1, on sodium restricted diet"
+// Age >= 65
+rule "SSRI+SNRI - THIAZIDE -- patient age >=65 years old"
+    when
+      // currently use as a sandbox for patient age
+      $rhs : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person)
+      $person65YearsOld : Person(personId == $person.getPersonId() 
+        && ((double) ($person65YearsOld.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365) >= 65) // assuming 365 days in a year
+    then
+      // This tags a given patient as "yes for risks"... There are three potential types of risks but all of them result in this same RHS state
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes risk", "yes", $person, $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+        "\tMatched drug exposures for the patient with AGE as a risk factor: Patient ID: %s;\n\tPatient DoB: %s;\n\tPatient age in years >= threshold of 65: %s",
+          $rhs.getPerson().getPersonId(),
+          $person65YearsOld.getDateOfBirth(),
+          ((double) ($person65YearsOld.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365));
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tSSRI/SNRI - Thiazide interaction\tyes risk for patient age (>= threshold of 64 years old)\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);
+end
+
+// gender concept ID 8532 for female 
+// getGenderCUI
+rule "SSRI+SNRI - THIAZIDE -- female patient"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person)
+      $personFemale : Person(personId == $person.getPersonId() 
+        && $person.getGenderCUI() == 8532) // assuming 365 days in a year
+    then
+      // This tags a given patient as "yes for risks"... There are three potential types of risks but all of them result in this same RHS state
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes risk", "yes", $person, $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+        "\tMatched drug exposures for the patient with FEMALE as a risk factor: Patient ID: %s;",
+          $rhs.getPerson().getPersonId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tSSRI/SNRI - Thiazide interaction\tyes risk for female patient\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);
+end
+
+// NOTE: A396T variant of SLC02A1 not available in the data set
+/*rule "SSRI+SNRI - THIAZIDE -- A396T variant of SLC02A1"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person)
+      // ...
+    then
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes risk", "yes", $person, $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      // ...
+end
+*/
+
+// NOTE: sodium restricted diet not available in the data set
+/*rule "SSRI+SNRI - THIAZIDE -- sodium restricted diet"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person)
+      // ...
+    then
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes risk", "yes", $person, $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      // ...
+end
+*/
+
+// decision point for general patient risk factors
+rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
+    when
+      // This checks the state of the patients to identify only those who were identified to be on both medications of interest
+      $rhs1 : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person) 
+      // Next, we check if the patient was exposed to any other risk factors
+      $rhs2 : RHSState(stateName == "ssri/snri - thiazide, yes risk" && state == "yes" && person.getPersonId() == $person.getPersonId())
+    then  
+        // This state is largely unused atm, as it is a leaf node (end of a branch)
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes risk", "yes", $person, $rhs2.getDexp1(), $rhs2.getDexp2());
+      insertLogical(rhsNN);
+      // This outputs the recommendations and rationale for the patient because this is a leaf node    
+      String s = String.format(
+        "SSRI/SNRI - Thiazide interaction for patient %s.\n\tClinical Implication: Increased risk of hyponatremia.\n\tMitigating factor: (TODO).\n\tRecommendation: Monitor sodium levels, and use only if benefit outweighs risk.\n\tExplanation:  General risk factors present (Age >= 65, female, A396T variant of SLC02A1, or sodium restricted diet)", 
+        $person.getPersonId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tSSRI/SNRI - Thiazide interaction\tyes general risks\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "true", "red",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);        
+end
+
+// no general patient risk factors -- go to next leaf node
+rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
+    when
+      // This checks the state of the patients to identify only those who were identified to be on both medications of interest
+      $rhs1 : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person) 
+      // Next, we check if the patient was exposed to any other risk factors
+      not ($rhs2 : RHSState(stateName == "ssri/snri - thiazide, yes risk" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+    then  
+        // This state is largely unused atm, as it is a leaf node (end of a branch)
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes risk", "yes", $person, $rhs2.getDexp1(), $rhs2.getDexp2());
+      insertLogical(rhsNN);
+      // This outputs the recommendations and rationale for the patient because this is a leaf node    
+      String s = String.format(
+        "Matched drug exposures for the patient where general risk factors NOT present (Age >= 65, female, A396T variant of SLC02A1, or sodium restricted diet) - Patient ID: %s;", 
+        $person.getPersonId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tSSRI/SNRI - Thiazide interaction\tno general risks\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "false", "",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);        
+end
+
+// drug-induced hyponatremia risk factor
+rule "SSRI+SNRI - THIAZIDE -- hyponatremia risk drugs"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person)
+      // This checks to see if the patient is on either group drug of interest at the ingredient level
+      $clinDrugConcept1 : ConceptSetItem(csName == "Amiodarones Ingredients" || csName == "ACEis and ARBs Ingredients" || csName == "NSAIDs Ingredients" || csName == "Antineoplastics Ingredients" || csName == "Antiepileptics Ingredients" || csName == "Risperidones Ingredients" || csName == "Quetiapines Ingredients" || csName == "Haloperidols Ingredients") 
+      $de1 : DrugEra(personId == $person.getPersonId() && drugConceptId == $clinDrugConcept1.getConceptId())
+      // This identifies the specific clinical drug that the patient was exposed to as a risk factor
+      $clinDrugConcept2 : ConceptSetItem(csName == "Amiodarones" || csName == "ACEis and ARBs" || csName == "NSAIDs" || csName == "Antineoplastics" || csName == "Antiepileptics" || csName == "Risperidones" || csName == "Quetiapines" || csName == "Haloperidols") 
+      $dexp1 : ExtendedDrugExposure(personId == $person.getPersonId()
+        && drugExposureStartDate != null && drugExposureStartDate < plus1day && drugExposureEndDate >= currentDate
+        && drugConceptId == $clinDrugConcept2.getConceptId() && ingredientConceptId == $clinDrugConcept1.getConceptId())        
+    then
+      // This tags a given patient as "yes for risks"... There are three potential types of risks but all of them result in this same RHS state
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes hyponatremia risk", "yes", $person, $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+        "Matched drug exposures for the patient with DRUG as a risk factor for hyponatremia: Patient ID: %s; Drug: %s.", 
+        $person.getPersonId(),
+        $dexp1.getDrugConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tSSRI/SNRI - Thiazide interaction\tyes risk for a drug (%s) as a hyponatremia risk factor\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          $dexp1.getDrugConceptName(),
+          "false", "",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);
+end
+
+// TODO History of hyperglycemia, hypothyroidism - treat these as historical lab values from any time in the patient's history?
+// Hyperglycemia (Hyperglycemia of greater than 400 mg/dL glucose lab LOINC 1498-5, + more? ); **
+// Hypothyroidism (Hypothyroidism defined as TSH &gt; 10mU/L LOINC 24348-5 ) ,  **
+
+// screen conditions associated with risk of hyponatremia
+rule "SSRI+SNRI - THIAZIDE -- hyponatremia risk conditions"
+    when
+      $rhs : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person)
+      // This checks to see if the patient has any of the conditions of interest
+      $condConcept1 : ConceptSetItem(
+        csName == "History of HIV/AIDS"
+        || csName == "History of Adrenal Insufficiency"
+        || csName == "History of Heart Failure"
+        || csName == "History of Hepatic Cirrhosis"
+        || csName == "History of Malignancy"
+        || csName == "History of Pneumonia"
+      )
+      $ce1 : ConditionEra(PersonId == $person.getPersonId() && conditionConceptId == $condConcept1.getConceptId())     
+    then
+      // This tags a given patient as "yes for risks"... There are three potential types of risks but all of them result in this same RHS state
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes hyponatremia risk", "yes", $person, $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+        "Matched drug exposures for the patient with CONDITION as a risk factor for hyponatremia: Patient ID: %s; Condition: %s.", 
+        $person.getPersonId(),
+        $ce1.getDrugConceptId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tSSRI/SNRI - Thiazide interaction\tyes risk for a condition (%s) as a hyponatremia risk factor\t%s", 
+          currentDateStr, 
+          $person.getPersonId(),
+          $ce1.getConditionConceptId(), 
+          "false", "",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);
+end
+
+// decision point for hyponatremia risk factors
+rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
+    when
+      // This checks the state of the patients to identify only those who were identified to be on both medications of interest
+      $rhs1 : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person) 
+      // Next, we check if the patient was exposed to any other risk factors
+      $rhs2 : RHSState(stateName == "ssri/snri - thiazide, yes hyponatremia risk" && state == "yes" && person.getPersonId() == $person.getPersonId())
+    then  
+        // This state is largely unused atm, as it is a leaf node (end of a branch)
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes hyponatremia risk", "yes", $person, $rhs2.getDexp1(), $rhs2.getDexp2());
+      insertLogical(rhsNN);
+      // This outputs the recommendations and rationale for the patient because this is a leaf node    
+      String s = String.format(
+        "SSRI/SNRI - Thiazide interaction for patient %s.\n\tClinical Implication: Likely increased risk of hyponatremia.\n\tMitigating factor: (TODO).\n\tRecommendation: Monitor sodium levels and assess risk, take action if necessary.\n\tExplanation: drug known to cause hyponatremia or conditions associated with risk of hyponatremia present", 
+        $person.getPersonId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tSSRI/SNRI - Thiazide interaction\tyes hyponatremia risks\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "true", "yellow",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);        
+end
+
+// no hyponatremia risk factors
+rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
+    when
+      // This checks the state of the patients to identify only those who were identified to be on both medications of interest
+      $rhs1 : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person) 
+      // Next, we check if the patient was exposed to any other risk factors
+      not ($rhs2 : RHSState(stateName == "ssri/snri - thiazide, yes hyponatremia risk" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+    then  
+        // This state is largely unused atm, as it is a leaf node (end of a branch)
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes hyponatremia risk", "yes", $person, $rhs2.getDexp1(), $rhs2.getDexp2());
+      insertLogical(rhsNN);
+      // This outputs the recommendations and rationale for the patient because this is a leaf node    
+      String s = String.format(
+        "SSRI/SNRI - Thiazide interaction for patient %s.\n\tClinical Implication: Possible increased risk of hyponatremia.\n\tMitigating factor: (TODO).\n\tRecommendation: Monitor sodium levels and assess risk, take action if necessary.\n\tExplanation: drug known to cause hyponatremia or conditions associated with risk of hyponatremia NOT present", 
+        $person.getPersonId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tSSRI/SNRI - Thiazide interaction\tno hyponatremia risks\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr,
+          $person.getPersonId(),
+          "true", "yellow",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo()
+      );
+      System.out.println(s);        
+end

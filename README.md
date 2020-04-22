@@ -17,7 +17,7 @@ schema=<schema to query e.g., 'public'>
 Replace the variables in <> with your values.
 
 Additionally, there are two folders that can be fired, `src/main/resources/rules-complete/` which includes all rules, and `src/main/resources/rules-progress/` which is an empty folder that select rules can be placed into for firing.
-To switch between these two folders, you must edit the `config.properties` file in the root of this repository. If you want all rules to fire, set rule_folder to `ksession-rules`. If you want just the rules you placed into the progress folder to fire, set rule_folder to `ksession-progress`.
+To switch between these two folders, you must edit the `config.properties` file in the root of this repository. If you want all rules to fire, set rule_folder to `ksession-rules`.
 
 __BUILD__
 
@@ -105,6 +105,7 @@ ruleFolder argument options:
 * rules_warfarin_antidepressants
 * rules_warfarin_nsaids
 * rules_warfarin_salicylates
+* rules_ssri_snri_thiazide
 
 All rules are run by default if no argument is specified.
 
