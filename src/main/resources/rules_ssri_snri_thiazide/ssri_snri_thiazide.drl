@@ -41,7 +41,6 @@ global java.sql.Timestamp plus1day;
 /////////// 
 
 /*
-TODO's:
 CONCEPT SETS:
 https://docs.google.com/document/d/1C9FXAisoI94Vpy35Wx7u8wV0hBimBXpYx4ji48KjTCU/edit
 */
