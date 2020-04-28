@@ -170,7 +170,7 @@ rule "SSRI+SNRI - THIAZIDE -- female patient"
     when
       $rhs : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person)
       $personFemale : Person(personId == $person.getPersonId() 
-        && $person.getGenderCUI() == 8532) // assuming 365 days in a year
+        && $person.getGenderCUI() == 8532) 
     then
       // This tags a given patient as "yes for risks"... There are three potential types of risks but all of them result in this same RHS state
       RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes risk", "yes", $person, $rhs.getDexp1(), $rhs.getDexp2());
