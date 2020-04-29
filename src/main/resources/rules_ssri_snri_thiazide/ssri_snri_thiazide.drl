@@ -131,7 +131,7 @@ rule "SSRI+SNRI - THIAZIDE -- High Sodium Within 7 Days"
           "MEAS - sodium = " + $meas1.getValueAsNumber() + "mmol/L",
           "MEAS TAKEN - " + $meas1.getMeasurementDateTime()
       );
-      System.out.println(s);          
+      System.out.println(s);
 end
 
 // the next handful of rules determine the next set of risk factors: "Are any of the following present? Age >= 65, female, A396T variant of SLC02A1, on sodium restricted diet"
@@ -222,8 +222,8 @@ rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
       $rhs1 : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person) 
       // Next, we check if the patient was exposed to any other risk factors
       $rhs2 : RHSState(stateName == "ssri/snri - thiazide, yes risk" && state == "yes" && person.getPersonId() == $person.getPersonId())
+      not ($rhs3 : RHSState(stateName == "ssri/snri - thiazide, sodium <130 mmol/L within 7 days yes" && state == "yes" && person.getPersonId() == $person.getPersonId()))
     then  
-        // This state is largely unused atm, as it is a leaf node (end of a branch)
       RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes risk", "yes", $person, $rhs1.getDexp1(), $rhs1.getDexp2());
       insertLogical(rhsNN);
       // This outputs the recommendations and rationale for the patient because this is a leaf node    
@@ -240,7 +240,7 @@ rule "SSRI+SNRI - THIAZIDE -- YES RISKS"
           rhsNN.getDexp1().getLogInfo(),
           rhsNN.getDexp2().getLogInfo()
       );
-      System.out.println(s);        
+      System.out.println(s);
 end
 
 // no general patient risk factors -- go to next leaf node
@@ -250,16 +250,16 @@ rule "SSRI+SNRI - THIAZIDE -- NO RISKS"
       $rhs1 : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person) 
       // Next, we check if the patient was exposed to any other risk factors
       not ($rhs2 : RHSState(stateName == "ssri/snri - thiazide, yes risk" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+      not ($rhs3 : RHSState(stateName == "ssri/snri - thiazide, sodium <130 mmol/L within 7 days yes" && state == "yes" && person.getPersonId() == $person.getPersonId()))
     then  
-        // This state is largely unused atm, as it is a leaf node (end of a branch)
-      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes risk", "yes", $person, $rhs1.getDexp1(), $rhs1.getDexp2());
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, no risk", "yes", $person, $rhs1.getDexp1(), $rhs1.getDexp2());
       insertLogical(rhsNN);
       // This outputs the recommendations and rationale for the patient because this is a leaf node    
       String s = String.format(
         "Matched drug exposures for the patient where general risk factors NOT present (Age >= 65, female, A396T variant of SLC02A1, or sodium restricted diet) - Patient ID: %s;", 
         $person.getPersonId());
       System.out.println(s);
-      s = String.format("DATA\t%s\t%s\tSSRI/SNRI - Thiazide interaction\tno general risks\t%s\t%s\t%s\t%s\t%s\t%s",
+      /*s = String.format("DATA\t%s\t%s\tSSRI/SNRI - Thiazide interaction\tno general risks\t%s\t%s\t%s\t%s\t%s\t%s",
           currentDateStr,
           $person.getPersonId(),
           "false", "",
@@ -268,7 +268,7 @@ rule "SSRI+SNRI - THIAZIDE -- NO RISKS"
           rhsNN.getDexp1().getLogInfo(),
           rhsNN.getDexp2().getLogInfo()
       );
-      System.out.println(s);        
+      System.out.println(s);*/
 end
 
 // drug-induced hyponatremia risk factor
@@ -352,6 +352,8 @@ rule "SSRI+SNRI - THIAZIDE -- YES HYPONATREMIA RISKS"
       $rhs1 : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person) 
       // Next, we check if the patient was exposed to any other risk factors
       $rhs2 : RHSState(stateName == "ssri/snri - thiazide, yes hyponatremia risk" && state == "yes" && person.getPersonId() == $person.getPersonId())
+      // exclude previously triggered leaf node from last decision point
+      $rhs3 : RHSState(stateName == "ssri/snri - thiazide, no risk" && state == "yes" && person.getPersonId() == $person.getPersonId())
     then  
         // This state is largely unused atm, as it is a leaf node (end of a branch)
       RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes hyponatremia risk", "yes", $person, $rhs1.getDexp1(), $rhs1.getDexp2());
@@ -370,7 +372,7 @@ rule "SSRI+SNRI - THIAZIDE -- YES HYPONATREMIA RISKS"
           rhsNN.getDexp1().getLogInfo(),
           rhsNN.getDexp2().getLogInfo()
       );
-      System.out.println(s);        
+      System.out.println(s);
 end
 
 // no hyponatremia risk factors
@@ -380,9 +382,11 @@ rule "SSRI+SNRI - THIAZIDE -- NO HYPONATREMIA RISKS"
       $rhs1 : RHSState(stateName == "basic concomitant exposure of SSRI/SNRI and a thiazide/thiazide-like diuretic" && state == "yes", $person : person) 
       // Next, we check if the patient was exposed to any other risk factors
       not ($rhs2 : RHSState(stateName == "ssri/snri - thiazide, yes hyponatremia risk" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+      // exclude previously triggered leaf node from last decision point
+      $rhs3 : RHSState(stateName == "ssri/snri - thiazide, no risk" && state == "yes" && person.getPersonId() == $person.getPersonId())
     then  
         // This state is largely unused atm, as it is a leaf node (end of a branch)
-      RHSState rhsNN = new RHSState("ssri/snri - thiazide, yes hyponatremia risk", "yes", $person, $rhs1.getDexp1(), $rhs1.getDexp2());
+      RHSState rhsNN = new RHSState("ssri/snri - thiazide, no hyponatremia risk", "yes", $person, $rhs1.getDexp1(), $rhs1.getDexp2());
       insertLogical(rhsNN);
       // This outputs the recommendations and rationale for the patient because this is a leaf node    
       String s = String.format(
@@ -398,5 +402,5 @@ rule "SSRI+SNRI - THIAZIDE -- NO HYPONATREMIA RISKS"
           rhsNN.getDexp1().getLogInfo(),
           rhsNN.getDexp2().getLogInfo()
       );
-      System.out.println(s);        
+      System.out.println(s);
 end
