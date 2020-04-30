@@ -64,7 +64,7 @@ SELECT 90004 AS concept_set_id, concept_id, 0 AS is_excluded, 0 AS include_desce
 FROM concept 
 WHERE vocabulary_id IN ('ICD9CM', 'ICD10CM')
 AND ((concept_code ILIKE '428.%' AND vocabulary_id = 'ICD9CM')
-OR (concept_code ILIKE '150.%' AND vocabulary_id = 'ICD10CM'));
+OR (concept_code ILIKE 'I50.%' AND vocabulary_id = 'ICD10CM'));
 
 INSERT INTO ohdsi.concept_set_item (concept_set_id, concept_id, is_excluded, include_descendants, include_mapped)
 SELECT 90004 AS concept_set_id, c2.concept_id, 0 AS is_excluded, 0 AS include_descendants, 0 AS include_mapped
