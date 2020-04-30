@@ -75,7 +75,7 @@ WHERE c1.vocabulary_id IN ('ICD9CM', 'ICD10CM')
 AND cr.relationship_id = 'Maps to'
 AND c2.domain_id = 'Condition'
 AND ((c1.concept_code ILIKE '428.%' AND c1.vocabulary_id = 'ICD9CM')
-OR (c1.concept_code ILIKE '150.%' AND c1.vocabulary_id = 'ICD10CM'))
+OR (c1.concept_code ILIKE 'I50.%' AND c1.vocabulary_id = 'ICD10CM'))
 GROUP BY concept_set_id, c2.concept_id, is_excluded, include_descendants, include_mapped;
 
 

@@ -101,7 +101,34 @@ INSERT INTO ohdsi.concept_set_item (concept_set_id,concept_id,is_excluded,includ
 ,(90004,45533457,0,0,0)
 ,(90004,45533456,0,0,0)
 ,(90004,45548022,0,0,0)
-,(90004,45543182,0,0,0)
+;
+INSERT INTO ohdsi.concept_set_item (concept_set_id,concept_id,is_excluded,include_descendants,include_mapped) VALUES 
+(90004,45543182,0,0,0)
+,(90004,316139,0,0,0)
+,(90004,319835,0,0,0)
+,(90004,439846,0,0,0)
+,(90004,443580,0,0,0)
+,(90004,443587,0,0,0)
+,(90004,4004279,0,0,0)
+,(90004,4014159,0,0,0)
+,(90004,4134890,0,0,0)
+,(90004,4195785,0,0,0)
+;
+INSERT INTO ohdsi.concept_set_item (concept_set_id,concept_id,is_excluded,include_descendants,include_mapped) VALUES 
+(90004,4233424,0,0,0)
+,(90004,4242669,0,0,0)
+,(90004,40479192,0,0,0)
+,(90004,40479576,0,0,0)
+,(90004,40480602,0,0,0)
+,(90004,40480603,0,0,0)
+,(90004,40481042,0,0,0)
+,(90004,40481043,0,0,0)
+,(90004,40482727,0,0,0)
+,(90004,44782718,0,0,0)
+;
+INSERT INTO ohdsi.concept_set_item (concept_set_id,concept_id,is_excluded,include_descendants,include_mapped) VALUES 
+(90004,44782719,0,0,0)
+,(90004,44782733,0,0,0)
 ;
 INSERT INTO ohdsi.concept_set_item (concept_set_id,concept_id,is_excluded,include_descendants,include_mapped) VALUES 
 (90005,1569681,0,0,0)
