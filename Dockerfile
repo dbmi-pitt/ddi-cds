@@ -1,16 +1,16 @@
 FROM alpine/git as clone
 WORKDIR /app
-RUN git clone -b ec-sql-modifiedclasses --single-branch https://github.com/rkboyce/iDIA_Rules.git
+RUN git clone -b master --single-branch https://github.com/dbmi-pitt/ddi-cds.git
 
 
 FROM phusion/baseimage:latest as build
 
 WORKDIR /app
-COPY --from=clone /app/iDIA_Rules /app
+COPY --from=clone /app/ddi-cds /app
 RUN ["chmod", "+x", "/app/runRules.sh"]
 RUN ["chmod", "+x", "/app/dockerRun.sh"]
-RUN mkdir simmulated-run
-RUN mkdir banner-run
+RUN mkdir simulated-run
+RUN mkdir custom-run
 
 # Need to copy correct config.properties to container
 COPY config.properties /app/config.properties
