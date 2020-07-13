@@ -35,7 +35,7 @@ elif [ "$1" = "custom" ]; then
     echo INFO: Running engine on data extracted for $d
     echo INFO: Output for this run will be written to $1-run/output-$d/idia-rules-run-$d.txt
     mkdir $1-run/output-$d
-    java -Xmx8192m -jar target/droolstest-1.0.jar $d ${@:2} >$1-run/output-$d/idia-rules-run-$d.txt
+    java -Xmx8192m -jar target/droolstest-1.0.jar "$d" ${@:2} >$1-run/output-"$d"/idia-rules-run-"$d".txt
     sleep 1
     d=$(date -I -d "$d + 1 day")
   done
