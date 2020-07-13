@@ -1,8 +1,4 @@
 #!/bin/bash
-if [[ $(uname) -eq 'Darwin' ]]; then
-  date() { gdate "$@"; }
-fi
-
 if [ "$1" = "simulated" ]; then
   dates=(2008-02-13 2008-02-14) ## simulated data public schema dates
   mkdir $1-run
@@ -48,7 +44,7 @@ else
 fi
 
 echo INFO: run completed. Assembling the resulting data and writing it to $1-run/full-$1-run.tsv
-grep -r "^DATA" $1-run/output* | sort | gcut --complement -f1 >$1-run/full-$1-run.tsv
+grep -r "^DATA" $1-run/output* | sort | cut --complement -f1 >$1-run/full-$1-run.tsv
 echo INFO: Assembling the unique resulting data and writing it to $1-run/uniq-$1-run.tsv
-grep -r "^DATA" $1-run/output* | sort | uniq | gcut --complement -f1 >$1-run/uniq-$1-run.tsv
+grep -r "^DATA" $1-run/output* | sort | uniq | cut --complement -f1 >$1-run/uniq-$1-run.tsv
 echo INFO: All done!
