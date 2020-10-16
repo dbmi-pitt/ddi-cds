@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <annotation translatorOptions="" xsi:type="a:CqlToElmInfo"/>
+   <identifier id="ACEiARB-K-sparing-diuretics" version="1.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="FHIR" uri="http://hl7.org/fhir" version="3.0.0"/>
+   </usings>
+   <includes>
+      <def localIdentifier="FHIRHelpers" path="FHIRHelpers" version="3.0.0"/>
+      <def localIdentifier="C3F" path="CDSConnectCommonsforFHIRv300" version="1.0.1"/>
+      <def localIdentifier="Convert" path="CDSConnectConversions" version="1"/>
+   </includes>
+   <parameters>
+      <def name="Potassium threshold" accessLevel="Public">
+         <default valueType="t:Decimal" value="5.0" xsi:type="Literal"/>
+      </def>
+      <def name="eGFR Threshold" accessLevel="Public">
+         <default lowClosed="true" highClosed="true" xsi:type="Interval">
+            <low valueType="t:Integer" value="60" xsi:type="Literal"/>
+            <high valueType="t:Integer" value="1000" xsi:type="Literal"/>
+         </default>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def name="LOINC" id="http://loinc.org" accessLevel="Public"/>
+   </codeSystems>
+   <valueSets>
+      <def name="K Sparing Diuretics VS" id="2.16.840.1.113762.1.4.1213.41" accessLevel="Public"/>
+      <def name="ACEis and ARBs VS" id="2.16.840.1.113762.1.4.1213.11" accessLevel="Public"/>
+   </valueSets>
+   <codes>
+      <def name="Potassium [Moles/volume] in Serum or Plasma code" id="2823-3" display="Potassium [Moles/volume] in Serum or Plasma" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="48643-1 code" id="48643-1" display="Glomerular filtration rate/1.73 sq M.predicted among blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="48642-3 code" id="48642-3" display="Glomerular filtration rate/1.73 sq M.predicted among non-blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+   </codes>
+   <contexts>
+      <def name="Patient"/>
+   </contexts>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand dataType="fhir:Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def name="generic_observation_concepts" context="Patient" accessLevel="Public">
+         <expression xsi:type="Union">
+            <operand dataType="fhir:Observation" codeProperty="code" codeComparator="~" xsi:type="Retrieve">
+               <codes xsi:type="ToList">
+                  <operand name="48643-1 code" xsi:type="CodeRef"/>
+               </codes>
+            </operand>
+            <operand dataType="fhir:Observation" codeProperty="code" codeComparator="~" xsi:type="Retrieve">
+               <codes xsi:type="ToList">
+                  <operand name="48642-3 code" xsi:type="CodeRef"/>
+               </codes>
+            </operand>
+         </expression>
+      </def>
+      <def name="generic_observation_concepts_1" context="Patient" accessLevel="Public">
+         <expression xsi:type="Union">
+            <operand dataType="fhir:Observation" codeProperty="code" codeComparator="~" xsi:type="Retrieve">
+               <codes xsi:type="ToList">
+                  <operand name="48643-1 code" xsi:type="CodeRef"/>
+               </codes>
+            </operand>
+            <operand dataType="fhir:Observation" codeProperty="code" codeComparator="~" xsi:type="Retrieve">
+               <codes xsi:type="ToList">
+                  <operand name="48642-3 code" xsi:type="CodeRef"/>
+               </codes>
+            </operand>
+         </expression>
+      </def>
+      <def name="K Sparing Diuretics Med Statement" context="Patient" accessLevel="Public">
+         <expression dataType="fhir:MedicationStatement" codeProperty="medication" codeComparator="in" xsi:type="Retrieve">
+            <codes name="K Sparing Diuretics VS" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def name="K Sparing Diuretics Med Order" context="Patient" accessLevel="Public">
+         <expression dataType="fhir:MedicationRequest" codeProperty="medication" codeComparator="in" xsi:type="Retrieve">
+            <codes name="K Sparing Diuretics VS" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def name="ACEis and ARBs Med Statements" context="Patient" accessLevel="Public">
+         <expression dataType="fhir:MedicationStatement" codeProperty="medication" codeComparator="in" xsi:type="Retrieve">
+            <codes name="ACEis and ARBs VS" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def name="ACEis and ARBs Med Orders" context="Patient" accessLevel="Public">
+         <expression dataType="fhir:MedicationRequest" codeProperty="medication" codeComparator="in" xsi:type="Retrieve">
+            <codes name="ACEis and ARBs VS" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def name="Potassium [Moles/volume] in Serum or Plasma" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand xsi:type="Less">
+                  <operand classType="t:Quantity" xsi:type="Instance">
+                     <element name="value">
+                        <value name="ToDecimal" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <operand path="value" xsi:type="Property">
+                              <source strict="false" xsi:type="As">
+                                 <operand xsi:type="Indexer">
+                                    <operand xsi:type="Query">
+                                       <source alias="$this">
+                                          <expression name="ObservationLookBack" libraryName="C3F" xsi:type="FunctionRef">
+                                             <operand dataType="fhir:Observation" codeProperty="code" codeComparator="~" xsi:type="Retrieve">
+                                                <codes xsi:type="ToList">
+                                                   <operand name="Potassium [Moles/volume] in Serum or Plasma code" xsi:type="CodeRef"/>
+                                                </codes>
+                                             </operand>
+                                             <operand value="48" unit="hours" xsi:type="Quantity"/>
+                                          </expression>
+                                       </source>
+                                       <where xsi:type="Not">
+                                          <operand xsi:type="IsNull">
+                                             <operand path="value" xsi:type="Property">
+                                                <source name="$this" xsi:type="AliasRef"/>
+                                             </operand>
+                                          </operand>
+                                       </where>
+                                       <return distinct="false">
+                                          <expression path="value" xsi:type="Property">
+                                             <source name="$this" xsi:type="AliasRef"/>
+                                          </expression>
+                                       </return>
+                                    </operand>
+                                    <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 </operand>
+                                 <asTypeSpecifier name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+                              </source>
+                           </operand>
+                        </value>
+                     </element>
+                     <element name="unit">
+                        <value valueType="t:String" value="mmol" xsi:type="Literal"/>
+                     </element>
+                  </operand>
+                  <operand value="5" unit="mmol" xsi:type="Quantity"/>
+               </operand>
+            </condition>
+            <then valueType="t:Boolean" value="true" xsi:type="Literal"/>
+            <else valueType="t:Boolean" value="false" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="eGFR" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand xsi:type="LessOrEqual">
+                  <operand classType="t:Quantity" xsi:type="Instance">
+                     <element name="value">
+                        <value name="ToDecimal" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <operand path="value" xsi:type="Property">
+                              <source strict="false" xsi:type="As">
+                                 <operand xsi:type="Indexer">
+                                    <operand xsi:type="Query">
+                                       <source alias="$this">
+                                          <expression name="ObservationLookBack" libraryName="C3F" xsi:type="FunctionRef">
+                                             <operand name="generic_observation_concepts" xsi:type="ExpressionRef"/>
+                                             <operand value="48" unit="hours" xsi:type="Quantity"/>
+                                          </expression>
+                                       </source>
+                                       <where xsi:type="Not">
+                                          <operand xsi:type="IsNull">
+                                             <operand path="value" xsi:type="Property">
+                                                <source name="$this" xsi:type="AliasRef"/>
+                                             </operand>
+                                          </operand>
+                                       </where>
+                                       <return distinct="false">
+                                          <expression path="value" xsi:type="Property">
+                                             <source name="$this" xsi:type="AliasRef"/>
+                                          </expression>
+                                       </return>
+                                    </operand>
+                                    <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 </operand>
+                                 <asTypeSpecifier name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+                              </source>
+                           </operand>
+                        </value>
+                     </element>
+                     <element name="unit">
+                        <value valueType="t:String" value="mL" xsi:type="Literal"/>
+                     </element>
+                  </operand>
+                  <operand value="60" unit="mL" xsi:type="Quantity"/>
+               </operand>
+            </condition>
+            <then valueType="t:Boolean" value="true" xsi:type="Literal"/>
+            <else valueType="t:Boolean" value="false" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="Potassium [Moles/volume] in Serum or Plasma >= 5" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand xsi:type="GreaterOrEqual">
+                  <operand classType="t:Quantity" xsi:type="Instance">
+                     <element name="value">
+                        <value name="ToDecimal" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <operand path="value" xsi:type="Property">
+                              <source strict="false" xsi:type="As">
+                                 <operand xsi:type="Indexer">
+                                    <operand xsi:type="Query">
+                                       <source alias="$this">
+                                          <expression name="ObservationLookBack" libraryName="C3F" xsi:type="FunctionRef">
+                                             <operand dataType="fhir:Observation" codeProperty="code" codeComparator="~" xsi:type="Retrieve">
+                                                <codes xsi:type="ToList">
+                                                   <operand name="Potassium [Moles/volume] in Serum or Plasma code" xsi:type="CodeRef"/>
+                                                </codes>
+                                             </operand>
+                                             <operand value="48" unit="hours" xsi:type="Quantity"/>
+                                          </expression>
+                                       </source>
+                                       <where xsi:type="Not">
+                                          <operand xsi:type="IsNull">
+                                             <operand path="value" xsi:type="Property">
+                                                <source name="$this" xsi:type="AliasRef"/>
+                                             </operand>
+                                          </operand>
+                                       </where>
+                                       <return distinct="false">
+                                          <expression path="value" xsi:type="Property">
+                                             <source name="$this" xsi:type="AliasRef"/>
+                                          </expression>
+                                       </return>
+                                    </operand>
+                                    <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 </operand>
+                                 <asTypeSpecifier name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+                              </source>
+                           </operand>
+                        </value>
+                     </element>
+                     <element name="unit">
+                        <value valueType="t:String" value="mmol" xsi:type="Literal"/>
+                     </element>
+                  </operand>
+                  <operand value="5" unit="mmol" xsi:type="Quantity"/>
+               </operand>
+            </condition>
+            <then valueType="t:Boolean" value="true" xsi:type="Literal"/>
+            <else valueType="t:Boolean" value="false" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="eGFR > 60 mL" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand xsi:type="Greater">
+                  <operand classType="t:Quantity" xsi:type="Instance">
+                     <element name="value">
+                        <value name="ToDecimal" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <operand path="value" xsi:type="Property">
+                              <source strict="false" xsi:type="As">
+                                 <operand xsi:type="Indexer">
+                                    <operand xsi:type="Query">
+                                       <source alias="$this">
+                                          <expression name="ObservationLookBack" libraryName="C3F" xsi:type="FunctionRef">
+                                             <operand name="generic_observation_concepts_1" xsi:type="ExpressionRef"/>
+                                             <operand value="48" unit="hours" xsi:type="Quantity"/>
+                                          </expression>
+                                       </source>
+                                       <where xsi:type="Not">
+                                          <operand xsi:type="IsNull">
+                                             <operand path="value" xsi:type="Property">
+                                                <source name="$this" xsi:type="AliasRef"/>
+                                             </operand>
+                                          </operand>
+                                       </where>
+                                       <return distinct="false">
+                                          <expression path="value" xsi:type="Property">
+                                             <source name="$this" xsi:type="AliasRef"/>
+                                          </expression>
+                                       </return>
+                                    </operand>
+                                    <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 </operand>
+                                 <asTypeSpecifier name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+                              </source>
+                           </operand>
+                        </value>
+                     </element>
+                     <element name="unit">
+                        <value valueType="t:String" value="ml" xsi:type="Literal"/>
+                     </element>
+                  </operand>
+                  <operand value="60" unit="ml" xsi:type="Quantity"/>
+               </operand>
+            </condition>
+            <then valueType="t:Boolean" value="true" xsi:type="Literal"/>
+            <else valueType="t:Boolean" value="false" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="K Sparing Diuretics Med Statement exists" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand name="K Sparing Diuretics Med Statement" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="K Sparing Diuretics Med Order exists" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand name="K Sparing Diuretics Med Order" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="ACEis and ARBs Med Statements Exist" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand name="ACEis and ARBs Med Statements" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="ACEis and ARBs Med Orders Exist" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand name="ACEis and ARBs Med Orders" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="K Sparing Diuretics" context="Patient" accessLevel="Public">
+         <expression xsi:type="Or">
+            <operand name="K Sparing Diuretics Med Statement exists" xsi:type="ExpressionRef"/>
+            <operand name="K Sparing Diuretics Med Order exists" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="ACEis and ARBs" context="Patient" accessLevel="Public">
+         <expression xsi:type="Or">
+            <operand name="ACEis and ARBs Med Statements Exist" xsi:type="ExpressionRef"/>
+            <operand name="ACEis and ARBs Med Orders Exist" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="MeetsInclusionCriteria" context="Patient" accessLevel="Public">
+         <expression xsi:type="And">
+            <operand name="K Sparing Diuretics" xsi:type="ExpressionRef"/>
+            <operand name="ACEis and ARBs" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="InPopulation" context="Patient" accessLevel="Public">
+         <expression name="MeetsInclusionCriteria" xsi:type="ExpressionRef"/>
+      </def>
+      <def name="Low Risk ACEi/ARB - K-sparing diuretic" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand xsi:type="Not">
+                  <operand xsi:type="IsTrue">
+                     <operand name="InPopulation" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+            </condition>
+            <then asType="t:Boolean" xsi:type="As">
+               <operand xsi:type="Null"/>
+            </then>
+            <else xsi:type="And">
+               <operand name="Potassium [Moles/volume] in Serum or Plasma" xsi:type="ExpressionRef"/>
+               <operand name="eGFR > 60 mL" xsi:type="ExpressionRef"/>
+            </else>
+         </expression>
+      </def>
+      <def name="High Risk ACEi/ARB - K-sparing diuretic:" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand xsi:type="Not">
+                  <operand xsi:type="IsTrue">
+                     <operand name="InPopulation" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+            </condition>
+            <then asType="t:Boolean" xsi:type="As">
+               <operand xsi:type="Null"/>
+            </then>
+            <else name="Potassium [Moles/volume] in Serum or Plasma >= 5" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="Moderate Risk ACEi/ARB - K-sparing diuretic:" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand xsi:type="Not">
+                  <operand xsi:type="IsTrue">
+                     <operand name="InPopulation" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+            </condition>
+            <then asType="t:Boolean" xsi:type="As">
+               <operand xsi:type="Null"/>
+            </then>
+            <else xsi:type="And">
+               <operand name="Potassium [Moles/volume] in Serum or Plasma" xsi:type="ExpressionRef"/>
+               <operand name="eGFR" xsi:type="ExpressionRef"/>
+            </else>
+         </expression>
+      </def>
+      <def name="Recommendation" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand name="Low Risk ACEi/ARB - K-sparing diuretic" xsi:type="ExpressionRef"/>
+            </condition>
+            <then valueType="t:String" value="Increased risk of hyperkalemia unlikely" xsi:type="Literal"/>
+            <else xsi:type="If">
+               <condition asType="t:Boolean" xsi:type="As">
+                  <operand name="High Risk ACEi/ARB - K-sparing diuretic:" xsi:type="ExpressionRef"/>
+               </condition>
+               <then valueType="t:String" value="Use only if benefit outweighs risk" xsi:type="Literal"/>
+               <else xsi:type="If">
+                  <condition asType="t:Boolean" xsi:type="As">
+                     <operand name="Moderate Risk ACEi/ARB - K-sparing diuretic:" xsi:type="ExpressionRef"/>
+                  </condition>
+                  <then valueType="t:String" value="Monitor potassium levels, asses risk and take action if necessary" xsi:type="Literal"/>
+                  <else asType="t:String" xsi:type="As">
+                     <operand xsi:type="Null"/>
+                  </else>
+               </else>
+            </else>
+         </expression>
+      </def>
+      <def name="Rationale" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand name="Low Risk ACEi/ARB - K-sparing diuretic" xsi:type="ExpressionRef"/>
+            </condition>
+            <then asType="t:String" xsi:type="As">
+               <operand xsi:type="Null"/>
+            </then>
+            <else xsi:type="If">
+               <condition asType="t:Boolean" xsi:type="As">
+                  <operand name="High Risk ACEi/ARB - K-sparing diuretic:" xsi:type="ExpressionRef"/>
+               </condition>
+               <then valueType="t:String" value="Increased risk of hyperkalemia possible" xsi:type="Literal"/>
+               <else xsi:type="If">
+                  <condition asType="t:Boolean" xsi:type="As">
+                     <operand name="Moderate Risk ACEi/ARB - K-sparing diuretic:" xsi:type="ExpressionRef"/>
+                  </condition>
+                  <then valueType="t:String" value="Increased risk of hyperkalemia possible" xsi:type="Literal"/>
+                  <else asType="t:String" xsi:type="As">
+                     <operand xsi:type="Null"/>
+                  </else>
+               </else>
+            </else>
+         </expression>
+      </def>
+      <def name="Classification" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand name="Low Risk ACEi/ARB - K-sparing diuretic" xsi:type="ExpressionRef"/>
+            </condition>
+            <then valueType="t:String" value="No Special Precautions" xsi:type="Literal"/>
+            <else xsi:type="If">
+               <condition asType="t:Boolean" xsi:type="As">
+                  <operand name="High Risk ACEi/ARB - K-sparing diuretic:" xsi:type="ExpressionRef"/>
+               </condition>
+               <then valueType="t:String" value="Usually Avoid Combination" xsi:type="Literal"/>
+               <else xsi:type="If">
+                  <condition asType="t:Boolean" xsi:type="As">
+                     <operand name="Moderate Risk ACEi/ARB - K-sparing diuretic:" xsi:type="ExpressionRef"/>
+                  </condition>
+                  <then valueType="t:String" value="Monitor" xsi:type="Literal"/>
+                  <else asType="t:String" xsi:type="As">
+                     <operand xsi:type="Null"/>
+                  </else>
+               </else>
+            </else>
+         </expression>
+      </def>
+      <def name="Indicator" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand name="Low Risk ACEi/ARB - K-sparing diuretic" xsi:type="ExpressionRef"/>
+            </condition>
+            <then valueType="t:String" value="info" xsi:type="Literal"/>
+            <else xsi:type="If">
+               <condition asType="t:Boolean" xsi:type="As">
+                  <operand name="High Risk ACEi/ARB - K-sparing diuretic:" xsi:type="ExpressionRef"/>
+               </condition>
+               <then valueType="t:String" value="critical" xsi:type="Literal"/>
+               <else xsi:type="If">
+                  <condition asType="t:Boolean" xsi:type="As">
+                     <operand name="Moderate Risk ACEi/ARB - K-sparing diuretic:" xsi:type="ExpressionRef"/>
+                  </condition>
+                  <then valueType="t:String" value="warning" xsi:type="Literal"/>
+                  <else asType="t:String" xsi:type="As">
+                     <operand xsi:type="Null"/>
+                  </else>
+               </else>
+            </else>
+         </expression>
+      </def>
+      <def name="Errors" context="Patient" accessLevel="Public">
+         <expression xsi:type="Null"/>
+      </def>
+   </statements>
+</library>
+
+

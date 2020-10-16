@@ -1,0 +1,217 @@
+{
+    "resourceType": "Bundle",
+    "type": "transaction",
+    "entry": [
+	{
+	    "resource": {
+		"resourceType": "PlanDefinition",
+		"id": "aceiarb-k-sparing-diuretics",
+		"version": "1.0",
+		"name": "PlanDefinition - ACEiARB-K-sparing-diuretics",
+		"title": "ACEiARB-K-sparing-diuretics",
+		"type": {
+		    "coding": [
+			{
+			    "system": "http://hl7.org/fhir/plan-definition-type",
+			    "code": "eca-rule",
+			    "display": "ECA Rule"
+			}
+		    ]
+		},
+		"status": "draft",
+		"url": "http://hl7.org/fhir/ig/PDDI-CDS/PlanDefinition/aceiarb-k-sparing-diuretics",
+		"topic": [
+		    {
+			"text": "ACEi/ARB - K-sparing diuretics"
+		    }
+		],
+		"library": [
+		    {
+			"reference": "Library/arb-k"
+		    }
+		],
+		"extension": [
+          {
+            "url": "http://localhost:2020/baseDstu3/StructureDefinition/pddi-cds-configuration-options",
+            "extension": [
+              {
+                "url": "code",
+                "valueString": "cache-for-order-sign-filtering"
+              },
+              {
+                "url": "type",
+                "valueString": "boolean"
+              },
+              {
+                "url": "name",
+                "valueString": "Cache Info for Order Sign Filtering"
+              },
+              {
+                "url": "description",
+                "valueString": "Cache information about this CDS call so that additional filtering of card responses can be done when the service is called using an order-sign CDS Hook request. Currently, this only supports filtering out cards that were triggered by the same knowledge artifact when the physician reference display, encounter id, and patient id match between the order-select and order-sign requests. Filtering will happen if both this configuration option is set to 'true' and  order-sign requests set filter-out-repeated-alerts to 'true'."
+              }
+            ]
+          },
+          {
+            "url": "http://localhost:2020/baseDstu3/StructureDefinition/pddi-cds-configuration-options",
+            "extension": [
+              {
+                "url": "code",
+                "valueString": "alert-non-serious"
+              },
+              {
+                "url": "type",
+                "valueString": "boolean"
+              },
+              {
+                "url": "name",
+                "valueString": "Alert for non-serious potential drug-drug interactions"
+              },
+              {
+                "url": "description",
+                "valueString": "Serious potential drug-drug interactions could result in death; requires hospitalization or extension of hospital stay; results in persistent or significant disability or incapacity; is life-threatening (see https://www.w3.org/2019/05/pddi/index.html). If set to True, this configuration option tells the CDS service to alerts for potential drug-drug interactions that do not meet this criterion."
+              }
+            ]
+          },
+          {
+            "url": "http://localhost:2020/baseDstu3/StructureDefinition/pddi-cds-configuration-options",
+            "extension": [
+              {
+                "url": "code",
+                "valueString": "show-evidence-support"
+              },
+              {
+                "url": "type",
+                "valueString": "boolean"
+              },
+              {
+                "url": "name",
+                "valueString": "Show evidence support"
+              },
+              {
+                "url": "description",
+                "valueString": "If this options is set to True, CDS response cards will provide more complete information about the evidence that supports the potential drug-drug interaction alert."
+              }
+            ]
+          }
+        ],
+		"relatedArtifact": [
+		    {
+			"type": "documentation",
+			"display": "ACEi/ARB - K-sparing diuretics clinical decision support algorithm",
+			"url": "https://ddi-cds.org/ddi-algorithms/"
+		    }
+		],
+		"action": [
+          {
+            "triggerDefinition": [
+              {
+                "type": "named-event",
+                "eventName": "order-select"
+              }
+            ],
+            "condition": [
+              {
+                "kind": "applicability",
+                "language": "text/cql",
+                "expression": "InPopulation"
+              }
+            ],
+            
+                "action": [
+                    
+                    
+                    {
+                        "title": "Increased risk of hyperkalemia unlikely",
+                        "description": "",
+                        "condition": [
+                        
+                            {
+                                "kind": "applicability",
+                                "language": "text/cql",
+                                "expression": "Low Risk ACEi/ARB - K-sparing diuretic"
+                            }
+                        
+                        ],
+                        "dynamicValue": [
+                          {
+                            "path": "activity.extension",
+                            "expression": "Indicator"
+                          }
+                        ],
+                        "action": [
+                            {
+                                "label": "No Special Precautions"
+                            }
+                        ]
+                    }
+                     , 
+                    
+
+                    
+                    
+                    {
+                        "title": "Use only if benefit outweighs risk",
+                        "description": "Increased risk of hyperkalemia possible",
+                        "condition": [
+                        
+                            {
+                                "kind": "applicability",
+                                "language": "text/cql",
+                                "expression": "High Risk ACEi/ARB - K-sparing diuretic:"
+                            }
+                        
+                        ],
+                        "dynamicValue": [
+                          {
+                            "path": "activity.extension",
+                            "expression": "Indicator"
+                          }
+                        ],
+                        "action": [
+                            {
+                                "label": "Usually Avoid Combination"
+                            }
+                        ]
+                    }
+                     , 
+                    
+
+                    
+                    
+                    {
+                        "title": "Monitor potassium levels, asses risk and take action if necessary",
+                        "description": "Increased risk of hyperkalemia possible",
+                        "condition": [
+                        
+                            {
+                                "kind": "applicability",
+                                "language": "text/cql",
+                                "expression": "Moderate Risk ACEi/ARB - K-sparing diuretic:"
+                            }
+                        
+                        ],
+                        "dynamicValue": [
+                          {
+                            "path": "activity.extension",
+                            "expression": "Indicator"
+                          }
+                        ],
+                        "action": [
+                            {
+                                "label": "Monitor"
+                            }
+                        ]
+                    }
+                    
+                    
+
+                    
+                ]
+            
+            }
+            ]
+		}
+	}
+	]
+}
