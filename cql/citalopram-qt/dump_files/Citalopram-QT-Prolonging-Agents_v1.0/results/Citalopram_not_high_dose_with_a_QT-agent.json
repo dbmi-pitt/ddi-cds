@@ -1,0 +1,221 @@
+{
+  "patientResults": {
+    "96173fce-f448-45ab-9e94-349707605b0e": {
+      "Patient": {
+        "name": [
+          {
+            "family": {
+              "value": "Jackson"
+            },
+            "given": [
+              {
+                "value": "Fuller"
+              }
+            ]
+          }
+        ],
+        "gender": {
+          "value": "male"
+        },
+        "birthDate": {
+          "value": "1954-02-16"
+        },
+        "id": {
+          "value": "96173fce-f448-45ab-9e94-349707605b0e"
+        }
+      },
+      "Citaloprams": [
+        {
+          "status": {
+            "value": "active"
+          },
+          "medication": {
+            "coding": [
+              {
+                "system": {
+                  "value": "http://www.nlm.nih.gov/research/umls/rxnorm"
+                },
+                "code": {
+                  "value": "283672"
+                },
+                "display": {
+                  "value": "Citalopram 10 MG Oral Tablet"
+                }
+              }
+            ],
+            "text": {
+              "value": "Citalopram 10 MG Oral Tablet"
+            }
+          },
+          "effective": {
+            "value": "2019-07-30T00:00:00.000+00:00"
+          },
+          "subject": {
+            "reference": {
+              "value": "Patient/96173fce-f448-45ab-9e94-349707605b0e"
+            }
+          },
+          "taken": {
+            "value": "y"
+          },
+          "dosage": [
+            {
+              "text": {
+                "value": "once daily"
+              },
+              "dose": {
+                "value": {
+                  "value": 10
+                },
+                "unit": {
+                  "value": "mg"
+                },
+                "system": {
+                  "value": "http://unitsofmeasure.org"
+                },
+                "code": {
+                  "value": "mg"
+                }
+              },
+              "maxDosePerPeriod": {
+                "numerator": {
+                  "value": {
+                    "value": 3
+                  }
+                },
+                "denominator": {
+                  "value": {
+                    "value": 1
+                  },
+                  "system": {
+                    "value": "http://unitsofmeasure.org"
+                  },
+                  "code": {
+                    "value": "d"
+                  }
+                }
+              }
+            }
+          ],
+          "id": {
+            "value": "65ad8514-42d4-4358-a90d-5266d3aa56cf"
+          }
+        }
+      ],
+      "Report Citaloprams": [
+        {
+          "Name": "Citalopram 10 MG Oral Tablet",
+          "Start": "2019-07-30T00:00:00.000+00:00",
+          "End": null,
+          "Status": "active",
+          "Dosage": "10 mg",
+          "DailyDosage": "30 mg/d"
+        }
+      ],
+      "QT Prolonging Agents": [
+        {
+          "status": {
+            "value": "active"
+          },
+          "medication": {
+            "coding": [
+              {
+                "system": {
+                  "value": "http://www.nlm.nih.gov/research/umls/rxnorm"
+                },
+                "code": {
+                  "value": "198052"
+                },
+                "display": {
+                  "value": "Ondansetron 4 MG Oral Tablet"
+                }
+              }
+            ],
+            "text": {
+              "value": "Ondansetron 4 MG Oral Tablet"
+            }
+          },
+          "effective": {
+            "value": "2019-08-01T00:00:00.000+00:00"
+          },
+          "subject": {
+            "reference": {
+              "value": "Patient/96173fce-f448-45ab-9e94-349707605b0e"
+            }
+          },
+          "taken": {
+            "value": "y"
+          },
+          "id": {
+            "value": "f2a3a03b-3493-440c-91f8-a86df27049c8"
+          }
+        }
+      ],
+      "Report QT Prolonging Agents": [
+        {
+          "Type": "Statement",
+          "Name": "Ondansetron 4 MG Oral Tablet",
+          "Start": "2019-08-01T00:00:00.000+00:00",
+          "End": null,
+          "Status": "active"
+        }
+      ],
+      "Citaloprams Exists": true,
+      "QT Prolonging Agents Exists": true,
+      "Basic Concomitant Exposure": true,
+      "High Dosage Citaloprams Exist": false,
+      "Not High Dosage Citaloprams Exist": true,
+      "QT Prolonging Agents Not Exist": false,
+      "MeetsInclusionCriteria": true,
+      "InPopulation": true,
+      "Citalopram High Dosage, QT": false,
+      "Citalopram High Dosage, No QT": false,
+      "Citalopram Not High Dosage": true,
+      "Recommendation": "No special precaution",
+      "Rationale": null,
+      "Errors": null,
+      "Summary": {
+        "Patient": {
+          "Name": "Fuller Jackson",
+          "Gender": "male",
+          "Age": 65
+        },
+        "HistoricalTreatments": {
+          "Citaloprams": [
+            {
+              "Name": "Citalopram 10 MG Oral Tablet",
+              "Start": "2019-07-30T00:00:00.000+00:00",
+              "End": null,
+              "Status": "active",
+              "Dosage": "10 mg",
+              "DailyDosage": "30 mg/d"
+            }
+          ],
+          "QTProlongingAgents": [
+            {
+              "Type": "Statement",
+              "Name": "Ondansetron 4 MG Oral Tablet",
+              "Start": "2019-08-01T00:00:00.000+00:00",
+              "End": null,
+              "Status": "active"
+            }
+          ],
+          "BasicConcomitant": true,
+          "HighCitalopramDose": false
+        },
+        "Alert": {
+          "Recommendation": "No special precaution",
+          "Rationale": null
+        }
+      }
+    }
+  },
+  "unfilteredResults": {},
+  "localIdPatientResultsMap": {
+    "96173fce-f448-45ab-9e94-349707605b0e": {
+      "Citalopram-QT-Prolonging-Agents": {},
+      "ReusableFunctions_FHIRv300": {},
+      "FHIRHelpers": {}
+    }
+  }
+}

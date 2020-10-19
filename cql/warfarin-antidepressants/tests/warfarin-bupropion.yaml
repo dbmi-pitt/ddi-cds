@@ -1,0 +1,50 @@
+---
+name: Warfarin and Bupropion
+
+data:
+-
+  resourceType: Patient
+  name: Fuller Jackson
+  gender: male
+  birthDate: 1954-02-16
+-
+  resourceType: MedicationStatement
+  code: RXNORM#993691 Bupropion Hydrochloride 75 MG Oral Tablet
+  effectiveDateTime: 2019-07-30T00:00:00.000+00:00 
+-
+  resourceType: MedicationStatement
+  code: RXNORM#855296 Warfarin Sodium 10 MG Oral Tablet
+  effectiveDateTime: 2019-08-31T00:00:00.000+00:00 
+
+
+results:
+  Summary:
+    Patient:
+      Name: Fuller Jackson
+      Gender: male
+      Age: 65
+    HistoricalTreatments:
+      Warfarins:
+      -
+        Type: Statement
+        Name: Warfarin Sodium 10 MG Oral Tablet
+        Start: '2019-08-31T00:00:00.000+00:00'
+        End: null
+        Status: active
+      SSRIsSNRIs: []
+      Mirtazapines: []
+      Tricyclics: []
+      Bupropions:
+      -
+        Type: Statement
+        Name: Bupropion Hydrochloride 75 MG Oral Tablet
+        Start: '2019-07-30T00:00:00.000+00:00'
+        End: null
+        Status: active
+    RiskFactorsForMajorBleeding:
+      GastrointestinalBleeding: []
+      Is65orOlder: true
+      MedicationBleedingRisks: []
+    Alert:
+      Rationale: Increased bleeding risk unlikely
+      Recommendation: No special precautions

@@ -1,0 +1,54 @@
+---
+name: Warfarin NSAID, yes PPI or Misoprostol
+
+data:
+-
+  resourceType: Patient
+  name: Fuller Jackson
+  gender: male
+  birthDate: 1954-02-16
+-
+  resourceType: MedicationStatement
+  code: RXNORM#855296 Warfarin Sodium 10 MG Oral Tablet
+  effectiveDateTime: 2019-10-31T00:00:00.000+00:00 
+-
+  resourceType: MedicationStatement
+  code: RXNORM#197805 Ibuprofen 400 MG Oral Tablet
+  effectiveDateTime: 2019-11-01T00:00:00.000+00:00 
+-
+  resourceType: MedicationStatement
+  code: RXNORM#198051 Omeprazole 20 MG Delayed Release Oral Capsule
+  effectiveDateTime: 2019-10-30T00:00:00.000+00:00
+
+results:
+  Summary:
+    Patient:
+      Name: Fuller Jackson
+      Gender: male
+      Age: 65
+    HistoricalTreatments:
+      BasicConcomitant: true
+      Warfarins:
+      -
+        Type: Statement
+        Name: Warfarin Sodium 10 MG Oral Tablet
+        Start: '2019-10-31T00:00:00.000+00:00'
+        End: null
+        Status: active
+      NSAIDs:
+      -
+        Type: Statement
+        Name: Ibuprofen 400 MG Oral Capsule
+        Start: '2019-11-01T00:00:00.000+00:00'
+        End: null
+        Status: active
+      PPIsAndMisoprostols: 
+      -
+        Type: Statement
+        Name: Omeprazole 20 MG Delayed Release Oral Capsule
+        Start: '2019-10-30T00:00:00.000+00:00'
+        End: null
+        Status: active
+    Alert:
+      Rationale: Possible increased risk of bleeding
+      Recommendation: Assess risk and take action if necessary

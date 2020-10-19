@@ -1,0 +1,2525 @@
+{
+  "2.16.840.1.113762.1.4.1213.54": {
+    "20190918": {
+      "oid": "2.16.840.1.113762.1.4.1213.54",
+      "version": "20190918",
+      "codes": [
+        {
+          "code": "453.4",
+          "system": "http://hl7.org/fhir/sid/icd-9-cm/diagnosis",
+          "version": "2013"
+        }
+      ]
+    }
+  },
+  "2.16.840.1.113762.1.4.1213.8": {
+    "20191216": {
+      "oid": "2.16.840.1.113762.1.4.1213.8",
+      "version": "20191216",
+      "codes": [
+        {
+          "code": "855288",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "855296",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "855302",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "855312",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "855318",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "855324",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "855332",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "855338",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "855344",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        }
+      ]
+    }
+  },
+  "2.16.840.1.113762.1.4.1213.27": {
+    "20191216": {
+      "oid": "2.16.840.1.113762.1.4.1213.27",
+      "version": "20191216",
+      "codes": [
+        {
+          "code": "1001437",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1014639",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1037234",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1038982",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1046277",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1046820",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1047415",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1047786",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1048307",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1048336",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "105798",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "106339",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "106821",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1087365",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1099893",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1111680",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1191695",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1234456",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1241678",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1245005",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1249102",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1297517",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1376089",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1424008",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1424612",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1440060",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1440869",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1441112",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1484890",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1489932",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1495103",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1537337",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1546588",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1547642",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1594682",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1648148",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1650439",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1651599",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "197907",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198206",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198742",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "204422",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "204638",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "205023",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "205104",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "205162",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "205173",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "238580",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "240559",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "242139",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "247620",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "252973",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "283232",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "283274",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308760",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308761",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308762",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308763",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "309271",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "309272",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "309273",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "309390",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "311432",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "311433",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312066",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312882",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312884",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312889",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312899",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "313892",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "318212",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "318213",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "359746",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "422011",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "562600",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "583170",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "616343",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "647873",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "647877",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "667904",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "672601",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "795618",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797715",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797717",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797746",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797885",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797892",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "835542",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "863184",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "865105",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "883808",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "884778",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "991180",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        }
+      ]
+    }
+  },
+  "2.16.840.1.113762.1.4.1213.25": {
+    "20191216": {
+      "oid": "2.16.840.1.113762.1.4.1213.25",
+      "version": "20191216",
+      "codes": [
+        {
+          "code": "1001437",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1014639",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1037234",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "103863",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1038982",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "103954",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "104474",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "104475",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1046277",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1046820",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1047415",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1047786",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1048307",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1048336",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "104899",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1049691",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1050241",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "105798",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "106339",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "106809",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "106821",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1087365",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1092398",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1099893",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1111680",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1191695",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1234456",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1234872",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1241678",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1245005",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1249102",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1250907",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1291868",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1297517",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1312713",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1312718",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1376089",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1424008",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1424612",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1433630",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1440060",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1440869",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1441112",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1484890",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1489932",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1495103",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1535484",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1536467",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1536498",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1536503",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1536675",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1536815",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1536833",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1536840",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1536993",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1537019",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1537029",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1537337",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1546588",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1547642",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1593110",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1594682",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1648148",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1650439",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1651599",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1665356",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "197447",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "197907",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "197930",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "197945",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198206",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198461",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198463",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198464",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198466",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198467",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198471",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198473",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198475",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198477",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198479",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198480",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198742",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "199274",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "199281",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "204422",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "204638",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "205023",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "205104",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "205162",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "205173",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "205251",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "212033",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "238134",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "238135",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "238580",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "240559",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "242139",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "243670",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "243685",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "243694",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "246461",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "247137",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "247620",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "252973",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "259081",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "283232",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "283274",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308278",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308297",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308363",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308403",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308409",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308410",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308411",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308416",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308417",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308760",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308761",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308762",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308763",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "309271",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "309272",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "309273",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "309390",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "311432",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "311433",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312066",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312882",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312884",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312889",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312899",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "313892",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "318212",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "318213",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "318272",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "333834",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "349516",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "359221",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "359746",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "391930",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "422011",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "432638",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "433353",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "562600",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "583170",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "605252",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "616343",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "637540",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "647873",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "647877",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "667904",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "672601",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "685589",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "688214",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "692836",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "702316",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "724614",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "747211",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "763111",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "763116",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "795618",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797050",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797715",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797717",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797746",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797885",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797892",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "827318",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "828585",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "828594",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "835542",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "848768",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "853499",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "857121",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "863184",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "863186",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "865105",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "883808",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "884778",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "891134",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "891136",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "892160",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "896884",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "900470",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "900528",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "991180",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "994226",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "994237",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "994430",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "994435",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "994528",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "994535",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "994810",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "994811",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "996988",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "996991",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "996994",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        }
+      ]
+    }
+  },
+  "2.16.840.1.113762.1.4.1213.26": {
+    "20191216": {
+      "oid": "2.16.840.1.113762.1.4.1213.26",
+      "version": "20191216",
+      "codes": [
+        {
+          "code": "103568",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1038982",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1046277",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "106339",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "108721",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1095689",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1099893",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1245005",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1247823",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1250992",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "142108",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1424612",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1487371",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1603377",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1650198",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198501",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198845",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "199134",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "199161",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "199213",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "199308",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "199428",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "199429",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "199430",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "199921",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "200156",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "204638",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "205023",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "205104",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "205162",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "205173",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "238460",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "238580",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "240559",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "242139",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "244475",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "244526",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "245199",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "245422",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "248678",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "248684",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "251294",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "251400",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "251404",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "251407",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "251577",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "252973",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "282536",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "282537",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "282663",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "283232",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "283252",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "283602",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308959",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "309390",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312880",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312881",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312882",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312884",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312887",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312888",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312889",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312891",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "312893",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "317152",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "346298",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "416910",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "422997",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "422998",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "477031",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "562600",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "667904",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "790884",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "795618",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797715",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797717",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797746",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797885",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797892",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "833505",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "835542",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "865105",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "866892",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "880887",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "883808",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "883809",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "884778",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "999473",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        }
+      ]
+    }
+  },
+  "2.16.840.1.113762.1.4.1213.29": {
+    "20191216": {
+      "oid": "2.16.840.1.113762.1.4.1213.29",
+      "version": "20191216",
+      "codes": [
+        {
+          "code": "103863",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "103954",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "104474",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "104475",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "104899",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1049691",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1050241",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "106809",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1092398",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1234872",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1250907",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1291868",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1312713",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1312718",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1433630",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1535484",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1536467",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1536498",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1536503",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1536675",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1536815",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1536833",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1536840",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1536993",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1537019",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1537029",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1593110",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "1665356",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "197447",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "197930",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "197945",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198461",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198463",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198464",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198466",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198467",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198471",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198473",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198475",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198477",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198479",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "198480",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "199274",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "199281",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "205251",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "212033",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "238134",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "238135",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "243670",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "243685",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "243694",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "246461",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "247137",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "259081",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308278",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308297",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308363",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308403",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308409",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308410",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308411",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308416",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "308417",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "318272",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "333834",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "349516",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "359221",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "391930",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "432638",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "433353",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "605252",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "637540",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "685589",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "688214",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "692836",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "702316",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "724614",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "747211",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "763111",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "763116",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "797050",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "827318",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "828585",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "828594",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "848768",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "853499",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "857121",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "863184",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "863186",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "891134",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "891136",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "892160",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "896884",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "900470",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "900528",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "994226",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "994237",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "994430",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "994435",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "994528",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "994535",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "994810",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "994811",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "996988",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "996991",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        },
+        {
+          "code": "996994",
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "version": "2019-12"
+        }
+      ]
+    }
+  }
+}

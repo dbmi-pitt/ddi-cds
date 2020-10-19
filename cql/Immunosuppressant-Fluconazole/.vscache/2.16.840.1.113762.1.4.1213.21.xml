@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns0:RetrieveValueSetResponse xmlns:ns0="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ns0:ValueSet ID="2.16.840.1.113762.1.4.1213.21" displayName="Fluconazoles PO" version="20190918">
+        <ns0:ConceptList>
+            <ns0:Concept code="197698" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Fluconazole 100 MG Oral Tablet"/>
+            <ns0:Concept code="197699" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Fluconazole 150 MG Oral Tablet"/>
+            <ns0:Concept code="197700" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Fluconazole 200 MG Oral Tablet"/>
+            <ns0:Concept code="197701" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Fluconazole 50 MG Oral Tablet"/>
+            <ns0:Concept code="199745" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Fluconazole 150 MG Oral Capsule"/>
+            <ns0:Concept code="199746" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Fluconazole 200 MG Oral Capsule"/>
+            <ns0:Concept code="199747" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Fluconazole 50 MG Oral Capsule"/>
+            <ns0:Concept code="199950" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Fluconazole 100 MG Oral Capsule"/>
+            <ns0:Concept code="310352" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Fluconazole 10 MG/ML Oral Suspension"/>
+            <ns0:Concept code="310353" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Fluconazole 40 MG/ML Oral Suspension"/>
+        </ns0:ConceptList>
+    </ns0:ValueSet>
+</ns0:RetrieveValueSetResponse>

@@ -1,0 +1,61 @@
+---
+name: High dose citalopram with no QT agent
+
+externalData:
+- reusable_resources
+
+data:
+-
+  resourceType: Patient
+  name: Fuller Jackson
+  gender: male
+  birthDate: 1954-02-16
+-
+  resourceType: MedicationStatement
+  code: RXNORM#283672 Citalopram 10 MG Oral Tablet
+  effectiveDateTime: 2019-07-30T00:00:00.000+00:00 
+  dosage: 
+  -
+    text: once every 3 hours
+    timing: 
+      repeat:
+        frequency: 8
+        period: 1
+        periodUnit: d
+    doseQuantity:
+      value: 1
+      unit: tablet
+-
+  resourceType: Medication
+  code: RXNORM#283672 Citalopram 10 MG Oral Tablet
+  ingredient:
+    code: RXNORM#2556 Citalopram
+    amount:
+      numerator:
+        value: 10
+      denominator:
+        value: 1
+
+results:
+  Summary:
+    Patient:
+      Name: Fuller Jackson
+      Gender: male
+      Age: 65
+    HistoricalTreatments:
+      BasicConcomitant: false
+      Citaloprams:
+      -
+        Name: Citalopram 10 MG Oral Tablet
+        Start: '2019-07-30T00:00:00.000+00:00'
+        End: null
+        Status: active
+        Ingredient: Citalopram
+        Amount: 10
+        Dosage: 8
+        DailyDosage: 80
+      HighCitalopramDose: [true]
+      QTProlongingAgents: []
+    Alert:
+      Rationale: Increased risk of prolonged QTc possible
+      Recommendation: Minimize risk and Monitor ECG

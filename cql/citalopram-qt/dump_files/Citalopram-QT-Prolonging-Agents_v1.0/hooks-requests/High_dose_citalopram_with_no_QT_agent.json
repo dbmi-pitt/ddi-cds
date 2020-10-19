@@ -1,0 +1,73 @@
+{
+  "hookInstance": "0f7c7aab-2e82-426e-ae1b-fb55de59d4f0",
+  "hook": "patient-view",
+  "user": "Practitioner/example",
+  "context": {
+    "patientId": "1f8138d1-17bd-40d9-b0a0-d2f223c57718"
+  },
+  "prefetch": {
+    "Patient": {
+      "resourceType": "Patient",
+      "id": "1f8138d1-17bd-40d9-b0a0-d2f223c57718",
+      "name": [
+        {
+          "given": [
+            "Fuller"
+          ],
+          "family": "Jackson"
+        }
+      ],
+      "gender": "male",
+      "birthDate": "1954-02-16"
+    },
+    "MedicationStatement": {
+      "resourceType": "Bundle",
+      "type": "searchset",
+      "entry": [
+        {
+          "resource": {
+            "resourceType": "MedicationStatement",
+            "id": "b1e20fac-a659-4275-bcbb-6e66cd2deb3e",
+            "subject": {
+              "reference": "Patient/1f8138d1-17bd-40d9-b0a0-d2f223c57718"
+            },
+            "taken": "y",
+            "status": "active",
+            "medicationCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                  "code": "283672",
+                  "display": "Citalopram 10 MG Oral Tablet"
+                }
+              ],
+              "text": "Citalopram 10 MG Oral Tablet"
+            },
+            "effectiveDateTime": "2019-07-30T00:00:00.000Z",
+            "dosage": [
+              {
+                "text": "once every 3 hours",
+                "maxDosePerPeriod": {
+                  "numerator": {
+                    "value": 8
+                  },
+                  "denominator": {
+                    "value": 1,
+                    "system": "http://unitsofmeasure.org",
+                    "code": "d"
+                  }
+                },
+                "doseQuantity": {
+                  "value": 10,
+                  "unit": "mg",
+                  "code": "mg",
+                  "system": "http://unitsofmeasure.org"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

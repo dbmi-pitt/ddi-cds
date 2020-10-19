@@ -1,0 +1,90 @@
+{
+  "resourceType": "Bundle",
+  "id": "First test of warfarin and nsaids cql",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "eaa8f90e-9730-4bc2-ba0b-439515476e5d",
+        "name": [
+          {
+            "given": [
+              "Fuller"
+            ],
+            "family": "Jackson"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1954-02-16",
+        "extension": []
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "fbd1d9db-7f5e-4686-a877-05a3094e5dc8",
+        "subject": {
+          "reference": "Patient/eaa8f90e-9730-4bc2-ba0b-439515476e5d"
+        },
+        "status": "active",
+        "taken": "y",
+        "effectiveDateTime": "2019-07-30T00:00:00.000Z",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "855296",
+              "display": "Warfarin Sodium 10 MG Oral Tablet"
+            }
+          ],
+          "text": "Warfarin Sodium 10 MG Oral Tablet"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "dcdb3c88-caf0-476d-8dd4-7090ffaeeec4",
+        "subject": {
+          "reference": "Patient/eaa8f90e-9730-4bc2-ba0b-439515476e5d"
+        },
+        "status": "active",
+        "taken": "y",
+        "effectiveDateTime": "2019-08-01T00:00:00.000Z",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "153008",
+              "display": "Ibuprofen 200 MG Oral Tablet [Advil]"
+            }
+          ],
+          "text": "Ibuprofen 200 MG Oral Tablet [Advil]"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "6f2dc36d-89a2-4c91-8c70-808c0da2e1f4",
+        "subject": {
+          "reference": "Patient/eaa8f90e-9730-4bc2-ba0b-439515476e5d"
+        },
+        "status": "active",
+        "taken": "y",
+        "effectiveDateTime": "2019-07-28T00:00:00.000Z",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "389171",
+              "display": "Omeprazole 10 MG Oral Tablet"
+            }
+          ],
+          "text": "Omeprazole 10 MG Oral Tablet"
+        }
+      }
+    }
+  ]
+}

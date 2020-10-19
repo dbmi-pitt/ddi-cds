@@ -1,0 +1,56 @@
+{
+  "patientResults": {
+    "eaa8f90e-9730-4bc2-ba0b-439515476e5d": {
+      "Patient": {
+        "name": [
+          {
+            "family": {
+              "value": "Jackson"
+            },
+            "given": [
+              {
+                "value": "Fuller"
+              }
+            ]
+          }
+        ],
+        "gender": {
+          "value": "male"
+        },
+        "birthDate": {
+          "value": "1954-02-16"
+        },
+        "extension": [],
+        "id": {
+          "value": "eaa8f90e-9730-4bc2-ba0b-439515476e5d"
+        }
+      },
+      "Fluconazoles": [],
+      "Immunosuppressants": [],
+      "Fluconazoles PO": [],
+      "18 years old": true,
+      "Fluconazoles_1": false,
+      "Immunosuppressants_1": false,
+      "<18 years old": false,
+      "Fluconazoles PO_1": false,
+      "High Dose of Fluconazole PO": true,
+      "Fluconazoles PO_2": false,
+      "Low Dose of Fluconazole PO": false,
+      "MeetsInclusionCriteria": false,
+      "InPopulation": false,
+      "Immunosuppressant - Fluconazole -- Patient < 18 years old": null,
+      "Immunosuppressant - Fluconazole -- Patient > 18 years old, High dose oral fluconazole": null,
+      "Immunosuppressant - Fluconazole -- Patient > 18 years old, Low dose oral fluconazole": null,
+      "Recommendation": null,
+      "Rationale": null,
+      "Errors": null
+    }
+  },
+  "populationResults": {},
+  "localIdPatientResultsMap": {
+    "eaa8f90e-9730-4bc2-ba0b-439515476e5d": {
+      "Immunosuppressant-Fluconazole": {},
+      "CDS_Connect_Commons_for_FHIRv300": {}
+    }
+  }
+}

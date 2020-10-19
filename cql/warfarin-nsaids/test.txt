@@ -1,0 +1,16 @@
+
+> pddi-warfarin-nsaid-test1@1.0.0 test /Users/erc53/Github/CQL-Testing-Framework/pddi-rule-tests/citalopram-qt
+> mocha --reporter spec --recursive
+
+CQLT Config: /Users/erc53/Github/CQL-Testing-Framework/pddi-rule-tests/citalopram-qt/cqlt.yaml
+Ignoring potential external data file: /Users/erc53/Github/CQL-Testing-Framework/pddi-rule-tests/citalopram-qt/tests/reusable_resources.yml
+
+
+  Citalopram-QT-Prolonging-Agents_v1.0
+    ✓ Citalopram not high dose with a QT-agent
+    ✓ High dose citalopram with no QT agent
+    ✓ High dose of citalopram with a QT agent
+
+
+  3 passing (220ms)
+

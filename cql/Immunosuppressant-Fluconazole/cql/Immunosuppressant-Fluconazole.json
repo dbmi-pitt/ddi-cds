@@ -1,0 +1,545 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "Immunosuppressant-Fluconazole",
+         "version" : "1"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "3.0.0"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "FHIRHelpers",
+            "version" : "3.0.0"
+         }, {
+            "localIdentifier" : "C3F",
+            "path" : "CDS_Connect_Commons_for_FHIRv300",
+            "version" : "1.1.0"
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "name" : "Dose of Fluconazole PO",
+            "accessLevel" : "Public",
+            "default" : {
+               "value" : 100.0,
+               "unit" : "mg/d",
+               "type" : "Quantity"
+            }
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "name" : "Fluconazoles VS",
+            "id" : "2.16.840.1.113762.1.4.1213.19",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Immunosuppressants VS",
+            "id" : "2.16.840.1.113762.1.4.1213.18",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Fluconazoles PO VS",
+            "id" : "2.16.840.1.113762.1.4.1213.21",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "name" : "Fluconazoles",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MedicationStatementLookBack",
+               "libraryName" : "C3F",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}MedicationStatement",
+                  "codeProperty" : "medication",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Fluconazoles VS",
+                     "type" : "ValueSetRef"
+                  }
+               }, {
+                  "value" : 180,
+                  "unit" : "days",
+                  "type" : "Quantity"
+               } ]
+            }
+         }, {
+            "name" : "Immunosuppressants",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MedicationStatementLookBack",
+               "libraryName" : "C3F",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}MedicationStatement",
+                  "codeProperty" : "medication",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Immunosuppressants VS",
+                     "type" : "ValueSetRef"
+                  }
+               }, {
+                  "value" : 180,
+                  "unit" : "days",
+                  "type" : "Quantity"
+               } ]
+            }
+         }, {
+            "name" : "Fluconazoles PO",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MedicationStatementLookBack",
+               "libraryName" : "C3F",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}MedicationStatement",
+                  "codeProperty" : "medication",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Fluconazoles PO VS",
+                     "type" : "ValueSetRef"
+                  }
+               }, {
+                  "value" : 180,
+                  "unit" : "days",
+                  "type" : "Quantity"
+               } ]
+            }
+         }, {
+            "name" : "18 years old",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "GreaterOrEqual",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAge",
+                  "operand" : {
+                     "path" : "birthDate.value",
+                     "type" : "Property",
+                     "source" : {
+                        "name" : "Patient",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               }, {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "18",
+                  "type" : "Literal"
+               } ]
+            }
+         }, {
+            "name" : "Fluconazoles_1",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "name" : "Fluconazoles",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "name" : "Immunosuppressants_1",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "name" : "Immunosuppressants",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "name" : "<18 years old",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Not",
+               "operand" : {
+                  "type" : "IsTrue",
+                  "operand" : {
+                     "name" : "18 years old",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "name" : "Fluconazoles PO_1",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "name" : "Fluconazoles PO",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "name" : "High Dose of Fluconazole PO",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "GreaterOrEqual",
+               "operand" : [ {
+                  "name" : "Dose of Fluconazole PO",
+                  "type" : "ParameterRef"
+               }, {
+                  "value" : 100,
+                  "unit" : "mg/d",
+                  "type" : "Quantity"
+               } ]
+            }
+         }, {
+            "name" : "Fluconazoles PO_2",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "name" : "Fluconazoles PO",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "name" : "Low Dose of Fluconazole PO",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Less",
+               "operand" : [ {
+                  "name" : "Dose of Fluconazole PO",
+                  "type" : "ParameterRef"
+               }, {
+                  "value" : 100,
+                  "unit" : "mg/d",
+                  "type" : "Quantity"
+               } ]
+            }
+         }, {
+            "name" : "MeetsInclusionCriteria",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "name" : "Fluconazoles_1",
+                  "type" : "ExpressionRef"
+               }, {
+                  "name" : "Immunosuppressants_1",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         }, {
+            "name" : "InPopulation",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MeetsInclusionCriteria",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "name" : "Immunosuppressant - Fluconazole -- Patient < 18 years old",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Not",
+                     "operand" : {
+                        "type" : "IsTrue",
+                        "operand" : {
+                           "name" : "InPopulation",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }
+               },
+               "then" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Null"
+                  }
+               },
+               "else" : {
+                  "name" : "<18 years old",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "name" : "Immunosuppressant - Fluconazole -- Patient > 18 years old, High dose oral fluconazole",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Not",
+                     "operand" : {
+                        "type" : "IsTrue",
+                        "operand" : {
+                           "name" : "InPopulation",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }
+               },
+               "then" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Null"
+                  }
+               },
+               "else" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "And",
+                     "operand" : [ {
+                        "name" : "18 years old",
+                        "type" : "ExpressionRef"
+                     }, {
+                        "name" : "Fluconazoles PO_1",
+                        "type" : "ExpressionRef"
+                     } ]
+                  }, {
+                     "name" : "High Dose of Fluconazole PO",
+                     "type" : "ExpressionRef"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Immunosuppressant - Fluconazole -- Patient > 18 years old, Low dose oral fluconazole",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Not",
+                     "operand" : {
+                        "type" : "IsTrue",
+                        "operand" : {
+                           "name" : "InPopulation",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }
+               },
+               "then" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Null"
+                  }
+               },
+               "else" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "And",
+                     "operand" : [ {
+                        "name" : "18 years old",
+                        "type" : "ExpressionRef"
+                     }, {
+                        "name" : "Fluconazoles PO_2",
+                        "type" : "ExpressionRef"
+                     } ]
+                  }, {
+                     "name" : "Low Dose of Fluconazole PO",
+                     "type" : "ExpressionRef"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Recommendation",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "name" : "Immunosuppressant - Fluconazole -- Patient < 18 years old",
+                     "type" : "ExpressionRef"
+                  }
+               },
+               "then" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "Monitor immunosuppressant levels. Use only if benefit outweighs risk.",
+                  "type" : "Literal"
+               },
+               "else" : {
+                  "type" : "If",
+                  "condition" : {
+                     "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "As",
+                     "operand" : {
+                        "name" : "Immunosuppressant - Fluconazole -- Patient > 18 years old, High dose oral fluconazole",
+                        "type" : "ExpressionRef"
+                     }
+                  },
+                  "then" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Monitor immunosuppressant levels. Use only if benefit outweighs risk.",
+                     "type" : "Literal"
+                  },
+                  "else" : {
+                     "type" : "If",
+                     "condition" : {
+                        "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                        "type" : "As",
+                        "operand" : {
+                           "name" : "Immunosuppressant - Fluconazole -- Patient > 18 years old, Low dose oral fluconazole",
+                           "type" : "ExpressionRef"
+                        }
+                     },
+                     "then" : {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "Monitor immunosuppressant levels. No special precautions",
+                        "type" : "Literal"
+                     },
+                     "else" : {
+                        "asType" : "{urn:hl7-org:elm-types:r1}String",
+                        "type" : "As",
+                        "operand" : {
+                           "type" : "Null"
+                        }
+                     }
+                  }
+               }
+            }
+         }, {
+            "name" : "Rationale",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "name" : "Immunosuppressant - Fluconazole -- Patient < 18 years old",
+                     "type" : "ExpressionRef"
+                  }
+               },
+               "then" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "Increased risk of immunosuppressant toxicity likely",
+                  "type" : "Literal"
+               },
+               "else" : {
+                  "type" : "If",
+                  "condition" : {
+                     "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "As",
+                     "operand" : {
+                        "name" : "Immunosuppressant - Fluconazole -- Patient > 18 years old, High dose oral fluconazole",
+                        "type" : "ExpressionRef"
+                     }
+                  },
+                  "then" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Increased risk of immunosuppressant toxicity likely",
+                     "type" : "Literal"
+                  },
+                  "else" : {
+                     "type" : "If",
+                     "condition" : {
+                        "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                        "type" : "As",
+                        "operand" : {
+                           "name" : "Immunosuppressant - Fluconazole -- Patient > 18 years old, Low dose oral fluconazole",
+                           "type" : "ExpressionRef"
+                        }
+                     },
+                     "then" : {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "Increased risk of immunosuppressant toxicity unlikely",
+                        "type" : "Literal"
+                     },
+                     "else" : {
+                        "asType" : "{urn:hl7-org:elm-types:r1}String",
+                        "type" : "As",
+                        "operand" : {
+                           "type" : "Null"
+                        }
+                     }
+                  }
+               }
+            }
+         }, {
+            "name" : "Errors",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Null"
+                  }
+               },
+               "then" : {
+                  "type" : "List",
+                  "element" : [ {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "",
+                     "type" : "Literal"
+                  } ]
+               },
+               "else" : {
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Null"
+                  },
+                  "asTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:hl7-org:elm-types:r1}String",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  }
+               }
+            }
+         } ]
+      }
+   }
+}
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns0:RetrieveValueSetResponse xmlns:ns0="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ns0:ValueSet ID="2.16.840.1.113762.1.4.1213.18" displayName="Immunosuppressants" version="20190918">
+        <ns0:ConceptList>
+            <ns0:Concept code="1093174" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Cyclosporine 0.002 MG/MG Ophthalmic Ointment"/>
+            <ns0:Concept code="1119400" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="everolimus 7.5 MG Oral Tablet"/>
+            <ns0:Concept code="1308428" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="everolimus 2 MG Tablet for Oral Suspension"/>
+            <ns0:Concept code="1308430" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="everolimus 3 MG Tablet for Oral Suspension"/>
+            <ns0:Concept code="1308432" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="everolimus 5 MG Tablet for Oral Suspension"/>
+            <ns0:Concept code="197553" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Cyclosporine 25 MG Oral Capsule"/>
+            <ns0:Concept code="198377" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Tacrolimus 1 MG Oral Capsule"/>
+            <ns0:Concept code="198378" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Tacrolimus 5 MG Oral Capsule"/>
+            <ns0:Concept code="198379" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="1 ML Tacrolimus 5 MG/ML Injection"/>
+            <ns0:Concept code="205168" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Cyclosporine 50 MG Oral Capsule"/>
+            <ns0:Concept code="205175" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="5 ML Cyclosporine 50 MG/ML Injection"/>
+            <ns0:Concept code="241834" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="cyclosporine, modified 100 MG Oral Capsule"/>
+            <ns0:Concept code="309632" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Cyclosporine 100 MG/ML Oral Solution"/>
+            <ns0:Concept code="313190" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Tacrolimus 0.5 MG Oral Capsule"/>
+            <ns0:Concept code="314230" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Sirolimus 1 MG/ML Oral Solution"/>
+            <ns0:Concept code="328160" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Cyclosporine 100 MG Oral Capsule"/>
+            <ns0:Concept code="349208" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Sirolimus 1 MG Oral Tablet"/>
+            <ns0:Concept code="351291" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Cyclosporine 0.5 MG/ML Ophthalmic Suspension"/>
+            <ns0:Concept code="360110" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Sirolimus 2 MG Oral Tablet"/>
+            <ns0:Concept code="835886" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="cyclosporine, modified 100 MG/ML Oral Solution"/>
+            <ns0:Concept code="835894" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="cyclosporine, modified 25 MG Oral Capsule"/>
+            <ns0:Concept code="835919" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="cyclosporine, modified 10 MG Oral Capsule"/>
+            <ns0:Concept code="835925" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="cyclosporine, modified 50 MG Oral Capsule"/>
+            <ns0:Concept code="845507" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="everolimus 10 MG Oral Tablet"/>
+            <ns0:Concept code="845515" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="everolimus 5 MG Oral Tablet"/>
+            <ns0:Concept code="905158" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="Sirolimus 0.5 MG Oral Tablet"/>
+            <ns0:Concept code="977427" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="everolimus 0.25 MG Oral Tablet"/>
+            <ns0:Concept code="977434" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="everolimus 0.5 MG Oral Tablet"/>
+            <ns0:Concept code="977438" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="everolimus 0.75 MG Oral Tablet"/>
+            <ns0:Concept code="998189" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM" codeSystemVersion="2019-08" displayName="everolimus 2.5 MG Oral Tablet"/>
+        </ns0:ConceptList>
+    </ns0:ValueSet>
+</ns0:RetrieveValueSetResponse>

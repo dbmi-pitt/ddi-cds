@@ -1,0 +1,2407 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "Warfarin-Antidepressants",
+         "version" : "1.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "3.0.0"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "FHIRHelpers",
+            "version" : "3.0.0"
+         }, {
+            "localIdentifier" : "C3F",
+            "path" : "CDS_Connect_Commons_for_FHIRv300",
+            "version" : "1.1.0"
+         }, {
+            "localIdentifier" : "RF",
+            "path" : "ReusableFunctions_FHIRv300",
+            "version" : "1.0.0"
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "name" : "RXNORM",
+            "id" : "http://www.nlm.nih.gov/research/umls/rxnorm",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "ICD9D",
+            "id" : "http://hl7.org/fhir/sid/icd-9-cm/diagnosis",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "name" : "Warfarins VS",
+            "id" : "2.16.840.1.113762.1.4.1213.8",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Mirtazapines VS",
+            "id" : "2.16.840.1.113762.1.4.1213.32",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Tricyclics VS",
+            "id" : "2.16.840.1.113762.1.4.1213.31",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Bupropions VS",
+            "id" : "2.16.840.1.113762.1.4.1213.30",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "SSRIs and SNRIs VS",
+            "id" : "2.16.840.1.113762.1.4.1213.33",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Systemic Corticosteroids VS",
+            "id" : "2.16.840.1.113762.1.4.1213.46",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Aldosterone Antagonists VS",
+            "id" : "2.16.840.1.113762.1.4.1213.52",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Antiplatelet Medications VS",
+            "id" : "2.16.840.1.113762.1.4.1213.50",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "NSAIDs VS",
+            "id" : "2.16.840.1.113762.1.4.1213.9",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Aspirins VS",
+            "id" : "2.16.840.1.113762.1.4.1213.29",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "History of Gastrointestinal Bleeds VS",
+            "id" : "2.16.840.1.113762.1.4.1213.53",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "name" : "Warfarins",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MedicationStatementLookBack",
+               "libraryName" : "C3F",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}MedicationStatement",
+                  "codeProperty" : "medication",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Warfarins VS",
+                     "type" : "ValueSetRef"
+                  }
+               }, {
+                  "value" : 180,
+                  "unit" : "days",
+                  "type" : "Quantity"
+               } ]
+            }
+         }, {
+            "name" : "Report Warfarins",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "S",
+                  "expression" : {
+                     "name" : "Warfarins",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "expression" : {
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "Type",
+                        "value" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Statement",
+                           "type" : "Literal"
+                        }
+                     }, {
+                        "name" : "Name",
+                        "value" : {
+                           "name" : "ConceptText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "strict" : false,
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "medication",
+                                 "scope" : "S",
+                                 "type" : "Property"
+                              },
+                              "asTypeSpecifier" : {
+                                 "name" : "{http://hl7.org/fhir}CodeableConcept",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Start",
+                        "value" : {
+                           "name" : "MedicationStatementDate",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "name" : "S",
+                              "type" : "AliasRef"
+                           } ]
+                        }
+                     }, {
+                        "name" : "End",
+                        "value" : {
+                           "name" : "DateTimeText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "end",
+                              "type" : "Property",
+                              "source" : {
+                                 "strict" : false,
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "effective",
+                                    "scope" : "S",
+                                    "type" : "Property"
+                                 },
+                                 "asTypeSpecifier" : {
+                                    "name" : "{http://hl7.org/fhir}Period",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Status",
+                        "value" : {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "S",
+                              "type" : "Property"
+                           }
+                        }
+                     } ]
+                  }
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "path" : "Start",
+                     "type" : "ByColumn"
+                  }, {
+                     "direction" : "desc",
+                     "path" : "End",
+                     "type" : "ByColumn"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Mirtazapines",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MedicationStatementLookBack",
+               "libraryName" : "C3F",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}MedicationStatement",
+                  "codeProperty" : "medication",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Mirtazapines VS",
+                     "type" : "ValueSetRef"
+                  }
+               }, {
+                  "value" : 180,
+                  "unit" : "days",
+                  "type" : "Quantity"
+               } ]
+            }
+         }, {
+            "name" : "Report Mirtazapines",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "S",
+                  "expression" : {
+                     "name" : "Mirtazapines",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "expression" : {
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "Type",
+                        "value" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Statement",
+                           "type" : "Literal"
+                        }
+                     }, {
+                        "name" : "Name",
+                        "value" : {
+                           "name" : "ConceptText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "strict" : false,
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "medication",
+                                 "scope" : "S",
+                                 "type" : "Property"
+                              },
+                              "asTypeSpecifier" : {
+                                 "name" : "{http://hl7.org/fhir}CodeableConcept",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Start",
+                        "value" : {
+                           "name" : "MedicationStatementDate",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "name" : "S",
+                              "type" : "AliasRef"
+                           } ]
+                        }
+                     }, {
+                        "name" : "End",
+                        "value" : {
+                           "name" : "DateTimeText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "end",
+                              "type" : "Property",
+                              "source" : {
+                                 "strict" : false,
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "effective",
+                                    "scope" : "S",
+                                    "type" : "Property"
+                                 },
+                                 "asTypeSpecifier" : {
+                                    "name" : "{http://hl7.org/fhir}Period",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Status",
+                        "value" : {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "S",
+                              "type" : "Property"
+                           }
+                        }
+                     } ]
+                  }
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "path" : "Start",
+                     "type" : "ByColumn"
+                  }, {
+                     "direction" : "desc",
+                     "path" : "End",
+                     "type" : "ByColumn"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Tricyclics",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MedicationStatementLookBack",
+               "libraryName" : "C3F",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}MedicationStatement",
+                  "codeProperty" : "medication",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Tricyclics VS",
+                     "type" : "ValueSetRef"
+                  }
+               }, {
+                  "value" : 180,
+                  "unit" : "days",
+                  "type" : "Quantity"
+               } ]
+            }
+         }, {
+            "name" : "Report Tricyclics",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "S",
+                  "expression" : {
+                     "name" : "Tricyclics",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "expression" : {
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "Type",
+                        "value" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Statement",
+                           "type" : "Literal"
+                        }
+                     }, {
+                        "name" : "Name",
+                        "value" : {
+                           "name" : "ConceptText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "strict" : false,
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "medication",
+                                 "scope" : "S",
+                                 "type" : "Property"
+                              },
+                              "asTypeSpecifier" : {
+                                 "name" : "{http://hl7.org/fhir}CodeableConcept",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Start",
+                        "value" : {
+                           "name" : "MedicationStatementDate",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "name" : "S",
+                              "type" : "AliasRef"
+                           } ]
+                        }
+                     }, {
+                        "name" : "End",
+                        "value" : {
+                           "name" : "DateTimeText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "end",
+                              "type" : "Property",
+                              "source" : {
+                                 "strict" : false,
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "effective",
+                                    "scope" : "S",
+                                    "type" : "Property"
+                                 },
+                                 "asTypeSpecifier" : {
+                                    "name" : "{http://hl7.org/fhir}Period",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Status",
+                        "value" : {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "S",
+                              "type" : "Property"
+                           }
+                        }
+                     } ]
+                  }
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "path" : "Start",
+                     "type" : "ByColumn"
+                  }, {
+                     "direction" : "desc",
+                     "path" : "End",
+                     "type" : "ByColumn"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Bupropions",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MedicationStatementLookBack",
+               "libraryName" : "C3F",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}MedicationStatement",
+                  "codeProperty" : "medication",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Bupropions VS",
+                     "type" : "ValueSetRef"
+                  }
+               }, {
+                  "value" : 180,
+                  "unit" : "days",
+                  "type" : "Quantity"
+               } ]
+            }
+         }, {
+            "name" : "Report Bupropions",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "S",
+                  "expression" : {
+                     "name" : "Bupropions",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "expression" : {
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "Type",
+                        "value" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Statement",
+                           "type" : "Literal"
+                        }
+                     }, {
+                        "name" : "Name",
+                        "value" : {
+                           "name" : "ConceptText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "strict" : false,
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "medication",
+                                 "scope" : "S",
+                                 "type" : "Property"
+                              },
+                              "asTypeSpecifier" : {
+                                 "name" : "{http://hl7.org/fhir}CodeableConcept",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Start",
+                        "value" : {
+                           "name" : "MedicationStatementDate",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "name" : "S",
+                              "type" : "AliasRef"
+                           } ]
+                        }
+                     }, {
+                        "name" : "End",
+                        "value" : {
+                           "name" : "DateTimeText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "end",
+                              "type" : "Property",
+                              "source" : {
+                                 "strict" : false,
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "effective",
+                                    "scope" : "S",
+                                    "type" : "Property"
+                                 },
+                                 "asTypeSpecifier" : {
+                                    "name" : "{http://hl7.org/fhir}Period",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Status",
+                        "value" : {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "S",
+                              "type" : "Property"
+                           }
+                        }
+                     } ]
+                  }
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "path" : "Start",
+                     "type" : "ByColumn"
+                  }, {
+                     "direction" : "desc",
+                     "path" : "End",
+                     "type" : "ByColumn"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "SSRIs and SNRIs",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MedicationStatementLookBack",
+               "libraryName" : "C3F",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}MedicationStatement",
+                  "codeProperty" : "medication",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "SSRIs and SNRIs VS",
+                     "type" : "ValueSetRef"
+                  }
+               }, {
+                  "value" : 180,
+                  "unit" : "days",
+                  "type" : "Quantity"
+               } ]
+            }
+         }, {
+            "name" : "Report SSRIs and SNRIs",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "S",
+                  "expression" : {
+                     "name" : "SSRIs and SNRIs",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "expression" : {
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "Type",
+                        "value" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Statement",
+                           "type" : "Literal"
+                        }
+                     }, {
+                        "name" : "Name",
+                        "value" : {
+                           "name" : "ConceptText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "strict" : false,
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "medication",
+                                 "scope" : "S",
+                                 "type" : "Property"
+                              },
+                              "asTypeSpecifier" : {
+                                 "name" : "{http://hl7.org/fhir}CodeableConcept",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Start",
+                        "value" : {
+                           "name" : "MedicationStatementDate",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "name" : "S",
+                              "type" : "AliasRef"
+                           } ]
+                        }
+                     }, {
+                        "name" : "End",
+                        "value" : {
+                           "name" : "DateTimeText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "end",
+                              "type" : "Property",
+                              "source" : {
+                                 "strict" : false,
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "effective",
+                                    "scope" : "S",
+                                    "type" : "Property"
+                                 },
+                                 "asTypeSpecifier" : {
+                                    "name" : "{http://hl7.org/fhir}Period",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Status",
+                        "value" : {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "S",
+                              "type" : "Property"
+                           }
+                        }
+                     } ]
+                  }
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "path" : "Start",
+                     "type" : "ByColumn"
+                  }, {
+                     "direction" : "desc",
+                     "path" : "End",
+                     "type" : "ByColumn"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Is65orOlder",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "GreaterOrEqual",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAge",
+                  "operand" : {
+                     "path" : "birthDate.value",
+                     "type" : "Property",
+                     "source" : {
+                        "name" : "Patient",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               }, {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "65",
+                  "type" : "Literal"
+               } ]
+            }
+         }, {
+            "name" : "Report65orOlder",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "name" : "Is65orOlder",
+                     "type" : "ExpressionRef"
+                  }
+               },
+               "then" : {
+                  "type" : "Tuple",
+                  "element" : [ {
+                     "name" : "Name",
+                     "value" : {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "65 years or older",
+                        "type" : "Literal"
+                     }
+                  }, {
+                     "name" : "Status",
+                     "value" : {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "active",
+                        "type" : "Literal"
+                     }
+                  }, {
+                     "name" : "Onset",
+                     "value" : {
+                        "strict" : false,
+                        "type" : "As",
+                        "operand" : {
+                           "type" : "Null"
+                        },
+                        "asTypeSpecifier" : {
+                           "name" : "{urn:hl7-org:elm-types:r1}String",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  }, {
+                     "name" : "DateRecorded",
+                     "value" : {
+                        "strict" : false,
+                        "type" : "As",
+                        "operand" : {
+                           "type" : "Null"
+                        },
+                        "asTypeSpecifier" : {
+                           "name" : "{urn:hl7-org:elm-types:r1}String",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  }, {
+                     "name" : "Abatement",
+                     "value" : {
+                        "strict" : false,
+                        "type" : "As",
+                        "operand" : {
+                           "type" : "Null"
+                        },
+                        "asTypeSpecifier" : {
+                           "name" : "{urn:hl7-org:elm-types:r1}String",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  }, {
+                     "name" : "Visit",
+                     "value" : {
+                        "strict" : false,
+                        "type" : "As",
+                        "operand" : {
+                           "type" : "Null"
+                        },
+                        "asTypeSpecifier" : {
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "name" : "Start",
+                              "elementType" : {
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "name" : "End",
+                              "elementType" : {
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }
+                  } ]
+               },
+               "else" : {
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Null"
+                  },
+                  "asTypeSpecifier" : {
+                     "type" : "TupleTypeSpecifier",
+                     "element" : [ {
+                        "name" : "Name",
+                        "type" : {
+                           "name" : "{urn:hl7-org:elm-types:r1}String",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "name" : "Status",
+                        "type" : {
+                           "name" : "{urn:hl7-org:elm-types:r1}String",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "name" : "Onset",
+                        "type" : {
+                           "name" : "{urn:hl7-org:elm-types:r1}String",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "name" : "DateRecorded",
+                        "type" : {
+                           "name" : "{urn:hl7-org:elm-types:r1}String",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "name" : "Abatement",
+                        "type" : {
+                           "name" : "{urn:hl7-org:elm-types:r1}String",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "name" : "Visit",
+                        "type" : {
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "name" : "Start",
+                              "type" : {
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "name" : "End",
+                              "type" : {
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "GI Bleeding",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "Confirmed",
+               "libraryName" : "C3F",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "name" : "ActiveOrRecurring",
+                  "libraryName" : "C3F",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "dataType" : "{http://hl7.org/fhir}Condition",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "History of Gastrointestinal Bleeds VS",
+                        "type" : "ValueSetRef"
+                     }
+                  } ]
+               } ]
+            }
+         }, {
+            "name" : "Report GI Bleeding",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "C",
+                  "expression" : {
+                     "name" : "GI Bleeding",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "expression" : {
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "Name",
+                        "value" : {
+                           "name" : "ConceptText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "code",
+                              "scope" : "C",
+                              "type" : "Property"
+                           } ]
+                        }
+                     }, {
+                        "name" : "Status",
+                        "value" : {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "clinicalStatus",
+                              "scope" : "C",
+                              "type" : "Property"
+                           }
+                        }
+                     }, {
+                        "name" : "Onset",
+                        "value" : {
+                           "name" : "Onset",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "name" : "C",
+                              "type" : "AliasRef"
+                           } ]
+                        }
+                     }, {
+                        "name" : "DateRecorded",
+                        "value" : {
+                           "name" : "DateTimeText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "assertedDate",
+                              "scope" : "C",
+                              "type" : "Property"
+                           } ]
+                        }
+                     } ]
+                  }
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "type" : "ByExpression",
+                     "expression" : {
+                        "strict" : false,
+                        "type" : "As",
+                        "operand" : {
+                           "name" : "Onset",
+                           "type" : "IdentifierRef"
+                        },
+                        "asTypeSpecifier" : {
+                           "name" : "{urn:hl7-org:elm-types:r1}String",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "NSAIDs",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MedicationStatementLookBack",
+               "libraryName" : "C3F",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}MedicationStatement",
+                  "codeProperty" : "medication",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "NSAIDs VS",
+                     "type" : "ValueSetRef"
+                  }
+               }, {
+                  "value" : 180,
+                  "unit" : "days",
+                  "type" : "Quantity"
+               } ]
+            }
+         }, {
+            "name" : "Report NSAIDs",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "S",
+                  "expression" : {
+                     "name" : "NSAIDs",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "expression" : {
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "Type",
+                        "value" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Statement",
+                           "type" : "Literal"
+                        }
+                     }, {
+                        "name" : "Name",
+                        "value" : {
+                           "name" : "ConceptText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "strict" : false,
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "medication",
+                                 "scope" : "S",
+                                 "type" : "Property"
+                              },
+                              "asTypeSpecifier" : {
+                                 "name" : "{http://hl7.org/fhir}CodeableConcept",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Start",
+                        "value" : {
+                           "name" : "MedicationStatementDate",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "name" : "S",
+                              "type" : "AliasRef"
+                           } ]
+                        }
+                     }, {
+                        "name" : "End",
+                        "value" : {
+                           "name" : "DateTimeText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "end",
+                              "type" : "Property",
+                              "source" : {
+                                 "strict" : false,
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "effective",
+                                    "scope" : "S",
+                                    "type" : "Property"
+                                 },
+                                 "asTypeSpecifier" : {
+                                    "name" : "{http://hl7.org/fhir}Period",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Status",
+                        "value" : {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "S",
+                              "type" : "Property"
+                           }
+                        }
+                     } ]
+                  }
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "path" : "Start",
+                     "type" : "ByColumn"
+                  }, {
+                     "direction" : "desc",
+                     "path" : "End",
+                     "type" : "ByColumn"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Aspirins",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MedicationStatementLookBack",
+               "libraryName" : "C3F",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}MedicationStatement",
+                  "codeProperty" : "medication",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Aspirins VS",
+                     "type" : "ValueSetRef"
+                  }
+               }, {
+                  "value" : 180,
+                  "unit" : "days",
+                  "type" : "Quantity"
+               } ]
+            }
+         }, {
+            "name" : "Report Aspirins",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "S",
+                  "expression" : {
+                     "name" : "Aspirins",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "expression" : {
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "Type",
+                        "value" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Statement",
+                           "type" : "Literal"
+                        }
+                     }, {
+                        "name" : "Name",
+                        "value" : {
+                           "name" : "ConceptText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "strict" : false,
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "medication",
+                                 "scope" : "S",
+                                 "type" : "Property"
+                              },
+                              "asTypeSpecifier" : {
+                                 "name" : "{http://hl7.org/fhir}CodeableConcept",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Start",
+                        "value" : {
+                           "name" : "MedicationStatementDate",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "name" : "S",
+                              "type" : "AliasRef"
+                           } ]
+                        }
+                     }, {
+                        "name" : "End",
+                        "value" : {
+                           "name" : "DateTimeText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "end",
+                              "type" : "Property",
+                              "source" : {
+                                 "strict" : false,
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "effective",
+                                    "scope" : "S",
+                                    "type" : "Property"
+                                 },
+                                 "asTypeSpecifier" : {
+                                    "name" : "{http://hl7.org/fhir}Period",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Status",
+                        "value" : {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "S",
+                              "type" : "Property"
+                           }
+                        }
+                     } ]
+                  }
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "path" : "Start",
+                     "type" : "ByColumn"
+                  }, {
+                     "direction" : "desc",
+                     "path" : "End",
+                     "type" : "ByColumn"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Systemic Corticosteroids",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MedicationStatementLookBack",
+               "libraryName" : "C3F",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}MedicationStatement",
+                  "codeProperty" : "medication",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Systemic Corticosteroids VS",
+                     "type" : "ValueSetRef"
+                  }
+               }, {
+                  "value" : 180,
+                  "unit" : "days",
+                  "type" : "Quantity"
+               } ]
+            }
+         }, {
+            "name" : "Report Systemic Corticosteroids",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "S",
+                  "expression" : {
+                     "name" : "Systemic Corticosteroids",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "expression" : {
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "Type",
+                        "value" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Statement",
+                           "type" : "Literal"
+                        }
+                     }, {
+                        "name" : "Name",
+                        "value" : {
+                           "name" : "ConceptText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "strict" : false,
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "medication",
+                                 "scope" : "S",
+                                 "type" : "Property"
+                              },
+                              "asTypeSpecifier" : {
+                                 "name" : "{http://hl7.org/fhir}CodeableConcept",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Start",
+                        "value" : {
+                           "name" : "MedicationStatementDate",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "name" : "S",
+                              "type" : "AliasRef"
+                           } ]
+                        }
+                     }, {
+                        "name" : "End",
+                        "value" : {
+                           "name" : "DateTimeText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "end",
+                              "type" : "Property",
+                              "source" : {
+                                 "strict" : false,
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "effective",
+                                    "scope" : "S",
+                                    "type" : "Property"
+                                 },
+                                 "asTypeSpecifier" : {
+                                    "name" : "{http://hl7.org/fhir}Period",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Status",
+                        "value" : {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "S",
+                              "type" : "Property"
+                           }
+                        }
+                     } ]
+                  }
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "path" : "Start",
+                     "type" : "ByColumn"
+                  }, {
+                     "direction" : "desc",
+                     "path" : "End",
+                     "type" : "ByColumn"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Aldosterone Antagonists",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MedicationStatementLookBack",
+               "libraryName" : "C3F",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}MedicationStatement",
+                  "codeProperty" : "medication",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Aldosterone Antagonists VS",
+                     "type" : "ValueSetRef"
+                  }
+               }, {
+                  "value" : 180,
+                  "unit" : "days",
+                  "type" : "Quantity"
+               } ]
+            }
+         }, {
+            "name" : "Report Aldosterone Antagonists",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "S",
+                  "expression" : {
+                     "name" : "Aldosterone Antagonists",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "expression" : {
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "Type",
+                        "value" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Statement",
+                           "type" : "Literal"
+                        }
+                     }, {
+                        "name" : "Name",
+                        "value" : {
+                           "name" : "ConceptText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "strict" : false,
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "medication",
+                                 "scope" : "S",
+                                 "type" : "Property"
+                              },
+                              "asTypeSpecifier" : {
+                                 "name" : "{http://hl7.org/fhir}CodeableConcept",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Start",
+                        "value" : {
+                           "name" : "MedicationStatementDate",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "name" : "S",
+                              "type" : "AliasRef"
+                           } ]
+                        }
+                     }, {
+                        "name" : "End",
+                        "value" : {
+                           "name" : "DateTimeText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "end",
+                              "type" : "Property",
+                              "source" : {
+                                 "strict" : false,
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "effective",
+                                    "scope" : "S",
+                                    "type" : "Property"
+                                 },
+                                 "asTypeSpecifier" : {
+                                    "name" : "{http://hl7.org/fhir}Period",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Status",
+                        "value" : {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "S",
+                              "type" : "Property"
+                           }
+                        }
+                     } ]
+                  }
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "path" : "Start",
+                     "type" : "ByColumn"
+                  }, {
+                     "direction" : "desc",
+                     "path" : "End",
+                     "type" : "ByColumn"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Antiplatelet Medications",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MedicationStatementLookBack",
+               "libraryName" : "C3F",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}MedicationStatement",
+                  "codeProperty" : "medication",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Antiplatelet Medications VS",
+                     "type" : "ValueSetRef"
+                  }
+               }, {
+                  "value" : 180,
+                  "unit" : "days",
+                  "type" : "Quantity"
+               } ]
+            }
+         }, {
+            "name" : "Report Antiplatelet Medications",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "S",
+                  "expression" : {
+                     "name" : "Antiplatelet Medications",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "expression" : {
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "Type",
+                        "value" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Statement",
+                           "type" : "Literal"
+                        }
+                     }, {
+                        "name" : "Name",
+                        "value" : {
+                           "name" : "ConceptText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "strict" : false,
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "medication",
+                                 "scope" : "S",
+                                 "type" : "Property"
+                              },
+                              "asTypeSpecifier" : {
+                                 "name" : "{http://hl7.org/fhir}CodeableConcept",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Start",
+                        "value" : {
+                           "name" : "MedicationStatementDate",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "name" : "S",
+                              "type" : "AliasRef"
+                           } ]
+                        }
+                     }, {
+                        "name" : "End",
+                        "value" : {
+                           "name" : "DateTimeText",
+                           "libraryName" : "RF",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "end",
+                              "type" : "Property",
+                              "source" : {
+                                 "strict" : false,
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "effective",
+                                    "scope" : "S",
+                                    "type" : "Property"
+                                 },
+                                 "asTypeSpecifier" : {
+                                    "name" : "{http://hl7.org/fhir}Period",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Status",
+                        "value" : {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "S",
+                              "type" : "Property"
+                           }
+                        }
+                     } ]
+                  }
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "path" : "Start",
+                     "type" : "ByColumn"
+                  }, {
+                     "direction" : "desc",
+                     "path" : "End",
+                     "type" : "ByColumn"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Report Medication Risk Factors for Bleeding",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "M",
+                  "expression" : {
+                     "type" : "Union",
+                     "operand" : [ {
+                        "type" : "Union",
+                        "operand" : [ {
+                           "type" : "Union",
+                           "operand" : [ {
+                              "name" : "Report NSAIDs",
+                              "type" : "ExpressionRef"
+                           }, {
+                              "name" : "Report Aspirins",
+                              "type" : "ExpressionRef"
+                           } ]
+                        }, {
+                           "type" : "Union",
+                           "operand" : [ {
+                              "name" : "Report Systemic Corticosteroids",
+                              "type" : "ExpressionRef"
+                           }, {
+                              "name" : "Report Aldosterone Antagonists",
+                              "type" : "ExpressionRef"
+                           } ]
+                        } ]
+                     }, {
+                        "name" : "Report Antiplatelet Medications",
+                        "type" : "ExpressionRef"
+                     } ]
+                  }
+               } ],
+               "relationship" : [ ]
+            }
+         }, {
+            "name" : "One or more risk factors for major bleeding",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Or",
+               "operand" : [ {
+                  "type" : "Or",
+                  "operand" : [ {
+                     "type" : "Exists",
+                     "operand" : {
+                        "name" : "Report GI Bleeding",
+                        "type" : "ExpressionRef"
+                     }
+                  }, {
+                     "type" : "Exists",
+                     "operand" : {
+                        "type" : "ToList",
+                        "operand" : {
+                           "name" : "Report65orOlder",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  } ]
+               }, {
+                  "type" : "Exists",
+                  "operand" : {
+                     "name" : "Report Medication Risk Factors for Bleeding",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "No risk factors for major bleeding",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Not",
+               "operand" : {
+                  "name" : "One or more risk factors for major bleeding",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "name" : "MeetsInclusionCriteria",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "name" : "Warfarins",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "name" : "InPopulation",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MeetsInclusionCriteria",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "name" : "Warfarin - Mirtazapine",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Not",
+                     "operand" : {
+                        "type" : "IsTrue",
+                        "operand" : {
+                           "name" : "InPopulation",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }
+               },
+               "then" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Null"
+                  }
+               },
+               "else" : {
+                  "type" : "Exists",
+                  "operand" : {
+                     "name" : "Mirtazapines",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "name" : "Warfarin - Tricyclics/Bupropion",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Not",
+                     "operand" : {
+                        "type" : "IsTrue",
+                        "operand" : {
+                           "name" : "InPopulation",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }
+               },
+               "then" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Null"
+                  }
+               },
+               "else" : {
+                  "type" : "Or",
+                  "operand" : [ {
+                     "type" : "Exists",
+                     "operand" : {
+                        "name" : "Tricyclics",
+                        "type" : "ExpressionRef"
+                     }
+                  }, {
+                     "type" : "Exists",
+                     "operand" : {
+                        "name" : "Bupropions",
+                        "type" : "ExpressionRef"
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Warfarin - SSRIs and SNRIs",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Not",
+                     "operand" : {
+                        "type" : "IsTrue",
+                        "operand" : {
+                           "name" : "InPopulation",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }
+               },
+               "then" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Null"
+                  }
+               },
+               "else" : {
+                  "type" : "Exists",
+                  "operand" : {
+                     "name" : "SSRIs and SNRIs",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "name" : "Patient has one or more risk factors for major bleeding",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Not",
+                     "operand" : {
+                        "type" : "IsTrue",
+                        "operand" : {
+                           "name" : "InPopulation",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }
+               },
+               "then" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Null"
+                  }
+               },
+               "else" : {
+                  "name" : "One or more risk factors for major bleeding",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "name" : "Patient has no risk factors for major bleeding",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Not",
+                     "operand" : {
+                        "type" : "IsTrue",
+                        "operand" : {
+                           "name" : "InPopulation",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }
+               },
+               "then" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Null"
+                  }
+               },
+               "else" : {
+                  "name" : "No risk factors for major bleeding",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "name" : "Recommendation",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "name" : "Warfarin - SSRIs and SNRIs",
+                        "type" : "ExpressionRef"
+                     }, {
+                        "name" : "Patient has one or more risk factors for major bleeding",
+                        "type" : "ExpressionRef"
+                     } ]
+                  }
+               },
+               "then" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "Use only if benefit outweighs risk",
+                  "type" : "Literal"
+               },
+               "else" : {
+                  "type" : "If",
+                  "condition" : {
+                     "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "As",
+                     "operand" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "name" : "Warfarin - SSRIs and SNRIs",
+                           "type" : "ExpressionRef"
+                        }, {
+                           "name" : "Patient has no risk factors for major bleeding",
+                           "type" : "ExpressionRef"
+                        } ]
+                     }
+                  },
+                  "then" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Assess risk and take action if necessary",
+                     "type" : "Literal"
+                  },
+                  "else" : {
+                     "type" : "If",
+                     "condition" : {
+                        "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                        "type" : "As",
+                        "operand" : {
+                           "name" : "Warfarin - Mirtazapine",
+                           "type" : "ExpressionRef"
+                        }
+                     },
+                     "then" : {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "Assess risk and take action if necessary",
+                        "type" : "Literal"
+                     },
+                     "else" : {
+                        "type" : "If",
+                        "condition" : {
+                           "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                           "type" : "As",
+                           "operand" : {
+                              "name" : "Warfarin - Tricyclics/Bupropion",
+                              "type" : "ExpressionRef"
+                           }
+                        },
+                        "then" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "No special precautions",
+                           "type" : "Literal"
+                        },
+                        "else" : {
+                           "asType" : "{urn:hl7-org:elm-types:r1}String",
+                           "type" : "As",
+                           "operand" : {
+                              "type" : "Null"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }, {
+            "name" : "Rationale",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "name" : "Warfarin - SSRIs and SNRIs",
+                        "type" : "ExpressionRef"
+                     }, {
+                        "name" : "Patient has one or more risk factors for major bleeding",
+                        "type" : "ExpressionRef"
+                     } ]
+                  }
+               },
+               "then" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "Increased GI and non-GI bleeding risk is likely",
+                  "type" : "Literal"
+               },
+               "else" : {
+                  "type" : "If",
+                  "condition" : {
+                     "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "As",
+                     "operand" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "name" : "Warfarin - SSRIs and SNRIs",
+                           "type" : "ExpressionRef"
+                        }, {
+                           "name" : "Patient has no risk factors for major bleeding",
+                           "type" : "ExpressionRef"
+                        } ]
+                     }
+                  },
+                  "then" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Increased GI and non-GI bleeding risk is possible",
+                     "type" : "Literal"
+                  },
+                  "else" : {
+                     "type" : "If",
+                     "condition" : {
+                        "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                        "type" : "As",
+                        "operand" : {
+                           "name" : "Warfarin - Mirtazapine",
+                           "type" : "ExpressionRef"
+                        }
+                     },
+                     "then" : {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "Increased GI and non-GI bleeding risk is possible",
+                        "type" : "Literal"
+                     },
+                     "else" : {
+                        "type" : "If",
+                        "condition" : {
+                           "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                           "type" : "As",
+                           "operand" : {
+                              "name" : "Warfarin - Tricyclics/Bupropion",
+                              "type" : "ExpressionRef"
+                           }
+                        },
+                        "then" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Increased bleeding risk unlikely",
+                           "type" : "Literal"
+                        },
+                        "else" : {
+                           "asType" : "{urn:hl7-org:elm-types:r1}String",
+                           "type" : "As",
+                           "operand" : {
+                              "type" : "Null"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }, {
+            "name" : "Errors",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Null"
+                  }
+               },
+               "then" : {
+                  "type" : "List",
+                  "element" : [ {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "",
+                     "type" : "Literal"
+                  } ]
+               },
+               "else" : {
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Null"
+                  },
+                  "asTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:hl7-org:elm-types:r1}String",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  }
+               }
+            }
+         }, {
+            "name" : "Summary",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "Patient",
+                  "value" : {
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "Name",
+                        "value" : {
+                           "type" : "Concatenate",
+                           "operand" : [ {
+                              "type" : "Concatenate",
+                              "operand" : [ {
+                                 "type" : "Combine",
+                                 "source" : {
+                                    "type" : "Query",
+                                    "source" : [ {
+                                       "alias" : "G",
+                                       "expression" : {
+                                          "type" : "Flatten",
+                                          "operand" : {
+                                             "type" : "Query",
+                                             "source" : [ {
+                                                "alias" : "$this",
+                                                "expression" : {
+                                                   "path" : "name",
+                                                   "type" : "Property",
+                                                   "source" : {
+                                                      "name" : "Patient",
+                                                      "type" : "ExpressionRef"
+                                                   }
+                                                }
+                                             } ],
+                                             "where" : {
+                                                "type" : "Not",
+                                                "operand" : {
+                                                   "type" : "IsNull",
+                                                   "operand" : {
+                                                      "path" : "given",
+                                                      "type" : "Property",
+                                                      "source" : {
+                                                         "name" : "$this",
+                                                         "type" : "AliasRef"
+                                                      }
+                                                   }
+                                                }
+                                             },
+                                             "return" : {
+                                                "expression" : {
+                                                   "path" : "given",
+                                                   "type" : "Property",
+                                                   "source" : {
+                                                      "name" : "$this",
+                                                      "type" : "AliasRef"
+                                                   }
+                                                }
+                                             }
+                                          }
+                                       }
+                                    } ],
+                                    "relationship" : [ ],
+                                    "return" : {
+                                       "expression" : {
+                                          "path" : "value",
+                                          "scope" : "G",
+                                          "type" : "Property"
+                                       }
+                                    }
+                                 },
+                                 "separator" : {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : " ",
+                                    "type" : "Literal"
+                                 }
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : " ",
+                                 "type" : "Literal"
+                              } ]
+                           }, {
+                              "type" : "Combine",
+                              "source" : {
+                                 "type" : "Query",
+                                 "source" : [ {
+                                    "alias" : "F",
+                                    "expression" : {
+                                       "type" : "Query",
+                                       "source" : [ {
+                                          "alias" : "$this",
+                                          "expression" : {
+                                             "path" : "name",
+                                             "type" : "Property",
+                                             "source" : {
+                                                "name" : "Patient",
+                                                "type" : "ExpressionRef"
+                                             }
+                                          }
+                                       } ],
+                                       "where" : {
+                                          "type" : "Not",
+                                          "operand" : {
+                                             "type" : "IsNull",
+                                             "operand" : {
+                                                "path" : "family",
+                                                "type" : "Property",
+                                                "source" : {
+                                                   "name" : "$this",
+                                                   "type" : "AliasRef"
+                                                }
+                                             }
+                                          }
+                                       },
+                                       "return" : {
+                                          "expression" : {
+                                             "path" : "family",
+                                             "type" : "Property",
+                                             "source" : {
+                                                "name" : "$this",
+                                                "type" : "AliasRef"
+                                             }
+                                          }
+                                       }
+                                    }
+                                 } ],
+                                 "relationship" : [ ],
+                                 "return" : {
+                                    "expression" : {
+                                       "path" : "value",
+                                       "scope" : "F",
+                                       "type" : "Property"
+                                    }
+                                 }
+                              },
+                              "separator" : {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : " ",
+                                 "type" : "Literal"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "Gender",
+                        "value" : {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "gender",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Patient",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        }
+                     }, {
+                        "name" : "Age",
+                        "value" : {
+                           "precision" : "Year",
+                           "type" : "CalculateAge",
+                           "operand" : {
+                              "path" : "birthDate.value",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Patient",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        }
+                     } ]
+                  }
+               }, {
+                  "name" : "HistoricalTreatments",
+                  "value" : {
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "Warfarins",
+                        "value" : {
+                           "name" : "Report Warfarins",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "name" : "SSRIsSNRIs",
+                        "value" : {
+                           "name" : "Report SSRIs and SNRIs",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "name" : "Mirtazapines",
+                        "value" : {
+                           "name" : "Report Mirtazapines",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "name" : "Tricyclics",
+                        "value" : {
+                           "name" : "Report Tricyclics",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "name" : "Bupropions",
+                        "value" : {
+                           "name" : "Report Bupropions",
+                           "type" : "ExpressionRef"
+                        }
+                     } ]
+                  }
+               }, {
+                  "name" : "RiskFactorsForMajorBleeding",
+                  "value" : {
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "GastrointestinalBleeding",
+                        "value" : {
+                           "name" : "Report GI Bleeding",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "name" : "Is65orOlder",
+                        "value" : {
+                           "name" : "Is65orOlder",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "name" : "MedicationBleedingRisks",
+                        "value" : {
+                           "name" : "Report Medication Risk Factors for Bleeding",
+                           "type" : "ExpressionRef"
+                        }
+                     } ]
+                  }
+               }, {
+                  "name" : "Alert",
+                  "value" : {
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "Recommendation",
+                        "value" : {
+                           "name" : "Recommendation",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "name" : "Rationale",
+                        "value" : {
+                           "name" : "Rationale",
+                           "type" : "ExpressionRef"
+                        }
+                     } ]
+                  }
+               } ]
+            }
+         } ]
+      }
+   }
+}
+

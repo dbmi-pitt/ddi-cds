@@ -1,0 +1,47 @@
+---
+name: Warfarin High Dose Salicylate
+
+data:
+-
+  resourceType: Patient
+  name: Fuller Jackson
+  gender: male
+  birthDate: 1959-02-16
+-
+  resourceType: MedicationStatement
+  code: RXNORM#855296 Warfarin Sodium 10 MG Oral Tablet
+  effectiveDateTime: 2019-08-31T00:00:00.000+00:00 
+-
+  resourceType: MedicationStatement
+  code: RXNORM#312888 Salicylic Acid 0.03 MG/MG Topical Ointment
+  effectiveDateTime: 2019-07-30T00:00:00.000+00:00 
+
+results:
+  Summary:
+    Patient:
+      Name: Fuller Jackson
+      Gender: male
+      Age: 60
+    HistoricalTreatments:
+      Warfarins:
+      -
+        Type: Statement
+        Name: Warfarin Sodium 10 MG Oral Tablet
+        Start: '2019-08-31T00:00:00.000+00:00'
+        End: null
+        Status: active
+      TopicalSalicylates:
+      -
+        Type: Statement
+        Name: Salicylic Acid 0.03 MG/MG Topical Ointment
+        Start: '2019-07-30T00:00:00.000+00:00'
+        End: null
+        Status: active
+      Aspirins: []
+      NonAcetylatedSalicylates: []
+      HighSalicylateDose: []
+    HistoricalPatientEvents:
+      ThromboembolicEvents: []
+    Alert:
+      Rationale: Increased risk of bleeding unlikely
+      Recommendation: No special precautions

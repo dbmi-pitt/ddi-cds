@@ -1,0 +1,56 @@
+---
+name: Warfarin Aspirin with prevention of thromboembolic events
+
+data:
+-
+  resourceType: Patient
+  name: Fuller Jackson
+  gender: male
+  birthDate: 1959-02-16
+-
+  resourceType: MedicationStatement
+  code: RXNORM#855296 Warfarin Sodium 10 MG Oral Tablet
+  effectiveDateTime: 2019-08-31T00:00:00.000+00:00 
+-
+  resourceType: MedicationStatement
+  code: RXNORM#349516 Aspirin 800 MG Oral Tablet
+  effectiveDateTime: 2019-08-15T00:00:00.000+00:00 
+-
+  resourceType: Condition
+  code: ICD9D#453.4 Acute venous embolism and thrombosis of deep vessels of lower extremity
+  onsetDateTime: 2019-08-15T00:00:00.000+00:00 
+
+results:
+  Summary:
+    Patient:
+      Name: Fuller Jackson
+      Gender: male
+      Age: 60
+    HistoricalTreatments:
+      Warfarins:
+      -
+        Type: Statement
+        Name: Warfarin Sodium 10 MG Oral Tablet
+        Start: '2019-08-31T00:00:00.000+00:00'
+        End: null
+        Status: active
+      TopicalSalicylates: []
+      Aspirins:
+      -
+        Type: Statement
+        Name: Aspirin 800 MG Oral Tablet
+        Start: '2019-08-15T00:00:00.000+00:00'
+        End: null
+        Status: active
+      NonAcetylatedSalicylates: []
+      HighSalicylateDose: []
+    HistoricalPatientEvents:
+      ThromboembolicEvents: 
+      -
+        Name: Acute venous embolism and thrombosis of deep vessels of lower extremity
+        Status: active
+        Onset: '2019-08-15T00:00:00.000+00:00'
+        DateRecorded: null
+    Alert:
+      Rationale: Increased anti-coagulation desired
+      Recommendation: No special precautions

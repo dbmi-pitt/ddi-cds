@@ -1,0 +1,88 @@
+{
+  "resourceType": "Bundle",
+  "id": "High dose of citalopram with a QT agent",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "4c52b36d-f930-4866-811c-64c004a721d8",
+        "name": [
+          {
+            "given": [
+              "Fuller"
+            ],
+            "family": "Jackson"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1954-02-16"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "11ce04f0-a1ad-403f-9e91-6f603879eede",
+        "subject": {
+          "reference": "Patient/4c52b36d-f930-4866-811c-64c004a721d8"
+        },
+        "taken": "y",
+        "status": "active",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "283672",
+              "display": "Citalopram 10 MG Oral Tablet"
+            }
+          ],
+          "text": "Citalopram 10 MG Oral Tablet"
+        },
+        "effectiveDateTime": "2019-07-30T00:00:00.000Z",
+        "dosage": [
+          {
+            "text": "once every 3 hours",
+            "maxDosePerPeriod": {
+              "numerator": {
+                "value": 8
+              },
+              "denominator": {
+                "value": 1,
+                "system": "http://unitsofmeasure.org",
+                "code": "d"
+              }
+            },
+            "doseQuantity": {
+              "value": 10,
+              "unit": "mg",
+              "code": "mg",
+              "system": "http://unitsofmeasure.org"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "3ddef946-39cb-4ffc-b89a-194c8d679c9c",
+        "subject": {
+          "reference": "Patient/4c52b36d-f930-4866-811c-64c004a721d8"
+        },
+        "taken": "y",
+        "status": "active",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "198052",
+              "display": "Ondansetron 4 MG Oral Tablet"
+            }
+          ],
+          "text": "Ondansetron 4 MG Oral Tablet"
+        },
+        "effectiveDateTime": "2019-08-01T00:00:00.000Z"
+      }
+    }
+  ]
+}
