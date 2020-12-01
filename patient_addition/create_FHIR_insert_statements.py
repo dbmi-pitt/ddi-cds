@@ -1,6 +1,6 @@
 import csv
 
-with open("data.csv", "rb") as infile, open("output-public-FHIR-schema.sql", "wb") as outfile:
+with open("data.csv", "r") as infile, open("output-public-FHIR-schema.sql", "w") as outfile:
   reader = csv.reader(infile)
   next(reader, None)
   deraId = 70000

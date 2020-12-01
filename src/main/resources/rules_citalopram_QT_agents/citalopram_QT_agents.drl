@@ -27,6 +27,7 @@ import edu.pitt.dbmi.ohdsiv5.db.Person;
 global java.lang.String currentDateStr;
 global java.sql.Timestamp currentDate;
 global java.sql.Timestamp within48hours;
+global java.sql.Timestamp within7days;
 global java.sql.Timestamp within28days;
 global java.sql.Timestamp plus1day;
 
