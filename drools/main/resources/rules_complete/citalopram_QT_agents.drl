@@ -231,7 +231,7 @@ rule "CITALOPRAM -- Citalopram High Dosage, No QT-Agent"
       System.out.println(s);
 end
 
-// Leaf node for concomitant citalopram high dosage with another QT agent
+//  node for concomitant citalopram high dosage with another QT agent
 rule "CITALOPRAM - QT-AGENT -- Citalopram High Dosage"
     when
       $rhs : RHSState(stateName == "basic concomitant exposure of citalopram and a QT-agent" && state == "yes", $person : person)
@@ -246,6 +246,29 @@ rule "CITALOPRAM - QT-AGENT -- Citalopram High Dosage"
       s = String.format("DATA\t%s\t%s\tCitalopram - QT-Agent interaction\tcitalopram, high dosage yes, qt-agent yes\t%s\t%s\t%s\t%s\t%s\t%s",
           currentDateStr, 
           $person.getPersonId(),
+          "false","",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo());
+      System.out.println(s);
+end
+
+// Leaf node for concomitant citalopram high dosage with another QT agent and patient age >= 68 years
+rule "CITALOPRAM - QT-AGENT -- Citalopram High Dosage Age 68 years or more"
+    when
+      $rhs : RHSState(stateName == "citalopram, high dosage yes, qt-agent yes" && state == "yes", $person : person);
+      Person(personId == $person.getPersonId() && ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365) >= 68)
+    then
+	RHSState rhsNN = new RHSState("citalopram, high dosage yes, qt-agent yes, 68 years or older", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+          "Citalopram - QT-Agent interaction for patient 68 or older : %s.\n\tClinical implication: Increased risk of prolonged QTc likely\n\tRecommendation: Use only if benefit outweighs risk and monitor patient ECG\n\tMitigating factor: (TODO)\n\tExplanation: High citalopram dosage (>= threshold of 60 mg/day) in the presence of another QT-prolonging agent and patient 68 years or older", 
+          $person.getPersonId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tCitalopram - QT-Agent interaction age 68 or older\tcitalopram, high dosage yes, qt-agent yes, 68 years or older\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr, 
+          $person.getPersonId(),
           "true","red",
           $person.getGenderCUI(),
           ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
@@ -253,3 +276,114 @@ rule "CITALOPRAM - QT-AGENT -- Citalopram High Dosage"
           rhsNN.getDexp2().getLogInfo());
       System.out.println(s);
 end
+
+
+// Leaf node for concomitant citalopram high dosage with another QT agent and loop diuretic
+rule "CITALOPRAM - QT-AGENT -- Citalopram High Dosage Loop Diuretic"
+    when
+      $rhs : RHSState(stateName == "citalopram, high dosage yes, qt-agent yes" && state == "yes", $person : person);
+      $clinDrugConcept1 : ConceptSetItem(csName == "Loop Diuretic")
+      $dexp3 : ExtendedDrugExposure(personId == $person.getPersonId() 
+        && drugConceptId != null && drugConceptId == $clinDrugConcept1.getConceptId() 
+       )
+    then
+	RHSState rhsNN = new RHSState("citalopram, high dosage yes, qt-agent yes, loop diuretic", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+          "Citalopram - QT-Agent interaction for patient also on loop diuretic : %s.\n\tClinical implication: Increased risk of prolonged QTc likely\n\tRecommendation: Use only if benefit outweighs risk and monitor patient ECG\n\tMitigating factor: (TODO)\n\tExplanation: High citalopram dosage (>= threshold of 60 mg/day) in the presence of another QT-prolonging agent and patient 68 years or older", 
+          $person.getPersonId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tCitalopram - QT-Agent interaction loop diuretic (%s)\tcitalopram, high dosage yes, qt-agent yes, loop diuretic\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr, 
+          $person.getPersonId(),
+	  $dexp3.getDrugConceptName(),		
+          "true","red",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo());
+      System.out.println(s);
+end
+
+
+// Leaf node for concomitant citalopram high dosage with another QT agent and serum K less than 3.5 mEq
+rule "CITALOPRAM - QT-AGENT -- Citalopram High Dosage Loop Diuretic and serum K less than 3.5 mEq"
+    when
+      $rhs : RHSState(stateName == "citalopram, high dosage yes, qt-agent yes" && state == "yes", $person : person);
+      $kConcept1 : ConceptSetItem(csName == "Serum Potassium")
+      $meas1 : Measurement(personId == $person.getPersonId() 
+        && measurementConceptId != null
+	&& measurementConceptId == $kConcept1.getConceptId()
+        && valueAsNumber < 3.5 && (unitConceptId == 8753 || unitConceptId == 9557) // was originally just 9557 for mEq/L but this isn't used in the data. 8753 is mmol/L which should be equivalent.
+        && measurementDateTime >= within7days && measurementDateTime < plus1day)
+    then
+	RHSState rhsNN = new RHSState("citalopram, high dosage yes, qt-agent yes, serum K less than 3.5 mEq", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+          "Citalopram - QT-Agent interaction for patient with and serum K less than 3.5 mEq : %s.\n\tClinical implication: Increased risk of prolonged QTc likely\n\tRecommendation: Use only if benefit outweighs risk and monitor patient ECG\n\tMitigating factor: (TODO)\n\tExplanation: High citalopram dosage (>= threshold of 60 mg/day) in the presence of another QT-prolonging agent and patient 68 years or older", 
+          $person.getPersonId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tCitalopram - QT-Agent interaction and serum K less than 3.5 mEq (%s mEq)\tcitalopram, high dosage yes, qt-agent yes, and serum K less than 3.5 mEq\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr, 
+          $person.getPersonId(),
+	  $meas1.getValueAsNumber(),	  
+          "true","red",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo());
+      System.out.println(s);
+end
+
+
+// Leaf node for concomitant citalopram high dosage with another QT agent and history of MI
+rule "CITALOPRAM - QT-AGENT -- Citalopram High Dosage Loop Diuretic and history of MI"
+    when
+      $rhs : RHSState(stateName == "citalopram, high dosage yes, qt-agent yes" && state == "yes", $person : person);
+      $miConcept1 : ConceptSetItem(csName == "Myocardial Infarction")
+      $ce1 : ConditionEra(PersonId == $person.getPersonId()
+                       && conditionConceptId == $miConcept1.getConceptId()
+   	               && conditionEraStartDate <= currentDate
+	   )	
+    then
+	RHSState rhsNN = new RHSState("citalopram, high dosage yes, qt-agent yes, history of MI", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+          "Citalopram - QT-Agent interaction for patient with and history of MI : %s.\n\tClinical implication: Increased risk of prolonged QTc likely\n\tRecommendation: Use only if benefit outweighs risk and monitor patient ECG\n\tMitigating factor: (TODO)\n\tExplanation: High citalopram dosage (>= threshold of 60 mg/day) in the presence of another QT-prolonging agent and patient 68 years or older", 
+          $person.getPersonId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tCitalopram - QT-Agent interaction and history of MI\tcitalopram, high dosage yes, qt-agent yes, and history of MI\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr, 
+          $person.getPersonId(),
+          "true","red",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo());
+      System.out.println(s);
+end
+
+
+// Leaf node for concomitant citalopram high dosage with another QT agent and female sex
+rule "CITALOPRAM - QT-AGENT -- Citalopram High Dosage Loop Diuretic and female sex"
+    when
+      $rhs : RHSState(stateName == "citalopram, high dosage yes, qt-agent yes" && state == "yes", $person : person);
+      Person(personId == $person.getPersonId() && genderCUI == 8532) // female
+    then
+	RHSState rhsNN = new RHSState("citalopram, high dosage yes, qt-agent yes, female sex", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
+      insertLogical(rhsNN);
+      String s = String.format(
+          "Citalopram - QT-Agent interaction for patient with and female sex : %s.\n\tClinical implication: Increased risk of prolonged QTc likely\n\tRecommendation: Use only if benefit outweighs risk and monitor patient ECG\n\tMitigating factor: (TODO)\n\tExplanation: High citalopram dosage (>= threshold of 60 mg/day) in the presence of another QT-prolonging agent and patient 68 years or older", 
+          $person.getPersonId());
+      System.out.println(s);
+      s = String.format("DATA\t%s\t%s\tCitalopram - QT-Agent interaction and female sex\tcitalopram, high dosage yes, qt-agent yes, and female sex\t%s\t%s\t%s\t%s\t%s\t%s",
+          currentDateStr, 
+          $person.getPersonId(),
+          "true","red",
+          $person.getGenderCUI(),
+          ((double) ($person.getDobDateDiffInMillis(currentDate) / (1000 * 3600 * 24)) / 365),
+          rhsNN.getDexp1().getLogInfo(),
+          rhsNN.getDexp2().getLogInfo());
+      System.out.println(s);
+end
+
