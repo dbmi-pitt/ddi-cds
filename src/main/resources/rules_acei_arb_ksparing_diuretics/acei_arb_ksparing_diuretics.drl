@@ -144,9 +144,11 @@ end
 // diagram uses "5.0 mmol/L" for potassium concentration, but my impression is that this is the same as 5.0 mEq/L for potassium
 rule "ACE I ARB - K-SPARING DIURETIC -- Recency of Lab Tests"
     when
+      $measConcept : ConceptSetItem(csName == "Serum Potassium")
+
       // First check that patient was exposed to potassium and a diuretic
       $rhs : RHSState(stateName == "basic concomitant exposure of ACE I/ARB and a K-sparing diuretic" && state == "yes", $person : person)
-      $meas1 : Measurement(personId == $person.getPersonId() && (measurementConceptId == 3005456 || measurementConceptId == 3036243 ||  measurementConceptId == 3009244 ||  measurementConceptId == 46235078 ||  measurementConceptId == 3023103 )
+      $meas1 : Measurement(personId == $person.getPersonId() && measurementConceptId == $measConcept.getConceptId()
         && valueAsNumber < 5.0 && measurementDateTime >= within48hours && measurementDateTime < plus1day)
     then  
       // Create a state object for the current node in the decision tree to be used by other LHS
@@ -178,7 +180,7 @@ end
 rule "ACE I ARB - K-SPARING DIURETIC -- No recent serum potassium"
     when
       $rhs : RHSState(stateName == "basic concomitant exposure of ACE I/ARB and a K-sparing diuretic" && state == "yes", $person : person)
-      not ($rhs2 : RHSState(stateName == "serum potassium <5.0 mEq/L within 48 hours" && state == "yes" && person.getPersonId() == $person.getPersonId()))
+      not ($rhs2 : RHSState(stateName == "ace i/arb - diuretic, serum potassium <5.0 mEq/L within 48 hours yes" && state == "yes" && person.getPersonId() == $person.getPersonId()))
     then
       RHSState rhsNN = new RHSState("ace i/arb - diuretic, serum potassium <5.0 mEq/L within 48 hours no", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
       insertLogical(rhsNN);
@@ -203,11 +205,14 @@ end
 rule "ACE I ARB - K-SPARING DIURETIC -- recent serum potassium, eGFR <=60 ml/min"
     when
       $rhs : RHSState(stateName == "basic concomitant exposure of ACE I/ARB and a K-sparing diuretic" && state == "yes", $person : person)
-      $rhs2 : RHSState(stateName == "serum potassium <5.0 mEq/L within 48 hours" && state == "yes" && person.getPersonId() == $person.getPersonId())
+      $rhs2 : RHSState(stateName == "ace i/arb - diuretic, serum potassium <5.0 mEq/L within 48 hours yes" && state == "yes" && person.getPersonId() == $person.getPersonId())
 
-      $meas1 : Measurement(personId == $person.getPersonId() 
-        && (measurementConceptId == 3049187 || measurementConceptId == 36303797 || measurementConceptId == 42869913 || measurementConceptId == 3029829 || measurementConceptId == 3053283 || measurementConceptId == 36306178 || measurementConceptId == 3029859 || measurementConceptId == 3030104 || measurementConceptId == 46236952 || measurementConceptId == 40764999 || measurementConceptId == 40771922)
+      $measConcept : ConceptSetItem(csName == "eGFR")
+
+      $meas1 : Measurement(personId == $person.getPersonId()
+        && measurementConceptId == $measConcept.getConceptId()
         && valueAsNumber <= 60.0)
+
     then
       RHSState rhsNN = new RHSState("ace i/arb - diuretic, serum potassium <5.0 mEq/L within 48 hours yes, eGFR >60 ml/min no", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
       insertLogical(rhsNN);
@@ -233,11 +238,13 @@ end
 rule "ACE I ARB - K-SPARING DIURETIC -- recent serum potassium, eGFR >60 ml/min"
     when
       $rhs : RHSState(stateName == "basic concomitant exposure of ACE I/ARB and a K-sparing diuretic" && state == "yes", $person : person)
-      $rhs2 : RHSState(stateName == "serum potassium <5.0 mEq/L within 48 hours" && state == "yes" && person.getPersonId() == $person.getPersonId())
+      $rhs2 : RHSState(stateName == "ace i/arb - diuretic, serum potassium <5.0 mEq/L within 48 hours yes" && state == "yes" && person.getPersonId() == $person.getPersonId())
       not($rhs3 : RHSState(stateName == "ace i/arb - diuretic, serum potassium <5.0 mEq/L within 48 hours yes, eGFR >60 ml/min no" && state == "yes" && person.getPersonId() == $person.getPersonId()))
 
+      $measConcept : ConceptSetItem(csName == "eGFR")
+
       $meas1 : Measurement(personId == $person.getPersonId() 
-        && (measurementConceptId == 3049187 || measurementConceptId == 36303797 || measurementConceptId == 42869913 || measurementConceptId == 3029829 || measurementConceptId == 3053283 || measurementConceptId == 36306178 || measurementConceptId == 3029859 || measurementConceptId == 3030104 || measurementConceptId == 46236952 || measurementConceptId == 40764999 || measurementConceptId == 40771922)
+        && measurementConceptId == $measConcept.getConceptId()
         && valueAsNumber > 60.0)
     then
       RHSState rhsNN = new RHSState("ace i/arb - diuretic, serum potassium <5.0 mEq/L within 48 hours yes, eGFR >60 mL/min yes", "yes", $rhs.getPerson(), $rhs.getDexp1(), $rhs.getDexp2());
