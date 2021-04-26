@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from datetime import date, datetime
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
