@@ -1,0 +1,1170 @@
+{
+    "1091623": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 420 MG Extended Release Oral Tablet [Matzim]"
+    },
+    "1091629": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 240 MG Extended Release Oral Tablet [Matzim]"
+    },
+    "1091632": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 180 MG Extended Release Oral Tablet [Matzim]"
+    },
+    "1091635": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 300 MG Extended Release Oral Tablet [Matzim]"
+    },
+    "1091638": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 360 MG Extended Release Oral Tablet [Matzim]"
+    },
+    "1098649": {
+        "ingredient": "nefazodone",
+        "name": "nefazodone hydrochloride 100 MG Oral Tablet"
+    },
+    "1098666": {
+        "ingredient": "nefazodone",
+        "name": "nefazodone hydrochloride 150 MG Oral Tablet"
+    },
+    "1098670": {
+        "ingredient": "nefazodone",
+        "name": "nefazodone hydrochloride 200 MG Oral Tablet"
+    },
+    "1098674": {
+        "ingredient": "nefazodone",
+        "name": "nefazodone hydrochloride 250 MG Oral Tablet"
+    },
+    "1098678": {
+        "ingredient": "nefazodone",
+        "name": "nefazodone hydrochloride 50 MG Oral Tablet"
+    },
+    "1098710": {
+        "ingredient": "nefazodone",
+        "name": "nefazodone hydrochloride 300 MG Oral Tablet"
+    },
+    "1102132": {
+        "ingredient": "boceprevir",
+        "name": "boceprevir 200 MG Oral Capsule"
+    },
+    "1102280": {
+        "ingredient": "telaprevir",
+        "name": "telaprevir 375 MG Oral Tablet"
+    },
+    "1232418": {
+        "ingredient": "itraconazole",
+        "name": "itraconazole 200 MG Oral Tablet [Onmel]"
+    },
+    "1236628": {
+        "ingredient": "darunavir",
+        "name": "darunavir 100 MG/ML Oral Suspension"
+    },
+    "1236632": {
+        "ingredient": "darunavir",
+        "name": "darunavir 100 MG/ML Oral Suspension [Prezista]"
+    },
+    "1359269": {
+        "ingredient": "darunavir",
+        "name": "darunavir 800 MG Oral Tablet"
+    },
+    "1359271": {
+        "ingredient": "darunavir",
+        "name": "darunavir 800 MG Oral Tablet [Prezista]"
+    },
+    "1482908": {
+        "ingredient": "posaconazole",
+        "name": "posaconazole 100 MG Delayed Release Oral Tablet"
+    },
+    "1482912": {
+        "ingredient": "posaconazole",
+        "name": "posaconazole 100 MG Delayed Release Oral Tablet [Noxafil]"
+    },
+    "1492043": {
+        "ingredient": "posaconazole",
+        "name": "16.7 ML posaconazole 18 MG/ML Injection"
+    },
+    "1492047": {
+        "ingredient": "posaconazole",
+        "name": "16.7 ML posaconazole 18 MG/ML Injection [Noxafil]"
+    },
+    "152854": {
+        "ingredient": "itraconazole",
+        "name": "itraconazole 10 MG/ML Oral Solution [Sporanox]"
+    },
+    "152970": {
+        "ingredient": "ritonavir",
+        "name": "ritonavir 100 MG Oral Capsule [Norvir]"
+    },
+    "152971": {
+        "ingredient": "ritonavir",
+        "name": "ritonavir 80 MG/ML Oral Solution [Norvir]"
+    },
+    "153127": {
+        "ingredient": "indinavir",
+        "name": "indinavir 200 MG Oral Capsule [Crixivan]"
+    },
+    "153128": {
+        "ingredient": "indinavir",
+        "name": "indinavir 400 MG Oral Capsule [Crixivan]"
+    },
+    "1597379": {
+        "ingredient": "ritonavir",
+        "name": "ombitasvir 12.5 MG / paritaprevir 75 MG / ritonavir 50 MG Oral Tablet"
+    },
+    "1598985": {
+        "ingredient": "atazanavir",
+        "name": "atazanavir 50 MG Oral Powder"
+    },
+    "1598989": {
+        "ingredient": "atazanavir",
+        "name": "atazanavir 50 MG Oral Powder [Reyataz]"
+    },
+    "1600704": {
+        "ingredient": "darunavir",
+        "name": "cobicistat 150 MG / darunavir 800 MG Oral Tablet"
+    },
+    "1600710": {
+        "ingredient": "darunavir",
+        "name": "cobicistat 150 MG / darunavir 800 MG Oral Tablet [Prezcobix]"
+    },
+    "1601654": {
+        "ingredient": "atazanavir",
+        "name": "atazanavir 300 MG / cobicistat 150 MG Oral Tablet"
+    },
+    "1601660": {
+        "ingredient": "atazanavir",
+        "name": "atazanavir 300 MG / cobicistat 150 MG Oral Tablet [Evotaz]"
+    },
+    "1659656": {
+        "ingredient": "ritonavir",
+        "name": "ombitasvir 12.5 MG / paritaprevir 75 MG / ritonavir 50 MG Oral Tablet [Technivie]"
+    },
+    "1665057": {
+        "ingredient": "verapamil",
+        "name": "2 ML verapamil hydrochloride 2.5 MG/ML Injection"
+    },
+    "1665061": {
+        "ingredient": "verapamil",
+        "name": "4 ML verapamil hydrochloride 2.5 MG/ML Injection"
+    },
+    "1668264": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin lactobionate 500 MG Injection"
+    },
+    "1668267": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin lactobionate 500 MG Injection [Erythrocin]"
+    },
+    "1721310": {
+        "ingredient": "fluconazole",
+        "name": "50 ML fluconazole 2 MG/ML Injection"
+    },
+    "1721314": {
+        "ingredient": "fluconazole",
+        "name": "200 ML fluconazole 2 MG/ML Injection"
+    },
+    "1721315": {
+        "ingredient": "fluconazole",
+        "name": "100 ML fluconazole 2 MG/ML Injection"
+    },
+    "1729308": {
+        "ingredient": "aprepitant",
+        "name": "aprepitant 125 MG Powder for Oral Suspension"
+    },
+    "1729311": {
+        "ingredient": "aprepitant",
+        "name": "aprepitant 125 MG Powder for Oral Suspension [Emend]"
+    },
+    "1791229": {
+        "ingredient": "diltiazem",
+        "name": "5 ML diltiazem hydrochloride 5 MG/ML Injection"
+    },
+    "1791232": {
+        "ingredient": "diltiazem",
+        "name": "10 ML diltiazem hydrochloride 5 MG/ML Injection"
+    },
+    "1791233": {
+        "ingredient": "diltiazem",
+        "name": "25 ML diltiazem hydrochloride 5 MG/ML Injection"
+    },
+    "1791240": {
+        "ingredient": "diltiazem",
+        "name": "diltiazem hydrochloride 100 MG Injection"
+    },
+    "1802213": {
+        "ingredient": "ritonavir",
+        "name": "24 HR dasabuvir 200 MG / ombitasvir 8.33 MG / paritaprevir 50 MG / ritonavir 33.33 MG Extended Release Oral Tablet"
+    },
+    "1926066": {
+        "ingredient": "ritonavir",
+        "name": "ritonavir 100 MG Oral Powder"
+    },
+    "1926069": {
+        "ingredient": "ritonavir",
+        "name": "ritonavir 100 MG Oral Powder [Norvir]"
+    },
+    "197516": {
+        "ingredient": "clarithromycin",
+        "name": "clarithromycin 250 MG Oral Tablet"
+    },
+    "197517": {
+        "ingredient": "clarithromycin",
+        "name": "clarithromycin 500 MG Oral Tablet"
+    },
+    "197650": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 500 MG Oral Tablet"
+    },
+    "197698": {
+        "ingredient": "fluconazole",
+        "name": "fluconazole 100 MG Oral Tablet"
+    },
+    "197699": {
+        "ingredient": "fluconazole",
+        "name": "fluconazole 150 MG Oral Tablet"
+    },
+    "197700": {
+        "ingredient": "fluconazole",
+        "name": "fluconazole 200 MG Oral Tablet"
+    },
+    "197701": {
+        "ingredient": "fluconazole",
+        "name": "fluconazole 50 MG Oral Tablet"
+    },
+    "197853": {
+        "ingredient": "ketoconazole",
+        "name": "ketoconazole 200 MG Oral Tablet"
+    },
+    "1988308": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 120 MG Extended Release Oral Capsule [Tiadylt]"
+    },
+    "1988311": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 180 MG Extended Release Oral Capsule [Tiadylt]"
+    },
+    "1988316": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 240 MG Extended Release Oral Capsule [Tiadylt]"
+    },
+    "1988319": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 300 MG Extended Release Oral Capsule [Tiadylt]"
+    },
+    "1988324": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 360 MG Extended Release Oral Capsule [Tiadylt]"
+    },
+    "1988330": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 420 MG Extended Release Oral Capsule [Tiadylt]"
+    },
+    "199249": {
+        "ingredient": "ritonavir",
+        "name": "ritonavir 80 MG/ML Oral Solution"
+    },
+    "1995150": {
+        "ingredient": "aprepitant",
+        "name": "18 ML aprepitant 7.2 MG/ML Injection"
+    },
+    "1995155": {
+        "ingredient": "aprepitant",
+        "name": "18 ML aprepitant 7.2 MG/ML Injection [Cinvanti]"
+    },
+    "199745": {
+        "ingredient": "fluconazole",
+        "name": "fluconazole 150 MG Oral Capsule"
+    },
+    "199746": {
+        "ingredient": "fluconazole",
+        "name": "fluconazole 200 MG Oral Capsule"
+    },
+    "199747": {
+        "ingredient": "fluconazole",
+        "name": "fluconazole 50 MG Oral Capsule"
+    },
+    "200105": {
+        "ingredient": "saquinavir",
+        "name": "saquinavir 200 MG Oral Capsule"
+    },
+    "201900": {
+        "ingredient": "fluconazole",
+        "name": "fluconazole 10 MG/ML Oral Suspension [Diflucan]"
+    },
+    "201901": {
+        "ingredient": "fluconazole",
+        "name": "fluconazole 40 MG/ML Oral Suspension [Diflucan]"
+    },
+    "2049671": {
+        "ingredient": "darunavir",
+        "name": "cobicistat 150 MG / darunavir 800 MG / emtricitabine 200 MG / tenofovir alafenamide 10 MG Oral Tablet"
+    },
+    "2049677": {
+        "ingredient": "darunavir",
+        "name": "cobicistat 150 MG / darunavir 800 MG / emtricitabine 200 MG / tenofovir alafenamide 10 MG Oral Tablet [Symtuza]"
+    },
+    "205860": {
+        "ingredient": "clarithromycin",
+        "name": "clarithromycin 50 MG/ML Oral Suspension [Biaxin]"
+    },
+    "205863": {
+        "ingredient": "clarithromycin",
+        "name": "clarithromycin 250 MG Oral Tablet [Biaxin]"
+    },
+    "205866": {
+        "ingredient": "clarithromycin",
+        "name": "clarithromycin 500 MG Oral Tablet [Biaxin]"
+    },
+    "206075": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 250 MG Delayed Release Oral Tablet [Ery-Tab]"
+    },
+    "206078": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 333 MG Delayed Release Oral Tablet [Ery-Tab]"
+    },
+    "206080": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 500 MG Delayed Release Oral Tablet [Ery-Tab]"
+    },
+    "207106": {
+        "ingredient": "fluconazole",
+        "name": "fluconazole 50 MG Oral Tablet [Diflucan]"
+    },
+    "207107": {
+        "ingredient": "fluconazole",
+        "name": "fluconazole 100 MG Oral Tablet [Diflucan]"
+    },
+    "207108": {
+        "ingredient": "fluconazole",
+        "name": "fluconazole 150 MG Oral Tablet [Diflucan]"
+    },
+    "207112": {
+        "ingredient": "fluconazole",
+        "name": "fluconazole 200 MG Oral Tablet [Diflucan]"
+    },
+    "2105737": {
+        "ingredient": "posaconazole",
+        "name": "mometasone furoate 1 MG/ML / orbifloxacin 10 MG/ML / posaconazole 1 MG/ML Otic Suspension"
+    },
+    "2105742": {
+        "ingredient": "posaconazole",
+        "name": "mometasone furoate 1 MG/ML / orbifloxacin 10 MG/ML / posaconazole 1 MG/ML Otic Suspension [Posatex]"
+    },
+    "2106642": {
+        "ingredient": "itraconazole",
+        "name": "itraconazole 65 MG Oral Capsule"
+    },
+    "2106648": {
+        "ingredient": "itraconazole",
+        "name": "itraconazole 65 MG Oral Capsule [Tolsura]"
+    },
+    "212118": {
+        "ingredient": "nelfinavir",
+        "name": "nelfinavir 250 MG Oral Tablet [Viracept]"
+    },
+    "238936": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 0.02 MG/MG Topical Ointment"
+    },
+    "240741": {
+        "ingredient": "clarithromycin",
+        "name": "clarithromycin 25 MG/ML Oral Suspension"
+    },
+    "251854": {
+        "ingredient": "clarithromycin",
+        "name": "clarithromycin 50 MG/ML Injectable Suspension"
+    },
+    "252617": {
+        "ingredient": "amprenavir",
+        "name": "amprenavir 50 MG Oral Capsule"
+    },
+    "252618": {
+        "ingredient": "amprenavir",
+        "name": "amprenavir 150 MG Oral Capsule"
+    },
+    "252619": {
+        "ingredient": "amprenavir",
+        "name": "amprenavir 15 MG/ML Oral Solution"
+    },
+    "283103": {
+        "ingredient": "indinavir",
+        "name": "indinavir 100 MG Oral Capsule"
+    },
+    "309322": {
+        "ingredient": "clarithromycin",
+        "name": "clarithromycin 50 MG/ML Oral Suspension"
+    },
+    "310149": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 0.005 MG/MG Ophthalmic Ointment"
+    },
+    "310154": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 250 MG Delayed Release Oral Capsule"
+    },
+    "310155": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 250 MG Delayed Release Oral Tablet"
+    },
+    "310157": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 500 MG Delayed Release Oral Tablet"
+    },
+    "310352": {
+        "ingredient": "fluconazole",
+        "name": "fluconazole 10 MG/ML Oral Suspension"
+    },
+    "310353": {
+        "ingredient": "fluconazole",
+        "name": "fluconazole 40 MG/ML Oral Suspension"
+    },
+    "310986": {
+        "ingredient": "indinavir",
+        "name": "indinavir 200 MG Oral Capsule"
+    },
+    "310987": {
+        "ingredient": "indinavir",
+        "name": "indinavir 333 MG Oral Capsule"
+    },
+    "310988": {
+        "ingredient": "indinavir",
+        "name": "indinavir 400 MG Oral Capsule"
+    },
+    "311204": {
+        "ingredient": "itraconazole",
+        "name": "itraconazole 100 MG Oral Capsule"
+    },
+    "311205": {
+        "ingredient": "itraconazole",
+        "name": "itraconazole 10 MG/ML Injectable Solution"
+    },
+    "311368": {
+        "ingredient": "ritonavir",
+        "name": "lopinavir 133 MG / ritonavir 33.3 MG Oral Capsule"
+    },
+    "311369": {
+        "ingredient": "ritonavir",
+        "name": "lopinavir 80 MG/ML / ritonavir 20 MG/ML Oral Solution"
+    },
+    "311924": {
+        "ingredient": "nelfinavir",
+        "name": "nelfinavir 250 MG Oral Tablet"
+    },
+    "311925": {
+        "ingredient": "nelfinavir",
+        "name": "nelfinavir 0.05 MG/MG Oral Powder"
+    },
+    "313968": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 25 MG/ML Oral Suspension"
+    },
+    "315090": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 333 MG Delayed Release Oral Tablet"
+    },
+    "317150": {
+        "ingredient": "ritonavir",
+        "name": "ritonavir 100 MG Oral Capsule"
+    },
+    "348506": {
+        "ingredient": "itraconazole",
+        "name": "itraconazole 10 MG/ML Oral Solution"
+    },
+    "349148": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 0.005 MG/MG Topical Ointment"
+    },
+    "349434": {
+        "ingredient": "voriconazole",
+        "name": "voriconazole 200 MG Oral Tablet"
+    },
+    "349435": {
+        "ingredient": "voriconazole",
+        "name": "voriconazole 50 MG Oral Tablet"
+    },
+    "351209": {
+        "ingredient": "voriconazole",
+        "name": "voriconazole 200 MG Injection"
+    },
+    "352218": {
+        "ingredient": "voriconazole",
+        "name": "voriconazole 50 MG Oral Tablet [Vfend]"
+    },
+    "352219": {
+        "ingredient": "voriconazole",
+        "name": "voriconazole 200 MG Oral Tablet [Vfend]"
+    },
+    "352220": {
+        "ingredient": "voriconazole",
+        "name": "voriconazole 200 MG Injection [Vfend]"
+    },
+    "359385": {
+        "ingredient": "clarithromycin",
+        "name": "24 HR clarithromycin 500 MG Extended Release Oral Tablet"
+    },
+    "402093": {
+        "ingredient": "atazanavir",
+        "name": "atazanavir 200 MG Oral Capsule [Reyataz]"
+    },
+    "402094": {
+        "ingredient": "atazanavir",
+        "name": "atazanavir 150 MG Oral Capsule [Reyataz]"
+    },
+    "402245": {
+        "ingredient": "atazanavir",
+        "name": "atazanavir 100 MG Oral Capsule"
+    },
+    "402246": {
+        "ingredient": "atazanavir",
+        "name": "atazanavir 150 MG Oral Capsule"
+    },
+    "402247": {
+        "ingredient": "atazanavir",
+        "name": "atazanavir 200 MG Oral Capsule"
+    },
+    "403810": {
+        "ingredient": "aprepitant",
+        "name": "aprepitant 80 MG Oral Capsule"
+    },
+    "403811": {
+        "ingredient": "aprepitant",
+        "name": "aprepitant 125 MG Oral Capsule"
+    },
+    "403978": {
+        "ingredient": "nelfinavir",
+        "name": "nelfinavir 625 MG Oral Tablet"
+    },
+    "404465": {
+        "ingredient": "aprepitant",
+        "name": "aprepitant 80 MG Oral Capsule [Emend]"
+    },
+    "404466": {
+        "ingredient": "aprepitant",
+        "name": "aprepitant 125 MG Oral Capsule [Emend]"
+    },
+    "411759": {
+        "ingredient": "verapamil",
+        "name": "24 HR trandolapril 2 MG / verapamil hydrochloride 180 MG Extended Release Oral Capsule"
+    },
+    "425351": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 100 MG/ML Oral Suspension"
+    },
+    "465355": {
+        "ingredient": "voriconazole",
+        "name": "voriconazole 40 MG/ML Oral Suspension"
+    },
+    "486912": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin estolate 500 MG Oral Tablet"
+    },
+    "486955": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin estolate 250 MG Oral Capsule"
+    },
+    "486960": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin estolate 25 MG/ML Oral Suspension"
+    },
+    "542370": {
+        "ingredient": "nelfinavir",
+        "name": "nelfinavir 625 MG Oral Tablet [Viracept]"
+    },
+    "546624": {
+        "ingredient": "voriconazole",
+        "name": "voriconazole 40 MG/ML Oral Suspension [Vfend]"
+    },
+    "584534": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 0.005 MG/MG Ophthalmic Ointment [Eyemycin]"
+    },
+    "597193": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 50 MG/ML Oral Suspension"
+    },
+    "597194": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin estolate 50 MG/ML Oral Suspension"
+    },
+    "597455": {
+        "ingredient": "clarithromycin",
+        "name": "clarithromycin 1000 MG Extended Release Oral Tablet"
+    },
+    "597730": {
+        "ingredient": "ritonavir",
+        "name": "lopinavir 200 MG / ritonavir 50 MG Oral Tablet"
+    },
+    "598006": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 250 MG Oral Tablet"
+    },
+    "598008": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 250 MG Oral Capsule"
+    },
+    "643074": {
+        "ingredient": "darunavir",
+        "name": "darunavir 300 MG Oral Tablet"
+    },
+    "644088": {
+        "ingredient": "aprepitant",
+        "name": "aprepitant 40 MG Oral Capsule"
+    },
+    "644278": {
+        "ingredient": "aprepitant",
+        "name": "aprepitant 40 MG Oral Capsule [Emend]"
+    },
+    "664741": {
+        "ingredient": "atazanavir",
+        "name": "atazanavir 300 MG Oral Capsule"
+    },
+    "664743": {
+        "ingredient": "atazanavir",
+        "name": "atazanavir 300 MG Oral Capsule [Reyataz]"
+    },
+    "665019": {
+        "ingredient": "posaconazole",
+        "name": "posaconazole 40 MG/ML Oral Suspension"
+    },
+    "665022": {
+        "ingredient": "posaconazole",
+        "name": "posaconazole 40 MG/ML Oral Suspension [Noxafil]"
+    },
+    "670026": {
+        "ingredient": "darunavir",
+        "name": "darunavir 600 MG Oral Tablet"
+    },
+    "685543": {
+        "ingredient": "clarithromycin",
+        "name": "24 HR clarithromycin 500 MG Extended Release Oral Tablet [Biaxin]"
+    },
+    "686350": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin ethylsuccinate 200 MG Chewable Tablet"
+    },
+    "686355": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin stearate 250 MG Oral Tablet"
+    },
+    "686383": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin ethylsuccinate 40 MG/ML / sulfisoxazole 120 MG/ML Oral Suspension"
+    },
+    "686400": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin ethylsuccinate 40 MG/ML Oral Suspension"
+    },
+    "686402": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin ethylsuccinate 40 MG/ML Oral Suspension [EryPed]"
+    },
+    "686405": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin ethylsuccinate 400 MG Oral Tablet"
+    },
+    "686406": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin stearate 500 MG Oral Tablet"
+    },
+    "686418": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin ethylsuccinate 80 MG/ML Oral Suspension"
+    },
+    "686420": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin ethylsuccinate 80 MG/ML Oral Suspension [EryPed]"
+    },
+    "746645": {
+        "ingredient": "ritonavir",
+        "name": "lopinavir 100 MG / ritonavir 25 MG Oral Tablet"
+    },
+    "750839": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin stearate 250 MG Oral Tablet [Erythrocin Stearate]"
+    },
+    "750841": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin stearate 500 MG Oral Tablet [Erythrocin Stearate]"
+    },
+    "794610": {
+        "ingredient": "darunavir",
+        "name": "darunavir 600 MG Oral Tablet [Prezista]"
+    },
+    "824338": {
+        "ingredient": "darunavir",
+        "name": "darunavir 400 MG Oral Tablet"
+    },
+    "830795": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 360 MG Extended Release Oral Capsule"
+    },
+    "830798": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 360 MG Extended Release Oral Capsule [Cardizem]"
+    },
+    "830801": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 300 MG Extended Release Oral Capsule"
+    },
+    "830803": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 300 MG Extended Release Oral Capsule [Cardizem]"
+    },
+    "830837": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 240 MG Extended Release Oral Capsule"
+    },
+    "830839": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 240 MG Extended Release Oral Capsule [Cardizem]"
+    },
+    "830845": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 180 MG Extended Release Oral Capsule"
+    },
+    "830847": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 180 MG Extended Release Oral Capsule [Cardizem]"
+    },
+    "830861": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 120 MG Extended Release Oral Capsule"
+    },
+    "830863": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 120 MG Extended Release Oral Capsule [Cardizem]"
+    },
+    "830865": {
+        "ingredient": "diltiazem",
+        "name": "12 HR diltiazem hydrochloride 60 MG Extended Release Oral Capsule"
+    },
+    "830869": {
+        "ingredient": "diltiazem",
+        "name": "12 HR diltiazem hydrochloride 90 MG Extended Release Oral Capsule"
+    },
+    "830872": {
+        "ingredient": "diltiazem",
+        "name": "12 HR diltiazem hydrochloride 120 MG Extended Release Oral Capsule"
+    },
+    "830874": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 120 MG Extended Release Oral Tablet"
+    },
+    "830876": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 120 MG Extended Release Oral Tablet [Cardizem]"
+    },
+    "830877": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 180 MG Extended Release Oral Tablet"
+    },
+    "830878": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 180 MG Extended Release Oral Tablet [Cardizem]"
+    },
+    "830879": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 240 MG Extended Release Oral Tablet"
+    },
+    "830880": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 240 MG Extended Release Oral Tablet [Cardizem]"
+    },
+    "830882": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 300 MG Extended Release Oral Tablet"
+    },
+    "830883": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 300 MG Extended Release Oral Tablet [Cardizem]"
+    },
+    "830897": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 360 MG Extended Release Oral Tablet"
+    },
+    "830898": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 360 MG Extended Release Oral Tablet [Cardizem]"
+    },
+    "830900": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 420 MG Extended Release Oral Tablet"
+    },
+    "830902": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 420 MG Extended Release Oral Tablet [Cardizem]"
+    },
+    "831012": {
+        "ingredient": "diltiazem",
+        "name": "diltiazem hydrochloride 60 MG Oral Capsule"
+    },
+    "831054": {
+        "ingredient": "diltiazem",
+        "name": "diltiazem hydrochloride 120 MG Oral Tablet"
+    },
+    "831055": {
+        "ingredient": "diltiazem",
+        "name": "diltiazem hydrochloride 120 MG Oral Tablet [Cardizem]"
+    },
+    "831102": {
+        "ingredient": "diltiazem",
+        "name": "diltiazem hydrochloride 90 MG Oral Tablet"
+    },
+    "831103": {
+        "ingredient": "diltiazem",
+        "name": "diltiazem hydrochloride 60 MG Oral Tablet"
+    },
+    "831193": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 120 MG Extended Release Oral Capsule [Tiazac]"
+    },
+    "831196": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 120 MG Extended Release Oral Capsule [Taztia]"
+    },
+    "831215": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 120 MG Extended Release Oral Capsule [Dilt]"
+    },
+    "831226": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 120 MG Extended Release Oral Capsule [Cartia]"
+    },
+    "831244": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 180 MG Extended Release Oral Capsule [Tiazac]"
+    },
+    "831248": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 180 MG Extended Release Oral Capsule [Taztia]"
+    },
+    "831252": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 180 MG Extended Release Oral Capsule [Dilt]"
+    },
+    "831255": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 180 MG Extended Release Oral Capsule [Cartia]"
+    },
+    "831285": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 240 MG Extended Release Oral Capsule [Dilt]"
+    },
+    "831296": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 240 MG Extended Release Oral Capsule [Tiazac]"
+    },
+    "831300": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 240 MG Extended Release Oral Capsule [Taztia]"
+    },
+    "831309": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 240 MG Extended Release Oral Capsule [Cartia]"
+    },
+    "831323": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 300 MG Extended Release Oral Capsule [Tiazac]"
+    },
+    "831325": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 300 MG Extended Release Oral Capsule [Taztia]"
+    },
+    "831338": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 300 MG Extended Release Oral Capsule [Cartia]"
+    },
+    "831347": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 360 MG Extended Release Oral Capsule [Tiazac]"
+    },
+    "831349": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 360 MG Extended Release Oral Capsule [Taztia]"
+    },
+    "831359": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 420 MG Extended Release Oral Capsule"
+    },
+    "831360": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 420 MG Extended Release Oral Capsule [Tiazac]"
+    },
+    "831868": {
+        "ingredient": "darunavir",
+        "name": "darunavir 75 MG Oral Tablet"
+    },
+    "831870": {
+        "ingredient": "darunavir",
+        "name": "darunavir 75 MG Oral Tablet [Prezista]"
+    },
+    "833164": {
+        "ingredient": "itraconazole",
+        "name": "itraconazole 100 MG Oral Capsule [Sporanox]"
+    },
+    "833217": {
+        "ingredient": "diltiazem",
+        "name": "diltiazem hydrochloride 30 MG Oral Tablet"
+    },
+    "833219": {
+        "ingredient": "diltiazem",
+        "name": "diltiazem hydrochloride 30 MG Oral Tablet [Cardizem]"
+    },
+    "833237": {
+        "ingredient": "diltiazem",
+        "name": "diltiazem hydrochloride 180 MG / enalapril maleate 5 MG Extended Release Oral Tablet"
+    },
+    "833704": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 240 MG Extended Release Oral Capsule [Diltzac]"
+    },
+    "833705": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 300 MG Extended Release Oral Capsule [Diltzac]"
+    },
+    "833707": {
+        "ingredient": "diltiazem",
+        "name": "12 HR diltiazem hydrochloride 60 MG Extended Release Oral Tablet"
+    },
+    "834393": {
+        "ingredient": "diltiazem",
+        "name": "diltiazem hydrochloride 60 MG Oral Tablet [Cardizem]"
+    },
+    "847741": {
+        "ingredient": "ritonavir",
+        "name": "lopinavir 200 MG / ritonavir 50 MG Oral Tablet [Kaletra]"
+    },
+    "847745": {
+        "ingredient": "ritonavir",
+        "name": "lopinavir 100 MG / ritonavir 25 MG Oral Tablet [Kaletra]"
+    },
+    "847749": {
+        "ingredient": "ritonavir",
+        "name": "lopinavir 80 MG/ML / ritonavir 20 MG/ML Oral Solution [Kaletra]"
+    },
+    "848119": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 333 MG Delayed Release Oral Tablet [PCE]"
+    },
+    "848121": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 500 MG Delayed Release Oral Tablet [PCE]"
+    },
+    "848524": {
+        "ingredient": "diltiazem",
+        "name": "24 HR diltiazem hydrochloride 120 MG Extended Release Oral Capsule [Diltzac]"
+    },
+    "849860": {
+        "ingredient": "diltiazem",
+        "name": "diltiazem malate 240 MG Oral Tablet"
+    },
+    "850455": {
+        "ingredient": "darunavir",
+        "name": "darunavir 150 MG Oral Tablet"
+    },
+    "850457": {
+        "ingredient": "darunavir",
+        "name": "darunavir 150 MG Oral Tablet [Prezista]"
+    },
+    "854856": {
+        "ingredient": "dronedarone",
+        "name": "dronedarone 400 MG Oral Tablet"
+    },
+    "854859": {
+        "ingredient": "dronedarone",
+        "name": "dronedarone 400 MG Oral Tablet [Multaq]"
+    },
+    "859861": {
+        "ingredient": "saquinavir",
+        "name": "saquinavir 200 MG Oral Capsule [Invirase]"
+    },
+    "859863": {
+        "ingredient": "saquinavir",
+        "name": "saquinavir mesylate 500 MG Oral Tablet"
+    },
+    "859865": {
+        "ingredient": "saquinavir",
+        "name": "saquinavir mesylate 500 MG Oral Tablet [Invirase]"
+    },
+    "863603": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin ethylsuccinate 40 MG/ML Oral Suspension [E.E.S.]"
+    },
+    "863606": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin ethylsuccinate 400 MG Oral Tablet [E.E.S.]"
+    },
+    "897584": {
+        "ingredient": "verapamil",
+        "name": "24 HR verapamil hydrochloride 100 MG Extended Release Oral Capsule"
+    },
+    "897586": {
+        "ingredient": "verapamil",
+        "name": "24 HR verapamil hydrochloride 100 MG Extended Release Oral Capsule [Verelan]"
+    },
+    "897590": {
+        "ingredient": "verapamil",
+        "name": "24 HR verapamil hydrochloride 200 MG Extended Release Oral Capsule"
+    },
+    "897592": {
+        "ingredient": "verapamil",
+        "name": "24 HR verapamil hydrochloride 200 MG Extended Release Oral Capsule [Verelan]"
+    },
+    "897596": {
+        "ingredient": "verapamil",
+        "name": "24 HR verapamil hydrochloride 300 MG Extended Release Oral Capsule"
+    },
+    "897598": {
+        "ingredient": "verapamil",
+        "name": "24 HR verapamil hydrochloride 300 MG Extended Release Oral Capsule [Verelan]"
+    },
+    "897612": {
+        "ingredient": "verapamil",
+        "name": "24 HR verapamil hydrochloride 120 MG Extended Release Oral Capsule"
+    },
+    "897614": {
+        "ingredient": "verapamil",
+        "name": "24 HR verapamil hydrochloride 120 MG Extended Release Oral Capsule [Verelan]"
+    },
+    "897618": {
+        "ingredient": "verapamil",
+        "name": "24 HR verapamil hydrochloride 180 MG Extended Release Oral Capsule"
+    },
+    "897620": {
+        "ingredient": "verapamil",
+        "name": "24 HR verapamil hydrochloride 180 MG Extended Release Oral Capsule [Verelan]"
+    },
+    "897624": {
+        "ingredient": "verapamil",
+        "name": "24 HR verapamil hydrochloride 240 MG Extended Release Oral Capsule"
+    },
+    "897626": {
+        "ingredient": "verapamil",
+        "name": "24 HR verapamil hydrochloride 240 MG Extended Release Oral Capsule [Verelan]"
+    },
+    "897630": {
+        "ingredient": "verapamil",
+        "name": "24 HR verapamil hydrochloride 360 MG Extended Release Oral Capsule"
+    },
+    "897632": {
+        "ingredient": "verapamil",
+        "name": "24 HR verapamil hydrochloride 360 MG Extended Release Oral Capsule [Verelan]"
+    },
+    "897640": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 180 MG Extended Release Oral Tablet"
+    },
+    "897649": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 240 MG Extended Release Oral Tablet"
+    },
+    "897659": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 120 MG Extended Release Oral Tablet"
+    },
+    "897661": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 120 MG Extended Release Oral Tablet [Calan]"
+    },
+    "897666": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 120 MG Oral Tablet"
+    },
+    "897667": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 120 MG Oral Tablet [Calan]"
+    },
+    "897676": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 180 MG Extended Release Oral Tablet [Calan]"
+    },
+    "897680": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 240 MG Extended Release Oral Tablet [Calan]"
+    },
+    "897683": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 80 MG Oral Tablet"
+    },
+    "897685": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 80 MG Oral Tablet [Calan]"
+    },
+    "897693": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 120 MG Extended Release Oral Tablet [Isoptin]"
+    },
+    "897700": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 180 MG Extended Release Oral Tablet [Isoptin]"
+    },
+    "897714": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 240 MG Extended Release Oral Tablet [Isoptin]"
+    },
+    "897722": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 40 MG Oral Tablet"
+    },
+    "897781": {
+        "ingredient": "verapamil",
+        "name": "24 HR trandolapril 1 MG / verapamil hydrochloride 240 MG Extended Release Oral Tablet"
+    },
+    "897783": {
+        "ingredient": "verapamil",
+        "name": "24 HR trandolapril 2 MG / verapamil hydrochloride 180 MG Extended Release Oral Tablet"
+    },
+    "897785": {
+        "ingredient": "verapamil",
+        "name": "24 HR trandolapril 2 MG / verapamil hydrochloride 180 MG Extended Release Oral Tablet [Tarka]"
+    },
+    "897844": {
+        "ingredient": "verapamil",
+        "name": "24 HR trandolapril 2 MG / verapamil hydrochloride 240 MG Extended Release Oral Tablet"
+    },
+    "897846": {
+        "ingredient": "verapamil",
+        "name": "24 HR trandolapril 2 MG / verapamil hydrochloride 240 MG Extended Release Oral Tablet [Tarka]"
+    },
+    "897853": {
+        "ingredient": "verapamil",
+        "name": "24 HR trandolapril 4 MG / verapamil hydrochloride 240 MG Extended Release Oral Tablet"
+    },
+    "897855": {
+        "ingredient": "verapamil",
+        "name": "24 HR trandolapril 4 MG / verapamil hydrochloride 240 MG Extended Release Oral Tablet [Tarka]"
+    },
+    "898316": {
+        "ingredient": "verapamil",
+        "name": "4 ML verapamil hydrochloride 2.5 MG/ML Prefilled Syringe"
+    },
+    "898340": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 180 MG Oral Capsule"
+    },
+    "900575": {
+        "ingredient": "ritonavir",
+        "name": "ritonavir 100 MG Oral Tablet"
+    },
+    "900577": {
+        "ingredient": "ritonavir",
+        "name": "ritonavir 100 MG Oral Tablet [Norvir]"
+    },
+    "901438": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 160 MG Oral Tablet"
+    },
+    "901446": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 240 MG Oral Tablet"
+    },
+    "901450": {
+        "ingredient": "verapamil",
+        "name": "verapamil hydrochloride 8 MG/ML Oral Solution"
+    },
+    "992413": {
+        "ingredient": "itraconazole",
+        "name": "itraconazole 200 MG Oral Tablet"
+    }
+}
