@@ -1,6 +1,12 @@
 ## Setup
 
-pip3 install -r requirements.txt
+* Install the required packages
+  
+`pip3 install -r requirements.txt`
+
+Set the file path for where this directory is located by changing the variable `FILE_PATH` inside `rxApi.py`.
+This is required to utilize cronjob to automate the running of this script.
+
 
 ## Configuration
 
@@ -20,6 +26,7 @@ There are multiple supplemental files that are required to build and update a Va
       ingredient
 
 * status.txt
+    * This file is generated automatically
     * Will contains updates as the cronjob runs to list either success or error codes
 
 ## Hard Reset
@@ -27,3 +34,11 @@ There are multiple supplemental files that are required to build and update a Va
 In the scenario where you wish to reset all of the cache files or recreate/update the ValueSet you can add "force" to
 the end of "ingredient.csv". The next time the script runs it will detect this option, rebuild the cache and ValueSet,
 then remove that option of "ingredient.csv".
+
+## Cronjob
+
+We have set up a cronjob to run the script everyday.
+
+`crontab -e`
+
+`0 1 * * * $(which python3) /PATH/TO/PYTHON/SCRIPT/rxApi.py`
