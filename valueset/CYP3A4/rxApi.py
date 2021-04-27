@@ -7,6 +7,8 @@ import requests
 import json
 import csv
 
+FILE_PATH = "FILEPATH_TO_DIRECTORY"
+
 # A user can put "force" at the end of "ingredient.csv" to recreate all cache files and the ValueSet
 force = False
 base_url = "https://rxnav.nlm.nih.gov/REST/"
@@ -21,7 +23,7 @@ now = datetime.now()
 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
 all_drug_names = []
-with open('ingredient.csv', newline='') as f:
+with open(FILE_PATH + 'ingredient.csv', newline='') as f:
     reader = csv.reader(f)
     for row in reader:  # each row is a list
         all_drug_names.append(row[0])
@@ -30,16 +32,16 @@ if 'force' in all_drug_names:
     all_drug_names.remove('force')
 
 excluded_cuis = []
-with open('blacklist.csv', newline='') as f:
+with open(FILE_PATH + 'blacklist.csv', newline='') as f:
     reader = csv.reader(f)
     for row in reader:  # each row is a list
         excluded_cuis.append(row[0])
 
 drug_cuis = {}
-with open('rxNorm.csv') as f:
+with open(FILE_PATH + 'rxNorm.csv') as f:
     drug_cuis = dict(filter(None, csv.reader(f)))
 
-scd_json = json.load(open("SCD-SBD.json"))
+scd_json = json.load(open(FILE_PATH + "SCD-SBD.json"))
 
 # Check what drugs are not cached
 drug_names = []
@@ -71,11 +73,11 @@ if len(drug_names) > 0:
                 response.raise_for_status()
         except Exception as e:
             error_string = repr(e)
-            with open("status.txt", 'a') as f:
+            with open(FILE_PATH + "status.txt", 'a') as f:
                 f.write(dt_string + ": Failed to update ValueSet: " + error_string + "\n")
 
     # Save dict to csv
-    with open('rxNorm.csv', 'w') as f:
+    with open(FILE_PATH + 'rxNorm.csv', 'w') as f:
         for key in drug_cuis.keys():
             f.write("%s,%s\n" % (key, drug_cuis[key]))
 
@@ -96,7 +98,7 @@ if len(drug_names) > 0:
                             scd_json[property['rxcui']] = {"name": property['name'], "ingredient": key}
         except Exception as e:
             error_string = repr(e)
-            with open("status.txt", 'a') as f:
+            with open(FILE_PATH + "status.txt", 'a') as f:
                 f.write(dt_string + ": Failed to update ValueSet: " + error_string + "\n")
 
     # Perform getRelatedByRelationshipQuery on new cuis
@@ -116,14 +118,14 @@ if len(drug_names) > 0:
                                 black_list_cuis.append(key)
         except Exception as e:
             error_string = repr(e)
-            with open("status.txt", 'a') as f:
+            with open(FILE_PATH + "status.txt", 'a') as f:
                 f.write(dt_string + ": Failed to update ValueSet: " + error_string + "\n")
 
     for black_list in black_list_cuis:
         scd_json.pop(black_list, None)
 
     # Save ingredient dictionary
-    with open("SCD-SBD.json", "w") as f:
+    with open(FILE_PATH + "SCD-SBD.json", "w") as f:
         json.dump(scd_json, f, indent=4, sort_keys=True)
 
 # Create ValueSet based on dictionary
@@ -172,18 +174,19 @@ try:
     response = requests.put("https://cds.ddi-cds.org/cqf-ruler-r4/fhir/ValueSet/valueset-cyp3a4", data=json_object,
                             headers=headers)
     if response.status_code == 200:
-        with open("status.txt", 'a') as f:
+        with open(FILE_PATH + "status.txt", 'a') as f:
             f.write(dt_string + ": ValueSet was successfully updated.\n")
 
         # Check if this was a forced recreation, if so then at this point everything was done
         # correctly so remove that from ingredient.csv
-        with open("ingredient.csv", "w") as outfile:
-            outfile.write(",\n".join(drug_names))
+        if force:
+            with open(FILE_PATH + "ingredient.csv", "w") as outfile:
+                outfile.write(",\n".join(drug_names))
     else:
         response_data = json.loads(response.content)
-        with open("status.txt", 'a') as f:
+        with open(FILE_PATH + "status.txt", 'a') as f:
             f.write(dt_string + ": Could not successfully PUT ValueSet: " + response_data + "\n")
 except Exception as e:
     error_string = repr(e)
-    with open("status.txt", 'a') as f:
+    with open(FILE_PATH + "status.txt", 'a') as f:
         f.write(dt_string + ": Failed to update ValueSet: " + error_string + "\n")
