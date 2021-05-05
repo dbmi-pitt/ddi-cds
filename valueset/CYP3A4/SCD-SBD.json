@@ -19,6 +19,14 @@
         "ingredient": "diltiazem",
         "name": "24 HR diltiazem hydrochloride 360 MG Extended Release Oral Tablet [Matzim]"
     },
+    "1092217": {
+        "ingredient": "ketoconazole",
+        "name": "chloroxylenol 3 MG/ML / ketoconazole 3 MG/ML Medicated Pad"
+    },
+    "1092680": {
+        "ingredient": "ketoconazole",
+        "name": "chloroxylenol 3 MG/ML / ketoconazole 3 MG/ML Medicated Pad [Pharmaseb]"
+    },
     "1098649": {
         "ingredient": "nefazodone",
         "name": "nefazodone hydrochloride 100 MG Oral Tablet"
@@ -175,6 +183,10 @@
         "ingredient": "aprepitant",
         "name": "aprepitant 125 MG Powder for Oral Suspension [Emend]"
     },
+    "1739988": {
+        "ingredient": "ketoconazole",
+        "name": "chlorhexidine gluconate 20 MG/ML / ketoconazole 10 MG/ML / salicyloyl phytosphingosine 0.4 MG/ML Medicated Pad"
+    },
     "1791229": {
         "ingredient": "diltiazem",
         "name": "5 ML diltiazem hydrochloride 5 MG/ML Injection"
@@ -190,6 +202,10 @@
     "1791240": {
         "ingredient": "diltiazem",
         "name": "diltiazem hydrochloride 100 MG Injection"
+    },
+    "1798297": {
+        "ingredient": "ketoconazole",
+        "name": "chlorhexidine gluconate 20 MG/ML / ketoconazole 10 MG/ML Medicated Pad"
     },
     "1802213": {
         "ingredient": "ritonavir",
@@ -262,6 +278,14 @@
     "199249": {
         "ingredient": "ritonavir",
         "name": "ritonavir 80 MG/ML Oral Solution"
+    },
+    "1994333": {
+        "ingredient": "ketoconazole",
+        "name": "chlorhexidine 0.02 MG/MG / ketoconazole 0.01 MG/MG Medicated Pad"
+    },
+    "1994337": {
+        "ingredient": "ketoconazole",
+        "name": "chlorhexidine 0.02 MG/MG / ketoconazole 0.01 MG/MG Medicated Pad [Keto-C]"
     },
     "1995150": {
         "ingredient": "aprepitant",
@@ -343,14 +367,6 @@
         "ingredient": "fluconazole",
         "name": "fluconazole 200 MG Oral Tablet [Diflucan]"
     },
-    "2105737": {
-        "ingredient": "posaconazole",
-        "name": "mometasone furoate 1 MG/ML / orbifloxacin 10 MG/ML / posaconazole 1 MG/ML Otic Suspension"
-    },
-    "2105742": {
-        "ingredient": "posaconazole",
-        "name": "mometasone furoate 1 MG/ML / orbifloxacin 10 MG/ML / posaconazole 1 MG/ML Otic Suspension [Posatex]"
-    },
     "2106642": {
         "ingredient": "itraconazole",
         "name": "itraconazole 65 MG Oral Capsule"
@@ -362,10 +378,6 @@
     "212118": {
         "ingredient": "nelfinavir",
         "name": "nelfinavir 250 MG Oral Tablet [Viracept]"
-    },
-    "238936": {
-        "ingredient": "erythromycin",
-        "name": "erythromycin 0.02 MG/MG Topical Ointment"
     },
     "240741": {
         "ingredient": "clarithromycin",
@@ -387,6 +399,10 @@
         "ingredient": "amprenavir",
         "name": "amprenavir 15 MG/ML Oral Solution"
     },
+    "2532527": {
+        "ingredient": "ketoconazole",
+        "name": "chlorhexidine gluconate 20 MG/ML / ketoconazole 10 MG/ML Medicated Pad [Mal-A-Ket Wipes]"
+    },
     "283103": {
         "ingredient": "indinavir",
         "name": "indinavir 100 MG Oral Capsule"
@@ -394,10 +410,6 @@
     "309322": {
         "ingredient": "clarithromycin",
         "name": "clarithromycin 50 MG/ML Oral Suspension"
-    },
-    "310149": {
-        "ingredient": "erythromycin",
-        "name": "erythromycin 0.005 MG/MG Ophthalmic Ointment"
     },
     "310154": {
         "ingredient": "erythromycin",
@@ -470,10 +482,6 @@
     "348506": {
         "ingredient": "itraconazole",
         "name": "itraconazole 10 MG/ML Oral Solution"
-    },
-    "349148": {
-        "ingredient": "erythromycin",
-        "name": "erythromycin 0.005 MG/MG Topical Ointment"
     },
     "349434": {
         "ingredient": "voriconazole",
@@ -574,10 +582,6 @@
     "546624": {
         "ingredient": "voriconazole",
         "name": "voriconazole 40 MG/ML Oral Suspension [Vfend]"
-    },
-    "584534": {
-        "ingredient": "erythromycin",
-        "name": "erythromycin 0.005 MG/MG Ophthalmic Ointment [Eyemycin]"
     },
     "597193": {
         "ingredient": "erythromycin",
@@ -690,6 +694,18 @@
     "794610": {
         "ingredient": "darunavir",
         "name": "darunavir 600 MG Oral Tablet [Prezista]"
+    },
+    "797452": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 20 MG/ML Medicated Pad"
+    },
+    "798115": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 20 MG/ML Medicated Pad [Emcin Clear]"
+    },
+    "798133": {
+        "ingredient": "erythromycin",
+        "name": "erythromycin 20 MG/ML Medicated Pad [Ery]"
     },
     "824338": {
         "ingredient": "darunavir",
