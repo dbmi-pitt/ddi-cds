@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light mb-4 border-bottom border-secondary">
+    <a href="https://ddi-cds.org/" class="navbar-brand d-none d-md-block">
+        <img style="height: 50px;" th:src="@{images/logo-ddi-cds.png}"
+             alt="DDI-CDS: Drug-Drug Interaction Clinical Decision Support">
+    </a>
+    <span class="navbar-brand mb-0 h1 mx-auto" th:text="${title}"></span>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Patient Profiles
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <div th:each="element : ${patientProfiles}">
+                        <a class="dropdown-item" th:href="${element.key}" th:text="${element.value}"></a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="mailto:info@ddi-cds.org">Give us feedback</a>
+                <!--        <a class="nav-link" href="https://www.surveymonkey.com/r/5BC32WX" target="_blank">Give us feedback</a>-->
+            </li>
+        </ul>
+    </div>
+</nav>
+

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header"/>
+
+<body>
+
+<div th:replace="navbar" th:with="patientProfiles=${patientProfiles}, title=${title}"/>
+
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-lg-6 col-12">
+            <div th:replace="risk-factors" th:with="riskFactors=${riskFactors}, serumCreatinineEGFR=${serumCreatinineEGFR}, alternative=${alternative}"/>
+            <div th:replace="clinical-explanation" th:with="summary=${summary}"/>
+        </div>
+
+        <div class="col-lg-6 col-12">
+            <div th:replace="summary" th:with="summary=${summary}"/>
+
+            <div th:replace="alternativeOptions" th:with="alternative=${alternative}, colchicine=${colchicine}"/>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <div th:replace="accordion-questions-cyp3a4"/>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

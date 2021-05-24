@@ -1,0 +1,94 @@
+<table id="heatmap" class="" style="width:100%">
+    <thead>
+
+    <tr>
+        <td class="dt-head-center font-weight-bold" colspan="5">GFR Function</td>
+    </tr>
+    <tr>
+        <td class="dt-head-center">Normal to high</td>
+        <td class="dt-head-center">Mildly to moderately decreased</td>
+        <td class="dt-head-center">Moderately to severely decreased</td>
+        <td class="dt-head-center">Severely decreased</td>
+        <td class="dt-head-center">Kidney failure</td>
+    </tr>
+
+
+
+    </thead>
+</table>
+
+
+<script>
+    $(document).ready(function () {
+        let serumCreatinineEGFR = [[${serumCreatinineEGFR}]];
+        var data = [
+            [">= 60", "45-59", "30-44", "15-29", "<15"],
+            ["green", "yellow", "orange", "red", "darkred"],
+        ]
+        var column;
+        var table = $('#heatmap').DataTable({
+            data: data,
+            rowsGroup: [0],
+            paging: false,
+            "ordering": false,
+            "searching": false,
+            "bInfo": false,
+            responsive: true,
+
+            "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                for (var i = 0; i < aData.length; i++) {
+                   $("td:eq(" + i + ")", nRow).addClass("dt-center");
+                    if (aData[i] == "green") {
+                        $("td:eq(" + i + ")", nRow).addClass("cell-block");
+                        $("td:eq(" + i + ")", nRow).addClass("green-block");
+                        $("td:eq(" + i + ")", nRow).text("");
+                        if (serumCreatinineEGFR >= 60) {
+                            $("td:eq(" + i + ")", nRow).addClass("gfr-block");
+                            column = i;
+                        }
+                    }
+                    if (aData[i] == "yellow") {
+                        $("td:eq(" + i + ")", nRow).addClass("cell-block");
+                        $("td:eq(" + i + ")", nRow).addClass("yellow-block");
+                        $("td:eq(" + i + ")", nRow).text("");
+                        if (serumCreatinineEGFR <= 59 && serumCreatinineEGFR >= 45) {
+                            $("td:eq(" + i + ")", nRow).addClass("gfr-block");
+                            column = i;
+                        }
+                    }
+                    if (aData[i] == "orange") {
+                        $("td:eq(" + i + ")", nRow).addClass("cell-block");
+                        $("td:eq(" + i + ")", nRow).addClass("orange-block");
+                        $("td:eq(" + i + ")", nRow).text("");
+                        if (serumCreatinineEGFR <= 44 && serumCreatinineEGFR >= 30) {
+                            $("td:eq(" + i + ")", nRow).addClass("gfr-block");
+                            column = i;
+                        }
+                    }
+                    if (aData[i] == "red") {
+                        $("td:eq(" + i + ")", nRow).addClass("cell-block");
+                        $("td:eq(" + i + ")", nRow).addClass("red-block");
+                        $("td:eq(" + i + ")", nRow).text("");
+                        if (serumCreatinineEGFR <= 29 && serumCreatinineEGFR >= 15) {
+                            $("td:eq(" + i + ")", nRow).addClass("gfr-block");
+                            column = i;
+                        }
+                    }
+                    if (aData[i] == "darkred") {
+                        $("td:eq(" + i + ")", nRow).addClass("cell-block");
+                        $("td:eq(" + i + ")", nRow).addClass("dark-red-block");
+                        $("td:eq(" + i + ")", nRow).text("");
+                        if (serumCreatinineEGFR < 15 && serumCreatinineEGFR >= 0) {
+                            $("td:eq(" + i + ")", nRow).addClass("gfr-block");
+                            column = i;
+                        }
+                    }
+                }
+            },
+        });
+
+       table.rows().every(function () {
+            $(table.cell(0, column).node()).addClass('font-weight-bold').addClass('mark');
+        });
+    });
+</script>

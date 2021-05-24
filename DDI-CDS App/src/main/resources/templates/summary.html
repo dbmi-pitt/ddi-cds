@@ -1,0 +1,14 @@
+<div class="card mb-4">
+    <h5 class="card-header">Summary</h5>
+
+    <div class="card-body scroll">
+        <div id="summary-symbol" th:switch="${summary.getWarningSymbol()}">
+            <h2 th:case="Warning"><span class="badge badge-warning">Warning</span></h2>
+            <h2 th:case="Danger"><span class="badge badge-danger">Danger</span></h2>
+        </div>
+
+        <p id="summary-body" th:text="${summary.getSummary()}"></p>
+
+
+    </div>
+</div>

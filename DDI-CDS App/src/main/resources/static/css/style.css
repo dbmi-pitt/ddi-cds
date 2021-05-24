@@ -1,0 +1,105 @@
+.dot {
+    height: 100vh;
+    width: 100vw;
+    max-height: 25px;
+    max-width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.risk-dot {
+    height: 100vh;
+    width: 100vw;
+    max-height: 25px;
+    max-width: 25px;
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-body{
+    overflow-x: scroll;
+}
+
+.scroll {
+    max-height: 272px;
+    overflow-y: auto;
+}
+
+
+.dropdown-menu {
+    min-width: 0;
+}
+
+.dropdown-menu .dropdown-item {
+    white-space: normal;
+}
+
+.dataTables_wrapper {
+    font-size: 13px;
+}
+
+table.dataTable.no-footer {
+    border-bottom: 0 !important;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+    border-bottom: 0 !important;
+}
+
+.gfr-block {
+    border: 4px dashed black !important;
+}
+
+.cell-block {
+    border: 1px solid black;
+}
+
+.green-block {
+    background-color: green;
+}
+
+.yellow-block {
+    background-color: yellow;
+}
+
+.orange-block {
+    background-color: orange;
+}
+
+.red-block {
+    background-color: red;
+}
+
+.dark-red-block {
+    background-color: darkred;
+}
+
+.accordion-header {
+    display: inline-block;
+    margin-bottom: 0px;
+}
+
+.creator-image {
+    height: 150px;
+    width: auto;
+}
+
+.evidence-image {
+    width: 300px;
+}
+
+.literature-image {
+    height: 40px;
+    width: auto;
+}
+
+input:disabled {
+    color: -internal-light-dark(blue, rgb(170, 170, 170));
+    cursor: default;
+}

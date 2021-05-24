@@ -1,0 +1,79 @@
+<div class="card mb-4">
+    <h5 class="card-header">Risk Profile for Patient</h5>
+    <div class="card-body">
+        <div th:each="riskFactor : ${riskFactors}">
+            <div th:switch="${riskFactor.getHasRiskFactor()}">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" th:name="${riskFactor.getRiskName()}"
+                           id="risk-factor" th:case="true" checked disabled>
+                    <input class="form-check-input" type="checkbox" value="" th:name="${riskFactor.getRiskName()}"
+                           id="risk-factor" th:case="false">
+
+                    <div th:switch="${riskFactor.getEffectiveDate() != null}">
+                        <label class="form-check-label" for="" th:case="true"
+                               th:text="${riskFactor.getRiskName()} + ' (' + ${riskFactor.getEffectiveDate()} + ')'"></label>
+                        <label class="form-check-label" for="" th:case="false"
+                               th:text="${riskFactor.getRiskName()}"></label>
+                    </div>
+
+                    <div th:switch="${riskFactor.getRiskName() == 'eGFR'}">
+                        <input id="eGFR-value" th:case="true" class="form-control" style="display: none;"
+                              th:value="${riskFactor.getValue()}" placeholder="eGFR Value"/>
+                    </div>
+
+                    <input id="alternative-risk-factor" style="display: none;" th:value="${alternative.getDrugName()}">
+                </div>
+            </div>
+        </div>
+
+        <div th:replace="heatmap" th:with="serumCreatinineEGFR=${serumCreatinineEGFR}"/>
+    </div>
+</div>
+
+<script>
+    function updateRiskFactors() {
+        let checked = document.querySelectorAll("input[type=checkbox]:checked");
+        let checkedRiskFactors = [];
+        checked.forEach(check => {
+            checkedRiskFactors.push(check.name);
+        });
+
+        let unchecked = document.querySelectorAll("input[type=checkbox]:not(:checked)");
+        let uncheckedRiskFactors = [];
+        unchecked.forEach(check => {
+            uncheckedRiskFactors.push(check.name);
+        });
+
+        let eGFRValue = $('#eGFR-value').val();
+        let alternativeDrug = $('#alternative-risk-factor').val();
+
+        $.get('/cyp3a4Summary', $.param({
+            checkedRiskFactors: checkedRiskFactors,
+            uncheckedRiskFactors: uncheckedRiskFactors,
+            eGFRValue: eGFRValue,
+            alternativeDrug: alternativeDrug
+        }, true), function (data) {
+            let summary = JSON.parse(data);
+            $('#summary-symbol').html(summary['warningSymbol']);
+            $('#summary-body').html(summary['summary']);
+            $('#clinical-explanation-body').html(summary['clinicalSummary']);
+        });
+    }
+
+    $('#eGFR-value').keyup(function () {
+        console.log(this.id);
+        updateRiskFactors();
+    });
+
+    $('input:checkbox').change(function () {
+        if (this.name == 'eGFR' && this.checked) {
+            $('#eGFR-value').val("");
+            $('#eGFR-value').show();
+        }
+        if (this.name == 'eGFR' && !this.checked) {
+            $('#eGFR-value').val("");
+            $('#eGFR-value').hide();
+        }
+        updateRiskFactors();
+    });
+</script>
