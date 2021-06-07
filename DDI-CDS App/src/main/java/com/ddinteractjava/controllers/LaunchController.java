@@ -145,6 +145,7 @@ public class LaunchController {
         Map<String, String[]> requestParameterMap = httpServletRequest.getParameterMap();
         String tokenUrl = appConfig.getTokenUrl();
         try {
+            System.out.println("Now at redirect");
             String code = URLEncoder.encode(requestParameterMap.get("code")[0], "ASCII");
 
             RestTemplate restTemplate = restTemplateService.getRestTemplate();
