@@ -7,6 +7,7 @@ import ca.uhn.fhir.rest.client.api.IClientInterceptor;
 import ca.uhn.fhir.rest.client.api.IGenericClient;
 import ca.uhn.fhir.rest.client.interceptor.BearerTokenAuthInterceptor;
 import ca.uhn.fhir.rest.server.exceptions.InvalidRequestException;
+import ca.uhn.fhir.rest.server.exceptions.ResourceNotFoundException;
 import com.ddinteractjava.config.AppConfig;
 import org.hl7.fhir.r4.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class R4Service implements FHIRService{
+public class R4Service implements FHIRService {
     public IGenericClient client;
 
     @Autowired
@@ -33,7 +34,7 @@ public class R4Service implements FHIRService{
         client.setEncoding(EncodingEnum.JSON);
         client.setPrettyPrint(true);
 
-         if (appConfig.getStaticToken() != null) {
+        if (appConfig.getStaticToken() != null) {
             addBearerToken(appConfig.getStaticToken());
         }
     }
@@ -71,8 +72,10 @@ public class R4Service implements FHIRService{
             for (Bundle.BundleEntryComponent entryComponent : response.getEntry()) {
                 medicationStatements.add((MedicationStatement) entryComponent.getResource());
             }
+        } catch (ResourceNotFoundException e) {
+            //No medicationStatements for this patient was found
         } catch (InvalidRequestException e) {
-            //No medicationstatement for this patient was found
+            //No medicationStatements for this patient was found
         }
         return medicationStatements;
     }
@@ -85,8 +88,10 @@ public class R4Service implements FHIRService{
             for (Bundle.BundleEntryComponent entryComponent : response.getEntry()) {
                 medicationRequests.add((MedicationRequest) entryComponent.getResource());
             }
+        } catch (ResourceNotFoundException e) {
+            //No medicationRequests for this patient was found
         } catch (InvalidRequestException e) {
-            //No medicationrequest for this patient was found
+            //No medicationRequests for this patient was found
         }
         return medicationRequests;
     }
@@ -99,6 +104,8 @@ public class R4Service implements FHIRService{
             for (Bundle.BundleEntryComponent entryComponent : response.getEntry()) {
                 observations.add((Observation) entryComponent.getResource());
             }
+        } catch (ResourceNotFoundException e) {
+            //No observation for this patient was found
         } catch (InvalidRequestException e) {
             //No observation for this patient was found
         }
@@ -113,6 +120,8 @@ public class R4Service implements FHIRService{
             for (Bundle.BundleEntryComponent entryComponent : response.getEntry()) {
                 conditions.add((Condition) entryComponent.getResource());
             }
+        } catch (ResourceNotFoundException e) {
+            //No condition for this patient was found
         } catch (InvalidRequestException e) {
             //No condition for this patient was found
         }

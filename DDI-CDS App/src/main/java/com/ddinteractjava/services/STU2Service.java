@@ -7,6 +7,7 @@ import ca.uhn.fhir.rest.api.EncodingEnum;
 import ca.uhn.fhir.rest.client.api.IClientInterceptor;
 import ca.uhn.fhir.rest.client.api.IGenericClient;
 import ca.uhn.fhir.rest.client.interceptor.BearerTokenAuthInterceptor;
+import ca.uhn.fhir.rest.server.exceptions.InvalidRequestException;
 import ca.uhn.fhir.rest.server.exceptions.ResourceNotFoundException;
 import com.ddinteractjava.config.AppConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +73,9 @@ public class STU2Service implements FHIRService {
                 medicationStatements.add((MedicationStatement) entryComponent.getResource());
             }
         } catch (ResourceNotFoundException e) {
-            //No medicationstatement for this patient was found
+            //No medicationStatements for this patient was found
+        } catch (InvalidRequestException e) {
+            //No medicationStatements for this patient was found
         }
         return medicationStatements;
     }
@@ -87,7 +90,9 @@ public class STU2Service implements FHIRService {
                 medicationRequests.add((MedicationOrder) entryComponent.getResource());
             }
         } catch (ResourceNotFoundException e) {
-            //No medicationrequest for this patient was found
+            //No medicationRequests for this patient was found
+        } catch (InvalidRequestException e) {
+            //No medicationRequests for this patient was found
         }
         return medicationRequests;
     }
@@ -103,6 +108,8 @@ public class STU2Service implements FHIRService {
             }
         } catch (ResourceNotFoundException e) {
             //No observation for this patient was found
+        } catch (InvalidRequestException e) {
+            //No observation for this patient was found
         }
         return observations;
     }
@@ -117,6 +124,8 @@ public class STU2Service implements FHIRService {
                 conditions.add((Condition) entryComponent.getResource());
             }
         } catch (ResourceNotFoundException e) {
+            //No condition for this patient was found
+        } catch (InvalidRequestException e) {
             //No condition for this patient was found
         }
         return conditions;
