@@ -68,8 +68,13 @@ public class STU2Service implements FHIRService {
         List<MedicationStatement> medicationStatements = new ArrayList<>();
         try {
             String searchUrl = appConfig.getFhirUrl() + "/MedicationStatement?patient=" + patientId;
+            System.out.println("Medication Statement search url: " + searchUrl);
             Bundle response = client.search().byUrl(searchUrl).returnBundle(Bundle.class).execute();
             for (Bundle.Entry entryComponent : response.getEntry()) {
+
+                System.out.println("Response: "  + entryComponent.getResponse().toString());
+                System.out.println("Resource: "  + entryComponent.getResource().toString());
+
                 medicationStatements.add((MedicationStatement) entryComponent.getResource());
             }
         } catch (ResourceNotFoundException e) {
