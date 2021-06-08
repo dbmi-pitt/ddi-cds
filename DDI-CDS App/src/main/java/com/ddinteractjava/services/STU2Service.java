@@ -96,6 +96,7 @@ public class STU2Service implements FHIRService {
         List<Observation> observations = new ArrayList<>();
         try {
             String searchUrl = appConfig.getFhirUrl() + "/Observation?patient=" + patientId;
+            System.out.println("Observation search url: " + searchUrl);
             Bundle response = client.search().byUrl(searchUrl).returnBundle(Bundle.class).execute();
             for (Bundle.Entry entryComponent : response.getEntry()) {
                 observations.add((Observation) entryComponent.getResource());
@@ -110,6 +111,7 @@ public class STU2Service implements FHIRService {
         List<Condition> conditions = new ArrayList<>();
         try {
             String searchUrl = appConfig.getFhirUrl() + "/Condition?patient=" + patientId;
+            System.out.println("Condition search url: " + searchUrl);
             Bundle response = client.search().byUrl(searchUrl).returnBundle(Bundle.class).execute();
             for (Bundle.Entry entryComponent : response.getEntry()) {
                 conditions.add((Condition) entryComponent.getResource());
