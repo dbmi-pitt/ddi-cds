@@ -293,12 +293,12 @@ public class CYP3A4Controller {
 
         Alternative alternative = new Alternative();
 
-        for (MedicationStatement medicationStatement : medicationStatements) {
-            List<Coding> coding = ((CodeableConcept) medicationStatement.getMedication()).getCoding();
-            for (Coding code : coding) {
-                findAlternativeCode(alternative, code);
-            }
-        }
+//        for (MedicationStatement medicationStatement : medicationStatements) {
+//            List<Coding> coding = ((CodeableConcept) medicationStatement.getMedication()).getCoding();
+//            for (Coding code : coding) {
+//                findAlternativeCode(alternative, code);
+//            }
+//        }
 
         for (MedicationRequest medicationRequest : medicationRequests) {
             List<Coding> coding = ((CodeableConcept) medicationRequest.getMedication()).getCoding();
