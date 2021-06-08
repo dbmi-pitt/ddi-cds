@@ -1,11 +1,11 @@
 package com.ddinteractjava.cyp3a4;
 
+import ca.uhn.fhir.model.dstu2.composite.CodeableConceptDt;
+import ca.uhn.fhir.model.dstu2.composite.CodingDt;
+import ca.uhn.fhir.model.dstu2.resource.MedicationOrder;
 import com.ddinteractjava.config.AppConfig;
 import com.ddinteractjava.config.CYP3A4Config;
-import com.ddinteractjava.model.Alternative;
-import com.ddinteractjava.model.OauthToken;
-import com.ddinteractjava.model.RiskFactor;
-import com.ddinteractjava.model.Summary;
+import com.ddinteractjava.model.*;
 import com.ddinteractjava.services.CDSService;
 import com.ddinteractjava.services.FHIRService;
 import com.ddinteractjava.services.SessionCacheService;
@@ -77,7 +77,7 @@ public class CYP3A4Controller {
         Alternative alternative = suggestAlternatives(patientId);
         model.addObject("alternative", alternative);
 
-        Coding colchicine = findColchicine(patientId);
+        SimpleCode colchicine = findColchicine(patientId);
         model.addObject("colchicine", colchicine);
 
 //        String card = cdsService.callPatientView(accessToken, clientId, patientId);
@@ -118,7 +118,7 @@ public class CYP3A4Controller {
             resources.put("medicationRequest", medicationRequests);
             resources.put("observation", observations);
             resources.put("condition", conditions);
-            if ( medicationRequests.isEmpty() && observations.isEmpty() && conditions.isEmpty()) {
+            if (medicationRequests.isEmpty() && observations.isEmpty() && conditions.isEmpty()) {
                 //Something could have gone wrong when trying to get patient resources, don't want to cache it
             } else {
                 patientResources.put(patientId, resources);
@@ -127,46 +127,97 @@ public class CYP3A4Controller {
 
     }
 
-    private Coding findColchicine(String patientId) {
-        List<MedicationStatement> medicationStatements = patientResources.get(patientId).get("medicationStatement");
-        List<MedicationRequest> medicationRequests = patientResources.get(patientId).get("medicationRequest");
+    private SimpleCode findColchicine(String patientId) {
+        SimpleCode simpleCode = new SimpleCode();
+        if (appConfig.getFhirVersion().equals("r4")) {
+            List<MedicationStatement> medicationStatements = patientResources.get(patientId).get("medicationStatement");
+            List<MedicationRequest> medicationRequests = patientResources.get(patientId).get("medicationRequest");
 
-        for (MedicationStatement medicationStatement : medicationStatements) {
-            List<Coding> coding = ((CodeableConcept) medicationStatement.getMedication()).getCoding();
-            for (Coding code : coding) {
-                if (cyp3A4Cache.colchicineCodes.contains(code.getCode()))
-                    return code;
+            for (MedicationStatement medicationStatement : medicationStatements) {
+                List<Coding> coding = ((CodeableConcept) medicationStatement.getMedication()).getCoding();
+                for (Coding code : coding) {
+                    if (cyp3A4Cache.colchicineCodes.contains(code.getCode())) {
+                        simpleCode.setCode(code.getCode());
+                        simpleCode.setDisplay(code.getDisplay());
+                    }
+                }
+            }
+
+            for (MedicationRequest medicationRequest : medicationRequests) {
+                List<Coding> coding = ((CodeableConcept) medicationRequest.getMedication()).getCoding();
+                for (Coding code : coding) {
+                    if (cyp3A4Cache.colchicineCodes.contains(code.getCode())) {
+                        simpleCode.setCode(code.getCode());
+                        simpleCode.setDisplay(code.getDisplay());
+                    }
+                }
+            }
+        } else if (appConfig.getFhirVersion().equals("stu2")) {
+            List<ca.uhn.fhir.model.dstu2.resource.MedicationStatement> medicationStatements = patientResources.get(patientId).get("medicationStatement");
+            List<MedicationOrder> medicationRequests = patientResources.get(patientId).get("medicationRequest");
+
+            for (ca.uhn.fhir.model.dstu2.resource.MedicationStatement medicationStatement : medicationStatements) {
+                List<CodingDt> coding = ((CodeableConceptDt) medicationStatement.getMedication()).getCoding();
+                for (CodingDt code : coding) {
+                    if (cyp3A4Cache.colchicineCodes.contains(code.getCode())) {
+                        simpleCode.setCode(code.getCode());
+                        simpleCode.setDisplay(code.getDisplay());
+                    }
+                }
+            }
+
+            for (MedicationOrder medicationRequest : medicationRequests) {
+                List<CodingDt> coding = ((CodeableConceptDt) medicationRequest.getMedication()).getCoding();
+                for (CodingDt code : coding) {
+                    if (cyp3A4Cache.colchicineCodes.contains(code.getCode())) {
+                        simpleCode.setCode(code.getCode());
+                        simpleCode.setDisplay(code.getDisplay());
+                    }
+                }
             }
         }
-
-        for (MedicationRequest medicationRequest : medicationRequests) {
-            List<Coding> coding = ((CodeableConcept) medicationRequest.getMedication()).getCoding();
-            for (Coding code : coding) {
-                if (cyp3A4Cache.colchicineCodes.contains(code.getCode()))
-                    return code;
-            }
-        }
-        return null;
+        return simpleCode;
     }
 
     private RiskFactor findAKI(String patientId) {
         RiskFactor riskFactor = new RiskFactor();
         riskFactor.setRiskName(cyp3A4Config.getAKI());
 
-        List<Condition> conditions = patientResources.get(patientId).get("condition");
+        if (appConfig.getFhirVersion().equals("r4")) {
+            List<Condition> conditions = patientResources.get(patientId).get("condition");
 
-        for (Condition condition : conditions) {
-            List<Coding> coding = condition.getCode().getCoding();
-            for (Coding code : coding) {
-                if (akiCodes.contains(code.getCode())) {
-                    riskFactor.setHasRiskFactor(true);
-                    if (condition.hasOnsetDateTimeType()) {
-                        Date onsetDate = ((DateTimeType) condition.getOnset()).getValue();
-                        DateFormat df = new SimpleDateFormat(pattern);
+            for (Condition condition : conditions) {
+                List<Coding> coding = condition.getCode().getCoding();
+                for (Coding code : coding) {
+                    if (akiCodes.contains(code.getCode())) {
+                        riskFactor.setHasRiskFactor(true);
+                        if (condition.hasOnsetDateTimeType()) {
+                            Date onsetDate = ((DateTimeType) condition.getOnset()).getValue();
+                            DateFormat df = new SimpleDateFormat(pattern);
 
-                        riskFactor.setResourceName(code.getDisplay());
-                        riskFactor.setEffectiveDate("Diagnosis as of " + df.format(onsetDate));
-                        return riskFactor;
+                            riskFactor.setResourceName(code.getDisplay());
+                            riskFactor.setEffectiveDate("Diagnosis as of " + df.format(onsetDate));
+                            return riskFactor;
+                        }
+                    }
+                }
+            }
+        } else if (appConfig.getFhirVersion().equals("stu2")) {
+            List<ca.uhn.fhir.model.dstu2.resource.Condition> conditions = patientResources.get(patientId).get("condition");
+
+            for (ca.uhn.fhir.model.dstu2.resource.Condition condition : conditions) {
+                List<CodingDt> coding = condition.getCode().getCoding();
+                for (CodingDt code : coding) {
+                    if (akiCodes.contains(code.getCode())) {
+                        riskFactor.setHasRiskFactor(true);
+                        if (!condition.getOnset().isEmpty()) {
+                            Date onsetDate = ((DateTimeType) condition.getOnset()).getValue();
+                            DateFormat df = new SimpleDateFormat(pattern);
+
+                            riskFactor.setResourceName(code.getDisplay());
+                            riskFactor.setEffectiveDate("Diagnosis as of " + df.format(onsetDate));
+                            return riskFactor;
+                        }
                     }
                 }
             }
@@ -179,20 +230,40 @@ public class CYP3A4Controller {
     private RiskFactor findChronicKidneyDisease(String patientId) {
         RiskFactor riskFactor = new RiskFactor();
         riskFactor.setRiskName(cyp3A4Config.getCKD());
+        if (appConfig.getFhirVersion().equals("r4")) {
+            List<Condition> conditions = patientResources.get(patientId).get("condition");
 
-        List<Condition> conditions = patientResources.get(patientId).get("condition");
+            for (Condition condition : conditions) {
+                List<Coding> coding = condition.getCode().getCoding();
+                for (Coding code : coding) {
+                    if (chronicKidneyDiseaseCodes.contains(code.getCode())) {
+                        riskFactor.setHasRiskFactor(true);
+                        if (condition.hasOnsetDateTimeType()) {
+                            Date onsetDate = ((DateTimeType) condition.getOnset()).getValue();
+                            DateFormat df = new SimpleDateFormat(pattern);
+                            riskFactor.setResourceName(code.getDisplay());
+                            riskFactor.setEffectiveDate("Diagnosis as of " + df.format(onsetDate));
+                            return riskFactor;
+                        }
+                    }
+                }
+            }
+        } else if (appConfig.getFhirVersion().equals("stu2")) {
+            List<ca.uhn.fhir.model.dstu2.resource.Condition> conditions = patientResources.get(patientId).get("condition");
 
-        for (Condition condition : conditions) {
-            List<Coding> coding = condition.getCode().getCoding();
-            for (Coding code : coding) {
-                if (chronicKidneyDiseaseCodes.contains(code.getCode())) {
-                    riskFactor.setHasRiskFactor(true);
-                    if (condition.hasOnsetDateTimeType()) {
-                        Date onsetDate = ((DateTimeType) condition.getOnset()).getValue();
-                        DateFormat df = new SimpleDateFormat(pattern);
-                        riskFactor.setResourceName(code.getDisplay());
-                        riskFactor.setEffectiveDate("Diagnosis as of " + df.format(onsetDate));
-                        return riskFactor;
+            for (ca.uhn.fhir.model.dstu2.resource.Condition condition : conditions) {
+                List<CodingDt> coding = condition.getCode().getCoding();
+                for (CodingDt code : coding) {
+                    if (chronicKidneyDiseaseCodes.contains(code.getCode())) {
+                        riskFactor.setHasRiskFactor(true);
+                        if (!condition.getOnset().isEmpty()) {
+                            Date onsetDate = ((DateTimeType) condition.getOnset()).getValue();
+                            DateFormat df = new SimpleDateFormat(pattern);
+
+                            riskFactor.setResourceName(code.getDisplay());
+                            riskFactor.setEffectiveDate("Diagnosis as of " + df.format(onsetDate));
+                            return riskFactor;
+                        }
                     }
                 }
             }
@@ -206,22 +277,44 @@ public class CYP3A4Controller {
     private RiskFactor findSerumCreatinine(String patientId, ModelAndView model) {
         RiskFactor riskFactor = new RiskFactor();
         riskFactor.setRiskName(cyp3A4Config.geteGFR());
+        if (appConfig.getFhirVersion().equals("r4")) {
 
-        List<Observation> observations = patientResources.get(patientId).get("observation");
+            List<Observation> observations = patientResources.get(patientId).get("observation");
 
-        for (Observation observation : observations) {
-            List<Coding> coding = observation.getCode().getCoding();
-            for (Coding code : coding) {
-                if (serumCreatinineEGFR.contains(code.getCode())) {
-                    riskFactor.setHasRiskFactor(true);
-                    if (observation.hasEffectiveDateTimeType() && observation.hasValueQuantity()) {
-                        Date effectiveDate = ((DateTimeType) observation.getEffective()).getValue();
-                        DateFormat df = new SimpleDateFormat(pattern);
-                        riskFactor.setResourceName(code.getDisplay());
-                        riskFactor.setEffectiveDate("Measurement of " + observation.getValueQuantity().getValue().doubleValue() + " " + observation.getValueQuantity().getUnit() + " as of " + df.format(effectiveDate));
-                        riskFactor.setValue(observation.getValueQuantity().getValue().doubleValue());
-                        model.addObject("serumCreatinineEGFR", riskFactor.getValue());
-                        return riskFactor;
+            for (Observation observation : observations) {
+                List<Coding> coding = observation.getCode().getCoding();
+                for (Coding code : coding) {
+                    if (serumCreatinineEGFR.contains(code.getCode())) {
+                        riskFactor.setHasRiskFactor(true);
+                        if (observation.hasEffectiveDateTimeType() && observation.hasValueQuantity()) {
+                            Date effectiveDate = ((DateTimeType) observation.getEffective()).getValue();
+                            DateFormat df = new SimpleDateFormat(pattern);
+                            riskFactor.setResourceName(code.getDisplay());
+                            riskFactor.setEffectiveDate("Measurement of " + observation.getValueQuantity().getValue().doubleValue() + " " + observation.getValueQuantity().getUnit() + " as of " + df.format(effectiveDate));
+                            riskFactor.setValue(observation.getValueQuantity().getValue().doubleValue());
+                            model.addObject("serumCreatinineEGFR", riskFactor.getValue());
+                            return riskFactor;
+                        }
+                    }
+                }
+            }
+        } else if (appConfig.getFhirVersion().equals("stu2")) {
+            List<ca.uhn.fhir.model.dstu2.resource.Observation> observations = patientResources.get(patientId).get("observation");
+
+            for (ca.uhn.fhir.model.dstu2.resource.Observation observation : observations) {
+                List<CodingDt> coding = observation.getCode().getCoding();
+                for (CodingDt code : coding) {
+                    if (serumCreatinineEGFR.contains(code.getCode())) {
+                        riskFactor.setHasRiskFactor(true);
+//                        if (!observation.getEffective().isEmpty() && observation.hasValueQuantity()) {
+//                            Date effectiveDate = ((DateTimeType) observation.getEffective()).getValue();
+//                            DateFormat df = new SimpleDateFormat(pattern);
+//                            riskFactor.setResourceName(code.getDisplay());
+//                            riskFactor.setEffectiveDate("Measurement of " + observation.getValueQuantity().getValue().doubleValue() + " " + observation.getValueQuantity().getUnit() + " as of " + df.format(effectiveDate));
+//                            riskFactor.setValue(observation.getValueQuantity().getValue().doubleValue());
+//                            model.addObject("serumCreatinineEGFR", riskFactor.getValue());
+//                            return riskFactor;
+//                        }
                     }
                 }
             }
@@ -234,76 +327,68 @@ public class CYP3A4Controller {
         return riskFactor;
     }
 
-    private Alternative findAlternativeCode(Alternative alternative, Coding code) {
-        if (cyp3A4Cache.discontinueColchicine.contains(code.getCode())) {
-            alternative.setDrugName(code.getDisplay());
-            alternative.setDrugCode(code.getCode());
+    private Alternative findAlternativeCode(Alternative alternative, String code, String display) {
+        if (cyp3A4Cache.discontinueColchicine.contains(code)) {
             alternative.setAlternativeText(Alternative.DISCONTINUE_COLCHICINE);
-            return alternative;
-        }
-        if (cyp3A4Cache.itraconazoleKetoconazolePosaconazole.contains(code.getCode())) {
-            alternative.setDrugName(code.getDisplay());
-            alternative.setDrugCode(code.getCode());
+        } else if (cyp3A4Cache.itraconazoleKetoconazolePosaconazole.contains(code)) {
             alternative.setAlternativeText(Alternative.ITRACONAZOLE_KETOCONAZOLE_POSACONAZOLE);
-            return alternative;
-        }
-        if (cyp3A4Cache.voriconazole.contains(code.getCode())) {
-            alternative.setDrugName(code.getDisplay());
-            alternative.setDrugCode(code.getCode());
+        } else if (cyp3A4Cache.voriconazole.contains(code)) {
             alternative.setAlternativeText(Alternative.VORICONAZOLE);
-            return alternative;
-        }
-        if (cyp3A4Cache.clarithromycin.contains(code.getCode())) {
-            alternative.setDrugName(code.getDisplay());
-            alternative.setDrugCode(code.getCode());
+        } else if (cyp3A4Cache.clarithromycin.contains(code)) {
             alternative.setAlternativeText(Alternative.CLARITHROMYCIN);
-            return alternative;
-        }
-        if (cyp3A4Cache.nefazodone.contains(code.getCode())) {
-            alternative.setDrugName(code.getDisplay());
-            alternative.setDrugCode(code.getCode());
+        } else if (cyp3A4Cache.nefazodone.contains(code)) {
             alternative.setAlternativeText(Alternative.NEFAZODONE);
-            return alternative;
+        } else if (cyp3A4Cache.erythromycin.contains(code)) {
+            alternative.setAlternativeText(Alternative.CLARITHROMYCIN);
+        } else if (cyp3A4Cache.diltiazemVerapamil.contains(code)) {
+            alternative.setAlternativeText(Alternative.DILTIAZEM_VERAPAMIL);
+        } else if (cyp3A4Cache.dronedarone.contains(code)) {
+            alternative.setAlternativeText(Alternative.DRONEDARONE);
         }
 
-        if (cyp3A4Cache.erythromycin.contains(code.getCode())) {
-            alternative.setDrugName(code.getDisplay());
-            alternative.setDrugCode(code.getCode());
-            alternative.setAlternativeText(Alternative.CLARITHROMYCIN);
-            return alternative;
+        if (alternative.getAlternativeText() != null && !alternative.getAlternativeText().equals("")) {
+            alternative.setDrugName(display);
+            alternative.setDrugCode(code);
         }
-        if (cyp3A4Cache.diltiazemVerapamil.contains(code.getCode())) {
-            alternative.setDrugName(code.getDisplay());
-            alternative.setDrugCode(code.getCode());
-            alternative.setAlternativeText(Alternative.DILTIAZEM_VERAPAMIL);
-            return alternative;
-        }
-        if (cyp3A4Cache.dronedarone.contains(code.getCode())) {
-            alternative.setDrugName(code.getDisplay());
-            alternative.setDrugCode(code.getCode());
-            alternative.setAlternativeText(Alternative.DRONEDARONE);
-            return alternative;
-        }
+
         return alternative;
     }
 
     private Alternative suggestAlternatives(String patientId) {
-        List<MedicationStatement> medicationStatements = patientResources.get(patientId).get("medicationStatement");
-        List<MedicationRequest> medicationRequests = patientResources.get(patientId).get("medicationRequest");
-
         Alternative alternative = new Alternative();
+        if (appConfig.getFhirVersion().equals("r4")) {
+            List<MedicationStatement> medicationStatements = patientResources.get(patientId).get("medicationStatement");
+            List<MedicationRequest> medicationRequests = patientResources.get(patientId).get("medicationRequest");
 
-        for (MedicationStatement medicationStatement : medicationStatements) {
-            List<Coding> coding = ((CodeableConcept) medicationStatement.getMedication()).getCoding();
-            for (Coding code : coding) {
-                findAlternativeCode(alternative, code);
+            for (MedicationStatement medicationStatement : medicationStatements) {
+                List<Coding> coding = ((CodeableConcept) medicationStatement.getMedication()).getCoding();
+                for (Coding code : coding) {
+                    findAlternativeCode(alternative, code.getCode(), code.getDisplay());
+                }
             }
-        }
 
-        for (MedicationRequest medicationRequest : medicationRequests) {
-            List<Coding> coding = ((CodeableConcept) medicationRequest.getMedication()).getCoding();
-            for (Coding code : coding) {
-                findAlternativeCode(alternative, code);
+            for (MedicationRequest medicationRequest : medicationRequests) {
+                List<Coding> coding = ((CodeableConcept) medicationRequest.getMedication()).getCoding();
+                for (Coding code : coding) {
+                    findAlternativeCode(alternative, code.getCode(), code.getDisplay());
+                }
+            }
+        } else if (appConfig.getFhirVersion().equals("stu2")) {
+            List<ca.uhn.fhir.model.dstu2.resource.MedicationStatement> medicationStatements = patientResources.get(patientId).get("medicationStatement");
+            List<MedicationOrder> medicationRequests = patientResources.get(patientId).get("medicationRequest");
+
+            for (ca.uhn.fhir.model.dstu2.resource.MedicationStatement medicationStatement : medicationStatements) {
+                List<CodingDt> coding = ((CodeableConceptDt) medicationStatement.getMedication()).getCoding();
+                for (CodingDt code : coding) {
+                    findAlternativeCode(alternative, code.getCode(), code.getDisplay());
+                }
+            }
+
+            for (MedicationOrder medicationOrder : medicationRequests) {
+                List<CodingDt> coding = ((CodeableConceptDt) medicationOrder.getMedication()).getCoding();
+                for (CodingDt code : coding) {
+                    findAlternativeCode(alternative, code.getCode(), code.getDisplay());
+                }
             }
         }
 
@@ -346,12 +431,16 @@ public class CYP3A4Controller {
         }
     }
 
-    private Summary getSummary(List<RiskFactor> riskFactors, Coding colchicine, Alternative alternative) {
+    private Summary getSummary(List<RiskFactor> riskFactors, SimpleCode colchicine, Alternative alternative) {
         boolean AKI = false;
         boolean CKD = false;
         boolean eGFR = false;
 
         Summary summary = new Summary();
+        String clinicalSummaryDrug = "";
+        if (alternative.getDrugName() != null && alternative.getDrugName().equals("")) {
+            clinicalSummaryDrug = alternative.getDrugName().toLowerCase();
+        }
         if (alternative.getDrugCode() == null && colchicine == null) {
             summary.setSummary("Patient is not currently on a Colchicine or a CYP3A4/PGP inhibitor");
             summary.setClinicalSummary("Patient is not currently on a Colchicine or a CYP3A4/PGP inhibitor");
@@ -374,11 +463,11 @@ public class CYP3A4Controller {
 
         if (!AKI && !CKD && !eGFR) {
             summary.setSummary(warningSummary);
-            summary.setClinicalSummary("Colchicine is a substrate for cytochrome P450 3A4 (CYP3A4) and P-glycoprotein (P-gp). Fatal adverse events have been reported with concomitant use of colchicine with strong CYP3A4 or P-gp inhibitors. The medication [<b>" + alternative.getDrugName().toLowerCase() + "</b>] is one of these strong inhibitors (see the evidence summary below). <b>The risk of a serious adverse event might be reduced</b> by switching to a alternative drug that is not a strong inhibitor or stop colchicine (see the \"Alternative Options\" box). If switching is not an option, monitoring for colchicine toxicity might help avoid a potentially serious adverse event. Symptoms of colchicine toxicity range from mild (e.g., abdominal pain, diarrhea, nausea, vomiting) to moderate (e.g., muscle pain, muscle weakness) to fatal (e.g., cardiac failure, renal failure). A strong monitoring strategy would include advising the patient to monitor for these symptoms.");
+            summary.setClinicalSummary("Colchicine is a substrate for cytochrome P450 3A4 (CYP3A4) and P-glycoprotein (P-gp). Fatal adverse events have been reported with concomitant use of colchicine with strong CYP3A4 or P-gp inhibitors. The medication [<b>" + clinicalSummaryDrug + "</b>] is one of these strong inhibitors (see the evidence summary below). <b>The risk of a serious adverse event might be reduced</b> by switching to a alternative drug that is not a strong inhibitor or stop colchicine (see the \"Alternative Options\" box). If switching is not an option, monitoring for colchicine toxicity might help avoid a potentially serious adverse event. Symptoms of colchicine toxicity range from mild (e.g., abdominal pain, diarrhea, nausea, vomiting) to moderate (e.g., muscle pain, muscle weakness) to fatal (e.g., cardiac failure, renal failure). A strong monitoring strategy would include advising the patient to monitor for these symptoms.");
             summary.setWarningSymbol("Warning");
         } else {
             summary.setSummary(dangerSummary);
-            summary.setClinicalSummary("Colchicine is a substrate for cytochrome P450 3A4 (CYP3A4) and P-glycoprotein (P-gp). Fatal adverse events have been reported with concomitant use of colchicine with strong CYP3A4 or P-gp inhibitors. The medication [<b>" + alternative.getDrugName().toLowerCase() + "</b>] is one of these strong inhibitors. The risk of a  colchicine toxicity is greater in patients with poor renal function (see the evidence summary below). <b>The safest option would be to switch to a alternative drug that is not a strong inhibitor or stop colchicine (see the \"Alternative Options\" box)</b>. If switching is not an option, monitoring for colchicine toxicity might help avoid a potentially serious adverse event. Symptoms of colchicine toxicity range from mild (e.g., abdominal pain, diarrhea, nausea, vomiting) to moderate (e.g., muscle pain, muscle weakness) to fatal (e.g., cardiac failure, renal failure). A strong monitoring strategy would include advising the patient to monitor for these symptoms.");
+            summary.setClinicalSummary("Colchicine is a substrate for cytochrome P450 3A4 (CYP3A4) and P-glycoprotein (P-gp). Fatal adverse events have been reported with concomitant use of colchicine with strong CYP3A4 or P-gp inhibitors. The medication [<b>" + clinicalSummaryDrug + "</b>] is one of these strong inhibitors. The risk of a  colchicine toxicity is greater in patients with poor renal function (see the evidence summary below). <b>The safest option would be to switch to a alternative drug that is not a strong inhibitor or stop colchicine (see the \"Alternative Options\" box)</b>. If switching is not an option, monitoring for colchicine toxicity might help avoid a potentially serious adverse event. Symptoms of colchicine toxicity range from mild (e.g., abdominal pain, diarrhea, nausea, vomiting) to moderate (e.g., muscle pain, muscle weakness) to fatal (e.g., cardiac failure, renal failure). A strong monitoring strategy would include advising the patient to monitor for these symptoms.");
             summary.setWarningSymbol("Danger");
         }
 

@@ -231,7 +231,7 @@ public class LaunchController {
             sessionCacheService.addDstu2ConformanceToCache(conformanceUrl, conformance);
 
         }
-        if (appConfig.getFhirVersion().equals("r4")) {
+        else if (appConfig.getFhirVersion().equals("r4")) {
             CapabilityStatement conformance = sessionCacheService.getConformanceFromCache(conformanceUrl);
 
             if (conformance == null) {

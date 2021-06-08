@@ -71,11 +71,7 @@ public class STU2Service implements FHIRService {
             System.out.println("Medication Statement search url: " + searchUrl);
             Bundle response = client.search().byUrl(searchUrl).returnBundle(Bundle.class).execute();
             for (Bundle.Entry entryComponent : response.getEntry()) {
-
-                System.out.println("getResourceMetadata: "  + entryComponent.getResource().getResourceMetadata().toString());
-                System.out.println("Resource: "  + entryComponent.getResource().getContained().getContainedResources().get(0).toString());
-
-                medicationStatements.add((MedicationStatement) entryComponent.getResource().getContained().getContainedResources().get(0));
+                medicationStatements.add((MedicationStatement) entryComponent.getResource());
             }
         } catch (ResourceNotFoundException e) {
             //No medicationStatements for this patient was found
@@ -86,20 +82,20 @@ public class STU2Service implements FHIRService {
     }
 
     public List<MedicationOrder> getMedicationRequest(String patientId) {
-        List<MedicationOrder> medicationRequests = new ArrayList<>();
+        List<MedicationOrder> medicationOrders = new ArrayList<>();
         try {
-            String searchUrl = appConfig.getFhirUrl() + "/MedicationRequest?patient=" + patientId;
+            String searchUrl = appConfig.getFhirUrl() + "/MedicationOrder?patient=" + patientId;
             System.out.println("Medication Request search url: " + searchUrl);
             Bundle response = client.search().byUrl(searchUrl).returnBundle(Bundle.class).execute();
             for (Bundle.Entry entryComponent : response.getEntry()) {
-                medicationRequests.add((MedicationOrder) entryComponent.getResource());
+                medicationOrders.add((MedicationOrder) entryComponent.getResource());
             }
         } catch (ResourceNotFoundException e) {
-            //No medicationRequests for this patient was found
+            //No medicationOrders for this patient was found
         } catch (InvalidRequestException e) {
-            //No medicationRequests for this patient was found
+            //No medicationOrders for this patient was found
         }
-        return medicationRequests;
+        return medicationOrders;
     }
 
     public List<Observation> getObservations(String patientId) {
