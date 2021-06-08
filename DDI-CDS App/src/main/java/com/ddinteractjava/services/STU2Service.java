@@ -81,6 +81,7 @@ public class STU2Service implements FHIRService {
         List<MedicationOrder> medicationRequests = new ArrayList<>();
         try {
             String searchUrl = appConfig.getFhirUrl() + "/MedicationRequest?patient=" + patientId;
+            System.out.println("Medication Request search url: " + searchUrl);
             Bundle response = client.search().byUrl(searchUrl).returnBundle(Bundle.class).execute();
             for (Bundle.Entry entryComponent : response.getEntry()) {
                 medicationRequests.add((MedicationOrder) entryComponent.getResource());
