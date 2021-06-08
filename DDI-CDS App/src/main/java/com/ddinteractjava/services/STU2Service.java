@@ -70,8 +70,10 @@ public class STU2Service implements FHIRService {
             String searchUrl = appConfig.getFhirUrl() + "/MedicationStatement?patient=" + patientId;
             System.out.println("Medication Statement search url: " + searchUrl);
             Bundle response = client.search().byUrl(searchUrl).returnBundle(Bundle.class).execute();
-            for (Bundle.Entry entryComponent : response.getEntry()) {
-                medicationStatements.add((MedicationStatement) entryComponent.getResource());
+            if (response.getTotal() > 0) {
+                for (Bundle.Entry entryComponent : response.getEntry()) {
+                    medicationStatements.add((MedicationStatement) entryComponent.getResource());
+                }
             }
         } catch (ResourceNotFoundException e) {
             //No medicationStatements for this patient was found
@@ -87,8 +89,10 @@ public class STU2Service implements FHIRService {
             String searchUrl = appConfig.getFhirUrl() + "/MedicationOrder?patient=" + patientId;
             System.out.println("Medication Request search url: " + searchUrl);
             Bundle response = client.search().byUrl(searchUrl).returnBundle(Bundle.class).execute();
-            for (Bundle.Entry entryComponent : response.getEntry()) {
-                medicationOrders.add((MedicationOrder) entryComponent.getResource());
+            if (response.getTotal() > 0) {
+                for (Bundle.Entry entryComponent : response.getEntry()) {
+                    medicationOrders.add((MedicationOrder) entryComponent.getResource());
+                }
             }
         } catch (ResourceNotFoundException e) {
             //No medicationOrders for this patient was found
@@ -104,8 +108,10 @@ public class STU2Service implements FHIRService {
             String searchUrl = appConfig.getFhirUrl() + "/Observation?patient=" + patientId;
             System.out.println("Observation search url: " + searchUrl);
             Bundle response = client.search().byUrl(searchUrl).returnBundle(Bundle.class).execute();
-            for (Bundle.Entry entryComponent : response.getEntry()) {
-                observations.add((Observation) entryComponent.getResource());
+            if (response.getTotal() > 0) {
+                for (Bundle.Entry entryComponent : response.getEntry()) {
+                    observations.add((Observation) entryComponent.getResource());
+                }
             }
         } catch (ResourceNotFoundException e) {
             //No observation for this patient was found
@@ -121,8 +127,10 @@ public class STU2Service implements FHIRService {
             String searchUrl = appConfig.getFhirUrl() + "/Condition?patient=" + patientId;
             System.out.println("Condition search url: " + searchUrl);
             Bundle response = client.search().byUrl(searchUrl).returnBundle(Bundle.class).execute();
-            for (Bundle.Entry entryComponent : response.getEntry()) {
-                conditions.add((Condition) entryComponent.getResource());
+            if (response.getTotal() > 0) {
+                for (Bundle.Entry entryComponent : response.getEntry()) {
+                    conditions.add((Condition) entryComponent.getResource());
+                }
             }
         } catch (ResourceNotFoundException e) {
             //No condition for this patient was found
