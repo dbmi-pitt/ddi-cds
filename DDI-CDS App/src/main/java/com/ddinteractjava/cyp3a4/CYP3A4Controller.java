@@ -108,17 +108,17 @@ public class CYP3A4Controller {
 
     private void getPatientResources(String patientId) {
         if (!patientResources.containsKey(patientId)) {
-            List<MedicationStatement> medicationStatements = fhirServiceMap.get(appConfig.getFhirVersion()).getMedicationStatements(patientId);
+//            List<MedicationStatement> medicationStatements = fhirServiceMap.get(appConfig.getFhirVersion()).getMedicationStatements(patientId);
             List<MedicationRequest> medicationRequests = fhirServiceMap.get(appConfig.getFhirVersion()).getMedicationRequest(patientId);
             List<Observation> observations = fhirServiceMap.get(appConfig.getFhirVersion()).getObservations(patientId);
             List<Condition> conditions = fhirServiceMap.get(appConfig.getFhirVersion()).getConditions(patientId);
 
             Map<String, List> resources = new HashMap<>();
-            resources.put("medicationStatement", medicationStatements);
+//            resources.put("medicationStatement", medicationStatements);
             resources.put("medicationRequest", medicationRequests);
             resources.put("observation", observations);
             resources.put("condition", conditions);
-            if (medicationStatements.isEmpty() && medicationRequests.isEmpty() && observations.isEmpty() && conditions.isEmpty()) {
+            if ( medicationRequests.isEmpty() && observations.isEmpty() && conditions.isEmpty()) {
                 //Something could have gone wrong when trying to get patient resources, don't want to cache it
             } else {
                 patientResources.put(patientId, resources);
