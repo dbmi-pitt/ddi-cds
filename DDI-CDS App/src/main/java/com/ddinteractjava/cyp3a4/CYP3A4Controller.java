@@ -108,13 +108,13 @@ public class CYP3A4Controller {
 
     private void getPatientResources(String patientId) {
         if (!patientResources.containsKey(patientId)) {
-//            List<MedicationStatement> medicationStatements = fhirServiceMap.get(appConfig.getFhirVersion()).getMedicationStatements(patientId);
+            List<MedicationStatement> medicationStatements = fhirServiceMap.get(appConfig.getFhirVersion()).getMedicationStatements(patientId);
             List<MedicationRequest> medicationRequests = fhirServiceMap.get(appConfig.getFhirVersion()).getMedicationRequest(patientId);
             List<Observation> observations = fhirServiceMap.get(appConfig.getFhirVersion()).getObservations(patientId);
             List<Condition> conditions = fhirServiceMap.get(appConfig.getFhirVersion()).getConditions(patientId);
 
             Map<String, List> resources = new HashMap<>();
-//            resources.put("medicationStatement", medicationStatements);
+            resources.put("medicationStatement", medicationStatements);
             resources.put("medicationRequest", medicationRequests);
             resources.put("observation", observations);
             resources.put("condition", conditions);
@@ -293,12 +293,12 @@ public class CYP3A4Controller {
 
         Alternative alternative = new Alternative();
 
-//        for (MedicationStatement medicationStatement : medicationStatements) {
-//            List<Coding> coding = ((CodeableConcept) medicationStatement.getMedication()).getCoding();
-//            for (Coding code : coding) {
-//                findAlternativeCode(alternative, code);
-//            }
-//        }
+        for (MedicationStatement medicationStatement : medicationStatements) {
+            List<Coding> coding = ((CodeableConcept) medicationStatement.getMedication()).getCoding();
+            for (Coding code : coding) {
+                findAlternativeCode(alternative, code);
+            }
+        }
 
         for (MedicationRequest medicationRequest : medicationRequests) {
             List<Coding> coding = ((CodeableConcept) medicationRequest.getMedication()).getCoding();
