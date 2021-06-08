@@ -7,7 +7,7 @@ import ca.uhn.fhir.rest.api.EncodingEnum;
 import ca.uhn.fhir.rest.client.api.IClientInterceptor;
 import ca.uhn.fhir.rest.client.api.IGenericClient;
 import ca.uhn.fhir.rest.client.interceptor.BearerTokenAuthInterceptor;
-import ca.uhn.fhir.rest.server.exceptions.InvalidRequestException;
+import ca.uhn.fhir.rest.server.exceptions.ResourceNotFoundException;
 import com.ddinteractjava.config.AppConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,7 +71,7 @@ public class STU2Service implements FHIRService {
             for (Bundle.Entry entryComponent : response.getEntry()) {
                 medicationStatements.add((MedicationStatement) entryComponent.getResource());
             }
-        } catch (InvalidRequestException e) {
+        } catch (ResourceNotFoundException e) {
             //No medicationstatement for this patient was found
         }
         return medicationStatements;
@@ -86,7 +86,7 @@ public class STU2Service implements FHIRService {
             for (Bundle.Entry entryComponent : response.getEntry()) {
                 medicationRequests.add((MedicationOrder) entryComponent.getResource());
             }
-        } catch (InvalidRequestException e) {
+        } catch (ResourceNotFoundException e) {
             //No medicationrequest for this patient was found
         }
         return medicationRequests;
@@ -100,7 +100,7 @@ public class STU2Service implements FHIRService {
             for (Bundle.Entry entryComponent : response.getEntry()) {
                 observations.add((Observation) entryComponent.getResource());
             }
-        } catch (InvalidRequestException e) {
+        } catch (ResourceNotFoundException e) {
             //No observation for this patient was found
         }
         return observations;
@@ -114,7 +114,7 @@ public class STU2Service implements FHIRService {
             for (Bundle.Entry entryComponent : response.getEntry()) {
                 conditions.add((Condition) entryComponent.getResource());
             }
-        } catch (InvalidRequestException e) {
+        } catch (ResourceNotFoundException e) {
             //No condition for this patient was found
         }
         return conditions;
