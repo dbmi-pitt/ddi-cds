@@ -1,5 +1,6 @@
 package com.ddinteractjava.services;
 
+import ca.uhn.fhir.model.dstu2.resource.Conformance;
 import com.ddinteractjava.model.OauthToken;
 import org.hl7.fhir.r4.model.CapabilityStatement;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,23 @@ public class SessionCacheService {
 
     @Autowired
     SimpleCacheManager simpleCacheManager;
+
+    public void addDstu2ConformanceToCache(String state, Conformance conformance) {
+        Assert.notNull(state, "state cannot be null.");
+        Assert.notNull(conformance, "conformance cannot be null.");
+        simpleCacheManager.getCache(CONFORMANCE_CACHE_NAME).put(state, conformance);
+    }
+
+    public Conformance getDstu2ConformanceFromCache(String serviceUrl) {
+        Assert.notNull(serviceUrl, "serviceUrl cannot be null.");
+        Cache.ValueWrapper wrapper = simpleCacheManager.getCache(CONFORMANCE_CACHE_NAME).get(serviceUrl);
+        if (wrapper == null) {
+            return null;
+        } else {
+            return (Conformance) wrapper.get();
+        }
+    }
+
 
     public void addConformanceToCache(String state, CapabilityStatement conformance) {
         Assert.notNull(state, "state cannot be null.");

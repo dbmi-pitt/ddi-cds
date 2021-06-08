@@ -1,5 +1,7 @@
 package com.ddinteractjava.controllers;
 
+import ca.uhn.fhir.model.api.ExtensionDt;
+import ca.uhn.fhir.model.dstu2.resource.Conformance;
 import com.ddinteractjava.config.AppConfig;
 import com.ddinteractjava.model.OauthToken;
 import com.ddinteractjava.services.FHIRService;
@@ -177,7 +179,7 @@ public class LaunchController {
                         (String) tokenData.get("patient"),
                         new Date());
 
-                if(appConfig.getStaticToken() == null) {
+                if (appConfig.getStaticToken() == null) {
                     fhirServiceMap.get(appConfig.getFhirVersion()).addBearerToken((String) tokenData.get("access_token"));
                 }
                 sessionCacheService.addTokenToCache(requestParameterMap.get("state")[0], httpServletRequest.getRemoteAddr(), token);
@@ -209,30 +211,52 @@ public class LaunchController {
             conformanceUrl = iss;
         }
 
-        CapabilityStatement conformance = sessionCacheService.getConformanceFromCache(conformanceUrl);
+        if (appConfig.getFhirVersion().equals("stu2")) {
+            Conformance conformance = sessionCacheService.getDstu2ConformanceFromCache(conformanceUrl);
 
-
-        if (conformance == null) {
-            conformance = fhirServiceMap.get(appConfig.getFhirVersion()).getClient().capabilities().ofType(CapabilityStatement.class).execute();
-        }
-
-
-        /**
-         * Has authorize and token keys.
-         */
-        oAuthUrls.putAll(readOAuth2Urls(conformance));
-        for (Map.Entry<String, String> entry : oAuthUrls.entrySet()) {
-            if (entry.getValue().startsWith("/")) {
-                oAuthUrls.put(entry.getKey(), aud + entry.getValue());
+            if (conformance == null) {
+                conformance = fhirServiceMap.get(appConfig.getFhirVersion()).getClient().capabilities().ofType(Conformance.class).execute();
             }
+
+            /**
+             * Has authorize and token keys.
+             */
+            oAuthUrls.putAll(readDstu2OAuth2Urls(conformance));
+            for (Map.Entry<String, String> entry : oAuthUrls.entrySet()) {
+                if (entry.getValue().startsWith("/")) {
+                    oAuthUrls.put(entry.getKey(), aud + entry.getValue());
+                }
+            }
+
+            oAuthUrls.put("serviceUrl", conformanceUrl);
+            sessionCacheService.addDstu2ConformanceToCache(conformanceUrl, conformance);
+
+        }
+        if (appConfig.getFhirVersion().equals("r4")) {
+            CapabilityStatement conformance = sessionCacheService.getConformanceFromCache(conformanceUrl);
+
+            if (conformance == null) {
+                conformance = fhirServiceMap.get(appConfig.getFhirVersion()).getClient().capabilities().ofType(CapabilityStatement.class).execute();
+            }
+
+            /**
+             * Has authorize and token keys.
+             */
+            oAuthUrls.putAll(readOAuth2Urls(conformance));
+            for (Map.Entry<String, String> entry : oAuthUrls.entrySet()) {
+                if (entry.getValue().startsWith("/")) {
+                    oAuthUrls.put(entry.getKey(), aud + entry.getValue());
+                }
+            }
+
+            if (conformance.getImplementation().hasUrl() && !conformance.getImplementation().getUrl().endsWith("metadata")) {
+                oAuthUrls.put("serviceUrl", conformance.getImplementation().getUrl());
+            } else {
+                oAuthUrls.put("serviceUrl", conformanceUrl);
+            }
+            sessionCacheService.addConformanceToCache(conformanceUrl, conformance);
         }
 
-        if (conformance.getImplementation().hasUrl() && !conformance.getImplementation().getUrl().endsWith("metadata")) {
-            oAuthUrls.put("serviceUrl", conformance.getImplementation().getUrl());
-        } else {
-            oAuthUrls.put("serviceUrl", conformanceUrl);
-        }
-        sessionCacheService.addConformanceToCache(conformanceUrl, conformance);
     }
 
     /**
@@ -247,6 +271,19 @@ public class LaunchController {
         //For OMOPonFHIR the authorize and token URLs are located here
         List<Extension> extensionList = metadata.getRest().get(0).getSecurity().getExtension().get(0).getExtension();
         for (Extension extension : extensionList) {
+            if (extension.getUrl().equals("authorize") || extension.getUrl().equals("token")) {
+                conformance.put(extension.getUrl(), ((PrimitiveType) extension.getValue()).asStringValue());
+            }
+        }
+        return conformance;
+    }
+
+    protected Map readDstu2OAuth2Urls(Conformance metadata) {
+        Map<String, String> conformance = new HashMap();
+
+        //For OMOPonFHIR the authorize and token URLs are located here
+        List<ExtensionDt> extensionDtList = metadata.getRest().get(0).getSecurity().getUndeclaredExtensions();
+        for (ExtensionDt extension : extensionDtList) {
             if (extension.getUrl().equals("authorize") || extension.getUrl().equals("token")) {
                 conformance.put(extension.getUrl(), ((PrimitiveType) extension.getValue()).asStringValue());
             }
