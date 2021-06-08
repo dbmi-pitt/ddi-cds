@@ -179,6 +179,7 @@ public class LaunchController {
                         new Date());
 
                 if (appConfig.getStaticToken() == null) {
+                    System.out.println("Bearer token: " + tokenData.get("access_token"));
                     fhirServiceMap.get(appConfig.getFhirVersion()).addBearerToken((String) tokenData.get("access_token"));
                 }
                 sessionCacheService.addTokenToCache(requestParameterMap.get("state")[0], httpServletRequest.getRemoteAddr(), token);
