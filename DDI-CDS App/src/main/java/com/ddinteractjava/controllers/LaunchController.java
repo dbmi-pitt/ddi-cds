@@ -2,9 +2,9 @@ package com.ddinteractjava.controllers;
 
 import com.ddinteractjava.config.AppConfig;
 import com.ddinteractjava.model.OauthToken;
-import com.ddinteractjava.services.R4Service;
-import com.ddinteractjava.services.SessionCacheService;
+import com.ddinteractjava.services.FHIRService;
 import com.ddinteractjava.services.RestTemplateService;
+import com.ddinteractjava.services.SessionCacheService;
 import org.hl7.fhir.r4.model.CapabilityStatement;
 import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.PrimitiveType;
@@ -38,8 +38,11 @@ public class LaunchController {
     @Autowired
     private SessionCacheService sessionCacheService;
 
-    @Autowired
-    private R4Service r4Service;
+    private final Map<String, FHIRService> fhirServiceMap;
+
+    LaunchController(Map<String, FHIRService> fhirServiceMap) {
+        this.fhirServiceMap = fhirServiceMap;
+    }
 
     private Map<String, String> oAuthUrls = new HashMap<>();
 
@@ -175,7 +178,7 @@ public class LaunchController {
                         new Date());
 
                 if(appConfig.getStaticToken() == null) {
-                    r4Service.addBearerToken((String) tokenData.get("access_token"));
+                    fhirServiceMap.get(appConfig.getFhirVersion()).addBearerToken((String) tokenData.get("access_token"));
                 }
                 sessionCacheService.addTokenToCache(requestParameterMap.get("state")[0], httpServletRequest.getRemoteAddr(), token);
 
@@ -210,7 +213,7 @@ public class LaunchController {
 
 
         if (conformance == null) {
-            conformance = r4Service.client.capabilities().ofType(CapabilityStatement.class).execute();
+            conformance = fhirServiceMap.get(appConfig.getFhirVersion()).getClient().capabilities().ofType(CapabilityStatement.class).execute();
         }
 
 

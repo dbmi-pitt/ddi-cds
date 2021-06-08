@@ -6,8 +6,9 @@ from requests.packages.urllib3.util.retry import Retry
 import requests
 import json
 import csv
+FILE_PATH = "/Users/maxsibilla/Documents/Dev/ddi-cds/valueset/CYP3A4/"
 
-FILE_PATH = "FILEPATH_TO_DIRECTORY"
+# FILE_PATH = "FILEPATH_TO_DIRECTORY"
 
 # A user can put "force" at the end of "ingredient.csv" to recreate all cache files and the ValueSet
 force = False

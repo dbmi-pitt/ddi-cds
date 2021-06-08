@@ -1,9 +1,10 @@
 package com.ddinteractjava.config;
 
 
+import com.ddinteractjava.services.R4Service;
+import com.ddinteractjava.services.STU2Service;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cache.Cache;
 import org.springframework.cache.concurrent.ConcurrentMapCache;
@@ -18,6 +19,8 @@ import java.util.List;
 @Configuration
 @ConfigurationProperties(prefix = "app")
 public class AppConfig {
+
+    private String fhirVersion;
 
     private String clientId;
 
@@ -45,6 +48,13 @@ public class AppConfig {
 
     private String vsacApiKey;
 
+    public String getFhirVersion() {
+        return fhirVersion;
+    }
+
+    public void setFhirVersion(String fhirVersion) {
+        this.fhirVersion = fhirVersion;
+    }
 
     public String getClientId() {
         return clientId;
@@ -166,6 +176,16 @@ public class AppConfig {
     public Gson gson() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         return gsonBuilder.setPrettyPrinting().create();
+    }
+
+    @Bean("stu2")
+    STU2Service stu2Service() {
+        return new STU2Service();
+    }
+
+    @Bean("r4")
+    R4Service r4Service() {
+        return new R4Service();
     }
 
 }

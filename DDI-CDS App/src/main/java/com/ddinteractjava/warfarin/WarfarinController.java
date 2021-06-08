@@ -1,12 +1,10 @@
 package com.ddinteractjava.warfarin;
 
 
-import com.ddinteractjava.model.OauthToken;
 import com.ddinteractjava.config.AppConfig;
+import com.ddinteractjava.model.OauthToken;
 import com.ddinteractjava.services.CDSService;
-import com.ddinteractjava.services.R4Service;
 import com.ddinteractjava.services.SessionCacheService;
-import org.hl7.fhir.r4.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class WarfarinController {
@@ -24,8 +23,6 @@ public class WarfarinController {
     @Autowired
     private AppConfig appConfig;
 
-    @Autowired
-    private R4Service r4Service;
 
     @Autowired
     SessionCacheService sessionCacheService;
@@ -69,7 +66,6 @@ public class WarfarinController {
 
         model.addObject("title", "Colchicine - CYP3A4/PGP inhibitor (DRUGX) interaction");
 
-        Patient patient = r4Service.getPatient("1498");
         return model;
     }
 

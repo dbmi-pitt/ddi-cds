@@ -2,13 +2,13 @@ package com.ddinteractjava.cyp3a4;
 
 import com.ddinteractjava.config.AppConfig;
 import com.ddinteractjava.config.CYP3A4Config;
+import com.ddinteractjava.model.Alternative;
 import com.ddinteractjava.model.OauthToken;
 import com.ddinteractjava.model.RiskFactor;
 import com.ddinteractjava.model.Summary;
-import com.ddinteractjava.services.*;
-import com.ddinteractjava.model.Alternative;
-import com.ddinteractjava.services.*;
-import com.google.gson.JsonObject;
+import com.ddinteractjava.services.CDSService;
+import com.ddinteractjava.services.FHIRService;
+import com.ddinteractjava.services.SessionCacheService;
 import org.hl7.fhir.r4.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -44,8 +44,11 @@ public class CYP3A4Controller {
     @Autowired
     private CYP3A4Cache cyp3A4Cache;
 
-    @Autowired
-    private R4Service r4Service;
+    private final Map<String, FHIRService> fhirServiceMap;
+
+    CYP3A4Controller(Map<String, FHIRService> fhirServiceMap) {
+        this.fhirServiceMap = fhirServiceMap;
+    }
 
     @Autowired
     SessionCacheService sessionCacheService;
@@ -105,10 +108,10 @@ public class CYP3A4Controller {
 
     private void getPatientResources(String patientId) {
         if (!patientResources.containsKey(patientId)) {
-            List<MedicationStatement> medicationStatements = r4Service.getMedicationStatements(patientId);
-            List<MedicationRequest> medicationRequests = r4Service.getMedicationRequest(patientId);
-            List<Observation> observations = r4Service.getObservations(patientId);
-            List<Condition> conditions = r4Service.getConditions(patientId);
+            List<MedicationStatement> medicationStatements = fhirServiceMap.get(appConfig.getFhirVersion()).getMedicationStatements(patientId);
+            List<MedicationRequest> medicationRequests = fhirServiceMap.get(appConfig.getFhirVersion()).getMedicationRequest(patientId);
+            List<Observation> observations = fhirServiceMap.get(appConfig.getFhirVersion()).getObservations(patientId);
+            List<Condition> conditions = fhirServiceMap.get(appConfig.getFhirVersion()).getConditions(patientId);
 
             Map<String, List> resources = new HashMap<>();
             resources.put("medicationStatement", medicationStatements);

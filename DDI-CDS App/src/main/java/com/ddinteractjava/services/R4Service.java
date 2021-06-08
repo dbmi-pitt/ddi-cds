@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class R4Service {
+public class R4Service implements FHIRService{
     public IGenericClient client;
 
     @Autowired
@@ -36,6 +36,10 @@ public class R4Service {
          if (appConfig.getStaticToken() != null) {
             addBearerToken(appConfig.getStaticToken());
         }
+    }
+
+    public IGenericClient getClient() {
+        return client;
     }
 
     public void addBearerToken(String token) {
