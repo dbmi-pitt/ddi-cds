@@ -72,10 +72,10 @@ public class STU2Service implements FHIRService {
             Bundle response = client.search().byUrl(searchUrl).returnBundle(Bundle.class).execute();
             for (Bundle.Entry entryComponent : response.getEntry()) {
 
-                System.out.println("Response: "  + entryComponent.getResponse().toString());
-                System.out.println("Resource: "  + entryComponent.getResource().toString());
+                System.out.println("getResourceMetadata: "  + entryComponent.getResource().getResourceMetadata().toString());
+                System.out.println("Resource: "  + entryComponent.getResource().getContained().getContainedResources().get(0).toString());
 
-                medicationStatements.add((MedicationStatement) entryComponent.getResource());
+                medicationStatements.add((MedicationStatement) entryComponent.getResource().getContained().getContainedResources().get(0));
             }
         } catch (ResourceNotFoundException e) {
             //No medicationStatements for this patient was found
