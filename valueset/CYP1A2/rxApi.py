@@ -6,7 +6,7 @@ from requests.packages.urllib3.util.retry import Retry
 import requests
 import json
 import csv
-FILE_PATH = "/Users/maxsibilla/Documents/Dev/ddi-cds/valueset/CYP3A4/"
+FILE_PATH = "/Users/maxsibilla/Documents/Dev/ddi-cds/valueset/CYP1A2/"
 
 # FILE_PATH = "FILEPATH_TO_DIRECTORY"
 
@@ -132,17 +132,17 @@ if len(drug_names) > 0:
 # Create ValueSet based on dictionary
 valueset = {}
 valueset["resourceType"] = "ValueSet"
-valueset["id"] = "valueset-cyp3a4"
+valueset["id"] = "valueset-cyp1a2"
 valueset["version"] = "US 1.1"
-valueset["name"] = "valueset-cyp3a4"
-valueset["title"] = "CYP3A4 Inhibitor Value Set"
-valueset["url"] = "http://localhost:8080/cqf-ruler-r4/fhir/ValueSet/valueset-cyp3a4"
+valueset["name"] = "valueset-cyp1a2"
+valueset["title"] = "CYP1A2 Inhibitor Value Set"
+valueset["url"] = "http://localhost:8080/cqf-ruler-r4/fhir/ValueSet/valueset-cyp1a2"
 valueset["status"] = "draft"
 valueset["date"] = today.strftime("%Y-%m-%d")
 valueset["publisher"] = "University of Pittsburgh Department of Biomedical Informatics"
 valueset["contact"] = [{"name": "Richard Boyce rdb20@pitt.edu"}]
 valueset[
-    "description"] = "RxNorm semantic clinical drug and semantic branded drug concepts for drugs that inhibit Cytochrome P450 3A4 (CYP3A4) as evidenced by changes of >= 2.0 in CYP3A4 probe substrates."
+    "description"] = "RxNorm semantic clinical drug and semantic branded drug concepts for drugs that inhibit Cytochrome P450 (CYP) 1A2."
 valueset["jurisdiction"] = [{
     "coding": [{
         "system": "urn:iso:std:iso:3166",
@@ -150,7 +150,7 @@ valueset["jurisdiction"] = [{
         "display": "United States of America"
     }]
 }]
-valueset["purpose"] = "Provide terminology for PDDI CDS (CYP3A4 Inhibitors) FHIR resources"
+valueset["purpose"] = "Provide terminology for PDDI CDS (CYP1A2 Inhibitors) FHIR resources"
 valueset["copyright"] = "Attribution CC BY"
 valueset["compose"] = {
     "include": [{
@@ -161,6 +161,7 @@ valueset["compose"] = {
 }
 
 for key in scd_json:
+    print(key)
     concept = {}
     concept["code"] = key
     concept["display"] = scd_json[key]["name"]
@@ -170,24 +171,24 @@ json_object = json.dumps(valueset)
 print(json_object)
 
 # PUT ValueSet to CQF-Ruler
-try:
-    headers = {'Content-type': 'application/fhir+json;charset=utf-8'}
-    response = requests.put("https://cds.ddi-cds.org/cqf-ruler-r4/fhir/ValueSet/valueset-cyp3a4", data=json_object,
-                            headers=headers)
-    if response.status_code == 200:
-        with open(FILE_PATH + "status.txt", 'a') as f:
-            f.write(dt_string + ": ValueSet was successfully updated.\n")
-
-        # Check if this was a forced recreation, if so then at this point everything was done
-        # correctly so remove that from ingredient.csv
-        if force:
-            with open(FILE_PATH + "ingredient.csv", "w") as outfile:
-                outfile.write(",\n".join(drug_names))
-    else:
-        response_data = json.loads(response.content)
-        with open(FILE_PATH + "status.txt", 'a') as f:
-            f.write(dt_string + ": Could not successfully PUT ValueSet: " + response_data + "\n")
-except Exception as e:
-    error_string = repr(e)
-    with open(FILE_PATH + "status.txt", 'a') as f:
-        f.write(dt_string + ": Failed to update ValueSet: " + error_string + "\n")
+# try:
+#     headers = {'Content-type': 'application/fhir+json;charset=utf-8'}
+#     response = requests.put("https://cds.ddi-cds.org/cqf-ruler-r4/fhir/ValueSet/valueset-cyp1a2", data=json_object,
+#                             headers=headers)
+#     if response.status_code == 200:
+#         with open(FILE_PATH + "status.txt", 'a') as f:
+#             f.write(dt_string + ": ValueSet was successfully updated.\n")
+#
+#         # Check if this was a forced recreation, if so then at this point everything was done
+#         # correctly so remove that from ingredient.csv
+#         if force:
+#             with open(FILE_PATH + "ingredient.csv", "w") as outfile:
+#                 outfile.write(",\n".join(drug_names))
+#     else:
+#         response_data = json.loads(response.content)
+#         with open(FILE_PATH + "status.txt", 'a') as f:
+#             f.write(dt_string + ": Could not successfully PUT ValueSet: " + response_data + "\n")
+# except Exception as e:
+#     error_string = repr(e)
+#     with open(FILE_PATH + "status.txt", 'a') as f:
+#         f.write(dt_string + ": Failed to update ValueSet: " + error_string + "\n")
