@@ -22,8 +22,11 @@ public class CDSService {
     @Autowired
     private AppConfig appConfig;
 
-    @Autowired
-    private R4Service r4Service;
+    private final Map<String, FHIRService> fhirServiceMap;
+
+    CDSService(Map<String, FHIRService> fhirServiceMap) {
+        this.fhirServiceMap = fhirServiceMap;
+    }
 
     final JsonParser parser = new JsonParser();
 
@@ -85,7 +88,7 @@ public class CDSService {
         context.put("patientId", patientId);
         cdsPostBody.setContext(context);
 
-        String prefetch = r4Service.getPrefetch(patientId);
+        String prefetch =  fhirServiceMap.get(appConfig.getFhirVersion()).getPrefetch(patientId);
         cdsPostBody.setPrefetch(parser.parse(prefetch));
 
         String json = appConfig.gson().toJson(cdsPostBody);

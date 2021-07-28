@@ -6,8 +6,9 @@ from requests.packages.urllib3.util.retry import Retry
 import requests
 import json
 import csv
+FILE_PATH = "/Users/maxsibilla/Documents/Dev/ddi-cds/valueset/CYP3A4/"
 
-FILE_PATH = "FILEPATH_TO_DIRECTORY"
+# FILE_PATH = "FILEPATH_TO_DIRECTORY"
 
 # A user can put "force" at the end of "ingredient.csv" to recreate all cache files and the ValueSet
 force = False
@@ -135,7 +136,7 @@ valueset["id"] = "valueset-cyp3a4"
 valueset["version"] = "US 1.1"
 valueset["name"] = "valueset-cyp3a4"
 valueset["title"] = "CYP3A4 Inhibitor Value Set"
-valueset["url"] = "http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-cyp3a4"
+valueset["url"] = "http://localhost:8080/cqf-ruler-r4/fhir/ValueSet/valueset-cyp3a4"
 valueset["status"] = "draft"
 valueset["date"] = today.strftime("%Y-%m-%d")
 valueset["publisher"] = "University of Pittsburgh Department of Biomedical Informatics"

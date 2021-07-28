@@ -1,5 +1,7 @@
 start=2018-01-01
 end=2018-06-30
+#start=2019-01-01
+#end=2019-01-03
 mkdir custom-run
 
 while ! [[ $start > $end ]]; do
