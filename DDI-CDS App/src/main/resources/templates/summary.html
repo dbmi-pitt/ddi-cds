@@ -7,7 +7,7 @@
             <h2 th:case="Danger"><span class="badge badge-danger">Danger</span></h2>
         </div>
 
-        <p id="summary-body" th:text="${summary.getSummary()}"></p>
+        <div id="summary-body" th:utext="${summary.getSummary()}"></div>
 
 
     </div>

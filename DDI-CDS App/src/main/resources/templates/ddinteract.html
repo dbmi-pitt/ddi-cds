@@ -10,14 +10,17 @@
 <div class="container-fluid">
     <div class="row mb-4">
         <div class="col-lg-6 col-12">
-            <div th:replace="risk-factors" th:with="riskFactors=${riskFactors}, serumCreatinineEGFR=${serumCreatinineEGFR}, alternative=${alternative}"/>
-            <div th:replace="clinical-explanation" th:with="summary=${summary}"/>
+            <div th:replace="risk-factors"
+                 th:with="patientName=${patientName}, riskFactors=${riskFactors}, serumCreatinineEGFR=${serumCreatinineEGFR},
+                 alternative=${alternative},  colchicine=${colchicine}"/>
+            <div th:replace="alternativeOptions" th:with="alternative=${alternative}, colchicine=${colchicine}"/>
+
         </div>
 
         <div class="col-lg-6 col-12">
             <div th:replace="summary" th:with="summary=${summary}"/>
+            <div th:replace="clinical-explanation" th:with="summary=${summary}"/>
 
-            <div th:replace="alternativeOptions" th:with="alternative=${alternative}, colchicine=${colchicine}"/>
         </div>
     </div>
 

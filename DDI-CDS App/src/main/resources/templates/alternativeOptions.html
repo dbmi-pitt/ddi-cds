@@ -1,32 +1,15 @@
-<div class="card">
-    <h5 class="card-header">Alternative Options</h5>
-    <div class="card-body scroll">
-        <p th:utext="${alternative.getAlternativeText()}"></p>
-
-        <div th:switch="${colchicine != null}">
-            <div th:case="true">
-                <p>
-                    <span>The patient is currently taking</span>
-                    <span class="font-weight-bold" th:text="${#strings.toLowerCase(colchicine.getDisplay())}"></span>
-                </p>
-            </div>
-            <div th:case="false">
-                <p>
-                    <span class="font-weight-bold">This patient is not currently on a Colchicine.</span>
-                </p>
-            </div>
+<div class="mb-4" id="alternative-options">
+    <div class="card">
+        <div class="card-header">
+            <a class="card-link" data-toggle="collapse" href="#alternative-collapse">
+                <h5 class="accordion-header">Alternative Options</h5>
+            </a>
         </div>
 
-        <div th:switch="${alternative.getDrugName() != null}">
-            <p th:case="true">
-                <span>The medication</span>
-                [<span class="font-weight-bold" th:text="${#strings.toLowerCase(alternative.getDrugName())}"></span>]
-                <span>will interact with colchicine by inhibition of CYP3A4/PGP.</span>
-            </p>
-            <p th:case="false">
-                <span class="font-weight-bold">No CYP3A4/PGP inhibitor was found.</span>
-            </p>
+        <div id="alternative-collapse" class="collapse" data-parent="#alternative-options">
+            <div class="card-body scroll">
+               <p th:utext="${alternative.getAlternativeText()}"></p>
+            </div>
         </div>
-
     </div>
 </div>

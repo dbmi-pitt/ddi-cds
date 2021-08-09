@@ -22,7 +22,7 @@
     justify-content: center;
 }
 
-.card-body{
+.card-body {
     overflow-x: scroll;
 }
 
@@ -102,4 +102,8 @@ table.dataTable thead th, table.dataTable thead td {
 input:disabled {
     color: -internal-light-dark(blue, rgb(170, 170, 170));
     cursor: default;
+}
+
+.risk-factor-label {
+    margin-left: 10px;
 }
