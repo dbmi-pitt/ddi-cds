@@ -7,10 +7,6 @@
         "ingredient": "Ethinyl estradiol",
         "name": "ethinyl estradiol 0.01 MG / norethindrone acetate 1 MG Oral Tablet"
     },
-    "103943": {
-        "ingredient": "Ciprofloxacin",
-        "name": "ciprofloxacin 3 MG/ML Ophthalmic Solution [Ciloxan]"
-    },
     "1050492": {
         "ingredient": "Ethinyl estradiol",
         "name": "drospirenone 3 MG / ethinyl estradiol 0.03 MG / levomefolate calcium 0.451 MG Oral Tablet"
@@ -187,22 +183,6 @@
         "ingredient": "Ethinyl estradiol",
         "name": "ethinyl estradiol 0.005 MG / norethindrone acetate 1 MG Oral Tablet [Fyavolv]"
     },
-    "1739997": {
-        "ingredient": "Ciprofloxacin",
-        "name": "ciprofloxacin 60 MG/ML Otic Suspension"
-    },
-    "1740002": {
-        "ingredient": "Ciprofloxacin",
-        "name": "ciprofloxacin 60 MG/ML Otic Suspension [Otiprio]"
-    },
-    "1792386": {
-        "ingredient": "Ciprofloxacin",
-        "name": "ciprofloxacin 3 MG/ML / fluocinolone acetonide 0.25 MG/ML Otic Solution"
-    },
-    "1792391": {
-        "ingredient": "Ciprofloxacin",
-        "name": "ciprofloxacin 3 MG/ML / fluocinolone acetonide 0.25 MG/ML Otic Solution [Otovel]"
-    },
     "197511": {
         "ingredient": "Ciprofloxacin",
         "name": "ciprofloxacin 250 MG Oral Tablet"
@@ -266,14 +246,6 @@
     "213226": {
         "ingredient": "Ciprofloxacin",
         "name": "ciprofloxacin 100 MG/ML Oral Suspension [Cipro]"
-    },
-    "213307": {
-        "ingredient": "Ciprofloxacin",
-        "name": "ciprofloxacin 0.003 MG/MG Ophthalmic Ointment [Ciloxan]"
-    },
-    "213320": {
-        "ingredient": "Ciprofloxacin",
-        "name": "ciprofloxacin 2 MG/ML / hydrocortisone 10 MG/ML Otic Suspension [Cipro HC]"
     },
     "2181317": {
         "ingredient": "Phenylpropanolamine",
@@ -391,18 +363,6 @@
         "ingredient": "Ethinyl estradiol",
         "name": "drospirenone 3 MG / ethinyl estradiol 0.03 MG Oral Tablet"
     },
-    "309305": {
-        "ingredient": "Ciprofloxacin",
-        "name": "ciprofloxacin 2 MG/ML / hydrocortisone 10 MG/ML Otic Suspension"
-    },
-    "309306": {
-        "ingredient": "Ciprofloxacin",
-        "name": "ciprofloxacin 0.003 MG/MG Ophthalmic Ointment"
-    },
-    "309307": {
-        "ingredient": "Ciprofloxacin",
-        "name": "ciprofloxacin 3 MG/ML Ophthalmic Solution"
-    },
     "309308": {
         "ingredient": "Ciprofloxacin",
         "name": "ciprofloxacin 50 MG/ML Oral Suspension"
@@ -491,17 +451,9 @@
         "ingredient": "Ethinyl estradiol",
         "name": "ethinyl estradiol 0.035 MG / norethindrone 0.75 MG Oral Tablet"
     },
-    "403908": {
-        "ingredient": "Ciprofloxacin",
-        "name": "ciprofloxacin 3 MG/ML / dexamethasone 1 MG/ML Otic Suspension"
-    },
     "403921": {
         "ingredient": "Ciprofloxacin",
         "name": "24 HR ciprofloxacin 1000 MG Extended Release Oral Tablet"
-    },
-    "404630": {
-        "ingredient": "Ciprofloxacin",
-        "name": "ciprofloxacin 3 MG/ML / dexamethasone 1 MG/ML Otic Suspension [Ciprodex]"
     },
     "406396": {
         "ingredient": "Ethinyl estradiol",
@@ -570,14 +522,6 @@
     "847488": {
         "ingredient": "Ciprofloxacin",
         "name": "24 HR ciprofloxacin 1000 MG Extended Release Oral Tablet [Cipro]"
-    },
-    "848956": {
-        "ingredient": "Ciprofloxacin",
-        "name": "ciprofloxacin 2 MG/ML Otic Solution"
-    },
-    "848960": {
-        "ingredient": "Ciprofloxacin",
-        "name": "ciprofloxacin 2 MG/ML Otic Solution [Cetraxal]"
     },
     "857452": {
         "ingredient": "Phenylpropanolamine",

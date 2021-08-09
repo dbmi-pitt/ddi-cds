@@ -32,8 +32,15 @@ import java.util.stream.Stream;
 @Controller
 public class CYP3A4Controller {
     private String pattern = "MM/dd/yyyy";
-    private String warningSummary = "Consider a dose reduction or alternative: Colchicine has a narrow therapeutic index. Patients who take colchicine and inhibitors of its primary metabolic clearance pathway have a risk of colchicine toxicity.";
-    private String dangerSummary = "Avoid combination: Colchicine has a narrow therapeutic index. Patients who take colchicine and inhibitors of its primary metabolic clearance pathway have a risk of colchicine toxicity. This risk is greater in patients with poor renal function.";
+    private String warningSummary = "Consider a dose reduction or alternative: <ul>" +
+            "<li>Colchicine has a narrow therapeutic index.</li>" +
+            "<li>Patients who take colchicine and inhibitors of its primary metabolic clearance pathway have a risk of colchicine toxicity.</li>" +
+            "</ul>";
+    private String dangerSummary = "Avoid combination: <ul>" +
+            "<li>Colchicine has a narrow therapeutic index.</li> " +
+            "<li>Patients who take colchicine and inhibitors of its primary metabolic clearance pathway have a risk of colchicine toxicity.</li>" +
+            "<li>This risk is greater in patients with poor renal function.</li>" +
+            "</ul>";
 
     @Autowired
     private AppConfig appConfig;
@@ -72,6 +79,7 @@ public class CYP3A4Controller {
         String patientId = token.getPatient();
         String clientId = appConfig.getClientId();
         String accessToken = token.getAccessToken();
+        model.addObject("patientName", getPatientName(patientId));
 
         getPatientResources(patientId);
         Alternative alternative = suggestAlternatives(patientId);
@@ -105,6 +113,14 @@ public class CYP3A4Controller {
         return model;
     }
 
+    private String getPatientName(String patientId) {
+        if (appConfig.getFhirVersion().equals("r4")) {
+            return ((Patient) fhirServiceMap.get(appConfig.getFhirVersion()).getPatient(patientId)).getName().get(0).getText();
+        } else if (appConfig.getFhirVersion().equals("stu2")) {
+            return ((ca.uhn.fhir.model.dstu2.resource.Patient) fhirServiceMap.get(appConfig.getFhirVersion()).getPatient(patientId)).getName().get(0).getText();
+        }
+        return "";
+    }
 
     private void getPatientResources(String patientId) {
         if (!patientResources.containsKey(patientId)) {
@@ -118,11 +134,8 @@ public class CYP3A4Controller {
             resources.put("medicationRequest", medicationRequests);
             resources.put("observation", observations);
             resources.put("condition", conditions);
-            if (medicationRequests.isEmpty() && observations.isEmpty() && conditions.isEmpty()) {
-                //Something could have gone wrong when trying to get patient resources, don't want to cache it
-            } else {
-                patientResources.put(patientId, resources);
-            }
+
+            patientResources.put(patientId, resources);
         }
 
     }
@@ -223,7 +236,7 @@ public class CYP3A4Controller {
             }
         }
         riskFactor.setHasRiskFactor(false);
-        riskFactor.setEffectiveDate("Not found");
+        riskFactor.setEffectiveDate("Not found in EHR");
         return riskFactor;
     }
 
@@ -270,7 +283,7 @@ public class CYP3A4Controller {
         }
 
         riskFactor.setHasRiskFactor(false);
-        riskFactor.setEffectiveDate("Not found");
+        riskFactor.setEffectiveDate("Not found in EHR");
         return riskFactor;
     }
 
@@ -323,7 +336,7 @@ public class CYP3A4Controller {
         riskFactor.setValue(-1);
         model.addObject("serumCreatinineEGFR", -1);
         riskFactor.setHasRiskFactor(false);
-        riskFactor.setEffectiveDate("Not found");
+        riskFactor.setEffectiveDate("Not found in EHR");
         return riskFactor;
     }
 
