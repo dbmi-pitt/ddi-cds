@@ -115,9 +115,9 @@ public class CYP3A4Controller {
 
     private String getPatientName(String patientId) {
         if (appConfig.getFhirVersion().equals("r4")) {
-            return ((Patient) fhirServiceMap.get(appConfig.getFhirVersion()).getPatient(patientId)).getName().get(0).getText();
+            return ((Patient) fhirServiceMap.get(appConfig.getFhirVersion()).getPatient(patientId)).getName().get(0).getGiven().get(0).toString();
         } else if (appConfig.getFhirVersion().equals("stu2")) {
-            return ((ca.uhn.fhir.model.dstu2.resource.Patient) fhirServiceMap.get(appConfig.getFhirVersion()).getPatient(patientId)).getName().get(0).getText();
+            return ((ca.uhn.fhir.model.dstu2.resource.Patient) fhirServiceMap.get(appConfig.getFhirVersion()).getPatient(patientId)).getName().get(0).getGiven().get(0).toString();
         }
         return "";
     }
