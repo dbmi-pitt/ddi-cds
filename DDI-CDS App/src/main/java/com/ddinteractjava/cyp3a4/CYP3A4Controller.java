@@ -451,7 +451,7 @@ public class CYP3A4Controller {
 
         Summary summary = new Summary();
         String clinicalSummaryDrug = "";
-        if (alternative.getDrugName() != null && alternative.getDrugName().equals("")) {
+        if (alternative.getDrugName() != null && !alternative.getDrugName().equals("")) {
             clinicalSummaryDrug = alternative.getDrugName().toLowerCase();
         }
         if (alternative.getDrugCode() == null && colchicine == null) {
