@@ -86,8 +86,16 @@
             },
         });
 
+        $($($(table.table().header())[0].children[1])[0].children).each(function () {
+            $(this).removeClass("font-weight-bold").removeClass("mark");
+        });
+
+
         table.rows().every(function () {
-            $(table.cell(0, column).node()).addClass('font-weight-bold').addClass('mark');
+            if (column !== undefined) {
+                $(table.column(column).header()).addClass('font-weight-bold').addClass('mark');
+                $(table.cell(0, column).node()).addClass('font-weight-bold').addClass('mark');
+            }
         });
     }
 

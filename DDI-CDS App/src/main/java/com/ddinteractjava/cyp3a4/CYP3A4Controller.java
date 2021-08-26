@@ -108,7 +108,7 @@ public class CYP3A4Controller {
 //        String colchicineImage = rxNormService.getImageUrl(colchicine.getCode());
 //        String cyp3a4Image = rxNormService.getImageUrl(alternative.getDrugCode());
 
-        model.addObject("title", "Colchicine - CYP3A4/PGP inhibitor " + alternative.getDrugName() + "  interaction");
+        model.addObject("title", "Interaction between Colchicine and CYP3A4/PGP inhibitor [" + alternative.getDrugName() + "]");
 
         return model;
     }
