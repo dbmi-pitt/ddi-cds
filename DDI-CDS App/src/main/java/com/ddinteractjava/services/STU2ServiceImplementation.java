@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class STU2Service implements FHIRService {
+public class STU2ServiceImplementation implements FHIRService {
     public IGenericClient client;
 
     @Autowired

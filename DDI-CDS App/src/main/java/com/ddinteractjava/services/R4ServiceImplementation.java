@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class R4Service implements FHIRService {
+public class R4ServiceImplementation implements FHIRService {
     public IGenericClient client;
 
     @Autowired

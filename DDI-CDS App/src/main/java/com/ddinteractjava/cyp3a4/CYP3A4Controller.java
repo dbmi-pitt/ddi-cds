@@ -7,7 +7,7 @@ import com.ddinteractjava.config.AppConfig;
 import com.ddinteractjava.config.CYP3A4Config;
 import com.ddinteractjava.model.*;
 import com.ddinteractjava.services.CDSService;
-import com.ddinteractjava.services.FHIRService;
+import com.ddinteractjava.services.ResourceService;
 import com.ddinteractjava.services.SessionCacheService;
 import org.hl7.fhir.r4.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,16 +46,13 @@ public class CYP3A4Controller {
     private AppConfig appConfig;
 
     @Autowired
+    private ResourceService resourceService;
+
+    @Autowired
     private CYP3A4Config cyp3A4Config;
 
     @Autowired
     private CYP3A4Cache cyp3A4Cache;
-
-    private final Map<String, FHIRService> fhirServiceMap;
-
-    CYP3A4Controller(Map<String, FHIRService> fhirServiceMap) {
-        this.fhirServiceMap = fhirServiceMap;
-    }
 
     @Autowired
     SessionCacheService sessionCacheService;
@@ -67,10 +64,6 @@ public class CYP3A4Controller {
     private List<String> akiCodes = new ArrayList<>();
     private List<String> serumCreatinineEGFR = new ArrayList<>();
 
-    // This will serve a cache for patient resource
-    // Patient ID to a map of resource type to list of those resources;
-    private Map<String, Map<String, List>> patientResources = new HashMap<>();
-
     @RequestMapping(value = "/cyp3a4", method = RequestMethod.GET)
     public ModelAndView home(@RequestParam(name = "state", required = true) String state, HttpServletRequest httpServletRequest) throws IOException {
         ModelAndView model = new ModelAndView("ddinteract");
@@ -79,9 +72,10 @@ public class CYP3A4Controller {
         String patientId = token.getPatient();
         String clientId = appConfig.getClientId();
         String accessToken = token.getAccessToken();
-        model.addObject("patientName", getPatientName(patientId));
 
-        getPatientResources(patientId);
+        resourceService.getPatientResources(patientId);
+        model.addObject("patientName", resourceService.getPatientName(patientId));
+
         Alternative alternative = suggestAlternatives(patientId);
         model.addObject("alternative", alternative);
 
@@ -113,38 +107,11 @@ public class CYP3A4Controller {
         return model;
     }
 
-    private String getPatientName(String patientId) {
-        if (appConfig.getFhirVersion().equals("r4")) {
-            return ((Patient) fhirServiceMap.get(appConfig.getFhirVersion()).getPatient(patientId)).getName().get(0).getGiven().get(0).toString();
-        } else if (appConfig.getFhirVersion().equals("stu2")) {
-            return ((ca.uhn.fhir.model.dstu2.resource.Patient) fhirServiceMap.get(appConfig.getFhirVersion()).getPatient(patientId)).getName().get(0).getGiven().get(0).toString();
-        }
-        return "";
-    }
-
-    private void getPatientResources(String patientId) {
-        if (!patientResources.containsKey(patientId)) {
-            List<MedicationStatement> medicationStatements = fhirServiceMap.get(appConfig.getFhirVersion()).getMedicationStatements(patientId);
-            List<MedicationRequest> medicationRequests = fhirServiceMap.get(appConfig.getFhirVersion()).getMedicationRequest(patientId);
-            List<Observation> observations = fhirServiceMap.get(appConfig.getFhirVersion()).getObservations(patientId);
-            List<Condition> conditions = fhirServiceMap.get(appConfig.getFhirVersion()).getConditions(patientId);
-
-            Map<String, List> resources = new HashMap<>();
-            resources.put("medicationStatement", medicationStatements);
-            resources.put("medicationRequest", medicationRequests);
-            resources.put("observation", observations);
-            resources.put("condition", conditions);
-
-            patientResources.put(patientId, resources);
-        }
-
-    }
-
     private SimpleCode findColchicine(String patientId) {
         SimpleCode simpleCode = new SimpleCode();
         if (appConfig.getFhirVersion().equals("r4")) {
-            List<MedicationStatement> medicationStatements = patientResources.get(patientId).get("medicationStatement");
-            List<MedicationRequest> medicationRequests = patientResources.get(patientId).get("medicationRequest");
+            List<MedicationStatement> medicationStatements = resourceService.patientResources.get(patientId).get("medicationStatement");
+            List<MedicationRequest> medicationRequests = resourceService.patientResources.get(patientId).get("medicationRequest");
 
             for (MedicationStatement medicationStatement : medicationStatements) {
                 List<Coding> coding = ((CodeableConcept) medicationStatement.getMedication()).getCoding();
@@ -166,8 +133,8 @@ public class CYP3A4Controller {
                 }
             }
         } else if (appConfig.getFhirVersion().equals("stu2")) {
-            List<ca.uhn.fhir.model.dstu2.resource.MedicationStatement> medicationStatements = patientResources.get(patientId).get("medicationStatement");
-            List<MedicationOrder> medicationRequests = patientResources.get(patientId).get("medicationRequest");
+            List<ca.uhn.fhir.model.dstu2.resource.MedicationStatement> medicationStatements = resourceService.patientResources.get(patientId).get("medicationStatement");
+            List<MedicationOrder> medicationRequests = resourceService.patientResources.get(patientId).get("medicationRequest");
 
             for (ca.uhn.fhir.model.dstu2.resource.MedicationStatement medicationStatement : medicationStatements) {
                 List<CodingDt> coding = ((CodeableConceptDt) medicationStatement.getMedication()).getCoding();
@@ -197,7 +164,7 @@ public class CYP3A4Controller {
         riskFactor.setRiskName(cyp3A4Config.getAKI());
 
         if (appConfig.getFhirVersion().equals("r4")) {
-            List<Condition> conditions = patientResources.get(patientId).get("condition");
+            List<Condition> conditions = resourceService.patientResources.get(patientId).get("condition");
 
             for (Condition condition : conditions) {
                 List<Coding> coding = condition.getCode().getCoding();
@@ -216,7 +183,7 @@ public class CYP3A4Controller {
                 }
             }
         } else if (appConfig.getFhirVersion().equals("stu2")) {
-            List<ca.uhn.fhir.model.dstu2.resource.Condition> conditions = patientResources.get(patientId).get("condition");
+            List<ca.uhn.fhir.model.dstu2.resource.Condition> conditions = resourceService.patientResources.get(patientId).get("condition");
 
             for (ca.uhn.fhir.model.dstu2.resource.Condition condition : conditions) {
                 List<CodingDt> coding = condition.getCode().getCoding();
@@ -244,7 +211,7 @@ public class CYP3A4Controller {
         RiskFactor riskFactor = new RiskFactor();
         riskFactor.setRiskName(cyp3A4Config.getCKD());
         if (appConfig.getFhirVersion().equals("r4")) {
-            List<Condition> conditions = patientResources.get(patientId).get("condition");
+            List<Condition> conditions = resourceService.patientResources.get(patientId).get("condition");
 
             for (Condition condition : conditions) {
                 List<Coding> coding = condition.getCode().getCoding();
@@ -262,7 +229,7 @@ public class CYP3A4Controller {
                 }
             }
         } else if (appConfig.getFhirVersion().equals("stu2")) {
-            List<ca.uhn.fhir.model.dstu2.resource.Condition> conditions = patientResources.get(patientId).get("condition");
+            List<ca.uhn.fhir.model.dstu2.resource.Condition> conditions = resourceService.patientResources.get(patientId).get("condition");
 
             for (ca.uhn.fhir.model.dstu2.resource.Condition condition : conditions) {
                 List<CodingDt> coding = condition.getCode().getCoding();
@@ -292,7 +259,7 @@ public class CYP3A4Controller {
         riskFactor.setRiskName(cyp3A4Config.geteGFR());
         if (appConfig.getFhirVersion().equals("r4")) {
 
-            List<Observation> observations = patientResources.get(patientId).get("observation");
+            List<Observation> observations = resourceService.patientResources.get(patientId).get("observation");
 
             for (Observation observation : observations) {
                 List<Coding> coding = observation.getCode().getCoding();
@@ -312,7 +279,7 @@ public class CYP3A4Controller {
                 }
             }
         } else if (appConfig.getFhirVersion().equals("stu2")) {
-            List<ca.uhn.fhir.model.dstu2.resource.Observation> observations = patientResources.get(patientId).get("observation");
+            List<ca.uhn.fhir.model.dstu2.resource.Observation> observations = resourceService.patientResources.get(patientId).get("observation");
 
             for (ca.uhn.fhir.model.dstu2.resource.Observation observation : observations) {
                 List<CodingDt> coding = observation.getCode().getCoding();
@@ -370,8 +337,8 @@ public class CYP3A4Controller {
     private Alternative suggestAlternatives(String patientId) {
         Alternative alternative = new Alternative();
         if (appConfig.getFhirVersion().equals("r4")) {
-            List<MedicationStatement> medicationStatements = patientResources.get(patientId).get("medicationStatement");
-            List<MedicationRequest> medicationRequests = patientResources.get(patientId).get("medicationRequest");
+            List<MedicationStatement> medicationStatements = resourceService.patientResources.get(patientId).get("medicationStatement");
+            List<MedicationRequest> medicationRequests = resourceService.patientResources.get(patientId).get("medicationRequest");
 
             for (MedicationStatement medicationStatement : medicationStatements) {
                 List<Coding> coding = ((CodeableConcept) medicationStatement.getMedication()).getCoding();
@@ -387,8 +354,8 @@ public class CYP3A4Controller {
                 }
             }
         } else if (appConfig.getFhirVersion().equals("stu2")) {
-            List<ca.uhn.fhir.model.dstu2.resource.MedicationStatement> medicationStatements = patientResources.get(patientId).get("medicationStatement");
-            List<MedicationOrder> medicationRequests = patientResources.get(patientId).get("medicationRequest");
+            List<ca.uhn.fhir.model.dstu2.resource.MedicationStatement> medicationStatements = resourceService.patientResources.get(patientId).get("medicationStatement");
+            List<MedicationOrder> medicationRequests = resourceService.patientResources.get(patientId).get("medicationRequest");
 
             for (ca.uhn.fhir.model.dstu2.resource.MedicationStatement medicationStatement : medicationStatements) {
                 List<CodingDt> coding = ((CodeableConceptDt) medicationStatement.getMedication()).getCoding();

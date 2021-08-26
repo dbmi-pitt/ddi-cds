@@ -1,8 +1,8 @@
 package com.ddinteractjava.config;
 
 
-import com.ddinteractjava.services.R4Service;
-import com.ddinteractjava.services.STU2Service;
+import com.ddinteractjava.services.R4ServiceImplementation;
+import com.ddinteractjava.services.STU2ServiceImplementation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -179,13 +179,13 @@ public class AppConfig {
     }
 
     @Bean("stu2")
-    STU2Service stu2Service() {
-        return new STU2Service();
+    STU2ServiceImplementation stu2Service() {
+        return new STU2ServiceImplementation();
     }
 
     @Bean("r4")
-    R4Service r4Service() {
-        return new R4Service();
+    R4ServiceImplementation r4Service() {
+        return new R4ServiceImplementation();
     }
 
 }
