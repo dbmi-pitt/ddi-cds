@@ -308,25 +308,34 @@ public class CYP3A4Controller {
     }
 
     private Alternative findAlternativeCode(Alternative alternative, String code, String display) {
+        boolean foundAlt = false;
         if (cyp3A4Cache.discontinueColchicine.contains(code)) {
             alternative.setAlternativeText(Alternative.DISCONTINUE_COLCHICINE);
+            foundAlt = true;
         } else if (cyp3A4Cache.itraconazoleKetoconazolePosaconazole.contains(code)) {
             alternative.setAlternativeText(Alternative.ITRACONAZOLE_KETOCONAZOLE_POSACONAZOLE);
+            foundAlt = true;
         } else if (cyp3A4Cache.voriconazole.contains(code)) {
             alternative.setAlternativeText(Alternative.VORICONAZOLE);
+            foundAlt = true;
         } else if (cyp3A4Cache.clarithromycin.contains(code)) {
             alternative.setAlternativeText(Alternative.CLARITHROMYCIN);
+            foundAlt = true;
         } else if (cyp3A4Cache.nefazodone.contains(code)) {
             alternative.setAlternativeText(Alternative.NEFAZODONE);
+            foundAlt = true;
         } else if (cyp3A4Cache.erythromycin.contains(code)) {
             alternative.setAlternativeText(Alternative.CLARITHROMYCIN);
+            foundAlt = true;
         } else if (cyp3A4Cache.diltiazemVerapamil.contains(code)) {
             alternative.setAlternativeText(Alternative.DILTIAZEM_VERAPAMIL);
+            foundAlt = true;
         } else if (cyp3A4Cache.dronedarone.contains(code)) {
             alternative.setAlternativeText(Alternative.DRONEDARONE);
+            foundAlt = true;
         }
 
-        if (alternative.getAlternativeText() != null && !alternative.getAlternativeText().equals("")) {
+        if(foundAlt) {
             alternative.setDrugName(display);
             alternative.setDrugCode(code);
         }
