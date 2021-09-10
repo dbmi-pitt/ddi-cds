@@ -9,28 +9,62 @@
 
 <div class="container-fluid">
     <div class="row mb-4">
-        <div class="col-lg-6 col-12">
-            <div th:replace="risk-factors"
-                 th:with="patientName=${patientName}, riskFactors=${riskFactors}, serumCreatinineEGFR=${serumCreatinineEGFR},
-                 alternative=${alternative},  colchicine=${colchicine}"/>
-            <div th:replace="alternativeOptions" th:with="alternative=${alternative}, colchicine=${colchicine}"/>
 
-        </div>
+        <!--        Risk factors-->
+        <th:block th:switch="${riskFactors != null}">
+            <th:block th:case="true">
+                <div class="col-lg-6 col-12">
+                    <div th:replace="risk-factors"
+                         th:with="patientName=${patientName}, riskFactors=${riskFactors}, serumCreatinineEGFR=${serumCreatinineEGFR},
+                 alternative=${alternative},  primaryDrug=${primaryDrug}"/>
+                </div>
+            </th:block>
+        </th:block>
 
-        <div class="col-lg-6 col-12">
-            <div th:replace="summary" th:with="summary=${summary}"/>
-            <div th:replace="clinical-explanation" th:with="summary=${summary}"/>
+        <!--        Summary-->
+        <th:block th:switch="${summary != null}">
+            <th:block th:case="true">
+                <div class="col-lg-6 col-12">
 
-        </div>
+                    <div th:replace="summary" th:with="summary=${summary}"/>
+                </div>
+            </th:block>
+        </th:block>
+
+        <!--        Alternative options-->
+        <th:block th:switch="${alternative != null}">
+            <th:block th:case="true">
+                <div class="col-lg-6 col-12">
+                    <div th:replace="alternativeOptions"
+                         th:with="alternative=${alternative}"/>
+                </div>
+            </th:block>
+        </th:block>
+
+        <!--        Clinical explanation-->
+        <th:block th:switch="${summary != null}">
+            <th:block th:case="true">
+                <div class="col-12" th:classappend="${riskFactors != null} ? 'col-lg-6' : 'col-lg-12'">
+                    <div th:replace="clinical-explanation" th:with="summary=${summary}"/>
+                </div>
+            </th:block>
+        </th:block>
+
     </div>
 
     <div class="row mb-4">
         <div class="col-12">
-            <div th:replace="accordion-questions-cyp3a4"/>
+            <div th:switch="${primaryDrug.getDrugType()}">
+                <div th:case="colchicine">
+                    <div th:replace="accordion-questions-cyp3a4"/>
+                </div>
+                <div th:case="tizanidine">
+                    <!--                    <div th:replace="accordion-questions-cyp1a2"/>-->
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 </body>
 </html>
 

@@ -64,7 +64,7 @@ public class CYP3A4Controller {
     private List<String> akiCodes = new ArrayList<>();
     private List<String> serumCreatinineEGFR = new ArrayList<>();
 
-    @RequestMapping(value = "/cyp3a4", method = RequestMethod.GET)
+    @RequestMapping(value = "/colchicine", method = RequestMethod.GET)
     public ModelAndView home(@RequestParam(name = "state", required = true) String state, HttpServletRequest httpServletRequest) throws IOException {
         ModelAndView model = new ModelAndView("ddinteract");
 
@@ -79,8 +79,9 @@ public class CYP3A4Controller {
         Alternative alternative = suggestAlternatives(patientId);
         model.addObject("alternative", alternative);
 
-        SimpleCode colchicine = findColchicine(patientId);
-        model.addObject("colchicine", colchicine);
+        //Find Colchicine
+        SimpleCode primaryDrug = resourceService.findPrimaryDrug(patientId, cyp3A4Cache.colchicineCodes, "colchicine");
+        model.addObject("primaryDrug", primaryDrug);
 
 //        String card = cdsService.callPatientView(accessToken, clientId, patientId);
 //        model.addObject("card", card);
@@ -96,7 +97,7 @@ public class CYP3A4Controller {
         riskFactors.add(findSerumCreatinine(patientId, model));
         model.addObject("riskFactors", riskFactors);
 
-        model.addObject("summary", getSummary(riskFactors, colchicine, alternative));
+        model.addObject("summary", getSummary(riskFactors, primaryDrug, alternative));
 
         //Get images for colchicine and CYP3A4
 //        String colchicineImage = rxNormService.getImageUrl(colchicine.getCode());
@@ -105,58 +106,6 @@ public class CYP3A4Controller {
         model.addObject("title", "Interaction between Colchicine and CYP3A4/PGP inhibitor [" + alternative.getDrugName() + "]");
 
         return model;
-    }
-
-    private SimpleCode findColchicine(String patientId) {
-        SimpleCode simpleCode = new SimpleCode();
-        if (appConfig.getFhirVersion().equals("r4")) {
-            List<MedicationStatement> medicationStatements = resourceService.patientResources.get(patientId).get("medicationStatement");
-            List<MedicationRequest> medicationRequests = resourceService.patientResources.get(patientId).get("medicationRequest");
-
-            for (MedicationStatement medicationStatement : medicationStatements) {
-                List<Coding> coding = ((CodeableConcept) medicationStatement.getMedication()).getCoding();
-                for (Coding code : coding) {
-                    if (cyp3A4Cache.colchicineCodes.contains(code.getCode())) {
-                        simpleCode.setCode(code.getCode());
-                        simpleCode.setDisplay(code.getDisplay());
-                    }
-                }
-            }
-
-            for (MedicationRequest medicationRequest : medicationRequests) {
-                List<Coding> coding = ((CodeableConcept) medicationRequest.getMedication()).getCoding();
-                for (Coding code : coding) {
-                    if (cyp3A4Cache.colchicineCodes.contains(code.getCode())) {
-                        simpleCode.setCode(code.getCode());
-                        simpleCode.setDisplay(code.getDisplay());
-                    }
-                }
-            }
-        } else if (appConfig.getFhirVersion().equals("stu2")) {
-            List<ca.uhn.fhir.model.dstu2.resource.MedicationStatement> medicationStatements = resourceService.patientResources.get(patientId).get("medicationStatement");
-            List<MedicationOrder> medicationRequests = resourceService.patientResources.get(patientId).get("medicationRequest");
-
-            for (ca.uhn.fhir.model.dstu2.resource.MedicationStatement medicationStatement : medicationStatements) {
-                List<CodingDt> coding = ((CodeableConceptDt) medicationStatement.getMedication()).getCoding();
-                for (CodingDt code : coding) {
-                    if (cyp3A4Cache.colchicineCodes.contains(code.getCode())) {
-                        simpleCode.setCode(code.getCode());
-                        simpleCode.setDisplay(code.getDisplay());
-                    }
-                }
-            }
-
-            for (MedicationOrder medicationRequest : medicationRequests) {
-                List<CodingDt> coding = ((CodeableConceptDt) medicationRequest.getMedication()).getCoding();
-                for (CodingDt code : coding) {
-                    if (cyp3A4Cache.colchicineCodes.contains(code.getCode())) {
-                        simpleCode.setCode(code.getCode());
-                        simpleCode.setDisplay(code.getDisplay());
-                    }
-                }
-            }
-        }
-        return simpleCode;
     }
 
     private RiskFactor findAKI(String patientId) {

@@ -1,6 +1,7 @@
 package com.ddinteractjava.model;
 
 public class Alternative {
+    //CYP3A4
     public static final String DISCONTINUE_COLCHICINE = "Discontinue colchicine.";
     public static final String ITRACONAZOLE_KETOCONAZOLE_POSACONAZOLE = "The antifungal terbinafine does not appear to affect CYP3A4, and is unlikely to interact with colchicine. However, there are some clinical situations where terbinafine would not be a suitable substitute for an azole antifungal. Voriconazole is less likely to interact with colchicine than itraconazole, ketoconazole, or posaconazole. Fluconazole has been studied in healthy subjects, and found to produce a 40% increase in colchicine AUC (See the Mitigare Product Label <a href='https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cb5f9d85-6b81-49f8-bcd6-17b7bfbc10f2#section-7.1' target='_blank'>Section 7</href> & <a href='https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cb5f9d85-6b81-49f8-bcd6-17b7bfbc10f2#section-12.2' target='_blank'>Section 12</a>).";
     public static final String VORICONAZOLE = "No alternative recommended. A healthy subject study found no effect of voriconazole on colchicine pharmacokinetics. The possible explanation is that voriconazole might have little effect on the P-glycoprotein transporter. The antifungal terbinafine does not appear to affect CYP3A4, and is unlikely to interact with colchicine. However, there are some clinical situations where terbinafine would not be a suitable substitute for an azole antifungal.";
@@ -8,6 +9,11 @@ public class Alternative {
     public static final String NEFAZODONE = "If an SSRI/SNRI is indicated, consider escitalopram, sertraline, mirtazapine, venlafaxine, desvenlafaxine, or buproprion. Avoid fluVoXamine since it is a modest CYP3A4 inhibitor. FluOXetine may be a weak CYP3A4 inhibitor, and probably doesn't have much effect on colchicine.";
     public static final String DILTIAZEM_VERAPAMIL = "Many other calcium channel blockers (CCG) other than diltiazem and verapamil have either a small or no effect on CYP3A4 and would be preferable depending on if clinical indication allows use of an alternate CCB.";
     public static final String DRONEDARONE = "Both dronedarone and amiodarone are inhibitors of CYP3A4/P-glycoprotein. No other antiarrhythmic is known to be a good inhibitor of both CYP3A4 and P-gp. Propafenone did not affect colchicine in healthy subject PK studies (See the Mitigare Product Label <a href='https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cb5f9d85-6b81-49f8-bcd6-17b7bfbc10f2#section-7.1' target='_blank'>Section 7</href> & <a href='https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cb5f9d85-6b81-49f8-bcd6-17b7bfbc10f2#section-12.2' target='_blank'>Section 12</a>). Ranolazine appears to be a weak inhibitor of CYP3A4 and P-gp, so less likely to interac. Quinidine is a potent P-gp inhibitor but it has not been studied for an interaction with colchicine. ";
+
+    //CYP1A2
+    public static final String CIPROFLOXACIN_ALTERNATIVE = "Levofloxacin, lomefloxacin, moxifloxacin, ofloxacin appear to have little effect on CYP1A2 activity.";
+    public static final String FLUVOXAMINE_ALTERNATIVE = "Sertraline, fluoxetine, venlafaxine, paroxetine, citalopram, escitalopram appear to have little effect on CYP1A2.";
+    public static final String ZAFIRLUKAST_ALTERNATIVES = "Zileuton reported to modestly increase theophylline AUC";
 
     String drugName;
     String drugCode;

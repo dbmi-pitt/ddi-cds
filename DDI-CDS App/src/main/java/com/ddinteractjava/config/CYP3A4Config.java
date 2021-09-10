@@ -17,10 +17,10 @@ public class CYP3A4Config {
     @Value("${cyp3a4.riskfactor.egfr}")
     private String eGFR;
 
-    @Value("${cyp3a3.vsac_colchicine}")
+    @Value("${cyp3a4.vsac_colchicine}")
     private String vsacColchicine;
 
-    @Value("${cyp3a3.vsac_cyp3a4}")
+    @Value("${cyp3a4.vsac_cyp3a4}")
     private String vsacCYP3A4;
 
     public String getAKI() {

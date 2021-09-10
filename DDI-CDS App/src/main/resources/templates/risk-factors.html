@@ -1,34 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
 <div class="card mb-4">
     <h5 class="card-header" th:text="'Risk Profile for ' + ${patientName}"></h5>
     <div class="card-body">
-        <div th:switch="${colchicine != null}">
-            <div th:case="true">
+        <th:block th:switch="${primaryDrug != null}">
+            <th:block th:case="true">
                 <p>
                     <span>The patient is currently taking</span>
-                    <span class="font-weight-bold" th:text="${#strings.toLowerCase(colchicine.getDisplay())}"></span>
+                    <span class="font-weight-bold" th:text="${#strings.toLowerCase(primaryDrug.getDisplay())}"></span>
                 </p>
-            </div>
-            <div th:case="false">
+            </th:block>
+            <th:block th:case="false">
                 <p>
-                    <span class="font-weight-bold">This patient is not currently on a Colchicine.</span>
+                    <span class="font-weight-bold"
+                          th:text="'This patient is not currently on a ' + ${primaryDrug.getDrugType()}"></span>
                 </p>
-            </div>
-        </div>
+            </th:block>
+        </th:block>
 
-        <div th:switch="${alternative.getDrugName() != null}">
+        <th:block th:switch="${alternative.getDrugName() != null}">
             <p th:case="true">
                 <span>The medication</span>
                 [<span class="font-weight-bold" th:text="${#strings.toLowerCase(alternative.getDrugName())}"></span>]
-                <span>will interact with colchicine by inhibition of CYP3A4/PGP.</span>
+                <span th:text="'will interact with ' + ${primaryDrug.getDrugType} + ' by inhibition of CYP3A4/PGP.'"></span>
             </p>
             <p th:case="false">
                 <span class="font-weight-bold">No CYP3A4/PGP inhibitor was found.</span>
             </p>
-        </div>
+        </th:block>
 
 
-        <div th:each="riskFactor : ${riskFactors}">
-            <div th:switch="${riskFactor.getHasRiskFactor()}">
+        <th:block th:each="riskFactor : ${riskFactors}">
+            <th:block th:switch="${riskFactor.getHasRiskFactor()}">
                 <div class="form-check">
                     <div class="form-check form-check-inline">
                         <input data-toggle="toggle" class="form-check-input" data-size="xs" data-on="Yes" data-off="No"
@@ -48,15 +51,15 @@
                     </div>
 
 
-                    <div th:switch="${riskFactor.getRiskName() == 'eGFR'}">
+                    <th:block th:switch="${riskFactor.getRiskName() == 'eGFR'}">
                         <input id="eGFR-value" th:case="true" class="form-control" style="display: none;"
                                th:value="${riskFactor.getValue()}" placeholder="eGFR Value"/>
-                    </div>
+                    </th:block>
 
                     <input id="alternative-risk-factor" style="display: none;" th:value="${alternative.getDrugName()}">
                 </div>
-            </div>
-        </div>
+            </th:block>
+        </th:block>
 
         <div th:replace="heatmap" th:with="serumCreatinineEGFR=${serumCreatinineEGFR}"/>
     </div>
@@ -113,3 +116,5 @@
         updateRiskFactors();
     });
 </script>
+
+</html>

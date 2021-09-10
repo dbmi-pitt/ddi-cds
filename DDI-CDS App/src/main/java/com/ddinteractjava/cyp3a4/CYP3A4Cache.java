@@ -1,6 +1,5 @@
 package com.ddinteractjava.cyp3a4;
 
-import com.ddinteractjava.config.AppConfig;
 import com.ddinteractjava.config.CYP3A4Config;
 import com.ddinteractjava.services.RxNormService;
 import com.ddinteractjava.services.VSACService;
@@ -10,7 +9,6 @@ import com.google.gson.JsonParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +28,7 @@ public class CYP3A4Cache {
     public List<String> colchicineCodes = new ArrayList<>();
     public List<String> cyp3a4Codes = new ArrayList<>();
 
+    //RxNorm codes for CYP3A4 inhibitors
     private final String ritonavir = "85762";
     private final String telaprevir = "1102261";
     private final String indinavir = "114289";
@@ -41,6 +40,7 @@ public class CYP3A4Cache {
     private final String amprenavir = "228656";
 //    private final String faldaprevir;
 
+    //CUIs for alternatives
     private final String itraconazoleCui = "28031";
     private final String ketoconazoleCui = "6135";
     private final String posaconazoleCui = "282446";
@@ -52,7 +52,7 @@ public class CYP3A4Cache {
     private final String verapamilCui = "11170";
     private final String dronedaroneCui = "233698";
 
-    //Gets fills by the RxNorm Service
+    //Gets filled by the RxNorm Service
     public List<String> discontinueColchicine = new ArrayList<>();
     public List<String> itraconazoleKetoconazolePosaconazole = new ArrayList<>();
     public List<String> voriconazole = new ArrayList<>();

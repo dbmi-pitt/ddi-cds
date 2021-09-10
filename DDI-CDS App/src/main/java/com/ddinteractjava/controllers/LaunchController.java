@@ -18,6 +18,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -49,7 +50,8 @@ public class LaunchController {
     private Map<String, String> oAuthUrls = new HashMap<>();
 
     @RequestMapping(value = "/launchStandalone", method = RequestMethod.GET)
-    public String launchStandalone(HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException {
+    public String launchStandalone(@RequestParam(name = "ddi", required = true) String ddi, HttpServletRequest
+            httpServletRequest, HttpServletResponse response) throws IOException {
         Map<String, String[]> requestParameterMap = httpServletRequest.getParameterMap();
 
         /**
@@ -90,7 +92,8 @@ public class LaunchController {
             // Set an authentication.
             SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(state, accessToken, new ArrayList<>()));
 
-            String redirectUrl = httpServletRequest.getContextPath() + "/cyp3a4?state=" + state;
+            String redirectUrl = httpServletRequest.getContextPath() + "/" + ddi + "?state=" + state;
+
             response.sendRedirect(redirectUrl);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -135,7 +138,7 @@ public class LaunchController {
                     "state=" + URLEncoder.encode(state, "UTF-8"),
                     "launch=" + URLEncoder.encode(launch, "UTF-8"),
                     "aud=" + URLEncoder.encode(aud, "UTF-8"));
-            System.out.println(authUrl);
+//            System.out.println(authUrl);
             response.sendRedirect(authUrl);
 
         } catch (UnsupportedEncodingException e) {
@@ -146,7 +149,8 @@ public class LaunchController {
 
 
     @RequestMapping(value = "/redirect", method = RequestMethod.GET)
-    public String redirect(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws IOException {
+    public String redirect(@RequestParam(name = "ddi", required = true) String ddi, HttpServletRequest
+            httpServletRequest, HttpServletResponse httpServletResponse) throws IOException {
         Map<String, String[]> requestParameterMap = httpServletRequest.getParameterMap();
         String tokenUrl = appConfig.getTokenUrl();
         try {
@@ -179,7 +183,7 @@ public class LaunchController {
                         new Date());
 
                 if (appConfig.getStaticToken() == null) {
-                    System.out.println("Bearer token: " + tokenData.get("access_token"));
+//                    System.out.println("Bearer token: " + tokenData.get("access_token"));
                     fhirServiceMap.get(appConfig.getFhirVersion()).addBearerToken((String) tokenData.get("access_token"));
                 }
                 sessionCacheService.addTokenToCache(requestParameterMap.get("state")[0], httpServletRequest.getRemoteAddr(), token);
@@ -188,7 +192,7 @@ public class LaunchController {
                 SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(requestParameterMap.get("state"), tokenData.get("access_token"), new ArrayList<>()));
 
                 //TODO Need to figure out a way to navigate to correct controller for drug-drug interaction
-                String redirectUrl = httpServletRequest.getContextPath() + "/cyp3a4?state=" + requestParameterMap.get("state")[0];
+                String redirectUrl = httpServletRequest.getContextPath() + "/" + ddi + "?state=" + requestParameterMap.get("state")[0];
                 httpServletResponse.sendRedirect(redirectUrl);
             } else {
                 return "error";
@@ -231,8 +235,7 @@ public class LaunchController {
             oAuthUrls.put("serviceUrl", conformanceUrl);
             sessionCacheService.addDstu2ConformanceToCache(conformanceUrl, conformance);
 
-        }
-        else if (appConfig.getFhirVersion().equals("r4")) {
+        } else if (appConfig.getFhirVersion().equals("r4")) {
             CapabilityStatement conformance = sessionCacheService.getConformanceFromCache(conformanceUrl);
 
             if (conformance == null) {
