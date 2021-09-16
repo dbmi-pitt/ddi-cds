@@ -379,7 +379,7 @@ public class CYP3A4Controller {
         if (alternative.getDrugName() != null && !alternative.getDrugName().equals("")) {
             clinicalSummaryDrug = alternative.getDrugName().toLowerCase();
         }
-        if (alternative.getDrugCode() == null && colchicine == null) {
+        if (alternative.getDrugCode() == null && colchicine.getCode() == null) {
             summary.setSummary("Patient is not currently on a Colchicine or a CYP3A4/PGP inhibitor");
             summary.setClinicalSummary("Patient is not currently on a Colchicine or a CYP3A4/PGP inhibitor");
             return summary;

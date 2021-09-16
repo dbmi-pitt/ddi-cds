@@ -26,15 +26,15 @@ import java.util.List;
 @Controller
 public class CYP1A2Controller {
 
-    private String warningSummary = "Consider a dose reduction or alternative: <ul>" +
-            "<li>Colchicine has a narrow therapeutic index.</li>" +
-            "<li>Patients who take colchicine and inhibitors of its primary metabolic clearance pathway have a risk of colchicine toxicity.</li>" +
+    private String warningSummary = "Consider Alternative: <ul>" +
+            "<li>Tizanidine increased serum levels can lead to severe adverse events (decrease in blood pressure, heart rate, somnolence...)</li>" +
+            "<li>Patients who take tizanidine and a drug inhibiting its primary metabolic clearance pathway such as ciprofloxacin have higher risk of tizanidine adverse events.</li>" +
             "</ul>";
+
     private String dangerSummary = "Use Alternative: <ul>" +
-            "<li>Concurrent use of tizanidine and ciprofloxacin has been reported to induce adverse effects of tizanidine such as lowering blood pressure (BP), and heart rate (HR)</li> " +
-
+            "<li>Tizanidine increased serum levels can lead to severe adverse events (decrease in blood pressure, heart rate, somnolence...)</li>" +
+            "<li>Patients who take tizanidine and a drug inhibiting its primary metabolic clearance pathway such as ciprofloxacin have higher risk of tizanidine adverse events.</li>" +
             "</ul>";
-
     @Autowired
     private AppConfig appConfig;
 
@@ -85,6 +85,9 @@ public class CYP1A2Controller {
             foundAlt = true;
         } else if (cyp1A2Cache.zafirlukastAlternatives.contains(code)) {
             alternative.setAlternativeText(Alternative.ZAFIRLUKAST_ALTERNATIVES);
+            foundAlt = true;
+        } else if (cyp1A2Cache.cyp1a2Codes.contains(code)) {
+            alternative.setAlternativeText("Use a drug without effects on CYP1A2 inhibitors.");
             foundAlt = true;
         }
 
@@ -143,7 +146,7 @@ public class CYP1A2Controller {
         if (alternative.getDrugName() != null && !alternative.getDrugName().equals("")) {
             clinicalSummaryDrug = alternative.getDrugName().toLowerCase();
         }
-        if (alternative.getDrugCode() == null && tizanidine == null) {
+        if (alternative.getDrugCode() == null && tizanidine.getCode() == null) {
             summary.setSummary("Patient is not currently on a Tizanidine or a CYP1A2 inhibitor");
             summary.setClinicalSummary("Patient is not currently on a Tizanidine or a CYP1A2 inhibitor");
             return summary;
@@ -153,7 +156,8 @@ public class CYP1A2Controller {
                 alternative.getAlternativeText().equals(Alternative.FLUVOXAMINE_ALTERNATIVE) ||
                 alternative.getAlternativeText().equals(Alternative.ZAFIRLUKAST_ALTERNATIVES)) {
             summary.setSummary(dangerSummary);
-            summary.setClinicalSummary("");
+            summary.setClinicalSummary("Tizanidine has a narrow therapeutic range and a low oral bioavailability due to the extensive first-pass metabolism via cytochrome P450 (CYP 1A2). Concurrent use of tizanidine and strong CYP1A2 inhibitors, such as ciprofloxacin, is not recommended because it may significantly increase tizanidine levels which can lead to severe adverse events. " +
+                    "Tizanidine is a substrate for cytochrome P450 1A2 (CYP1A2). The medication [<b>" + clinicalSummaryDrug + "</b>] is one of these CYP1A2 inhibitors. The safest option would be to switch to an alternative drug that is not a strong inhibitor or stop tizanidine (see the \"Alternative Options\" box)</b>. A strong monitoring strategy would include advising the patient to monitor for the following symptoms: somnolence, fatigue, weakness, dizziness.");
             summary.setWarningSymbol("Danger");
         } else {
             summary.setSummary(warningSummary);
