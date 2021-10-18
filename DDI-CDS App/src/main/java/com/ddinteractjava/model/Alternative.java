@@ -11,9 +11,9 @@ public class Alternative {
     public static final String DRONEDARONE = "Both dronedarone and amiodarone are inhibitors of CYP3A4/P-glycoprotein. No other antiarrhythmic is known to be a good inhibitor of both CYP3A4 and P-gp. Propafenone did not affect colchicine in healthy subject PK studies (See the Mitigare Product Label <a href='https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cb5f9d85-6b81-49f8-bcd6-17b7bfbc10f2#section-7.1' target='_blank'>Section 7</href> & <a href='https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cb5f9d85-6b81-49f8-bcd6-17b7bfbc10f2#section-12.2' target='_blank'>Section 12</a>). Ranolazine appears to be a weak inhibitor of CYP3A4 and P-gp, so less likely to interac. Quinidine is a potent P-gp inhibitor but it has not been studied for an interaction with colchicine. ";
 
     //CYP1A2
-    public static final String CIPROFLOXACIN_ALTERNATIVE = "The quinolones: ofloxacin, moxifloxacin, levofloxacin and lomefloxacin do not appear to affect CYP1A2, and they are unlikely to interact with tizanidine.";
-    public static final String FLUVOXAMINE_ALTERNATIVE = "Other SSRI such as sertraline, fluoxetine, paroxetine, citalopram or escitalopram appear to have little effect on CYP1A2. Also consider venlafaxine (SNRI).";
-    public static final String ZAFIRLUKAST_ALTERNATIVES = "Zileuton, a leukotriene synthesis inhibitor, has shown to be a weak inhibitor of the CYP1A2 thus no increase in tizanidine plasma level is to be expected.";
+    public static final String CIPROFLOXACIN_ALTERNATIVE = "Other quinolone antibiotics such as ofloxacin, moxifloxacin, and levofloxacin and lomefloxacin do not appear to affect CYP1A2, and therefore do not interact with tizanidine.";
+    public static final String FLUVOXAMINE_ALTERNATIVE = "Other SSRI/SNRIs agents such as sertraline, fluoxetine, paroxetine, venlafaxine, citalopram or escitalopram appear to have little effect on CYP1A2.";
+    public static final String ZAFIRLUKAST_ALTERNATIVES = "Montelukast, another leukotriene receptor antagonist, does not interact with tizanidine because it has not been shown to be an inhibitor of the CYP1A2 pathway.";
 
     String drugName;
     String drugCode;

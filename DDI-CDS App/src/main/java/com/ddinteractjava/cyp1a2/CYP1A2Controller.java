@@ -27,13 +27,11 @@ import java.util.List;
 public class CYP1A2Controller {
 
     private String warningSummary = "Consider Alternative: <ul>" +
-            "<li>Tizanidine increased serum levels can lead to severe adverse events (decrease in blood pressure, heart rate, somnolence...)</li>" +
-            "<li>Patients who take tizanidine and a drug inhibiting its primary metabolic clearance pathway such as ciprofloxacin have higher risk of tizanidine adverse events.</li>" +
+            "<li>CYP1A2 inhibitor medications can increase tizanidine serum concentrations by more than 5-fold, leading to higher rates of tizanidine adverse events: decrease in blood pressure, heart rate and occasionally fatalities.</li>" +
             "</ul>";
 
-    private String dangerSummary = "Use Alternative: <ul>" +
-            "<li>Tizanidine increased serum levels can lead to severe adverse events (decrease in blood pressure, heart rate, somnolence...)</li>" +
-            "<li>Patients who take tizanidine and a drug inhibiting its primary metabolic clearance pathway such as ciprofloxacin have higher risk of tizanidine adverse events.</li>" +
+    private String zafirlukastSummary = "Use Alternative: <ul>" +
+            "<li>Concurrent use of tizanidine and zafirlukast could lead to tizanidine-related adverse events such as decrease in blood pressure, trate, fatigue, and somnolence.</li>" +
             "</ul>";
     @Autowired
     private AppConfig appConfig;
@@ -87,7 +85,7 @@ public class CYP1A2Controller {
             alternative.setAlternativeText(Alternative.ZAFIRLUKAST_ALTERNATIVES);
             foundAlt = true;
         } else if (cyp1A2Cache.cyp1a2Codes.contains(code)) {
-            alternative.setAlternativeText("Use a drug without effects on CYP1A2 inhibitors.");
+            alternative.setAlternativeText("Alternatives to avoid a tizanidine-CYP1A2 interaction include medications not inhibiting the CYP1A2 such as: (antibiotics: levofloxacin, penicillins), (SSRI antidepressants: fluoxetine, sertraline, and others); leukotriene receptor antagonists (montelukast).");
             foundAlt = true;
         }
 
@@ -152,16 +150,22 @@ public class CYP1A2Controller {
             return summary;
         }
 
+        //Set the warning symbol and clinical summary for the 3 primary use cases, they will be over-written in else case
+        summary.setClinicalSummary("Tizanidine has a narrow therapeutic range and a low oral bioavailability due to the extensive first-pass metabolism via cytochrome P450 (CYP 1A2). Concurrent use of tizanidine and strong CYP1A2 inhibitors, such as " + clinicalSummaryDrug + ", is not recommended because it may significantly increase tizanidine levels which can lead to severe adverse events. " +
+                "<br></br>Tizanidine is a substrate for cytochrome P450 1A2 (CYP1A2). [<b>" + clinicalSummaryDrug + "</b>] is a potent CYP1A2 inhibitor. Preferred management options are to use an alternative medication that is not a strong CYP1A2 inhibitor or to discontinue the tizanidine (see the <b>\"Alternative Options\"</b> box)</b>. It is also recommended to advise the patient to monitor for signs of hypotension, including: dizziness, fatigue, weakness, and somnolence.");
+        summary.setWarningSymbol("Danger");
+
         if (alternative.getAlternativeText().equals(Alternative.CIPROFLOXACIN_ALTERNATIVE) ||
-                alternative.getAlternativeText().equals(Alternative.FLUVOXAMINE_ALTERNATIVE) ||
-                alternative.getAlternativeText().equals(Alternative.ZAFIRLUKAST_ALTERNATIVES)) {
-            summary.setSummary(dangerSummary);
-            summary.setClinicalSummary("Tizanidine has a narrow therapeutic range and a low oral bioavailability due to the extensive first-pass metabolism via cytochrome P450 (CYP 1A2). Concurrent use of tizanidine and strong CYP1A2 inhibitors, such as ciprofloxacin, is not recommended because it may significantly increase tizanidine levels which can lead to severe adverse events. " +
-                    "Tizanidine is a substrate for cytochrome P450 1A2 (CYP1A2). The medication [<b>" + clinicalSummaryDrug + "</b>] is one of these CYP1A2 inhibitors. The safest option would be to switch to an alternative drug that is not a strong inhibitor or stop tizanidine (see the \"Alternative Options\" box)</b>. A strong monitoring strategy would include advising the patient to monitor for the following symptoms: somnolence, fatigue, weakness, dizziness.");
-            summary.setWarningSymbol("Danger");
+                alternative.getAlternativeText().equals(Alternative.FLUVOXAMINE_ALTERNATIVE)) {
+            summary.setSummary("Use Alternative: <ul>" +
+            "<li>Increased tizanidine serum levels can lead to severe adverse events (substantial decreases in blood pressure, heart rate, dizziness, fall, etc.).</li>" +
+            "<li>Patients who take tizanidine and a drug inhibiting its primary metabolic clearance pathway such as " +     clinicalSummaryDrug + " have higher risk of tizanidine adverse events.</li>" +
+            "</ul>");
+        } else if (alternative.getAlternativeText().equals(Alternative.ZAFIRLUKAST_ALTERNATIVES)) {
+            summary.setSummary(zafirlukastSummary);
         } else {
             summary.setSummary(warningSummary);
-            summary.setClinicalSummary("");
+            summary.setClinicalSummary("Tizanidine has a narrow therapeutic range and a low oral bioavailability due to the extensive first-pass metabolism via cytochrome P450 (CYP 1A2). Concurrent use of tizanidine and strong CYP1A2 inhibitors is not recommended because it may significantly increase tizanidine levels which can lead to severe adverse events.");
             summary.setWarningSymbol("Warning");
         }
 
