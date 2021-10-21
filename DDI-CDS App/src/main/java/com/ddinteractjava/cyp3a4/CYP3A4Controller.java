@@ -87,8 +87,8 @@ public class CYP3A4Controller {
 //        model.addObject("card", card);
 
         Map<String, String> patientProfiles = new LinkedHashMap<>();
-        patientProfiles.put("/launchStandalone?patient=99995", "Patient on Itraconazole with AKI and Chronic Kidney Disease");
-        patientProfiles.put("/launchStandalone?patient=99996", "Patient on Ritonavir with AKI and Chronic Kidney Disease");
+        patientProfiles.put("/launchStandalone?ddi=colchicine&patient=99995", "Patient on Itraconazole with AKI and Chronic Kidney Disease");
+        patientProfiles.put("/launchStandalone?ddi=colchicine&patient=99996", "Patient on Ritonavir with AKI and Chronic Kidney Disease");
         model.addObject("patientProfiles", patientProfiles);
 
         List<RiskFactor> riskFactors = new LinkedList<>();

@@ -21,7 +21,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class CYP1A2Controller {
@@ -69,6 +71,13 @@ public class CYP1A2Controller {
         model.addObject("summary", getSummary(primaryDrug, alternative));
 
         model.addObject("title", "Interaction between Tizanidine and CYP1A2 inhibitor [" + alternative.getDrugName() + "]");
+
+        Map<String, String> patientProfiles = new LinkedHashMap<>();
+        patientProfiles.put("/launchStandalone?ddi=tizanidine&patient=100001", "Patient on Ciprofloxacin");
+        patientProfiles.put("/launchStandalone?ddi=tizanidine&patient=100002", "Patient on Zafirlukast");
+        patientProfiles.put("/launchStandalone?ddi=tizanidine&patient=100003", "Patient on Fluvoxamine");
+        patientProfiles.put("/launchStandalone?ddi=tizanidine&patient=100004", "Patient on Phenylpropanolamine");
+        model.addObject("patientProfiles", patientProfiles);
 
         return model;
     }
@@ -158,9 +167,9 @@ public class CYP1A2Controller {
         if (alternative.getAlternativeText().equals(Alternative.CIPROFLOXACIN_ALTERNATIVE) ||
                 alternative.getAlternativeText().equals(Alternative.FLUVOXAMINE_ALTERNATIVE)) {
             summary.setSummary("Use Alternative: <ul>" +
-            "<li>Increased tizanidine serum levels can lead to severe adverse events (substantial decreases in blood pressure, heart rate, dizziness, fall, etc.).</li>" +
-            "<li>Patients who take tizanidine and a drug inhibiting its primary metabolic clearance pathway such as " +     clinicalSummaryDrug + " have higher risk of tizanidine adverse events.</li>" +
-            "</ul>");
+                    "<li>Increased tizanidine serum levels can lead to severe adverse events (substantial decreases in blood pressure, heart rate, dizziness, fall, etc.).</li>" +
+                    "<li>Patients who take tizanidine and a drug inhibiting its primary metabolic clearance pathway such as " + clinicalSummaryDrug + " have higher risk of tizanidine adverse events.</li>" +
+                    "</ul>");
         } else if (alternative.getAlternativeText().equals(Alternative.ZAFIRLUKAST_ALTERNATIVES)) {
             summary.setSummary(zafirlukastSummary);
         } else {
