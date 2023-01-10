@@ -6,7 +6,7 @@
   },
   "devDependencies": {
     "cql-execution": "^1.3.2",
-    "cql-testing": "^1.0.0-beta.2",
+    "cql-testing": "^2.5.2",
     "fs-extra": "^7.0.1",
     "mocha": "^5.2.0"
   }
