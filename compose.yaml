@@ -1,0 +1,14 @@
+services:
+  colchicine:
+    build:
+      context: .
+    volumes:
+      - ./config/colchicine.properties:/app/DDI-CDS App/src/main/resources/application.properties:ro # create the application.properties file in the config folder
+    restart: unless-stopped
+
+  tizanidine:
+    build:
+      context: .
+    volumes:
+      - ./config/tizanidine.properties:/app/DDI-CDS App/src/main/resources/application.properties:ro # create the application.properties file in the config folder
+    restart: unless-stopped
