@@ -120,9 +120,7 @@ public class R4ServiceImplementation implements FHIRService {
             for (Bundle.BundleEntryComponent entryComponent : response.getEntry()) {
                 conditions.add((Condition) entryComponent.getResource());
             }
-        } catch (ResourceNotFoundException e) {
-            //No condition for this patient was found
-        } catch (InvalidRequestException e) {
+        } catch (Exception e) {
             //No condition for this patient was found
         }
         return conditions;
